@@ -68,6 +68,7 @@ export class AppComponent implements OnInit {
     if (this.computer.sum <= 15) {
       this.getComp();
     }
+    
     this.computer.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
     this.isShowResult = true;
 
@@ -92,7 +93,6 @@ export class AppComponent implements OnInit {
       this.message = 'YOU WIN!!!!! WINNER!!!';
       this.player.numberWins++;
     }
-
     this.firstGame = true;
   }
 
