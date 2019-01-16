@@ -1,11 +1,15 @@
 <div class="score-container">
   <div class="score">
-    Wins:{{player.numberWins}} Loses:{{computer.numberWins}}
+    Wins:{{ player.numberWins }} Loses:{{ computer.numberWins }}
   </div>
-<div class="score">{{message}}</div>
+
+  <div class="score">
+    {{ message }}
+  </div>
+
   <button type="button"
-   class="input-button4"
-   (click)="startNewGame()">
+          class="input-button4"
+          (click)="startNewGame()">
     Новая игра
   </button>
 </div>
@@ -19,24 +23,25 @@
 
   <div class="center-table">
     <button *ngIf="!isShowResult"
-      type="button" 
-      class="input-button4"
-      (click)="getYou()">
+            type="button" 
+            class="input-button4"
+            (click)="getYou()">
       Взять
     </button>
 
     <span class="total">
-      You score: {{player.sum}}
+      You score: {{ player.sum }}
     </span>
 
-    <span *ngIf="isShowResult" class="compresult">
-      Comp score:{{computer.sum}}
+    <span *ngIf="isShowResult" 
+          class="comp-result">
+      Comp score:{{ computer.sum }}
     </span>
 
     <button *ngIf="!isShowResult" 
-    type="button" 
-    class="input-button4"
-    (click)="finish()">
+            type="button" 
+            class="input-button4"
+            (click)="finish()">
       ВСЁ
     </button>
   </div>
