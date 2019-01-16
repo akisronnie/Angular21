@@ -1,25 +1,49 @@
-<div id="score-container">
-  <div id="score">Wins:{{player.numberWins}} Loses:{{computer.numberWins}} </div>
-  <button type="button" class="input-button4" (click)="startNewGame()">Новая игра</button>
+<div class="score-container">
+  <div class="score">
+    Wins:{{player.numberWins}} Loses:{{computer.numberWins}}
+  </div>
+<div class="score">{{message}}</div>
+  <button type="button"
+   class="input-button4"
+   (click)="startNewGame()">
+    Новая игра
+  </button>
 </div>
 
 <section class="table">
   <div class="comp-side">
     <div *ngFor="let card of computer.hand">
-      <img src="{{card.src}}">
+      <img [src]="card.src">
     </div>
   </div>
 
   <div class="center-table">
-    <button type="button" class="input-button4" id="getcard" (click)="getYou()" *ngIf="!showResult">Взять</button>
-    <span id="total">You score: {{player.sum}} </span>
-    <span id="compresult" *ngIf="showResult">Comp score:{{computer.sum}}</span>
-    <button type="button" class="input-button4" id="finish" (click)="finish()" *ngIf="!showResult">ВСЁ</button>
+    <button *ngIf="!isShowResult"
+      type="button" 
+      class="input-button4"
+      (click)="getYou()">
+      Взять
+    </button>
+
+    <span class="total">
+      You score: {{player.sum}}
+    </span>
+
+    <span *ngIf="isShowResult" class="compresult">
+      Comp score:{{computer.sum}}
+    </span>
+
+    <button *ngIf="!isShowResult" 
+    type="button" 
+    class="input-button4"
+    (click)="finish()">
+      ВСЁ
+    </button>
   </div>
 
   <div class="you-side">
     <div *ngFor="let card of player.hand">
-      <img src="{{card.src}}">
+      <img [src]="card.src">
     </div>
   </div>
 </section>

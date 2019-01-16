@@ -43,19 +43,19 @@ img{width: 150px;
     margin-right: 20px;
     border-radius: 15px;
   }
-#total, #compresult, #score {
+.total, .compresult, .score {
   font-size: 52px; 
   color: black;
   background-color: rgba(163, 163, 163, 0.438); 
   border-radius: 20px;
   }
-#compresult { 
+.compresult { 
   margin-left: 20px;
 }
-#score, #score-container {
+.score, .score-container {
    margin: auto; 
     text-align: center;
   }
-#score-container {
+.score-container {
 background-color: grey;
 }

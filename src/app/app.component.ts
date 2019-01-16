@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {Player,Card} from '../types/myTypes';
 
 @Component({
   selector: 'app-root',
@@ -8,80 +7,86 @@ import {Player,Card} from '../types/myTypes';
 })
 
 export class AppComponent implements OnInit {
-  public deck: Card[] = [];
-  public firstGame: boolean = true;
-  public showResult: boolean = false;
-
-  public computer: Player = {
+  private deck: TCard[] = [];
+  private firstGame: boolean = true;
+  public isShowResult: boolean = false;
+  public message: string = 'Welcome to game';
+  public computer: TPlayer = {
     hand: [],
     sum: 0,
     numberWins: 0,
   };
 
-  public player: Player = {
+  public player: TPlayer = {
     hand: [],
     sum: 0,
     numberWins: 0,
   };
 
-  constructor() {
-  }
-
-  ngOnInit() {
-    this.generateDeck();
-    this.deckSort(30);
+  public ngOnInit(): void {
+    this.deck = this.generateDeck();
+    this.deck = this.deckSort(this.deck);
     this.startNewGame();
   }
 
-  generateDeck() {
-    let suits = ['♠', '♥', '♣', '♦'];
-    let cards = [{ name: 'T', value: 11, suits: null, src: null }, { name: 'K', value: 4, suits: null, src: null }, { name: 'D', value: 3, suits: null, src: null }, { name: 'V', value: 2, suits: null, src: null }];
+  private generateDeck (): TCard[] {
+    const suits: string[] = ['♠', '♥', '♣', '♦'];
+    const cards: TCard[] = [{ name: 'T', value: 11, suits: null, src: null },
+    { name: 'K', value: 4, suits: null, src: null },
+    { name: 'D', value: 3, suits: null, src: null },
+    { name: 'V', value: 2, suits: null, src: null }];
+    const deck: TCard[] = [];
 
-    for (let i = 6; i < 11; i++) {
+    for (let i: number = 6; i < 11; i++) {
       cards.push({ name: String(i), value: i, suits: null, src: null });
     }
 
-    for (let j = 0; j < cards.length; j++) {
-      for (let k = 0; k < suits.length; k++) {
+    for (let j: number = 0; j < cards.length; j++) {
+      for (let k: number = 0; k < suits.length; k++) {
         cards[j].suits = suits[k];
         cards[j].src = `../assets/img/outside.png`;
-        this.deck.push({ ...cards[j] });
+        deck.push({ ...cards[j] });
       }
     }
+    return deck;
   }
 
-  deckSort(n) {
-    let firstElem = 0;
-    let secondElem = 0;
-    let change;
+  private deckSort(deck: TCard[]): TCard[] {
+    let firstElem: number = 0;
+    let secondElem: number = 0;
+    let change: TCard;
 
-    for (let i = 0; i < n; i++) {
+    for (let i: number = 0; i < 30; i++) {
       firstElem = Math.floor(Math.random() * 36);
       secondElem = Math.floor(Math.random() * 36);
       change = this.deck[firstElem];
-      this.deck[firstElem] = this.deck[secondElem];
-      this.deck[secondElem] = change;
+      deck[firstElem] = this.deck[secondElem];
+      deck[secondElem] = change;
     }
+    return deck;
   }
 
-  startNewGame() {
+  public startNewGame(): void  {
     if (!this.firstGame) {
       this.finish();
     }
-
+    this.message = 'Welcome to game';
     this.firstGame = false;
-    this.player.hand.map((card) => { card.src = `../assets/img/outside.png` });
-    this.computer.hand.map((card) => { card.src = `../assets/img/outside.png` });
-    this.showResult = false;
+    this.player.hand.map((card: TCard) => { card.src = `../assets/img/outside.png`; });
+    this.computer.hand.map((card: TCard) => { card.src = `../assets/img/outside.png`; });
+    this.isShowResult = false;
     this.deck = this.deck.concat(this.player.hand);
     this.deck = this.deck.concat(this.computer.hand);
     this.player.hand = [];
     this.player.sum = 0;
     this.computer.hand = [];
     this.computer.sum = 0;
-    this.deckSort(30);
+    this.deck = this.deckSort(this.deck);
+    this.getYou();
+  }
 
-    while (this.computer.sum <= 15) {
+  public getComp(): void {
+    if (this.computer.sum <= 15) {
       this.computer.hand.push(this.deck[this.deck.length - 1]);
       this.deck.pop();
       this.computer.sum += this.computer.hand[this.computer.hand.length - 1].value;
@@ -92,43 +97,53 @@ export class AppComponent implements OnInit {
     }
   }
 
-  getYou() {
+
+  public getYou(): void  {
     if (this.player.sum > 21) {
       alert('That is enough already! Bust');
 
-      return
+      return;
     }
 
     this.player.hand.push(this.deck[this.deck.length - 1]);
     this.deck.pop();
-    this.player.hand[this.player.hand.length - 1].src = `../assets/img/${this.player.hand[this.player.hand.length - 1].name}${this.player.hand[this.player.hand.length - 1].suits}.png`
+    this.player.hand[this.player.hand.length - 1].src = `../assets/img/${this.player.hand[this.player.hand.length - 1].name}${this.player.hand[this.player.hand.length - 1].suits}.png`;
     this.player.sum += this.player.hand[this.player.hand.length - 1].value;
+    if (this.player.sum > 21) {
+      this.message = 'That is enough already! Bust. You score :' + this.player.sum;
+      this.isShowResult = true;
+      return;
+    }
+    this.getComp();
   }
 
-  finish() {
-    this.computer.hand.map((card) => { card.src = `../assets/img/${card.name}${card.suits}.png` });
-    this.showResult = true;
+  public finish(): void  {
+    if (this.computer.sum <= 15) {
+      this.getComp();
+    }
+    this.computer.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
+    this.isShowResult = true;
 
     if (this.computer.sum > 21) {
-      alert('At the computer bust!');
+      this.message = 'At the computer bust!';
       this.player.numberWins++;
       this.firstGame = true;
-      return
+      return;
     }
 
     if (this.computer.sum === this.player.sum) {
-      alert('DRAW!');
-      return
+      this.message = 'DRAW!';
+      return;
     }
 
     if (this.computer.sum > this.player.sum || this.player.sum > 21) {
-      alert('YOU LOSE!!!!! LOSER!!!');
+      this.message = 'YOU LOSE!!!!! LOSER!!!';
       this.computer.numberWins++;
     } else {
-      alert('YOU WIN!!!!! WINNER!!!');
+      this.message = 'YOU WIN!!!!! WINNER!!!';
       this.player.numberWins++;
     }
-    
+
     this.firstGame = true;
   }
 }

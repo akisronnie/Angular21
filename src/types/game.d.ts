@@ -1,10 +1,9 @@
-export type Player = {
-  hand: Card[],
+type TPlayer = {
+  hand: TCard[],
   sum: number,
   numberWins: number
 }
-
-export type Card = {
+ type TCard = {
   name: string,
   value: number,
   suits: string,
