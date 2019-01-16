@@ -97,7 +97,6 @@ export class AppComponent implements OnInit {
     }
   }
 
-
   public getYou(): void  {
     this.player.hand.push(this.deck[this.deck.length - 1]);
     this.deck.pop();
@@ -106,6 +105,7 @@ export class AppComponent implements OnInit {
     if (this.player.sum > 21) {
       this.message = 'You lose! That is enough already! Bust. You score :' + this.player.sum;
       this.isShowResult = true;
+      this.computer.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
       return;
     }
     this.getComp();
