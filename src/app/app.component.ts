@@ -99,18 +99,12 @@ export class AppComponent implements OnInit {
 
 
   public getYou(): void  {
-    if (this.player.sum > 21) {
-      alert('That is enough already! Bust');
-
-      return;
-    }
-
     this.player.hand.push(this.deck[this.deck.length - 1]);
     this.deck.pop();
     this.player.hand[this.player.hand.length - 1].src = `../assets/img/${this.player.hand[this.player.hand.length - 1].name}${this.player.hand[this.player.hand.length - 1].suits}.png`;
     this.player.sum += this.player.hand[this.player.hand.length - 1].value;
     if (this.player.sum > 21) {
-      this.message = 'That is enough already! Bust. You score :' + this.player.sum;
+      this.message = 'You lose! That is enough already! Bust. You score :' + this.player.sum;
       this.isShowResult = true;
       return;
     }
