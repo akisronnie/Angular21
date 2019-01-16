@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AppComponent implements OnInit {
+
   public isShowResult: boolean = false;
   public message: string = 'Welcome to game';
   public computer: TPlayer = {
@@ -30,6 +31,7 @@ export class AppComponent implements OnInit {
     this.deck = this.deckSort(this.deck);
     this.startNewGame();
   }
+
   public startNewGame(): void  {
     if (!this.firstGame) {
       this.finish();
@@ -49,6 +51,7 @@ export class AppComponent implements OnInit {
     this.deck = this.deckSort(this.deck);
     this.getYou();
   }
+
   public getYou(): void  {
     this.player.hand.push(this.deck[this.deck.length - 1]);
     this.deck.pop();
@@ -62,13 +65,15 @@ export class AppComponent implements OnInit {
 
       return;
     }
+
     this.getComp();
   }
+
   public finish(): void  {
     if (this.computer.sum <= 15) {
       this.getComp();
     }
-    
+
     this.computer.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
     this.isShowResult = true;
 
@@ -93,6 +98,7 @@ export class AppComponent implements OnInit {
       this.message = 'YOU WIN!!!!! WINNER!!!';
       this.player.numberWins++;
     }
+
     this.firstGame = true;
   }
 
@@ -116,8 +122,10 @@ export class AppComponent implements OnInit {
         deck.push({ ...cards[j] });
       }
     }
+
     return deck;
   }
+
   private deckSort(deck: TCard[]): TCard[] {
     let firstElem: number = 0;
     let secondElem: number = 0;
@@ -130,6 +138,7 @@ export class AppComponent implements OnInit {
       deck[firstElem] = this.deck[secondElem];
       deck[secondElem] = change;
     }
+    
     return deck;
   }
   private getComp(): void {
