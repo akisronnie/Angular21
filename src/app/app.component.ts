@@ -22,39 +22,39 @@ export class AppComponent implements OnInit {
   };
 
 
-  private deck: TCard[] = [];
-  private firstGame: boolean = true;
+  private _deck: TCard[] = [];
+  private _firstGame: boolean = true;
 
 
   public ngOnInit(): void {
-    this.deck = this.generateDeck();
-    this.deck = this.deckSort(this.deck);
+    this._deck = this._generateDeck();
+    this._deck = this._deckSort(this._deck);
     this.startNewGame();
   }
 
   public startNewGame(): void  {
-    if (!this.firstGame) {
+    if (!this._firstGame) {
       this.finish();
     }
 
     this.message = 'Welcome to game';
-    this.firstGame = false;
+    this._firstGame = false;
     this.player.hand.map((card: TCard) => { card.src = `../assets/img/outside.png`; });
     this.computer.hand.map((card: TCard) => { card.src = `../assets/img/outside.png`; });
     this.isShowResult = false;
-    this.deck = this.deck.concat(this.player.hand);
-    this.deck = this.deck.concat(this.computer.hand);
+    this._deck = this._deck.concat(this.player.hand);
+    this._deck = this._deck.concat(this.computer.hand);
     this.player.hand = [];
     this.player.sum = 0;
     this.computer.hand = [];
     this.computer.sum = 0;
-    this.deck = this.deckSort(this.deck);
+    this._deck = this._deckSort(this._deck);
     this.getYou();
   }
 
   public getYou(): void  {
-    this.player.hand.push(this.deck[this.deck.length - 1]);
-    this.deck.pop();
+    this.player.hand.push(this._deck[this._deck.length - 1]);
+    this._deck.pop();
     this.player.hand[this.player.hand.length - 1].src = `../assets/img/${this.player.hand[this.player.hand.length - 1].name}${this.player.hand[this.player.hand.length - 1].suits}.png`;
     this.player.sum += this.player.hand[this.player.hand.length - 1].value;
 
@@ -80,7 +80,7 @@ export class AppComponent implements OnInit {
     if (this.computer.sum > 21) {
       this.message = 'At the computer bust!';
       this.player.numberWins++;
-      this.firstGame = true;
+      this._firstGame = true;
 
       return;
     }
@@ -99,11 +99,11 @@ export class AppComponent implements OnInit {
       this.player.numberWins++;
     }
 
-    this.firstGame = true;
+    this._firstGame = true;
   }
 
 
-  private generateDeck (): TCard[] {
+  private _generateDeck (): TCard[] {
     const suits: string[] = ['♠', '♥', '♣', '♦'];
     const cards: TCard[] = [{ name: 'T', value: 11, suits: null, src: null },
     { name: 'K', value: 4, suits: null, src: null },
@@ -115,18 +115,16 @@ export class AppComponent implements OnInit {
       cards.push({ name: String(i), value: i, suits: null, src: null });
     }
 
-    for (let j: number = 0; j < cards.length; j++) {
-      for (let k: number = 0; k < suits.length; k++) {
-        cards[j].suits = suits[k];
-        cards[j].src = `../assets/img/outside.png`;
-        deck.push({ ...cards[j] });
-      }
-    }
+    cards.forEach((card: TCard) => {
+      suits.forEach((suit: string) => {
+        deck.push({name: card.name, value: card.value, suits: suit, src: `../assets/img/outside.png` });
+      }) ;
+    });
 
     return deck;
   }
 
-  private deckSort(deck: TCard[]): TCard[] {
+  private _deckSort(deck: TCard[]): TCard[] {
     let firstElem: number = 0;
     let secondElem: number = 0;
     let change: TCard;
@@ -134,17 +132,18 @@ export class AppComponent implements OnInit {
     for (let i: number = 0; i < 30; i++) {
       firstElem = Math.floor(Math.random() * 36);
       secondElem = Math.floor(Math.random() * 36);
-      change = this.deck[firstElem];
-      deck[firstElem] = this.deck[secondElem];
+      change = this._deck[firstElem];
+      deck[firstElem] = this._deck[secondElem];
       deck[secondElem] = change;
     }
 
     return deck;
   }
+
   private getComp(): void {
     if (this.computer.sum <= 15) {
-      this.computer.hand.push(this.deck[this.deck.length - 1]);
-      this.deck.pop();
+      this.computer.hand.push(this._deck[this._deck.length - 1]);
+      this._deck.pop();
       this.computer.sum += this.computer.hand[this.computer.hand.length - 1].value;
     }
 
