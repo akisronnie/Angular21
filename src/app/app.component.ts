@@ -21,10 +21,10 @@ export class AppComponent implements OnInit {
     numberWins: 0,
   };
 
-  
+
   private deck: TCard[] = [];
   private firstGame: boolean = true;
- 
+
 
   public ngOnInit(): void {
     this.deck = this.generateDeck();
@@ -138,7 +138,7 @@ export class AppComponent implements OnInit {
       deck[firstElem] = this.deck[secondElem];
       deck[secondElem] = change;
     }
-    
+
     return deck;
   }
   private getComp(): void {
