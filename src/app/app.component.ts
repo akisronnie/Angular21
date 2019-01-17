@@ -118,7 +118,7 @@ export class AppComponent implements OnInit {
     cards.forEach((card: TCard) => {
       suits.forEach((suit: string) => {
         deck.push({name: card.name, value: card.value, suits: suit, src: `../assets/img/outside.png` });
-      }) ;
+      });
     });
 
     return deck;
