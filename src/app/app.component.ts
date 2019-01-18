@@ -24,6 +24,9 @@ export class AppComponent implements OnInit {
 
   private _deck: TCard[] = [];
   private _firstGame: boolean = true;
+  private readonly _CONDITIONS_WIN: number = 21;
+  private readonly _CONDITIONS_COMPUTER_DRAW: number = 15;
+  private readonly _NUMBER_OF_SORT: number = 36;
 
 
   public ngOnInit(): void {
@@ -58,7 +61,7 @@ export class AppComponent implements OnInit {
     this.player.hand[this.player.hand.length - 1].src = `../assets/img/${this.player.hand[this.player.hand.length - 1].name}${this.player.hand[this.player.hand.length - 1].suits}.png`;
     this.player.sum += this.player.hand[this.player.hand.length - 1].value;
 
-    if (this.player.sum > 21) {
+    if (this.player.sum > this._CONDITIONS_WIN) {
       this.message = 'You lose! That is enough already! Bust. You score :' + this.player.sum;
       this.isShowResult = true;
       this.computer.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
@@ -70,14 +73,14 @@ export class AppComponent implements OnInit {
   }
 
   public finish(): void  {
-    if (this.computer.sum <= 15) {
+    if (this.computer.sum <= this._CONDITIONS_COMPUTER_DRAW) {
       this.getComp();
     }
 
     this.computer.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
     this.isShowResult = true;
 
-    if (this.computer.sum > 21) {
+    if (this.computer.sum > this._CONDITIONS_WIN) {
       this.message = 'At the computer bust!';
       this.player.numberWins++;
       this._firstGame = true;
@@ -91,14 +94,15 @@ export class AppComponent implements OnInit {
       return;
     }
 
-    if (this.computer.sum > this.player.sum || this.player.sum > 21) {
+    if (this.computer.sum > this.player.sum || this.player.sum > this._CONDITIONS_WIN) {
       this.message = 'YOU LOSE!!!!! LOSER!!!';
       this.computer.numberWins++;
-    } else {
-      this.message = 'YOU WIN!!!!! WINNER!!!';
-      this.player.numberWins++;
+
+      return;
     }
 
+    this.message = 'YOU WIN!!!!! WINNER!!!';
+    this.player.numberWins++;
     this._firstGame = true;
   }
 
@@ -129,11 +133,11 @@ export class AppComponent implements OnInit {
     let secondElem: number = 0;
     let change: TCard;
 
-    for (let i: number = 0; i < 30; i++) {
-      firstElem = Math.floor(Math.random() * 36);
-      secondElem = Math.floor(Math.random() * 36);
-      change = this._deck[firstElem];
-      deck[firstElem] = this._deck[secondElem];
+    for (let i: number = 0; i < this._NUMBER_OF_SORT; i++) {
+      firstElem = Math.floor(Math.random() * deck.length);
+      secondElem = Math.floor(Math.random() * deck.length);
+      change = deck[firstElem];
+      deck[firstElem] = deck[secondElem];
       deck[secondElem] = change;
     }
 
@@ -141,13 +145,13 @@ export class AppComponent implements OnInit {
   }
 
   private getComp(): void {
-    if (this.computer.sum <= 15) {
+    if (this.computer.sum <= this._CONDITIONS_COMPUTER_DRAW) {
       this.computer.hand.push(this._deck[this._deck.length - 1]);
       this._deck.pop();
       this.computer.sum += this.computer.hand[this.computer.hand.length - 1].value;
     }
 
-    if (this.computer.sum > 21) {
+    if (this.computer.sum > this._CONDITIONS_WIN) {
       this.finish();
     }
   }
