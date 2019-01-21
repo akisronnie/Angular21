@@ -9,3 +9,13 @@ type TPlayer = {
   suits: string,
   src: string
 }
+type TResultToField = {
+  isShowResult: boolean,
+  player: TPlayer,
+  computer: TPlayer
+}
+type TResultToScore = {
+  message: string,
+  player: TPlayer,
+  computer: TPlayer
+}

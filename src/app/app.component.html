@@ -1,12 +1,8 @@
-<app-score [message] = "message"
-           [computerNumberWins]="computer.numberWins"
-           [playerNumberWins]="player.numberWins"
+<app-score [resultToScore] = "resultToScore"
            (newGame)="startNewGame()">
 </app-score>
 
-<app-field [isShowResult]="isShowResult"
-           [player]="player"
-           [computer]="computer"
+<app-field [resultToField]="resultToField"
            (getPlayer)="getYou()"
            (finishGame)="finish()">
 </app-field>

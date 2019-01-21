@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 
 export class AppComponent implements OnInit {
 
-  public isShowResult: boolean = false;
   public message: string = 'Welcome to game';
   public computer: TPlayer = {
     hand: [],
@@ -20,6 +19,12 @@ export class AppComponent implements OnInit {
     sum: 0,
     numberWins: 0,
   };
+  public resultToField: TResultToField = {isShowResult : false,
+                                          player: this.player,
+                                          computer: this.computer };
+  public resultToScore: TResultToScore = {message: '',
+                                          player: this.player,
+                                          computer: this.computer};
 
 
   private _deck: TCard[] = [];
@@ -40,11 +45,11 @@ export class AppComponent implements OnInit {
       this.finish();
     }
 
-    this.message = 'Welcome to game';
+    this.resultToScore.message = 'Welcome to game';
     this._firstGame = false;
     this.player.hand.map((card: TCard) => { card.src = `../assets/img/outside.png`; });
     this.computer.hand.map((card: TCard) => { card.src = `../assets/img/outside.png`; });
-    this.isShowResult = false;
+    this.resultToField.isShowResult = false;
     this._deck = this._deck.concat(this.player.hand);
     this._deck = this._deck.concat(this.computer.hand);
     this.player.hand = [];
@@ -62,8 +67,8 @@ export class AppComponent implements OnInit {
     this.player.sum += this.player.hand[this.player.hand.length - 1].value;
 
     if (this.player.sum > this._CONDITIONS_WIN) {
-      this.message = 'You lose! That is enough already! Bust. You score :' + this.player.sum;
-      this.isShowResult = true;
+      this.resultToScore.message = 'You lose! That is enough already! Bust. You score :' + this.player.sum;
+      this.resultToField.isShowResult = true;
       this.computer.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
 
       return;
@@ -78,10 +83,10 @@ export class AppComponent implements OnInit {
     }
 
     this.computer.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
-    this.isShowResult = true;
+    this.resultToField.isShowResult = true;
 
     if (this.computer.sum > this._CONDITIONS_WIN) {
-      this.message = 'At the computer bust!';
+      this.resultToScore.message = 'At the computer bust!';
       this.player.numberWins++;
       this._firstGame = true;
 
@@ -89,19 +94,19 @@ export class AppComponent implements OnInit {
     }
 
     if (this.computer.sum === this.player.sum) {
-      this.message = 'DRAW!';
+      this.resultToScore.message = 'DRAW!';
 
       return;
     }
 
     if (this.computer.sum > this.player.sum || this.player.sum > this._CONDITIONS_WIN) {
-      this.message = 'YOU LOSE!!!!! LOSER!!!';
+      this.resultToScore.message = 'YOU LOSE!!!!! LOSER!!!';
       this.computer.numberWins++;
 
       return;
     }
 
-    this.message = 'YOU WIN!!!!! WINNER!!!';
+    this.resultToScore.message = 'YOU WIN!!!!! WINNER!!!';
     this.player.numberWins++;
     this._firstGame = true;
   }
