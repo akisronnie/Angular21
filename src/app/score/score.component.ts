@@ -14,6 +14,4 @@ export class ScoreComponent  {
  public startNewGame(): void {
    this.newGame.emit();
  }
-
-
 }
