@@ -19,16 +19,21 @@ export class AppComponent implements OnInit {
     sum: 0,
     numberWins: 0,
   };
-  public resultToField: TResultToField = {isShowResult : false,
-                                          player: this.player,
-                                          computer: this.computer };
-  public resultToScore: TResultToScore = {message: '',
-                                          player: this.player,
-                                          computer: this.computer};
+  public resultToField: TResultToField = {
+    isShowResult : false,
+    player: this.player,
+    computer: this.computer
+  };
+  public resultToScore: TResultToScore = {
+    message: '',
+    player: this.player,
+    computer: this.computer
+  };
 
 
   private _deck: TCard[] = [];
   private _firstGame: boolean = true;
+
   private readonly _CONDITIONS_WIN: number = 21;
   private readonly _CONDITIONS_COMPUTER_DRAW: number = 15;
   private readonly _NUMBER_OF_SORT: number = 36;
