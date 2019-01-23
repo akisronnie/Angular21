@@ -8,8 +8,8 @@
   background: url("https://f4.bcbits.com/img/a0096613183_10.jpg") 100% 100% no-repeat;;
   color:black;
   background-size: cover;
-
 }
+
 button {
   width: 400px;
   height: 200px;
@@ -20,6 +20,7 @@ a {
   font-size: 50px;
   margin-bottom: 20px;
 }
+
 .wrapper {
   background-color: rgb(109, 190, 109);
   display: flex;
@@ -27,5 +28,4 @@ a {
   align-items: center;
   flex-direction: column;
   border-radius: 20px;
-
 }
