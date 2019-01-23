@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
     message: '',
     player: this.player,
     computer: this.computer
-  };
+  };z
 
 
   private _deck: TCard[] = [];
