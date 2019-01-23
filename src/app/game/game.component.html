@@ -1,0 +1,9 @@
+<app-score [resultToScore] = "resultToScore"
+           (newGame)="startNewGame()">
+           
+</app-score>
+
+<app-field [resultToField]="resultToField"
+           (getPlayer)="getYou()"
+           (finishGame)="finish()">
+</app-field>
