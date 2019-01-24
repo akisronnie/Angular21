@@ -5,19 +5,24 @@ import { MenuComponent } from './menu/menu.component';
 import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
-  { path: '',
-  redirectTo: '/menu',
-  pathMatch: 'full'
-  }, {
+  {
+    path: '',
+    redirectTo: '/menu',
+    pathMatch: 'full'
+  },
+  {
     path: 'game',
     component: GameComponent
-  }, {
+  },
+  {
     path: 'menu',
     component: MenuComponent
-  }, {
+  },
+  {
     path: '**',
     component: ErrorComponent
-  }];
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
