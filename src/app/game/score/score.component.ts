@@ -7,7 +7,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ScoreComponent  {
 
- @Input() public resultToScore: TResultToScore;
+ @Input() public resultScore: TResultScore;
 
  @Output() public newGame: EventEmitter<void> = new EventEmitter;
 

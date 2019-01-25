@@ -1,19 +1,19 @@
 <div class="score-container">
-  <a routerLink="/menu" 
+  <a routerLink="/menu"
      routerLinkActive="active">
     Return to MENU
   </a>
 
   <div class="score">
-    Wins:{{ resultToScore.player.numberWins }} Loses:{{ resultToScore.computer.numberWins }}
+    Wins:{{ resultScore.player.numberWins }} Loses:{{ resultScore.computer.numberWins }}
   </div>
 
   <div class="score">
-    {{ resultToScore.message }}
+    {{ resultScore.message }}
   </div>
-  
-  <button type="button" 
-          class="input-button4" 
+
+  <button type="button"
+          class="input-button4"
           (click)="startNewGame()">
     New Game
   </button>
