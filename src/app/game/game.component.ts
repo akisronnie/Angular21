@@ -17,12 +17,12 @@ export class GameComponent implements OnInit {
     sum: 0,
     numberWins: 0,
   };
-  public resultToField: TResultToField = {
+  public resultField: TResultField = {
     isShowResult : false,
     player: this.player,
     computer: this.computer
   };
-  public resultToScore: TResultToScore = {
+  public resultScore: TResultScore = {
     message: '',
     player: this.player,
     computer: this.computer
@@ -48,11 +48,11 @@ export class GameComponent implements OnInit {
       this.finish();
     }
 
-    this.resultToScore.message = 'Welcome to game';
+    this.resultScore.message = 'Welcome to game';
     this._firstGame = false;
     this.player.hand.map((card: TCard) => { card.src = `../assets/img/outside.png`; });
     this.computer.hand.map((card: TCard) => { card.src = `../assets/img/outside.png`; });
-    this.resultToField.isShowResult = false;
+    this.resultField.isShowResult = false;
     this._deck = this._deck.concat(this.player.hand);
     this._deck = this._deck.concat(this.computer.hand);
     this.player.hand = [];
@@ -69,9 +69,13 @@ export class GameComponent implements OnInit {
     this.player.hand[this.player.hand.length - 1].src = `../assets/img/${this.player.hand[this.player.hand.length - 1].name}${this.player.hand[this.player.hand.length - 1].suits}.png`;
     this.player.sum += this.player.hand[this.player.hand.length - 1].value;
 
+    if (this.player.sum === this._CONDITIONS_WIN) {
+      this.finish();
+    }
+
     if (this.player.sum > this._CONDITIONS_WIN) {
-      this.resultToScore.message = 'You lose! That is enough already! Bust. You score :' + this.player.sum;
-      this.resultToField.isShowResult = true;
+      this.resultScore.message = 'You lose! That is enough already! Bust. You score :' + this.player.sum;
+      this.resultField.isShowResult = true;
       this.computer.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
 
       return;
@@ -86,10 +90,10 @@ export class GameComponent implements OnInit {
     }
 
     this.computer.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
-    this.resultToField.isShowResult = true;
+    this.resultField.isShowResult = true;
 
     if (this.computer.sum > this._CONDITIONS_WIN) {
-      this.resultToScore.message = 'At the computer bust!';
+      this.resultScore.message = 'At the computer bust!';
       this.player.numberWins++;
       this._firstGame = true;
 
@@ -97,19 +101,19 @@ export class GameComponent implements OnInit {
     }
 
     if (this.computer.sum === this.player.sum) {
-      this.resultToScore.message = 'DRAW!';
+      this.resultScore.message = 'DRAW!';
 
       return;
     }
 
     if (this.computer.sum > this.player.sum || this.player.sum > this._CONDITIONS_WIN) {
-      this.resultToScore.message = 'YOU LOSE!!!!! LOSER!!!';
+      this.resultScore.message = 'YOU LOSE!!!!! LOSER!!!';
       this.computer.numberWins++;
 
       return;
     }
 
-    this.resultToScore.message = 'YOU WIN!!!!! WINNER!!!';
+    this.resultScore.message = 'YOU WIN!!!!! WINNER!!!';
     this.player.numberWins++;
     this._firstGame = true;
   }
@@ -163,5 +167,4 @@ export class GameComponent implements OnInit {
       this.finish();
     }
   }
-
 }

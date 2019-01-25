@@ -6,7 +6,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./field.component.css']
 })
 export class FieldComponent {
-  @Input() public resultToField: TResultToField;
+  @Input() public resultField: TResultField;
 
   @Output() public getPlayer: EventEmitter<void> = new EventEmitter;
   @Output() public finishGame: EventEmitter<void> = new EventEmitter;
