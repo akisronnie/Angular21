@@ -5,6 +5,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: './score.component.html',
   styleUrls: ['./score.component.css']
 })
+
 export class ScoreComponent  {
 
  @Input() public resultScore: TResultScore;
