@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { GameService } from '../game.service';
 
 @Component({
@@ -39,11 +40,11 @@ export class GameComponent implements OnInit {
   private _firstGame: boolean = true;
 
 
-  public constructor(public gameService: GameService) {}
+  public constructor(private _gameService: GameService) {}
 
   public ngOnInit(): void {
-    this._deck = this.gameService.generateDeck();
-    this._deck = this.gameService.deckSort(this._deck);
+    this._deck = this._gameService.generateDeck();
+    this._deck = this._gameService.deckSort(this._deck);
     this.startNewGame();
   }
 
@@ -63,7 +64,7 @@ export class GameComponent implements OnInit {
     this.player.sum = 0;
     this.computer.hand = [];
     this.computer.sum = 0;
-    this._deck = this.gameService.deckSort(this._deck);
+    this._deck = this._gameService.deckSort(this._deck);
     this.getYou();
   }
 
@@ -81,18 +82,18 @@ export class GameComponent implements OnInit {
       return;
     }
 
-    this.getComp();
+    this._getComp();
   }
 
   public finish(): void  {
     if (this.computer.sum <= this._CONDITIONS_COMPUTER_DRAW) {
-      this.getComp();
+      this._getComp();
     }
 
     this.computer.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
     this.fieldResult.isShowResult = true;
 
-     const winner: TPlayer = this.gameService.getWinner(this.computer, this.player);
+     const winner: TPlayer = this._gameService.getWinner(this.computer, this.player);
 
      if (winner === this.player) {
       this.scoreResult.message = 'YOU WIN!!!!! WINNER!!!';
@@ -112,7 +113,7 @@ export class GameComponent implements OnInit {
   }
 
 
-  private getComp(): void {
+  private _getComp(): void {
     if (this.computer.sum <= this._CONDITIONS_COMPUTER_DRAW) {
       this.computer.hand.push(this._deck[this._deck.length - 1]);
       this._deck.pop();
@@ -123,5 +124,4 @@ export class GameComponent implements OnInit {
       this.finish();
     }
   }
-
 }

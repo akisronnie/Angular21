@@ -8,7 +8,7 @@ import { FieldComponent } from './game/field/field.component';
 import { GameComponent } from './game/game.component';
 import { MenuComponent } from './menu/menu.component';
 import { ErrorComponent } from './error/error.component';
-
+import { GameService } from './game.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { ErrorComponent } from './error/error.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [GameService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
