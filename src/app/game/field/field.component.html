@@ -1,12 +1,12 @@
 <section class="table">
     <div class="comp-side">
-      <div *ngFor="let card of resultField.computer.hand">
+      <div *ngFor="let card of fieldResult.computer.hand">
         <img [src]="card.src">
       </div>
     </div>
 
     <div class="center-table">
-      <button *ngIf="!resultToField.isShowResult"
+      <button *ngIf="!fieldResult.isShowResult"
               type="button"
               class="input-button4"
               (click)="this.getPlayer.emit()">
@@ -14,15 +14,15 @@
       </button>
 
       <span class="total">
-        You score: {{ resultField.player.sum }}
+        You score: {{ fieldResult.player.sum }}
       </span>
 
-      <span *ngIf="resultField.isShowResult"
+      <span *ngIf="fieldResult.isShowResult"
             class="comp-result">
-        Comp score:{{ resultField.computer.sum }}
+        Comp score:{{ fieldResult.computer.sum }}
       </span>
 
-      <button *ngIf="!resultField.isShowResult"
+      <button *ngIf="!fieldResult.isShowResult"
               type="button"
               class="input-button4"
               (click)="this.finishGame.emit()">
@@ -31,7 +31,7 @@
     </div>
 
     <div class="you-side">
-      <div *ngFor="let card of resultField.player.hand">
+      <div *ngFor="let card of fieldResult.player.hand">
         <img [src]="card.src">
       </div>
     </div>

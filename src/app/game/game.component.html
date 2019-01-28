@@ -1,8 +1,8 @@
-<app-score [resultScore] = "resultScore"
+<app-score [scoreResult] = "scoreResult"
            (newGame)="startNewGame()">
 </app-score>
 
-<app-field [resultField]="resultField"
+<app-field [fieldResult]="fieldResult"
            (getPlayer)="getYou()"
            (finishGame)="finish()">
 </app-field>
