@@ -40,7 +40,9 @@ export class GameComponent implements OnInit {
   private _firstGame: boolean = true;
 
 
-  public constructor(private _gameService: GameService) {}
+  public constructor(
+    private _gameService: GameService
+    ) {}
 
   public ngOnInit(): void {
     this._deck = this._gameService.generateDeck();
