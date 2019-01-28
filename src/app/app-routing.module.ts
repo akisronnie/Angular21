@@ -6,18 +6,19 @@ import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
   { path: '',
-  redirectTo: '/menu',
-  pathMatch: 'full'
-  }, {
-    path: 'game',
+    redirectTo: '/menu',
+    pathMatch: 'full'
+  },
+  { path: 'game',
     component: GameComponent
-  }, {
-    path: 'menu',
+  },
+  { path: 'menu',
     component: MenuComponent
-  }, {
-    path: '**',
+  },
+  { path: '**',
     component: ErrorComponent
-  }];
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
