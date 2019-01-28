@@ -19,24 +19,25 @@ export class GameComponent implements OnInit {
     sum: 0,
     numberWins: 0,
   };
-  public resultField: TResultField = {
+  public fieldResult: TResultField = {
     isShowResult : false,
     player: this.player,
     computer: this.computer
   };
-  public resultScore: TResultScore = {
+  public scoreResult: TResultScore = {
     message: '',
     player: this.player,
     computer: this.computer
   };
 
 
+  private readonly _CONDITIONS_COMPUTER_DRAW: number = 15;
+  private readonly _CONDITIONS_WIN: number = 21;
+
+
   private _deck: TCard[] = [];
   private _firstGame: boolean = true;
 
-
-  private readonly _CONDITIONS_COMPUTER_DRAW: number = 15;
-  private readonly _CONDITIONS_WIN: number = 21;
 
   public constructor(public gameService: GameService) {}
 
@@ -51,11 +52,11 @@ export class GameComponent implements OnInit {
       this.finish();
     }
 
-    this.resultScore.message = 'Welcome to game';
+    this.scoreResult.message = 'Welcome to game';
     this._firstGame = false;
     this.player.hand.map((card: TCard) => { card.src = `../assets/img/outside.png`; });
     this.computer.hand.map((card: TCard) => { card.src = `../assets/img/outside.png`; });
-    this.resultField.isShowResult = false;
+    this.fieldResult.isShowResult = false;
     this._deck = this._deck.concat(this.player.hand);
     this._deck = this._deck.concat(this.computer.hand);
     this.player.hand = [];
@@ -73,7 +74,7 @@ export class GameComponent implements OnInit {
     this.player.sum += this.player.hand[this.player.hand.length - 1].value;
 
     if (this.player.sum >= this._CONDITIONS_WIN) {
-      this.resultField.isShowResult = true;
+      this.fieldResult.isShowResult = true;
       this.finish();
       this.computer.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
 
@@ -89,25 +90,25 @@ export class GameComponent implements OnInit {
     }
 
     this.computer.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
-    this.resultField.isShowResult = true;
+    this.fieldResult.isShowResult = true;
 
      const winner: TPlayer = this.gameService.getWinner(this.computer, this.player);
 
      if (winner === this.player) {
-      this.resultScore.message = 'YOU WIN!!!!! WINNER!!!';
+      this.scoreResult.message = 'YOU WIN!!!!! WINNER!!!';
       this.player.numberWins++;
 
       return;
      }
 
      if (winner === this.computer) {
-      this.resultScore.message = 'YOU LOSE!!!!! LOSER!!!';
+      this.scoreResult.message = 'YOU LOSE!!!!! LOSER!!!';
       this.computer.numberWins++;
 
       return;
      }
 
-     this.resultScore.message = 'DRAW!';
+     this.scoreResult.message = 'DRAW!';
   }
 
 
