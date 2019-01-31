@@ -2,8 +2,16 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment: { production: boolean} = {
-  production: false
+export const environment = {
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyBEbR6t_GU9zlS3A6sX5MYRJuRdqrR_c-w",
+    authDomain: "angular21multiplayer.firebaseapp.com",
+    databaseURL: "https://angular21multiplayer.firebaseio.com",
+    projectId: "angular21multiplayer",
+    storageBucket: "angular21multiplayer.appspot.com",
+    messagingSenderId: "362408993392"
+  }
 };
 
 /*

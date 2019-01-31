@@ -1,0 +1,48 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background-color: green;
+  min-height: 900px;
+}
+
+.add-button { 
+  height: 50px;
+width: 200px;
+font-size: 20px;
+margin: 20px auto 30px auto;
+}
+.wrapper-rooms{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+}
+
+.room {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100px;
+  width: 300px;
+  background-color: grey;
+  margin: 20px;
+}
+
+#inputNewName{ 
+  font-size: 30px;
+  width: 300px;
+  margin: 0 auto 10px auto;
+}
+
+label{
+  font-size: 30px;
+}
+
+.wrapper-rooms button {
+  width: 100px;
+  margin: 10px auto 10px auto;
+
+}

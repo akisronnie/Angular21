@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <label for="inputNewName">Please enter you name</label>
+  <input type="text" id="inputNewName" placeholder="Enter name" [(ngModel)]="userName">
+<button type="button" (click)="addroom()" class="add-button">Add new room</button>
+
+<div class="wrapper-rooms">
+<div *ngFor="let room of rooms | async" class="room">
+  Number of room : {{room.id}} 
+  <button type="button" (click)="deleteRoom(room.id)">Delete room</button>
+  <a [routerLink]="['/inroom', room.id ]"
+  routerLinkActive="router-link-active"> <button type="button" (click)="selectRoom(room.id)" *ngIf="userName">Select room</button> </a>
+</div>
+</div>
+</div>
