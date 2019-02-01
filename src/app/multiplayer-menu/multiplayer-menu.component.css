@@ -11,8 +11,9 @@
   height: 50px;
 width: 200px;
 font-size: 20px;
-margin: 20px auto 30px auto;
+margin: 20px auto 10px auto;
 }
+
 .wrapper-rooms{
   display: flex;
   justify-content: center;
@@ -25,13 +26,14 @@ margin: 20px auto 30px auto;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: 100px;
+  height: 150px;
   width: 300px;
   background-color: grey;
   margin: 20px;
+  border-radius: 10px;
 }
 
-#inputNewName{ 
+#inputNewName { 
   font-size: 30px;
   width: 300px;
   margin: 0 auto 10px auto;
@@ -44,5 +46,17 @@ label{
 .wrapper-rooms button {
   width: 100px;
   margin: 10px auto 10px auto;
+
+}
+
+#maxPlayer {
+  font-size: 30px;
+  width: 40px;
+  margin: 0 auto 10px auto;
+}
+.add-room-menu {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 
 }
