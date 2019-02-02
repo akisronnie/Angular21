@@ -49,15 +49,12 @@ export class GameComponent implements OnInit {
     ) {}
 
   public ngOnInit(): void {
-
    this._dataBaseService.getDeck().subscribe((deck:TCard[])=>{this._deck = deck})
 
 
     this._dataBaseService.getRoom$(this._dataBaseService.ActiveRoomId).subscribe((room: {id: number, players : []})=>{
       this.activeRoom = room;
       this.activeRoomPlayers =  Object.values(room.players);
-
-    
     })
     
     if (this._dataBaseService.playerMaster){
