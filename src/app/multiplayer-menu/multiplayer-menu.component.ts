@@ -33,14 +33,21 @@ export class MultiplayerMenuComponent implements OnInit {
   selectRoom(id): void{
     let userId=-1;
     let oneRoom;
+    let playerMaster = false;
     this.rooms.forEach((room) =>{ if (room.id === id) oneRoom = room});
-    console.log(oneRoom);
+    
 
    
       if (oneRoom.players != undefined) {
-        oneRoom.players.forEach((player) => { if (player.id > userId) { userId = player.id } })
+
+        for (let player in oneRoom.players) {
+          if (oneRoom.players[player].id > userId) { 
+            userId = oneRoom.players[player].id; 
+          }
+
+        }        
         
-        if ( oneRoom.maxplayers < oneRoom.players.length) {
+        if ( oneRoom.maxplayers <= Object.keys(oneRoom.players).length) {
           alert('Max players limit!!');
          
           return;
@@ -48,9 +55,11 @@ export class MultiplayerMenuComponent implements OnInit {
       }
       
       userId++;
+      if (userId === 0) {playerMaster = true}
       this.dataBaseService.userId = userId;
       this.dataBaseService.userName = this.userName;
-      let newPlayer = { id: userId, name: this.userName }
+
+      let newPlayer = { id: userId, name: this.userName, isActive: false, playerMaster : playerMaster }
       this.dataBaseService.addPlayerToRoom(newPlayer, id);
       this.router.navigate(['/inroom', id]);
       

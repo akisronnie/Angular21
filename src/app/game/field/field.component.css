@@ -1,12 +1,30 @@
 .table {
   margin: auto;
+  flex-wrap: wrap;
   height: 800px;
   background-image: url('http://cbgames.com.ua/image/cache/500-500/data/cbg/sukno.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
 }
+
+.players {
+  width: 300px;
+  height: 250px;
+  background-color: coral;
+}
+
+
+
+
+
+
+
+
 
 .comp-side {
   position: absolute;

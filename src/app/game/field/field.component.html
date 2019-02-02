@@ -1,5 +1,19 @@
 <section class="table">
-    <div class="comp-side">
+
+<div class="players" *ngFor="let player of activeRoomPlayers">
+  <h3>{{player.name}}</h3>
+  <h3>{{player.id}}</h3>
+  <h3>{{player.isActive}}</h3>
+  <h3>{{player.playerMaster}}</h3>
+  <button type="button" *ngIf="player.id === dataBaseService.userId" (click)="this.getPlayer.emit()">Get Card</button>
+</div>
+
+
+
+
+
+    <!-- <div class="comp-side" *ngFor="let player of activeRoomPlayers">
+      {{player.name}}
       <div *ngFor="let card of fieldResult.computer.hand">
         <img [src]="card.src">
       </div>
@@ -34,5 +48,5 @@
       <div *ngFor="let card of fieldResult.player.hand">
         <img [src]="card.src">
       </div>
-    </div>
+    </div> -->
 </section>

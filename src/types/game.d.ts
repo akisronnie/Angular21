@@ -1,10 +1,15 @@
 type TRoom = {
   id : number,
   maxplayers : number
-  players : {}[]
+  players : TPlayer1[]
 }
 
-
+type TPlayer1 = {
+  id: number,
+  name:string
+  isActive:boolean
+  playerMaster:boolean
+}
 
 
 

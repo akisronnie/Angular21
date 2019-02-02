@@ -11,6 +11,10 @@
     {{ scoreResult.message }}
   </div>
 
+  <div class="score" *ngIf="activeRoom.id">
+      ID ROOM:{{ activeRoom.id }}
+  </div>
+
   <button type="button"
           class="input-button4"
           (click)="startNewGame()">

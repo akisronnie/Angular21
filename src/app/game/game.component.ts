@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { DataBaseService } from '../data-base.service';
 import { GameService } from '../game.service';
 
 @Component({
@@ -10,6 +10,9 @@ import { GameService } from '../game.service';
 
 export class GameComponent implements OnInit {
   public message: string = 'Welcome to game';
+  public activeRoom = {id : 0, players : []};
+  public activeRoomPlayers;
+  
   public computer: TPlayer = {
     hand: [],
     sum: 0,
@@ -41,10 +44,28 @@ export class GameComponent implements OnInit {
 
 
   public constructor(
-    private _gameService: GameService
+    private _gameService: GameService,
+    private _dataBaseService:DataBaseService
     ) {}
 
   public ngOnInit(): void {
+
+   this._dataBaseService.getDeck().subscribe((deck:TCard[])=>{this._deck = deck})
+
+
+    this._dataBaseService.getRoom$(this._dataBaseService.ActiveRoomId).subscribe((room: {id: number, players : []})=>{
+      this.activeRoom = room;
+      this.activeRoomPlayers =  Object.values(room.players);
+
+    
+    })
+    
+    if (this._dataBaseService.playerMaster){
+      this._deck = this._gameService.generateDeck();
+      this._deck = this._gameService.deckSort(this._deck);
+      this._dataBaseService.pushDeck(this._deck);
+    }
+
     this._deck = this._gameService.generateDeck();
     this._deck = this._gameService.deckSort(this._deck);
     this.startNewGame();
@@ -73,16 +94,18 @@ export class GameComponent implements OnInit {
   public getYou(): void  {
     this.player.hand.push(this._deck[this._deck.length - 1]);
     this._deck.pop();
+    this._dataBaseService.pushDeck(this._deck);
+    this._dataBaseService.pushHandCard(this.player.hand);
     this.player.hand[this.player.hand.length - 1].src = `../assets/img/${this.player.hand[this.player.hand.length - 1].name}${this.player.hand[this.player.hand.length - 1].suits}.png`;
     this.player.sum += this.player.hand[this.player.hand.length - 1].value;
 
-    if (this.player.sum >= this._CONDITIONS_WIN) {
-      this.fieldResult.isShowResult = true;
-      this.finish();
-      this.computer.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
+    // if (this.player.sum >= this._CONDITIONS_WIN) {
+    //   this.fieldResult.isShowResult = true;
+    //   this.finish();
+    //   this.computer.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
 
-      return;
-    }
+    //   return;
+    // }
 
     this._getComp();
   }
