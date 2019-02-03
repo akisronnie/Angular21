@@ -58,9 +58,10 @@ export class MultiplayerMenuComponent implements OnInit {
       if (userId === 0) {playerMaster = true}
       this.dataBaseService.userId = userId;
       this.dataBaseService.userName = this.userName;
-
+      this.dataBaseService.ActiveRoomId = id;
       let newPlayer = { id: userId, name: this.userName, isActive: false, playerMaster : playerMaster }
       this.dataBaseService.addPlayerToRoom(newPlayer, id);
+      this.dataBaseService.addPlayerToRoomOrder(userId, playerMaster);
       this.router.navigate(['/inroom', id]);
       
   }

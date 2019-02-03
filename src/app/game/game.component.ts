@@ -55,6 +55,10 @@ export class GameComponent implements OnInit {
     this._dataBaseService.getRoom$(this._dataBaseService.ActiveRoomId).subscribe((room: {id: number, players : []})=>{
       this.activeRoom = room;
       this.activeRoomPlayers =  Object.values(room.players);
+      this.activeRoomPlayers.map((player)=>{ if (player.id === this._dataBaseService.userId) {
+        if (player.hand !== undefined) {
+        player.hand.map((card)=>{card.src = `../assets/img/${card.name}${card.suits}.png`; })}
+      }})
     })
     
     if (this._dataBaseService.playerMaster){
@@ -63,39 +67,23 @@ export class GameComponent implements OnInit {
       this._dataBaseService.pushDeck(this._deck);
     }
 
-    this._deck = this._gameService.generateDeck();
-    this._deck = this._gameService.deckSort(this._deck);
-    this.startNewGame();
-  }
-
-  public startNewGame(): void  {
-    if (!this._firstGame) {
-      this.finish();
-    }
-
-    this.scoreResult.message = 'Welcome to game';
-    this._firstGame = false;
-    this.player.hand.map((card: TCard) => { card.src = `../assets/img/outside.png`; });
-    this.computer.hand.map((card: TCard) => { card.src = `../assets/img/outside.png`; });
-    this.fieldResult.isShowResult = false;
-    this._deck = this._deck.concat(this.player.hand);
-    this._deck = this._deck.concat(this.computer.hand);
-    this.player.hand = [];
-    this.player.sum = 0;
-    this.computer.hand = [];
-    this.computer.sum = 0;
-    this._deck = this._gameService.deckSort(this._deck);
-    this.getYou();
+    // this._deck = this._gameService.generateDeck();
+    // this._deck = this._gameService.deckSort(this._deck);
+    // this.startNewGame();
   }
 
   public getYou(): void  {
     this.player.hand.push(this._deck[this._deck.length - 1]);
+    
+    this.player.sum += this._deck[this._deck.length - 1].value;
+
+    // console.log(this.player.sum)
+
+    this._dataBaseService.savePlayerScore(this.player.sum);
     this._deck.pop();
     this._dataBaseService.pushDeck(this._deck);
     this._dataBaseService.pushHandCard(this.player.hand);
-    this.player.hand[this.player.hand.length - 1].src = `../assets/img/${this.player.hand[this.player.hand.length - 1].name}${this.player.hand[this.player.hand.length - 1].suits}.png`;
-    this.player.sum += this.player.hand[this.player.hand.length - 1].value;
-
+  
     // if (this.player.sum >= this._CONDITIONS_WIN) {
     //   this.fieldResult.isShowResult = true;
     //   this.finish();
@@ -104,46 +92,67 @@ export class GameComponent implements OnInit {
     //   return;
     // }
 
-    this._getComp();
+  //  this._getComp();
   }
 
-  public finish(): void  {
-    if (this.computer.sum <= this._CONDITIONS_COMPUTER_DRAW) {
-      this._getComp();
-    }
+  // public startNewGame(): void  {
+  //   if (!this._firstGame) {
+  //     this.finish();
+  //   }
 
-    this.computer.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
-    this.fieldResult.isShowResult = true;
-
-     const winner: TPlayer = this._gameService.getWinner(this.computer, this.player);
-
-     if (winner === this.player) {
-      this.scoreResult.message = 'YOU WIN!!!!! WINNER!!!';
-      this.player.numberWins++;
-
-      return;
-     }
-
-     if (winner === this.computer) {
-      this.scoreResult.message = 'YOU LOSE!!!!! LOSER!!!';
-      this.computer.numberWins++;
-
-      return;
-     }
-
-     this.scoreResult.message = 'DRAW!';
-  }
+  //   this.scoreResult.message = 'Welcome to game';
+  //   this._firstGame = false;
+  //   this.player.hand.map((card: TCard) => { card.src = `../assets/img/outside.png`; });
+  //   this.computer.hand.map((card: TCard) => { card.src = `../assets/img/outside.png`; });
+  //   this.fieldResult.isShowResult = false;
+  //   this._deck = this._deck.concat(this.player.hand);
+  //   this._deck = this._deck.concat(this.computer.hand);
+  //   this.player.hand = [];
+  //   this.player.sum = 0;
+  //   this.computer.hand = [];
+  //   this.computer.sum = 0;
+  //   this._deck = this._gameService.deckSort(this._deck);
+  //   this.getYou();
+  // }
 
 
-  private _getComp(): void {
-    if (this.computer.sum <= this._CONDITIONS_COMPUTER_DRAW) {
-      this.computer.hand.push(this._deck[this._deck.length - 1]);
-      this._deck.pop();
-      this.computer.sum += this.computer.hand[this.computer.hand.length - 1].value;
-    }
+  // public finish(): void  {
+  //   if (this.computer.sum <= this._CONDITIONS_COMPUTER_DRAW) {
+  //     this._getComp();
+  //   }
 
-    if (this.computer.sum > this._CONDITIONS_WIN) {
-      this.finish();
-    }
-  }
+  //   this.computer.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
+  //   this.fieldResult.isShowResult = true;
+
+  //    const winner: TPlayer = this._gameService.getWinner(this.computer, this.player);
+
+  //    if (winner === this.player) {
+  //     this.scoreResult.message = 'YOU WIN!!!!! WINNER!!!';
+  //     this.player.numberWins++;
+
+  //     return;
+  //    }
+
+  //    if (winner === this.computer) {
+  //     this.scoreResult.message = 'YOU LOSE!!!!! LOSER!!!';
+  //     this.computer.numberWins++;
+
+  //     return;
+  //    }
+
+  //    this.scoreResult.message = 'DRAW!';
+  // }
+
+
+  // private _getComp(): void {
+  //   if (this.computer.sum <= this._CONDITIONS_COMPUTER_DRAW) {
+  //     this.computer.hand.push(this._deck[this._deck.length - 1]);
+  //     this._deck.pop();
+  //     this.computer.sum += this.computer.hand[this.computer.hand.length - 1].value;
+  //   }
+
+  //   if (this.computer.sum > this._CONDITIONS_WIN) {
+  //     this.finish();
+  //   }
+  // }
 }

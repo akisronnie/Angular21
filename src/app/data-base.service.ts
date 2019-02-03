@@ -39,6 +39,16 @@ export class DataBaseService {
   // getUserDetail(RoomId){
   //   return this.dataBase.object(`/rooms/room${RoomId}/players/${this.userId}`).valueChanges();
   // }
+  addPlayerToRoomOrder(id, firstPlayer){
+
+    this.dataBase.object(`/rooms/room${this.ActiveRoomId}/order/${id}`).update({id : id, turn : firstPlayer});
+
+  }
+
+  savePlayerScore(score){
+    this.dataBase.object(`/rooms/room${this.ActiveRoomId}/players/${this.userId}`).update({sum : score});
+  }
+
   pushHandCard(hand){
     this.dataBase.object(`/rooms/room${this.ActiveRoomId}/players/${this.userId}/hand`).set(hand);
   }

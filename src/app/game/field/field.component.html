@@ -5,6 +5,11 @@
   <h3>{{player.id}}</h3>
   <h3>{{player.isActive}}</h3>
   <h3>{{player.playerMaster}}</h3>
+  <h3 *ngIf="player.id === dataBaseService.userId"> {{player.sum}}</h3>
+  <div  class="player-hand">
+      <img *ngFor="let card of player.hand" [src]="card.src">
+  </div>
+
   <button type="button" *ngIf="player.id === dataBaseService.userId" (click)="this.getPlayer.emit()">Get Card</button>
 </div>
 
