@@ -2,104 +2,66 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 
+
 @Injectable(
 )
 
 export class DataBaseService {
 
-  // public rooms;
-  // public newIdForNewRoom = 0;
   public playerMaster: boolean = false;
-  public ActiveRoomId: number = 75;
-  public userName = 'Anonimus';
-  public userId = 15;
-  public isMultiplayer = false;
-  // public mainRooms;
+  public activeRoomId: number = 75;
+  public userName: string = 'Anonimus';
+  public userId: number = 15;
+  public isMultiplayer: boolean = false;
 
-  constructor(private dataBase: AngularFireDatabase) {
-
-    // this.rooms = dataBase.list('rooms').valueChanges();
-
-    // this.dataBase.object('rooms/room'+29).valueChanges().subscribe((el)=>{debugger})
-
-    //   this.rooms.subscribe((rooms)=>{ 
-    //     this.mainRooms = rooms;
-    //     rooms.forEach((element) => {
-
-    //     if (element.id > this.newIdForNewRoom){
-    //       this.newIdForNewRoom = element.id; 
-    //     }
-    //   }); 
-
-    //   this.newIdForNewRoom++;
-    // });
-
+  public constructor(private dataBase: AngularFireDatabase) {
   }
 
-  // getUserDetail(RoomId){
-  //   return this.dataBase.object(`/rooms/room${RoomId}/players/${this.userId}`).valueChanges();
-  // }
-  addPlayerToRoomOrder(id, firstPlayer){
-
-    this.dataBase.object(`/rooms/room${this.ActiveRoomId}/order/${id}`).update({id : id, turn : firstPlayer});
-
+  public addPlayerToRoomOrder(id: number, firstPlayer: boolean): void {
+    this.dataBase.object(`/rooms/room${this.activeRoomId}/order/${id}`).update({ id, turn: firstPlayer });
   }
 
-  savePlayerScore(score){
-    this.dataBase.object(`/rooms/room${this.ActiveRoomId}/players/${this.userId}`).update({sum : score});
+  public savePlayerScore(score: number): void {
+    this.dataBase.object(`/rooms/room${this.activeRoomId}/players/${this.userId}`).update({ sum: score });
   }
 
-  pushHandCard(hand){
-    this.dataBase.object(`/rooms/room${this.ActiveRoomId}/players/${this.userId}/hand`).set(hand);
+  public pushHandCard(hand: TCard[]): void {
+    this.dataBase.object(`/rooms/room${this.activeRoomId}/players/${this.userId}/hand`).set(hand);
   }
 
-  getDeck(){
-    return this.dataBase.list(`/rooms/room${this.ActiveRoomId}/deck`).valueChanges();
+  public getDeck(): Observable<{}[]> {
+    return this.dataBase.list(`/rooms/room${this.activeRoomId}/deck`).valueChanges();
   }
 
-  pushDeck(deck){
-    this.dataBase.object(`/rooms/room${this.ActiveRoomId}/deck`).set(deck);
+  public pushDeck(deck: TCard[]): void {
+    this.dataBase.object(`/rooms/room${this.activeRoomId}/deck`).set(deck);
   }
 
-  playerReady(RoomId, activePlayer): void{
-    this.dataBase.object(`/rooms/room${RoomId}/players/${this.userId}`).update(activePlayer);
+  public playerReady(roomId: number, activePlayer: TPlayer): void {
+    this.dataBase.object(`/rooms/room${roomId}/players/${this.userId}`).update(activePlayer);
   }
 
-  removeUserFromRoom(RoomId: number): void {
-    this.dataBase.object(`/rooms/room${RoomId}/players/${this.userId}`).remove();
+  public removeUserFromRoom(roomId: number): void {
+    this.dataBase.object(`/rooms/room${roomId}/players/${this.userId}`).remove();
   }
 
-  addPlayerToRoom(newPlayer, RoomId) {
-    this.dataBase.object(`/rooms/room${RoomId}/players/${newPlayer.id}`).update(newPlayer);
+  public addPlayerToRoom(newPlayer: TPlayer, roomId: number): void {
+    this.dataBase.object(`/rooms/room${roomId}/players/${newPlayer.id}`).update(newPlayer);
   }
 
-  addNewRoom(newRoom): void {
+  public addNewRoom(newRoom: TRoom): void {
     this.dataBase.list('rooms').update('room' + newRoom.id, newRoom);
   }
 
-  getRooms(): Observable<{}[]> {
+  public getRooms(): Observable<{}[]> {
     return this.dataBase.list('rooms').valueChanges();
   }
 
-  getRoom$(id: number): Observable<{}> {
+  public getRoom$(id: number): Observable<{}> {
     return this.dataBase.object(`/rooms/room${id}`).valueChanges();
   }
 
-  deleteRoom(id): void {
+  public deleteRoom(id: number): void {
     this.dataBase.list('rooms').remove('room' + id);
   }
-
-//  getRoomDetails(id){
-
-//  }
-
-//  addRoom(newRoom){
-//   newRoom.id = this.newIdForNewRoom;
-//   this.dataBase.list('rooms').update('room'+this.newIdForNewRoom, newRoom);
-
-//  }
-//  deleteRoom(id){
-//   this.dataBase.list('rooms').remove('room'+id);
-//  } 
-
 }

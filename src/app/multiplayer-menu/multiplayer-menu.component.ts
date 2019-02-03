@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataBaseService } from '../data-base.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-multiplayer-menu',
   templateUrl: './multiplayer-menu.component.html',
@@ -9,70 +10,71 @@ import { Router } from '@angular/router';
 })
 
 export class MultiplayerMenuComponent implements OnInit {
-  public rooms : TRoom[];
+  public rooms: TRoom[];
   public newRoom: TRoom = {
-    id : 0,
-    maxplayers:2,
-    players : []
+    id: 0,
+    maxplayers: 2,
+    players: []
   };
 
-  public userName:string;
+  public userName: string;
   private _newIdForNewRoom: number = 0;
   public isShowAddRoomMenu: boolean = false;
 
-  constructor(
-    private dataBaseService : DataBaseService,
+  public constructor(
+    private dataBaseService: DataBaseService,
     private router: Router
-    ){ 
+  ) {
   }
 
-  ngOnInit(): void {
-    this.dataBaseService.getRooms().subscribe((rooms:TRoom[])=>{this.rooms = rooms;})
+  public ngOnInit(): void {
+    this.dataBaseService.getRooms().subscribe((rooms: TRoom[]) => { this.rooms = rooms; });
   }
 
-  selectRoom(id): void{
-    let userId=-1;
-    let oneRoom;
-    let playerMaster = false;
-    this.rooms.forEach((room) =>{ if (room.id === id) oneRoom = room});
-    
+  public selectRoom(id: number): void {
+    let userId: number = -1;
+    let oneRoom: TRoom;
+    let playerMaster: boolean = false;
 
-   
-      if (oneRoom.players != undefined) {
+    this.rooms.forEach((room: TRoom) => {
+      if (room.id === id) { oneRoom = room; }
+    });
 
-        for (let player in oneRoom.players) {
-          if (oneRoom.players[player].id > userId) { 
-            userId = oneRoom.players[player].id; 
-          }
-
-        }        
-        
-        if ( oneRoom.maxplayers <= Object.keys(oneRoom.players).length) {
-          alert('Max players limit!!');
-         
-          return;
+    if (oneRoom.players !== undefined) {
+      for (const player in oneRoom.players) {
+        if (oneRoom.players[player].id > userId) {
+          userId = oneRoom.players[player].id;
         }
       }
-      
-      userId++;
-      if (userId === 0) {playerMaster = true}
-      this.dataBaseService.userId = userId;
-      this.dataBaseService.userName = this.userName;
-      this.dataBaseService.ActiveRoomId = id;
-      let newPlayer = { id: userId, name: this.userName, isActive: false, playerMaster : playerMaster }
-      this.dataBaseService.addPlayerToRoom(newPlayer, id);
-      this.dataBaseService.addPlayerToRoomOrder(userId, playerMaster);
-      this.router.navigate(['/inroom', id]);
-      
+
+      if (oneRoom.maxplayers <= Object.keys(oneRoom.players).length) {
+        alert('Max players limit!!');
+
+        return;
+      }
+    }
+
+    userId++;
+
+    if (userId === 0) {
+      playerMaster = true;
+    }
+
+    this.dataBaseService.userId = userId;
+    this.dataBaseService.userName = this.userName;
+    this.dataBaseService.activeRoomId = id;
+    const newPlayer: TPlayer = { id: userId, name: this.userName, isActive: false, playerMaster, sum: 0 };
+    this.dataBaseService.addPlayerToRoom(newPlayer, id);
+    this.dataBaseService.addPlayerToRoomOrder(userId, playerMaster);
+    this.router.navigate(['/inroom', id]);
   }
 
-
-  addNewRoom(): void {
-    this.rooms.forEach((room) => {
-      if (room.id > this._newIdForNewRoom){
-        this._newIdForNewRoom = room.id; 
+  public addNewRoom(): void {
+    this.rooms.forEach((room: TRoom) => {
+      if (room.id > this._newIdForNewRoom) {
+        this._newIdForNewRoom = room.id;
       }
-    }); 
+    });
 
     this._newIdForNewRoom++;
     this.newRoom.id = this._newIdForNewRoom;
@@ -80,7 +82,7 @@ export class MultiplayerMenuComponent implements OnInit {
     this.isShowAddRoomMenu = !this.isShowAddRoomMenu;
   }
 
-   deleteRoom(id): void{
+  public deleteRoom(id: number): void {
     this.dataBaseService.deleteRoom(id);
   }
 

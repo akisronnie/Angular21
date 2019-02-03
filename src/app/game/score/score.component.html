@@ -2,22 +2,22 @@
   <a routerLink="/menu">
     Return to MENU
   </a>
-
+<!-- 
   <div class="score">
     Wins:{{ scoreResult.player.numberWins }} Loses:{{ scoreResult.computer.numberWins }}
   </div>
 
   <div class="score">
     {{ scoreResult.message }}
-  </div>
+  </div> -->
 
   <div class="score" *ngIf="activeRoom.id">
       ID ROOM:{{ activeRoom.id }}
   </div>
 
-  <button type="button"
+  <!-- <button type="button"
           class="input-button4"
           (click)="startNewGame()">
     New Game
-  </button>
+  </button> -->
 </div>

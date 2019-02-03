@@ -4,8 +4,6 @@ import { DataBaseService } from '../data-base.service';
 import { Router } from '@angular/router';
 import { map, pluck, switchMap } from 'rxjs/operators';
 
-
-
 @Component({
   selector: 'app-inroom',
   templateUrl: './inroom.component.html',
@@ -15,44 +13,37 @@ import { map, pluck, switchMap } from 'rxjs/operators';
 export class InroomComponent implements OnInit, OnDestroy {
 
 
-  public activeRoom:TRoom = {
-    id:0,
-    maxplayers : 0,
-    players : []};
-  public activePlayer = {isActive : false, name: '', playerMaster : false};
+  public activeRoom: TRoom = {
+    id: 0,
+    maxplayers: 0,
+    players: []
+  };
+
+  public activePlayer: TPlayer = { isActive: false, name: '', playerMaster: false, sum: 0, id: 0 };
 
   public userName: string;
   public userId: number;
   public playersInRoom: number;
-  public PlayerReady: boolean;
-  public activeRoomPlayers:{}[] = []
-  private goToGame = false;
-  // public roomDetails;
-  // public actionRoom;
+  public isPlayerReady: boolean;
+  public activeRoomPlayers: {}[] = [];
+  private goToGame: boolean = false;
 
-  constructor(private _route: ActivatedRoute,
-     private _dataBaseService:DataBaseService,
-     private router: Router) {
+  public constructor(private _route: ActivatedRoute,
+    private _dataBaseService: DataBaseService,
+    private router: Router) {
   }
 
-  playerReady() {
+  public playerReady(): void {
     this.activePlayer.isActive = !this.activePlayer.isActive;
     this._dataBaseService.playerReady(this.activeRoom.id, this.activePlayer);
-
-   
   }
 
-  ngOnInit() {
-
-    
-
-     this.userName = this._dataBaseService.userName;
-     if (this.userName === undefined) {this.router.navigate(['/multiplayer']);}
+  public ngOnInit(): void {
+    this.userName = this._dataBaseService.userName;
+    if (this.userName === undefined) { this.router.navigate(['/multiplayer']); }
     // if (this.userName == undefined) this.userName = 'Anonimus'
-     this.userId = this._dataBaseService.userId;
+    this.userId = this._dataBaseService.userId;
     // if (this.userId == undefined) this.userId = new Date().getMilliseconds();
-
-
 
     this._route.params
       .pipe(
@@ -61,40 +52,31 @@ export class InroomComponent implements OnInit, OnDestroy {
       )
       .subscribe((room: TRoom) => {
         this.activeRoom = room;
-        this._dataBaseService.ActiveRoomId = room.id;
+        this._dataBaseService.activeRoomId = room.id;
         this.playersInRoom = Object.keys(this.activeRoom.players).length;
-        let goToGame = true;
-        for (let player in room.players) {
-          if (room.players[player].id === this.userId ){
+        let goToGame: boolean = true;
+        for (const player in room.players) {
+          if (room.players[player].id === this.userId) {
             this.activePlayer = room.players[player];
           }
-          if (room.players[player].isActive === false ){
+          if (room.players[player].isActive === false) {
             goToGame = false;
           }
           this.activeRoomPlayers = Object.values(room.players)
         }
-        if (goToGame == true) {
+        if (goToGame === true) {
           console.log('ALL ACTIVE');
           this._dataBaseService.isMultiplayer = true;
           this._dataBaseService.playerMaster = this.activePlayer.playerMaster;
-     
           this.goToGame = true;
           this.router.navigate(['/game']);
-          
         }
       });
-
-    
- 
   }
 
-
-
-
-  ngOnDestroy() {
-    if (this.goToGame === false){
+  public ngOnDestroy(): void {
+    if (this.goToGame === false) {
       this._dataBaseService.removeUserFromRoom(this.activeRoom.id);
     }
-    
   }
 }

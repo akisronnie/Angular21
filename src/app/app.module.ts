@@ -17,6 +17,7 @@ import { GameService } from './game.service';
 import { DataBaseService } from './data-base.service';
 import { MultiplayerMenuComponent } from './multiplayer-menu/multiplayer-menu.component';
 import { InroomComponent } from './inroom/inroom.component';
+import { NoUndefPipe } from './no-undef.pipe';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { InroomComponent } from './inroom/inroom.component';
     ErrorComponent,
     MultiplayerMenuComponent,
     InroomComponent,
+    NoUndefPipe,
   ],
   imports: [
     BrowserModule,

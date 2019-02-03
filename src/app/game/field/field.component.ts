@@ -15,7 +15,7 @@ export class FieldComponent {
   @Output() public finishGame: EventEmitter<void> = new EventEmitter;
 
 
-  constructor(public dataBaseService:DataBaseService){
+  constructor(public dataBaseService: DataBaseService) {
     
  
   }

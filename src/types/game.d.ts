@@ -1,25 +1,18 @@
-type TRoom = {
-  id : number,
-  maxplayers : number
-  players : TPlayer1[]
-}
-
-type TPlayer1 = {
-  id: number,
-  name:string
-  isActive:boolean
-  playerMaster:boolean
-}
-
-
-
 type TPlayer = {
-  hand: TCard[],
-  sum: number,
-  numberWins: number
+  id: number,
+  name:string,
+  isActive:boolean,
+  playerMaster:boolean,
+  sum: number
+  hand?: TCard[]
 }
 
-
+type TRoom = {
+  deck?: TCard[],
+  id:number,
+  maxplayers:number,
+  players?:TPlayer[]
+}
 
  type TCard = {
   name: string,
@@ -30,10 +23,10 @@ type TPlayer = {
 type TResultField = {
   isShowResult: boolean,
   player: TPlayer,
-  computer: TPlayer
+  
 }
 type TResultScore = {
   message: string,
   player: TPlayer,
-  computer: TPlayer
+ 
 }

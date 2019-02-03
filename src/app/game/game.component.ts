@@ -10,80 +10,74 @@ import { GameService } from '../game.service';
 
 export class GameComponent implements OnInit {
   public message: string = 'Welcome to game';
-  public activeRoom = {id : 0, players : []};
-  public activeRoomPlayers;
-  
-  public computer: TPlayer = {
-    hand: [],
-    sum: 0,
-    numberWins: 0,
-  };
+  public activeRoom: TRoom = { id: 0, players: [], maxplayers: 0, deck: [] };
+  public activeRoomPlayers: TPlayer[];
+
   public player: TPlayer = {
     hand: [],
     sum: 0,
-    numberWins: 0,
+    id: 0,
+    name: '',
+    isActive: true,
+    playerMaster: false
   };
+
   public fieldResult: TResultField = {
-    isShowResult : false,
+    isShowResult: false,
     player: this.player,
-    computer: this.computer
   };
+
   public scoreResult: TResultScore = {
     message: '',
     player: this.player,
-    computer: this.computer
   };
 
 
-  private readonly _CONDITIONS_COMPUTER_DRAW: number = 15;
-  private readonly _CONDITIONS_WIN: number = 21;
+  // private readonly _CONDITIONS_COMPUTER_DRAW: number = 15;
+  // private readonly _CONDITIONS_WIN: number = 21;
 
 
   private _deck: TCard[] = [];
-  private _firstGame: boolean = true;
-
 
   public constructor(
     private _gameService: GameService,
-    private _dataBaseService:DataBaseService
-    ) {}
+    private _dataBaseService: DataBaseService
+  ) { }
 
   public ngOnInit(): void {
-   this._dataBaseService.getDeck().subscribe((deck:TCard[])=>{this._deck = deck})
+    this._dataBaseService.getDeck().subscribe((deck: TCard[]) => {
+      this._deck = deck;
+    });
 
-
-    this._dataBaseService.getRoom$(this._dataBaseService.ActiveRoomId).subscribe((room: {id: number, players : []})=>{
+    this._dataBaseService.getRoom$(this._dataBaseService.activeRoomId).subscribe((room: TRoom) => {
       this.activeRoom = room;
-      this.activeRoomPlayers =  Object.values(room.players);
-      this.activeRoomPlayers.map((player)=>{ if (player.id === this._dataBaseService.userId) {
-        if (player.hand !== undefined) {
-        player.hand.map((card)=>{card.src = `../assets/img/${card.name}${card.suits}.png`; })}
-      }})
-    })
-    
-    if (this._dataBaseService.playerMaster){
+      this.activeRoom.players = Object.values(room.players);
+      this.activeRoom.players.map((player: TPlayer) => {
+        if (player.id === this._dataBaseService.userId) {
+          if (player.hand !== undefined) {
+            player.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
+          }
+        }
+      });
+    });
+
+    if (this._dataBaseService.playerMaster) {
       this._deck = this._gameService.generateDeck();
       this._deck = this._gameService.deckSort(this._deck);
       this._dataBaseService.pushDeck(this._deck);
     }
-
-    // this._deck = this._gameService.generateDeck();
-    // this._deck = this._gameService.deckSort(this._deck);
-    // this.startNewGame();
   }
 
-  public getYou(): void  {
-    this.player.hand.push(this._deck[this._deck.length - 1]);
-    
+  public getYou(): void {
+    const oneCard: TCard = this._deck[this._deck.length - 1];
+    this.player.hand.push(oneCard);
     this.player.sum += this._deck[this._deck.length - 1].value;
-
-    // console.log(this.player.sum)
+    this._deck.pop();
 
     this._dataBaseService.savePlayerScore(this.player.sum);
-    this._deck.pop();
     this._dataBaseService.pushDeck(this._deck);
     this._dataBaseService.pushHandCard(this.player.hand);
-  
+
     // if (this.player.sum >= this._CONDITIONS_WIN) {
     //   this.fieldResult.isShowResult = true;
     //   this.finish();
@@ -92,7 +86,7 @@ export class GameComponent implements OnInit {
     //   return;
     // }
 
-  //  this._getComp();
+    //  this._getComp();
   }
 
   // public startNewGame(): void  {
