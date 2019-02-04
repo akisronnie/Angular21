@@ -2,7 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataBaseService } from '../data-base.service';
 import { Router } from '@angular/router';
-import { map, pluck, switchMap } from 'rxjs/operators';
+import { takeUntil, map, pluck, switchMap } from 'rxjs/operators';
+import { Subject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-inroom',
@@ -27,8 +28,10 @@ export class InroomComponent implements OnInit, OnDestroy {
   public isPlayerReady: boolean;
   public activeRoomPlayers: {}[] = [];
   private goToGame: boolean = false;
+  private destroy$$: Subject<number> = new Subject();
 
-  public constructor(private _route: ActivatedRoute,
+  public constructor(
+    private _route: ActivatedRoute,
     private _dataBaseService: DataBaseService,
     private router: Router) {
   }
@@ -48,7 +51,8 @@ export class InroomComponent implements OnInit, OnDestroy {
     this._route.params
       .pipe(
         pluck('id'),
-        switchMap((roomId: number) => this._dataBaseService.getRoom$(roomId))
+        switchMap((roomId: number) => this._dataBaseService.getRoom$(roomId)),
+        takeUntil(this.destroy$$)
       )
       .subscribe((room: TRoom) => {
         this.activeRoom = room;
@@ -62,7 +66,7 @@ export class InroomComponent implements OnInit, OnDestroy {
           if (room.players[player].isActive === false) {
             goToGame = false;
           }
-          this.activeRoomPlayers = Object.values(room.players)
+          this.activeRoomPlayers = Object.values(room.players);
         }
         if (goToGame === true) {
           console.log('ALL ACTIVE');
@@ -78,5 +82,6 @@ export class InroomComponent implements OnInit, OnDestroy {
     if (this.goToGame === false) {
       this._dataBaseService.removeUserFromRoom(this.activeRoom.id);
     }
+    this.destroy$$.next();
   }
 }

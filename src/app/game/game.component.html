@@ -1,9 +1,11 @@
 <app-score [scoreResult] = "scoreResult"
            (newGame)="startNewGame()"
-           [activeRoom]="activeRoom">
+           [activeRoom]="activeRoom"
+           [youTurn]="youTurn">
 </app-score>
 
 <app-field [fieldResult]="fieldResult"
+           [youTurn]="youTurn"
            [activeRoom]="activeRoom"
            [activeRoomPlayers]="activeRoomPlayers"
            (getPlayer)="getYou()"

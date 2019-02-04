@@ -15,6 +15,10 @@
       ID ROOM:{{ activeRoom.id }}
   </div>
 
+  <div class="score" *ngIf="youTurn">
+    YOU TURN!!!
+</div>
+
   <!-- <button type="button"
           class="input-button4"
           (click)="startNewGame()">

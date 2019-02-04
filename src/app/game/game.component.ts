@@ -31,12 +31,12 @@ export class GameComponent implements OnInit {
     message: '',
     player: this.player,
   };
-
+  public youTurn:boolean = false;
 
   // private readonly _CONDITIONS_COMPUTER_DRAW: number = 15;
   // private readonly _CONDITIONS_WIN: number = 21;
 
-
+  private _order;
   private _deck: TCard[] = [];
 
   public constructor(
@@ -66,9 +66,36 @@ export class GameComponent implements OnInit {
       this._deck = this._gameService.deckSort(this._deck);
       this._dataBaseService.pushDeck(this._deck);
     }
+
+    this._dataBaseService.getOrderInRoom().subscribe((order) => {
+      this._order = Object.values(order);
+      this._order.forEach((playerInOrder) => {
+        if (playerInOrder.id === this._dataBaseService.userId){
+          this.youTurn=playerInOrder.turn;
+        }
+      })
+    })
+
+  }
+
+  private setNextTurn() {
+    let count;
+    this._order.forEach((user, index) => {
+      if (user.id === this._dataBaseService.userId ) {
+        count = index; user.turn = false;
+        this._dataBaseService.changeTurn(user.id,false);
+      }
+     });
+     count++;
+     if (this._order.length >= count) {
+       count = 0;
+     }
+
+     this._dataBaseService.changeTurn(this._order[count].id,true);
   }
 
   public getYou(): void {
+
     const oneCard: TCard = this._deck[this._deck.length - 1];
     this.player.hand.push(oneCard);
     this.player.sum += this._deck[this._deck.length - 1].value;
@@ -86,7 +113,9 @@ export class GameComponent implements OnInit {
     //   return;
     // }
 
-    //  this._getComp();
+    //  this._getComp();ву
+    debugger
+    this.setNextTurn();
   }
 
   // public startNewGame(): void  {

@@ -17,6 +17,14 @@ export class DataBaseService {
   public constructor(private dataBase: AngularFireDatabase) {
   }
 
+  public changeTurn(id: number, status: boolean): void {
+    this.dataBase.object(`/rooms/room${this.activeRoomId}/order/${id}`).update({ id, turn: status });
+  }
+
+  public getOrderInRoom(): Observable<{}[]> {
+    return this.dataBase.list(`/rooms/room${this.activeRoomId}/order`).valueChanges();
+  }
+
   public addPlayerToRoomOrder(id: number, firstPlayer: boolean): void {
     this.dataBase.object(`/rooms/room${this.activeRoomId}/order/${id}`).update({ id, turn: firstPlayer });
   }

@@ -10,13 +10,13 @@
       <img *ngFor="let card of player.hand" [src]="card.src">
   </div>
 
-  <button type="button" *ngIf="player.id === dataBaseService.userId" (click)="this.getPlayer.emit()">Get Card</button>
+  <button type="button" *ngIf="player.id === dataBaseService.userId" [disabled]="!youTurn"  (click)="this.getPlayer.emit()">Get Card</button>
 </div>
 
 
 
 
-
+<!-- player.id === dataBaseService.userId -->
     <!-- <div class="comp-side" *ngFor="let player of activeRoomPlayers">
       {{player.name}}
       <div *ngFor="let card of fieldResult.computer.hand">
