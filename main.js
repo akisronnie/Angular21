@@ -556,7 +556,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-score [scoreResult] = \"scoreResult\"\n           (newGame)=\"startNewGame()\"\n           [activeRoom]=\"activeRoom\"\n           [youTurn]=\"youTurn\">\n</app-score>\n\n<app-field [fieldResult]=\"fieldResult\"\n           [youTurn]=\"youTurn\"\n           [activeRoom]=\"activeRoom\"\n           [activeRoomPlayers]=\"activeRoomPlayers\"\n           (getPlayer)=\"getYou()\"\n           (finishGame)=\"finish()\">\n</app-field>\n"
+module.exports = "<app-score [scoreResult] = \"scoreResult\"\n           (newGame)=\"startNewGame()\"\n           [activeRoom]=\"activeRoom\"\n           [youTurn]=\"youTurn\">\n</app-score>\n\n<app-field [fieldResult]=\"fieldResult\"\n           [youTurn]=\"youTurn\"\n           (getPlayer)=\"getYou()\"\n           (finishGame)=\"finish()\">\n</app-field>\n"
 
 /***/ }),
 
