@@ -268,6 +268,12 @@ var DataBaseService = /** @class */ (function () {
         this.userId = 15;
         this.isMultiplayer = false;
     }
+    DataBaseService.prototype.changeTurn = function (id, status) {
+        this.dataBase.object("/rooms/room" + this.activeRoomId + "/order/" + id).update({ id: id, turn: status });
+    };
+    DataBaseService.prototype.getOrderInRoom = function () {
+        return this.dataBase.list("/rooms/room" + this.activeRoomId + "/order").valueChanges();
+    };
     DataBaseService.prototype.addPlayerToRoomOrder = function (id, firstPlayer) {
         this.dataBase.object("/rooms/room" + this.activeRoomId + "/order/" + id).update({ id: id, turn: firstPlayer });
     };
@@ -407,7 +413,7 @@ var GameService = /** @class */ (function () {
         }
         cards.forEach(function (card) {
             suits.forEach(function (suit) {
-                deck.push({ name: card.name, value: card.value, suits: suit, src: "../assets/img/outside.png" });
+                deck.push({ name: card.name, value: card.value, suits: suit, src: "./assets/img/outside.png" });
             });
         });
         return deck;
@@ -465,7 +471,7 @@ module.exports = ".table {\n  margin: auto;\n  flex-wrap: wrap;\n  height: 800px
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"table\">\n\n<div class=\"players\" *ngFor=\"let player of activeRoom.players\">\n  <h3>{{player.name}}</h3>\n  <h3>{{player.id}}</h3>\n  <h3>{{player.isActive}}</h3>\n  <h3>{{player.playerMaster}}</h3>\n  <h3 *ngIf=\"player.id === dataBaseService.userId\"> {{player.sum}}</h3>\n  <div  class=\"player-hand\">\n      <img *ngFor=\"let card of player.hand\" [src]=\"card.src\">\n  </div>\n\n  <button type=\"button\" *ngIf=\"player.id === dataBaseService.userId\" (click)=\"this.getPlayer.emit()\">Get Card</button>\n</div>\n\n\n\n\n\n    <!-- <div class=\"comp-side\" *ngFor=\"let player of activeRoomPlayers\">\n      {{player.name}}\n      <div *ngFor=\"let card of fieldResult.computer.hand\">\n        <img [src]=\"card.src\">\n      </div>\n    </div>\n\n    <div class=\"center-table\">\n      <button *ngIf=\"!fieldResult.isShowResult\"\n              type=\"button\"\n              class=\"input-button4\"\n              (click)=\"this.getPlayer.emit()\">\n        Взять\n      </button>\n\n      <span class=\"total\">\n        You score: {{ fieldResult.player.sum }}\n      </span>\n\n      <span *ngIf=\"fieldResult.isShowResult\"\n            class=\"comp-result\">\n        Comp score:{{ fieldResult.computer.sum }}\n      </span>\n\n      <button *ngIf=\"!fieldResult.isShowResult\"\n              type=\"button\"\n              class=\"input-button4\"\n              (click)=\"this.finishGame.emit()\">\n        ВСЁ\n      </button>\n    </div>\n\n    <div class=\"you-side\">\n      <div *ngFor=\"let card of fieldResult.player.hand\">\n        <img [src]=\"card.src\">\n      </div>\n    </div> -->\n</section>\n"
+module.exports = "<section class=\"table\">\n\n<div class=\"players\" *ngFor=\"let player of activeRoom.players\">\n  <h3>{{player.name}}</h3>\n  <h3>{{player.id}}</h3>\n  <h3>{{player.isActive}}</h3>\n  <h3>{{player.playerMaster}}</h3>\n  <h3 *ngIf=\"player.id === dataBaseService.userId\"> {{player.sum}}</h3>\n  <div  class=\"player-hand\">\n      <img *ngFor=\"let card of player.hand\" [src]=\"card.src\">\n  </div>\n\n  <button type=\"button\" *ngIf=\"player.id === dataBaseService.userId\" [disabled]=\"!youTurn\"  (click)=\"this.getPlayer.emit()\">Get Card</button>\n</div>\n\n\n\n\n<!-- player.id === dataBaseService.userId -->\n    <!-- <div class=\"comp-side\" *ngFor=\"let player of activeRoomPlayers\">\n      {{player.name}}\n      <div *ngFor=\"let card of fieldResult.computer.hand\">\n        <img [src]=\"card.src\">\n      </div>\n    </div>\n\n    <div class=\"center-table\">\n      <button *ngIf=\"!fieldResult.isShowResult\"\n              type=\"button\"\n              class=\"input-button4\"\n              (click)=\"this.getPlayer.emit()\">\n        Взять\n      </button>\n\n      <span class=\"total\">\n        You score: {{ fieldResult.player.sum }}\n      </span>\n\n      <span *ngIf=\"fieldResult.isShowResult\"\n            class=\"comp-result\">\n        Comp score:{{ fieldResult.computer.sum }}\n      </span>\n\n      <button *ngIf=\"!fieldResult.isShowResult\"\n              type=\"button\"\n              class=\"input-button4\"\n              (click)=\"this.finishGame.emit()\">\n        ВСЁ\n      </button>\n    </div>\n\n    <div class=\"you-side\">\n      <div *ngFor=\"let card of fieldResult.player.hand\">\n        <img [src]=\"card.src\">\n      </div>\n    </div> -->\n</section>\n"
 
 /***/ }),
 
@@ -495,7 +501,9 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var FieldComponent = /** @class */ (function () {
     function FieldComponent(dataBaseService) {
         this.dataBaseService = dataBaseService;
-        this.activeRoomPlayers = [];
+        // @Input() public activeRoom;
+        // @Input() public activeRoomPlayers = [];
+        this.youTurn = false;
         this.getPlayer = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"];
         this.finishGame = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"];
     }
@@ -505,12 +513,8 @@ var FieldComponent = /** @class */ (function () {
     ], FieldComponent.prototype, "fieldResult", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], FieldComponent.prototype, "activeRoom", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], FieldComponent.prototype, "activeRoomPlayers", void 0);
+        __metadata("design:type", Boolean)
+    ], FieldComponent.prototype, "youTurn", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
         __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
@@ -552,7 +556,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-score [scoreResult] = \"scoreResult\"\n           (newGame)=\"startNewGame()\"\n           [activeRoom]=\"activeRoom\">\n</app-score>\n\n<app-field [fieldResult]=\"fieldResult\"\n           [activeRoom]=\"activeRoom\"\n           [activeRoomPlayers]=\"activeRoomPlayers\"\n           (getPlayer)=\"getYou()\"\n           (finishGame)=\"finish()\">\n</app-field>\n"
+module.exports = "<app-score [scoreResult] = \"scoreResult\"\n           (newGame)=\"startNewGame()\"\n           [activeRoom]=\"activeRoom\"\n           [youTurn]=\"youTurn\">\n</app-score>\n\n<app-field [fieldResult]=\"fieldResult\"\n           [youTurn]=\"youTurn\"\n           [activeRoom]=\"activeRoom\"\n           [activeRoomPlayers]=\"activeRoomPlayers\"\n           (getPlayer)=\"getYou()\"\n           (finishGame)=\"finish()\">\n</app-field>\n"
 
 /***/ }),
 
@@ -603,8 +607,7 @@ var GameComponent = /** @class */ (function () {
             message: '',
             player: this.player,
         };
-        // private readonly _CONDITIONS_COMPUTER_DRAW: number = 15;
-        // private readonly _CONDITIONS_WIN: number = 21;
+        this.youTurn = false;
         this._deck = [];
     }
     GameComponent.prototype.ngOnInit = function () {
@@ -618,7 +621,7 @@ var GameComponent = /** @class */ (function () {
             _this.activeRoom.players.map(function (player) {
                 if (player.id === _this._dataBaseService.userId) {
                     if (player.hand !== undefined) {
-                        player.hand.map(function (card) { card.src = "../assets/img/" + card.name + card.suits + ".png"; });
+                        player.hand.map(function (card) { card.src = "./assets/img/" + card.name + card.suits + ".png"; });
                     }
                 }
             });
@@ -628,6 +631,30 @@ var GameComponent = /** @class */ (function () {
             this._deck = this._gameService.deckSort(this._deck);
             this._dataBaseService.pushDeck(this._deck);
         }
+        this._dataBaseService.getOrderInRoom().subscribe(function (order) {
+            _this._order = Object.values(order);
+            _this._order.forEach(function (playerInOrder) {
+                if (playerInOrder.id === _this._dataBaseService.userId) {
+                    _this.youTurn = playerInOrder.turn;
+                }
+            });
+        });
+    };
+    GameComponent.prototype.setNextTurn = function () {
+        var _this = this;
+        var count;
+        this._order.forEach(function (user, index) {
+            if (user.id === _this._dataBaseService.userId) {
+                count = index;
+                user.turn = false;
+                _this._dataBaseService.changeTurn(user.id, false);
+            }
+        });
+        count++;
+        if (this._order.length >= count) {
+            count = 0;
+        }
+        this._dataBaseService.changeTurn(this._order[count].id, true);
     };
     GameComponent.prototype.getYou = function () {
         var oneCard = this._deck[this._deck.length - 1];
@@ -643,7 +670,9 @@ var GameComponent = /** @class */ (function () {
         //   this.computer.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
         //   return;
         // }
-        //  this._getComp();
+        //  this._getComp();ву
+        debugger;
+        this.setNextTurn();
     };
     GameComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -679,7 +708,7 @@ module.exports = ".score {\n  font-size: 52px;\n  color: black;\n  background-co
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"score-container\">\n  <a routerLink=\"/menu\">\n    Return to MENU\n  </a>\n<!-- \n  <div class=\"score\">\n    Wins:{{ scoreResult.player.numberWins }} Loses:{{ scoreResult.computer.numberWins }}\n  </div>\n\n  <div class=\"score\">\n    {{ scoreResult.message }}\n  </div> -->\n\n  <div class=\"score\" *ngIf=\"activeRoom.id\">\n      ID ROOM:{{ activeRoom.id }}\n  </div>\n\n  <!-- <button type=\"button\"\n          class=\"input-button4\"\n          (click)=\"startNewGame()\">\n    New Game\n  </button> -->\n</div>\n"
+module.exports = "<div class=\"score-container\">\n  <a routerLink=\"/menu\">\n    Return to MENU\n  </a>\n<!-- \n  <div class=\"score\">\n    Wins:{{ scoreResult.player.numberWins }} Loses:{{ scoreResult.computer.numberWins }}\n  </div>\n\n  <div class=\"score\">\n    {{ scoreResult.message }}\n  </div> -->\n\n  <div class=\"score\" *ngIf=\"activeRoom.id\">\n      ID ROOM:{{ activeRoom.id }}\n  </div>\n\n  <div class=\"score\" *ngIf=\"youTurn\">\n    YOU TURN!!!\n</div>\n\n  <!-- <button type=\"button\"\n          class=\"input-button4\"\n          (click)=\"startNewGame()\">\n    New Game\n  </button> -->\n</div>\n"
 
 /***/ }),
 
@@ -707,6 +736,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var ScoreComponent = /** @class */ (function () {
     function ScoreComponent() {
         this.activeRoom = { id: 0 };
+        this.youTurn = false;
         this.newGame = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"];
     }
     ScoreComponent.prototype.startNewGame = function () {
@@ -720,6 +750,10 @@ var ScoreComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
     ], ScoreComponent.prototype, "activeRoom", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], ScoreComponent.prototype, "youTurn", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
         __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
@@ -774,6 +808,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _data_base_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data-base.service */ "./src/app/data-base.service.ts");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -783,6 +818,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -801,6 +837,7 @@ var InroomComponent = /** @class */ (function () {
         this.activePlayer = { isActive: false, name: '', playerMaster: false, sum: 0, id: 0 };
         this.activeRoomPlayers = [];
         this.goToGame = false;
+        this.destroy$$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
     }
     InroomComponent.prototype.playerReady = function () {
         this.activePlayer.isActive = !this.activePlayer.isActive;
@@ -816,7 +853,7 @@ var InroomComponent = /** @class */ (function () {
         this.userId = this._dataBaseService.userId;
         // if (this.userId == undefined) this.userId = new Date().getMilliseconds();
         this._route.params
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["pluck"])('id'), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (roomId) { return _this._dataBaseService.getRoom$(roomId); }))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["pluck"])('id'), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (roomId) { return _this._dataBaseService.getRoom$(roomId); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.destroy$$))
             .subscribe(function (room) {
             _this.activeRoom = room;
             _this._dataBaseService.activeRoomId = room.id;
@@ -844,6 +881,7 @@ var InroomComponent = /** @class */ (function () {
         if (this.goToGame === false) {
             this._dataBaseService.removeUserFromRoom(this.activeRoom.id);
         }
+        this.destroy$$.next();
     };
     InroomComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
