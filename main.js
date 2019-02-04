@@ -1066,11 +1066,11 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var NoUndefPipe = /** @class */ (function () {
     function NoUndefPipe() {
     }
-    NoUndefPipe.prototype.transform = function (room, args) {
-        if (room.players === undefined) {
+    NoUndefPipe.prototype.transform = function (value, args) {
+        if (value.players === undefined) {
             return 0;
         }
-        return room.players.length;
+        return value.players.length;
     };
     NoUndefPipe = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"])({
