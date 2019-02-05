@@ -413,7 +413,7 @@ var GameService = /** @class */ (function () {
         }
         cards.forEach(function (card) {
             suits.forEach(function (suit) {
-                deck.push({ name: card.name, value: card.value, suits: suit, src: "../assets/img/outside.png" });
+                deck.push({ name: card.name, value: card.value, suits: suit, src: "./assets/img/outside.png" });
             });
         });
         return deck;
@@ -625,7 +625,7 @@ var GameComponent = /** @class */ (function () {
             _this.activeRoom.players.map(function (player) {
                 if (player.id === _this._dataBaseService.userId) {
                     if (player.hand !== undefined) {
-                        player.hand.map(function (card) { card.src = "../assets/img/" + card.name + card.suits + ".png"; });
+                        player.hand.map(function (card) { card.src = "./assets/img/" + card.name + card.suits + ".png"; });
                     }
                 }
             });
