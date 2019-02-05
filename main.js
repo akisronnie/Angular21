@@ -655,7 +655,7 @@ var GameComponent = /** @class */ (function () {
             }
         });
         count++;
-        if (this._order.length >= count) {
+        if (this._order.length <= count) {
             count = 0;
         }
         this._dataBaseService.changeTurn(this._order[count].id, true);
