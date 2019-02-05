@@ -40,7 +40,7 @@ import { NoUndefPipe } from './no-undef.pipe';
     AngularFireDatabaseModule,
 
   ],
-  providers: [GameService,DataBaseService],
+  providers: [GameService, DataBaseService],
   bootstrap: [AppComponent]
 })
 

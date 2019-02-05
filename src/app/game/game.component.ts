@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataBaseService } from '../data-base.service';
 import { GameService } from '../game.service';
 import { Router } from '@angular/router';
-import { TouchSequence } from 'selenium-webdriver';
 import { Subject, Observable } from 'rxjs';
 import { takeUntil, map, pluck, switchMap } from 'rxjs/operators';
 
@@ -15,8 +14,7 @@ import { takeUntil, map, pluck, switchMap } from 'rxjs/operators';
 export class GameComponent implements OnInit, OnDestroy {
   public message: string = 'Welcome to game';
   public activeRoom: TRoom = { id: 0, players: [], maxplayers: 0, deck: [] };
- // public activeRoomPlayers: TPlayer[];
- private destroy$$: Subject<number> = new Subject();
+  private destroy$$: Subject<number> = new Subject();
   public player: TPlayer = {
     hand: [],
     sum: 0,
@@ -39,6 +37,7 @@ export class GameComponent implements OnInit, OnDestroy {
 
   // private readonly _CONDITIONS_COMPUTER_DRAW: number = 15;
   // private readonly _CONDITIONS_WIN: number = 21;
+
   private enough = false;
   private _order;
   private _deck: TCard[] = [];
@@ -64,7 +63,6 @@ export class GameComponent implements OnInit, OnDestroy {
     this._dataBaseService.getDeck().pipe(takeUntil(this.destroy$$)).subscribe((deck: TCard[]) => {
       this._deck = deck;
     });
-
 
     this._dataBaseService.getRoom$(this._dataBaseService.activeRoomId).pipe(takeUntil(this.destroy$$)).subscribe((room: TRoom) => {
       this.activeRoom = room;
