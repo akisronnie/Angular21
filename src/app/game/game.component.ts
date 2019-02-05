@@ -87,7 +87,7 @@ export class GameComponent implements OnInit {
       }
      });
      count++;
-     if (this._order.length >= count) {
+     if (this._order.length <= count) {
        count = 0;
      }
 
