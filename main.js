@@ -263,11 +263,14 @@ var DataBaseService = /** @class */ (function () {
     function DataBaseService(dataBase) {
         this.dataBase = dataBase;
         this.playerMaster = false;
-        this.activeRoomId = 75;
+        this.activeRoomId = null;
         this.userName = 'Anonimus';
-        this.userId = 15;
+        this.userId = null;
         this.isMultiplayer = false;
     }
+    DataBaseService.prototype.setEnoughDraw = function (status) {
+        this.dataBase.object("/rooms/room" + this.activeRoomId + "/order/" + this.userId).update({ enough: status });
+    };
     DataBaseService.prototype.changeTurn = function (id, status) {
         this.dataBase.object("/rooms/room" + this.activeRoomId + "/order/" + id).update({ id: id, turn: status });
     };
@@ -283,6 +286,9 @@ var DataBaseService = /** @class */ (function () {
     DataBaseService.prototype.pushHandCard = function (hand) {
         this.dataBase.object("/rooms/room" + this.activeRoomId + "/players/" + this.userId + "/hand").set(hand);
     };
+    DataBaseService.prototype.deleteHandCards = function () {
+        this.dataBase.object("/rooms/room" + this.activeRoomId + "/players/" + this.userId + "/hand").remove();
+    };
     DataBaseService.prototype.getDeck = function () {
         return this.dataBase.list("/rooms/room" + this.activeRoomId + "/deck").valueChanges();
     };
@@ -291,6 +297,9 @@ var DataBaseService = /** @class */ (function () {
     };
     DataBaseService.prototype.playerReady = function (roomId, activePlayer) {
         this.dataBase.object("/rooms/room" + roomId + "/players/" + this.userId).update(activePlayer);
+    };
+    DataBaseService.prototype.playerUnready = function (roomId) {
+        this.dataBase.object("/rooms/room" + roomId + "/players/" + this.userId).update({ isActive: false });
     };
     DataBaseService.prototype.removeUserFromRoom = function (roomId) {
         this.dataBase.object("/rooms/room" + roomId + "/players/" + this.userId).remove();
@@ -413,7 +422,7 @@ var GameService = /** @class */ (function () {
         }
         cards.forEach(function (card) {
             suits.forEach(function (suit) {
-                deck.push({ name: card.name, value: card.value, suits: suit, src: "./assets/img/outside.png" });
+                deck.push({ name: card.name, value: card.value, suits: suit, src: "../assets/img/outside.png" });
             });
         });
         return deck;
@@ -471,7 +480,7 @@ module.exports = ".table {\n  margin: auto;\n  flex-wrap: wrap;\n  height: 800px
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"table\">\n\n<div class=\"players\" *ngFor=\"let player of activeRoom.players\">\n  <h3>{{player.name}}</h3>\n  <h3>{{player.id}}</h3>\n  <h3>{{player.isActive}}</h3>\n  <h3>{{player.playerMaster}}</h3>\n  <h3 *ngIf=\"player.id === dataBaseService.userId\"> {{player.sum}}</h3>\n  <div  class=\"player-hand\">\n      <img *ngFor=\"let card of player.hand\" [src]=\"card.src\">\n  </div>\n\n  <button type=\"button\" *ngIf=\"player.id === dataBaseService.userId\" [disabled]=\"!youTurn\"  (click)=\"this.getPlayer.emit()\">Get Card</button>\n</div>\n\n\n\n\n<!-- player.id === dataBaseService.userId -->\n    <!-- <div class=\"comp-side\" *ngFor=\"let player of activeRoomPlayers\">\n      {{player.name}}\n      <div *ngFor=\"let card of fieldResult.computer.hand\">\n        <img [src]=\"card.src\">\n      </div>\n    </div>\n\n    <div class=\"center-table\">\n      <button *ngIf=\"!fieldResult.isShowResult\"\n              type=\"button\"\n              class=\"input-button4\"\n              (click)=\"this.getPlayer.emit()\">\n        Взять\n      </button>\n\n      <span class=\"total\">\n        You score: {{ fieldResult.player.sum }}\n      </span>\n\n      <span *ngIf=\"fieldResult.isShowResult\"\n            class=\"comp-result\">\n        Comp score:{{ fieldResult.computer.sum }}\n      </span>\n\n      <button *ngIf=\"!fieldResult.isShowResult\"\n              type=\"button\"\n              class=\"input-button4\"\n              (click)=\"this.finishGame.emit()\">\n        ВСЁ\n      </button>\n    </div>\n\n    <div class=\"you-side\">\n      <div *ngFor=\"let card of fieldResult.player.hand\">\n        <img [src]=\"card.src\">\n      </div>\n    </div> -->\n</section>\n"
+module.exports = "<section class=\"table\">\n\n<div class=\"players\" *ngFor=\"let player of activeRoom.players\">\n  <h3>{{player.name}}</h3>\n  <h3>{{player.id}}</h3>\n  <h3>{{player.isActive}}</h3>\n  <h3>{{player.playerMaster}}</h3>\n  <h3 *ngIf=\"player.id === dataBaseService.userId\"> {{player.sum}}</h3>\n  <div  class=\"player-hand\">\n      <img *ngFor=\"let card of player.hand\" [src]=\"card.src\">\n  </div>\n\n  <button type=\"button\" *ngIf=\"player.id === dataBaseService.userId\" [disabled]=\"!youTurn\"  (click)=\"this.getPlayer.emit()\">Get Card</button>\n  <button type=\"button\" *ngIf=\"player.id === dataBaseService.userId\" [disabled]=\"!youTurn\"  (click)=\"this.enoughGame.emit()\">Enough!</button>\n</div>\n\n\n\n\n<!-- player.id === dataBaseService.userId -->\n    <!-- <div class=\"comp-side\" *ngFor=\"let player of activeRoomPlayers\">\n      {{player.name}}\n      <div *ngFor=\"let card of fieldResult.computer.hand\">\n        <img [src]=\"card.src\">\n      </div>\n    </div>\n\n    <div class=\"center-table\">\n      <button *ngIf=\"!fieldResult.isShowResult\"\n              type=\"button\"\n              class=\"input-button4\"\n              (click)=\"this.getPlayer.emit()\">\n        Взять\n      </button>\n\n      <span class=\"total\">\n        You score: {{ fieldResult.player.sum }}\n      </span>\n\n      <span *ngIf=\"fieldResult.isShowResult\"\n            class=\"comp-result\">\n        Comp score:{{ fieldResult.computer.sum }}\n      </span>\n\n      <button *ngIf=\"!fieldResult.isShowResult\"\n              type=\"button\"\n              class=\"input-button4\"\n              (click)=\"this.finishGame.emit()\">\n        ВСЁ\n      </button>\n    </div>\n\n    <div class=\"you-side\">\n      <div *ngFor=\"let card of fieldResult.player.hand\">\n        <img [src]=\"card.src\">\n      </div>\n    </div> -->\n</section>\n"
 
 /***/ }),
 
@@ -506,6 +515,7 @@ var FieldComponent = /** @class */ (function () {
         this.youTurn = false;
         this.getPlayer = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"];
         this.finishGame = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"];
+        this.enoughGame = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"];
     }
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -527,6 +537,10 @@ var FieldComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
         __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
     ], FieldComponent.prototype, "finishGame", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
+    ], FieldComponent.prototype, "enoughGame", void 0);
     FieldComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-field',
@@ -560,7 +574,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-score [scoreResult] = \"scoreResult\"\n           (newGame)=\"startNewGame()\"\n           [activeRoom]=\"activeRoom\"\n           [youTurn]=\"youTurn\">\n</app-score>\n\n<app-field [fieldResult]=\"fieldResult\"\n           [youTurn]=\"youTurn\"\n           [activeRoom]=\"activeRoom\"\n           (getPlayer)=\"getYou()\"\n           (finishGame)=\"finish()\">\n</app-field>\n"
+module.exports = "<app-score [scoreResult] = \"scoreResult\"\n           (newGame)=\"startNewGame()\"\n           [activeRoom]=\"activeRoom\"\n           [youTurn]=\"youTurn\"\n           [finish]=\"finish\"\n           [roomId]=\"activeRoom.id\">\n</app-score>\n\n<app-field [fieldResult]=\"fieldResult\"\n           [youTurn]=\"youTurn\"\n           [activeRoom]=\"activeRoom\"\n           (getPlayer)=\"getYou()\"\n           (enoughGame)=\"enoughGame()\"\n           (finishGame)=\"finish()\">\n</app-field>\n"
 
 /***/ }),
 
@@ -577,6 +591,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _data_base_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../data-base.service */ "./src/app/data-base.service.ts");
 /* harmony import */ var _game_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../game.service */ "./src/app/game.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -589,12 +606,18 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
+
 var GameComponent = /** @class */ (function () {
-    function GameComponent(_gameService, _dataBaseService) {
+    function GameComponent(_gameService, _dataBaseService, router) {
         this._gameService = _gameService;
         this._dataBaseService = _dataBaseService;
+        this.router = router;
         this.message = 'Welcome to game';
         this.activeRoom = { id: 0, players: [], maxplayers: 0, deck: [] };
+        // public activeRoomPlayers: TPlayer[];
+        this.destroy$$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
         this.player = {
             hand: [],
             sum: 0,
@@ -612,37 +635,83 @@ var GameComponent = /** @class */ (function () {
             player: this.player,
         };
         this.youTurn = false;
+        // private readonly _CONDITIONS_COMPUTER_DRAW: number = 15;
+        // private readonly _CONDITIONS_WIN: number = 21;
+        this.enough = false;
         this._deck = [];
+        this.finish = false;
     }
     GameComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this._dataBaseService.getDeck().subscribe(function (deck) {
+        if (this._dataBaseService.userId === null) {
+            this.router.navigate(['/menu']);
+        }
+        if (this._dataBaseService.playerMaster) {
+            this._deck = this._gameService.generateDeck();
+            this._deck = this._gameService.deckSort(this._deck);
+            this._dataBaseService.pushDeck(this._deck);
+        }
+        this._dataBaseService.getDeck().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.destroy$$)).subscribe(function (deck) {
             _this._deck = deck;
         });
-        this._dataBaseService.getRoom$(this._dataBaseService.activeRoomId).subscribe(function (room) {
+        this._dataBaseService.getRoom$(this._dataBaseService.activeRoomId).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.destroy$$)).subscribe(function (room) {
             _this.activeRoom = room;
             _this.activeRoom.players = Object.values(room.players);
             _this.activeRoom.players.map(function (player) {
-                if (player.id === _this._dataBaseService.userId) {
+                if (player.id === _this._dataBaseService.userId || _this.finish) {
                     if (player.hand !== undefined) {
                         player.hand.map(function (card) { card.src = "./assets/img/" + card.name + card.suits + ".png"; });
                     }
                 }
             });
         });
-        if (this._dataBaseService.playerMaster) {
-            this._deck = this._gameService.generateDeck();
-            this._deck = this._gameService.deckSort(this._deck);
-            this._dataBaseService.pushDeck(this._deck);
-        }
-        this._dataBaseService.getOrderInRoom().subscribe(function (order) {
+        this._dataBaseService.getOrderInRoom().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.destroy$$)).subscribe(function (order) {
             _this._order = Object.values(order);
             _this._order.forEach(function (playerInOrder) {
                 if (playerInOrder.id === _this._dataBaseService.userId) {
                     _this.youTurn = playerInOrder.turn;
                 }
             });
+            _this.finish = _this._order.every(function (order) {
+                if (order.enough) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            });
+            if (_this.finish) {
+                if (_this.youTurn) {
+                    _this.finishGame();
+                }
+                return;
+            }
+            if (_this.enough) {
+                _this.setNextTurn();
+            }
         });
+    };
+    GameComponent.prototype.finishGame = function () {
+        var winners = [];
+        var maxScore = 0;
+        this.activeRoom.players.forEach(function (player) {
+            if (player.sum > maxScore && player.sum <= 21) {
+                maxScore = player.sum;
+            }
+        });
+        this.activeRoom.players.forEach(function (player) {
+            if (player.sum === maxScore) {
+                winners.push(player);
+            }
+        });
+        winners.forEach(function (winner) { alert("Winner " + winner.name); });
+        this.youTurn = false;
+        this._dataBaseService.playerUnready(this.activeRoom.id);
+    };
+    GameComponent.prototype.enoughGame = function () {
+        this._dataBaseService.setEnoughDraw(true);
+        this.setNextTurn();
+        this.enough = true;
     };
     GameComponent.prototype.setNextTurn = function () {
         var _this = this;
@@ -668,15 +737,13 @@ var GameComponent = /** @class */ (function () {
         this._dataBaseService.savePlayerScore(this.player.sum);
         this._dataBaseService.pushDeck(this._deck);
         this._dataBaseService.pushHandCard(this.player.hand);
-        // if (this.player.sum >= this._CONDITIONS_WIN) {
-        //   this.fieldResult.isShowResult = true;
-        //   this.finish();
-        //   this.computer.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
-        //   return;
-        // }
-        //  this._getComp();ву
-        debugger;
         this.setNextTurn();
+    };
+    GameComponent.prototype.ngOnDestroy = function () {
+        this.destroy$$.next();
+        this._dataBaseService.setEnoughDraw(false);
+        this._dataBaseService.deleteHandCards();
+        this._dataBaseService.savePlayerScore(0);
     };
     GameComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -685,7 +752,8 @@ var GameComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./game.component.css */ "./src/app/game/game.component.css")]
         }),
         __metadata("design:paramtypes", [_game_service__WEBPACK_IMPORTED_MODULE_2__["GameService"],
-            _data_base_service__WEBPACK_IMPORTED_MODULE_1__["DataBaseService"]])
+            _data_base_service__WEBPACK_IMPORTED_MODULE_1__["DataBaseService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], GameComponent);
     return GameComponent;
 }());
@@ -712,7 +780,7 @@ module.exports = ".score {\n  font-size: 52px;\n  color: black;\n  background-co
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"score-container\">\n  <a routerLink=\"/menu\">\n    Return to MENU\n  </a>\n<!-- \n  <div class=\"score\">\n    Wins:{{ scoreResult.player.numberWins }} Loses:{{ scoreResult.computer.numberWins }}\n  </div>\n\n  <div class=\"score\">\n    {{ scoreResult.message }}\n  </div> -->\n\n  <div class=\"score\" *ngIf=\"activeRoom.id\">\n      ID ROOM:{{ activeRoom.id }}\n  </div>\n\n  <div class=\"score\" *ngIf=\"youTurn\">\n    YOU TURN!!!\n</div>\n\n  <!-- <button type=\"button\"\n          class=\"input-button4\"\n          (click)=\"startNewGame()\">\n    New Game\n  </button> -->\n</div>\n"
+module.exports = "<div class=\"score-container\">\n  <a routerLink=\"/menu\">\n    Return to MENU\n  </a>\n\n  <button *ngIf=\"finish\" (click)=\"startNewGame()\"> Retry? {{roomId}}</button>\n\n  <!--\n  <div class=\"score\">\n    Wins:{{ scoreResult.player.numberWins }} Loses:{{ scoreResult.computer.numberWins }}\n  </div>\n\n  <div class=\"score\">\n    {{ scoreResult.message }}\n  </div> -->\n\n  <div class=\"score\" *ngIf=\"activeRoom.id\">\n      ID ROOM:{{ activeRoom.id }}\n  </div>\n\n  <div class=\"score\" *ngIf=\"youTurn\">\n    YOU TURN!!!\n</div>\n\n  <!-- <button type=\"button\"\n          class=\"input-button4\"\n          (click)=\"startNewGame()\">\n    New Game\n  </button> -->\n</div>\n"
 
 /***/ }),
 
@@ -727,6 +795,8 @@ module.exports = "<div class=\"score-container\">\n  <a routerLink=\"/menu\">\n 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ScoreComponent", function() { return ScoreComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _data_base_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../data-base.service */ "./src/app/data-base.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -737,14 +807,19 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var ScoreComponent = /** @class */ (function () {
-    function ScoreComponent() {
+    function ScoreComponent(_dataBaseService, router) {
+        this._dataBaseService = _dataBaseService;
+        this.router = router;
         this.activeRoom = { id: 0 };
         this.youTurn = false;
+        this.finish = false;
         this.newGame = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"];
     }
     ScoreComponent.prototype.startNewGame = function () {
-        this.newGame.emit();
+        this.router.navigate(["/inroom/" + this._dataBaseService.activeRoomId]);
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -759,6 +834,14 @@ var ScoreComponent = /** @class */ (function () {
         __metadata("design:type", Boolean)
     ], ScoreComponent.prototype, "youTurn", void 0);
     __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], ScoreComponent.prototype, "finish", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Number)
+    ], ScoreComponent.prototype, "roomId", void 0);
+    __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
         __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
     ], ScoreComponent.prototype, "newGame", void 0);
@@ -767,7 +850,8 @@ var ScoreComponent = /** @class */ (function () {
             selector: 'app-score',
             template: __webpack_require__(/*! ./score.component.html */ "./src/app/game/score/score.component.html"),
             styles: [__webpack_require__(/*! ./score.component.css */ "./src/app/game/score/score.component.css")]
-        })
+        }),
+        __metadata("design:paramtypes", [_data_base_service__WEBPACK_IMPORTED_MODULE_2__["DataBaseService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
     ], ScoreComponent);
     return ScoreComponent;
 }());
@@ -849,6 +933,9 @@ var InroomComponent = /** @class */ (function () {
     };
     InroomComponent.prototype.ngOnInit = function () {
         var _this = this;
+        if (this._dataBaseService.userId === null) {
+            this.router.navigate(['/menu']);
+        }
         this.userName = this._dataBaseService.userName;
         if (this.userName === undefined) {
             this.router.navigate(['/multiplayer']);
@@ -873,7 +960,6 @@ var InroomComponent = /** @class */ (function () {
                 _this.activeRoomPlayers = Object.values(room.players);
             }
             if (goToGame === true) {
-                console.log('ALL ACTIVE');
                 _this._dataBaseService.isMultiplayer = true;
                 _this._dataBaseService.playerMaster = _this.activePlayer.playerMaster;
                 _this.goToGame = true;
