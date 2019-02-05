@@ -413,7 +413,7 @@ var GameService = /** @class */ (function () {
         }
         cards.forEach(function (card) {
             suits.forEach(function (suit) {
-                deck.push({ name: card.name, value: card.value, suits: suit, src: "./assets/img/outside.png" });
+                deck.push({ name: card.name, value: card.value, suits: suit, src: "../assets/img/outside.png" });
             });
         });
         return deck;
@@ -516,6 +516,10 @@ var FieldComponent = /** @class */ (function () {
         __metadata("design:type", Boolean)
     ], FieldComponent.prototype, "youTurn", void 0);
     __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], FieldComponent.prototype, "activeRoom", void 0);
+    __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
         __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
     ], FieldComponent.prototype, "getPlayer", void 0);
@@ -556,7 +560,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-score [scoreResult] = \"scoreResult\"\n           (newGame)=\"startNewGame()\"\n           [activeRoom]=\"activeRoom\"\n           [youTurn]=\"youTurn\">\n</app-score>\n\n<app-field [fieldResult]=\"fieldResult\"\n           [youTurn]=\"youTurn\"\n           (getPlayer)=\"getYou()\"\n           (finishGame)=\"finish()\">\n</app-field>\n"
+module.exports = "<app-score [scoreResult] = \"scoreResult\"\n           (newGame)=\"startNewGame()\"\n           [activeRoom]=\"activeRoom\"\n           [youTurn]=\"youTurn\">\n</app-score>\n\n<app-field [fieldResult]=\"fieldResult\"\n           [youTurn]=\"youTurn\"\n           [activeRoom]=\"activeRoom\"\n           (getPlayer)=\"getYou()\"\n           (finishGame)=\"finish()\">\n</app-field>\n"
 
 /***/ }),
 
@@ -621,7 +625,7 @@ var GameComponent = /** @class */ (function () {
             _this.activeRoom.players.map(function (player) {
                 if (player.id === _this._dataBaseService.userId) {
                     if (player.hand !== undefined) {
-                        player.hand.map(function (card) { card.src = "./assets/img/" + card.name + card.suits + ".png"; });
+                        player.hand.map(function (card) { card.src = "../assets/img/" + card.name + card.suits + ".png"; });
                     }
                 }
             });
