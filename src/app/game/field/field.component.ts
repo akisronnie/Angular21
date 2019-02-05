@@ -11,6 +11,7 @@ export class FieldComponent {
   // @Input() public activeRoom;
   // @Input() public activeRoomPlayers = [];
   @Input() public youTurn: boolean = false;
+  @Input() public activeRoom: TRoom;
   @Output() public getPlayer: EventEmitter<void> = new EventEmitter;
   @Output() public finishGame: EventEmitter<void> = new EventEmitter;
 
