@@ -42,9 +42,8 @@ export class InroomComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    if (this._dataBaseService.userId === null) {
-      this.router.navigate(['/menu']);
-    }
+
+    
 
     this.userName = this._dataBaseService.userName;
     if (this.userName === undefined) { this.router.navigate(['/multiplayer']); }
@@ -76,6 +75,7 @@ export class InroomComponent implements OnInit, OnDestroy {
           this._dataBaseService.isMultiplayer = true;
           this._dataBaseService.playerMaster = this.activePlayer.playerMaster;
           this.goToGame = true;
+          this._dataBaseService.setEnoughDraw(false);
           this.router.navigate(['/game']);
         }
       });

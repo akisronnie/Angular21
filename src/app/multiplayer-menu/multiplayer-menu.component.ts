@@ -52,6 +52,7 @@ export class MultiplayerMenuComponent implements OnInit {
 
         return;
       }
+      
     }
 
     userId++;

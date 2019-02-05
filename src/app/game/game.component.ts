@@ -176,7 +176,6 @@ export class GameComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
      this.destroy$$.next();
-     this._dataBaseService.setEnoughDraw(false);
      this._dataBaseService.deleteHandCards();
      this._dataBaseService.savePlayerScore(0);
   }
