@@ -422,7 +422,7 @@ var GameService = /** @class */ (function () {
         }
         cards.forEach(function (card) {
             suits.forEach(function (suit) {
-                deck.push({ name: card.name, value: card.value, suits: suit, src: "../assets/img/outside.png" });
+                deck.push({ name: card.name, value: card.value, suits: suit, src: "./assets/img/outside.png" });
             });
         });
         return deck;
@@ -741,7 +741,6 @@ var GameComponent = /** @class */ (function () {
     };
     GameComponent.prototype.ngOnDestroy = function () {
         this.destroy$$.next();
-        this._dataBaseService.setEnoughDraw(false);
         this._dataBaseService.deleteHandCards();
         this._dataBaseService.savePlayerScore(0);
     };
@@ -933,9 +932,6 @@ var InroomComponent = /** @class */ (function () {
     };
     InroomComponent.prototype.ngOnInit = function () {
         var _this = this;
-        if (this._dataBaseService.userId === null) {
-            this.router.navigate(['/menu']);
-        }
         this.userName = this._dataBaseService.userName;
         if (this.userName === undefined) {
             this.router.navigate(['/multiplayer']);
@@ -963,6 +959,7 @@ var InroomComponent = /** @class */ (function () {
                 _this._dataBaseService.isMultiplayer = true;
                 _this._dataBaseService.playerMaster = _this.activePlayer.playerMaster;
                 _this.goToGame = true;
+                _this._dataBaseService.setEnoughDraw(false);
                 _this.router.navigate(['/game']);
             }
         });
