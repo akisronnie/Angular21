@@ -2,7 +2,10 @@
   <a routerLink="/menu">
     Return to MENU
   </a>
-<!-- 
+
+  <button *ngIf="finish" (click)="startNewGame()"> Retry? {{roomId}}</button>
+
+  <!--
   <div class="score">
     Wins:{{ scoreResult.player.numberWins }} Loses:{{ scoreResult.computer.numberWins }}
   </div>

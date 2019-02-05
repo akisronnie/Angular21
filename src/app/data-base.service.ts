@@ -9,12 +9,17 @@ import { Observable } from 'rxjs';
 export class DataBaseService {
 
   public playerMaster: boolean = false;
-  public activeRoomId: number = 75;
+  public activeRoomId: number = null;
   public userName: string = 'Anonimus';
-  public userId: number = 15;
+  public userId: number = null;
   public isMultiplayer: boolean = false;
 
   public constructor(private dataBase: AngularFireDatabase) {
+  }
+
+
+  public setEnoughDraw(status: boolean): void {
+    this.dataBase.object(`/rooms/room${this.activeRoomId}/order/${this.userId}`).update({  enough: status });
   }
 
   public changeTurn(id: number, status: boolean): void {
@@ -37,6 +42,10 @@ export class DataBaseService {
     this.dataBase.object(`/rooms/room${this.activeRoomId}/players/${this.userId}/hand`).set(hand);
   }
 
+  public deleteHandCards(): void {
+    this.dataBase.object(`/rooms/room${this.activeRoomId}/players/${this.userId}/hand`).remove();
+  }
+
   public getDeck(): Observable<{}[]> {
     return this.dataBase.list(`/rooms/room${this.activeRoomId}/deck`).valueChanges();
   }
@@ -47,6 +56,10 @@ export class DataBaseService {
 
   public playerReady(roomId: number, activePlayer: TPlayer): void {
     this.dataBase.object(`/rooms/room${roomId}/players/${this.userId}`).update(activePlayer);
+  }
+  public playerUnready(roomId: number): void {
+    this.dataBase.object(`/rooms/room${roomId}/players/${this.userId}`).update({isActive : false});
+
   }
 
   public removeUserFromRoom(roomId: number): void {

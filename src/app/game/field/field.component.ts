@@ -14,6 +14,7 @@ export class FieldComponent {
   @Input() public activeRoom: TRoom;
   @Output() public getPlayer: EventEmitter<void> = new EventEmitter;
   @Output() public finishGame: EventEmitter<void> = new EventEmitter;
+  @Output() public enoughGame: EventEmitter<void> = new EventEmitter;
 
 
  public constructor(public dataBaseService: DataBaseService) {
