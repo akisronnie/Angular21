@@ -33,7 +33,8 @@ export class GameComponent implements OnInit, OnDestroy {
     message: '',
     player: this.player,
   };
-  public youTurn:boolean = false;
+
+  public youTurn: boolean = false;
 
   // private readonly _CONDITIONS_COMPUTER_DRAW: number = 15;
   // private readonly _CONDITIONS_WIN: number = 21;
@@ -77,66 +78,64 @@ export class GameComponent implements OnInit, OnDestroy {
     });
 
 
-
     this._dataBaseService.getOrderInRoom().pipe(takeUntil(this.destroy$$)).subscribe((order) => {
       this._order = Object.values(order);
-      
+
       this._order.forEach((playerInOrder) => {
-        if (playerInOrder.id === this._dataBaseService.userId){
-          this.youTurn=playerInOrder.turn;
+        if (playerInOrder.id === this._dataBaseService.userId) {
+          this.youTurn = playerInOrder.turn;
         }
       });
-      
 
 
-      this.finish = this._order.every( (order)=>{ 
+
+      this.finish = this._order.every((order) => {
         if (order.enough) {
-          return true
+          return true;
         } else {
-          return false
+          return false;
         }
-      })
+      });
 
-    if (this.finish) { 
-      if (this.youTurn) {
-        this.finishGame();   
-      }      
-      return
-    }
+      if (this.finish) {
+        if (this.youTurn) {
+          this.finishGame();
+        }
+        return;
+      }
 
-    if (this.enough) {
-      this.setNextTurn()
-    }
-    })
-
+      if (this.enough) {
+        this.setNextTurn();
+      }
+    });
   }
 
 
 
   public finishGame() {
-   let winners = []
-   let maxScore = 0;
-   
-    this.activeRoom.players.forEach((player)=>{
-      if (player.sum>maxScore && player.sum <= 21){
+    let winners = [];
+    let maxScore = 0;
+
+    this.activeRoom.players.forEach((player) => {
+      if (player.sum > maxScore && player.sum <= 21) {
         maxScore = player.sum;
       }
-    })
-   
-    this.activeRoom.players.forEach((player)=>{
+    });
+
+    this.activeRoom.players.forEach((player) => {
       if (player.sum === maxScore) {
         winners.push(player);
       }
     });
-   
-    winners.forEach((winner)=>{ alert("Winner " + winner.name)})
+
+    winners.forEach((winner) => { alert('Winner ' + winner.name) });
     this.youTurn = false;
-    
+
     this._dataBaseService.playerUnready(this.activeRoom.id);
   }
 
 
-  public enoughGame(){
+  public enoughGame() {
     this._dataBaseService.setEnoughDraw(true);
     this.setNextTurn();
     this.enough = true;
@@ -146,16 +145,16 @@ export class GameComponent implements OnInit, OnDestroy {
   private setNextTurn() {
     let count;
     this._order.forEach((user, index) => {
-      if (user.id === this._dataBaseService.userId ) {
+      if (user.id === this._dataBaseService.userId) {
         count = index; user.turn = false;
-        this._dataBaseService.changeTurn(user.id,false);
+        this._dataBaseService.changeTurn(user.id, false);
       }
-     });
-     count++;
-     if (this._order.length <= count) {
-       count = 0;
-     }
-     this._dataBaseService.changeTurn(this._order[count].id,true);
+    });
+    count++;
+    if (this._order.length <= count) {
+      count = 0;
+    }
+    this._dataBaseService.changeTurn(this._order[count].id, true);
   }
 
 
@@ -168,18 +167,18 @@ export class GameComponent implements OnInit, OnDestroy {
     this._dataBaseService.savePlayerScore(this.player.sum);
     this._dataBaseService.pushDeck(this._deck);
     this._dataBaseService.pushHandCard(this.player.hand);
-    
+
     this.setNextTurn();
   }
 
   public ngOnDestroy(): void {
-     this.destroy$$.next();
-     this._dataBaseService.deleteHandCards();
-     this._dataBaseService.savePlayerScore(0);
+    this.destroy$$.next();
+    this._dataBaseService.deleteHandCards();
+    this._dataBaseService.savePlayerScore(0);
   }
 
 
- 
+
 
   //   if (!this._firstGame) {
   //     this.finish();

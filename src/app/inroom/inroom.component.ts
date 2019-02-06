@@ -43,8 +43,6 @@ export class InroomComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
 
-    
-
     this.userName = this._dataBaseService.userName;
     if (this.userName === undefined) { this.router.navigate(['/multiplayer']); }
     // if (this.userName == undefined) this.userName = 'Anonimus'
