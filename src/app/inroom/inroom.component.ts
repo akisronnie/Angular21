@@ -13,26 +13,22 @@ import { Subject, Observable } from 'rxjs';
 
 export class InroomComponent implements OnInit, OnDestroy {
 
-  public activeRoom: TRoom = {
-    id: 0,
-    maxplayers: 0,
-    players: []
-  };
-
-  // public activePlayer: TPlayer = { isActive: false, name: '', playerMaster: false, sum: 0, id: 0 };
+  public activeRoom: TRoom = null;
+  public activePlayer: TPlayer;
 
   // public userName: string;
   // public userId: number;
   // public playersInRoom: number;
   // public isPlayerReady: boolean;
   // public activeRoomPlayers: {}[] = [];
-  // private goToGame: boolean = false;
+  private goToGame: boolean = false;
   private destroy$$: Subject<number> = new Subject();
 
   public constructor(
     private _route: ActivatedRoute,
     private _dataBaseService: DataBaseService,
     private router: Router) {
+      
   }
 
   // public playerReady(): void {
@@ -41,7 +37,18 @@ export class InroomComponent implements OnInit, OnDestroy {
   // }
 
   public ngOnInit(): void {
+    if (this._dataBaseService.activeUser === null) {
+      const localStorageBlackJack: string = localStorage.getItem('BlackJack');
+      const  userFromLocalStorage: TPlayer = localStorageBlackJack ? JSON.parse(localStorageBlackJack) : null;
+        if (userFromLocalStorage === null) {
+          alert('Please register');
+          this.router.navigate(['/intro']);
+        } else {
+          this._dataBaseService.activeUser = userFromLocalStorage;
+        }
+    }
 
+    this.activePlayer = this._dataBaseService.activeUser;
     // this.userName = this._dataBaseService.userName;
     // if (this.userName === undefined) { this.router.navigate(['/multiplayer']); }
     // // if (this.userName == undefined) this.userName = 'Anonimus'
@@ -86,9 +93,9 @@ export class InroomComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    // if (this.goToGame === false) {
-    //   this._dataBaseService.removeUserFromRoom(this.activeRoom.id);
-    // }
+     if (this.goToGame === false) {
+       this._dataBaseService.removeUserFromRoom(this.activeRoom.id);
+     }
 
     this.destroy$$.next();
   }

@@ -15,7 +15,8 @@ export class GameComponent implements OnInit, OnDestroy {
   public message: string = 'Welcome to game';
   public activeRoom: TRoom = { id: 0, players: [], maxplayers: 0, deck: [] };
   private destroy$$: Subject<number> = new Subject();
-  public player: TPlayer = {
+  public player//: TPlayer
+   = {
     hand: [],
     sum: 0,
     id: 0,

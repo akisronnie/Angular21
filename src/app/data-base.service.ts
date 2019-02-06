@@ -37,6 +37,9 @@ export class DataBaseService {
     this.dataBase.object(`/rooms/room${this.activeRoomId}/order/${this.activeUser.id}`).update({ id : this.activeUser.id, turn: this.activeUser.playerMaster });
   }
 
+  public removeUserFromRoom(roomId: number): void {
+    this.dataBase.object(`/rooms/room${roomId}/players/${this.activeUser.id}`).remove();
+  }
 
 
 
@@ -90,9 +93,6 @@ export class DataBaseService {
 
   }
 
-  public removeUserFromRoom(roomId: number): void {
-    this.dataBase.object(`/rooms/room${roomId}/players/${this.userId}`).remove();
-  }
 
  
   public addNewRoom(newRoom: TRoom): void {

@@ -19,6 +19,7 @@ import { MultiplayerMenuComponent } from './multiplayer-menu/multiplayer-menu.co
 import { InroomComponent } from './inroom/inroom.component';
 import { NoUndefPipe } from './no-undef.pipe';
 import { IntroComponent } from './intro/intro.component';
+import { KeysPipe } from './keys.pipe';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { IntroComponent } from './intro/intro.component';
     InroomComponent,
     NoUndefPipe,
     IntroComponent,
+    KeysPipe,
   ],
   imports: [
     BrowserModule,
