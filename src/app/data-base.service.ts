@@ -8,14 +8,46 @@ import { Observable } from 'rxjs';
 
 export class DataBaseService {
 
-  public playerMaster: boolean = false;
+
+  public activeUser: TPlayer = null;
   public activeRoomId: number = null;
+
+
+  public playerMaster: boolean = false;
   public userName: string = 'Anonimus';
   public userId: number = null;
   public isMultiplayer: boolean = false;
 
   public constructor(private dataBase: AngularFireDatabase) {
   }
+
+  public getUsers (): Observable<{}[]> {
+    return this.dataBase.list(`/users`).valueChanges();
+  }
+
+  public addUsers(newUser: TPlayer ): void {
+    this.dataBase.object(`/users/${newUser.id}`).update(newUser);
+  }
+
+  public addPlayerToRoom(): void {
+    this.dataBase.object(`/rooms/room${this.activeRoomId}/players/${this.activeUser.id}`).update(this.activeUser);
+  }
+
+  public addPlayerToRoomOrder(): void {
+    this.dataBase.object(`/rooms/room${this.activeRoomId}/order/${this.activeUser.id}`).update({ id : this.activeUser.id, turn: this.activeUser.playerMaster });
+  }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   public setEnoughDraw(status: boolean): void {
@@ -28,10 +60,6 @@ export class DataBaseService {
 
   public getOrderInRoom(): Observable<{}[]> {
     return this.dataBase.list(`/rooms/room${this.activeRoomId}/order`).valueChanges();
-  }
-
-  public addPlayerToRoomOrder(id: number, firstPlayer: boolean): void {
-    this.dataBase.object(`/rooms/room${this.activeRoomId}/order/${id}`).update({ id, turn: firstPlayer });
   }
 
   public savePlayerScore(score: number): void {
@@ -66,10 +94,7 @@ export class DataBaseService {
     this.dataBase.object(`/rooms/room${roomId}/players/${this.userId}`).remove();
   }
 
-  public addPlayerToRoom(newPlayer: TPlayer, roomId: number): void {
-    this.dataBase.object(`/rooms/room${roomId}/players/${newPlayer.id}`).update(newPlayer);
-  }
-
+ 
   public addNewRoom(newRoom: TRoom): void {
     this.dataBase.list('rooms').update('room' + newRoom.id, newRoom);
   }

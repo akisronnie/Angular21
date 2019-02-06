@@ -1,6 +1,18 @@
+type TUser = {
+  id: number,
+  name: string,
+  pass: string,
+  wins: number,
+  loses: number
+}
+
+
 type TPlayer = {
   id: number,
   name:string,
+  pass: string,
+  wins: number,
+  loses: number
   isActive:boolean,
   playerMaster:boolean,
   sum: number

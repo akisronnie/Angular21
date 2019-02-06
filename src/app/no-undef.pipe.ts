@@ -6,9 +6,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 export class NoUndefPipe implements PipeTransform {
 
-  transform(value: TRoom, args?: any): any {
-    if (value.players === undefined) { return 0; }
-    return value.players.length;
+  transform(room: TRoom, args?: any): any {
+    if (room.players === undefined) { return 0; }
+    return Object.keys(room.players).length;
   }
 
 }

@@ -1,7 +1,4 @@
 <div class="wrapper">
-  <label for="inputNewName">Please enter you name</label>
-  <input type="text" id="inputNewName" placeholder="Enter name" [(ngModel)]="userName">
-
   <button type="button" (click)="isShowAddRoomMenu = !isShowAddRoomMenu" class="add-button">show/hide add room menu</button>
 
   <div *ngIf="isShowAddRoomMenu" class="add-room-menu">
@@ -15,9 +12,8 @@
       Number of room : {{ room.id }}
       <div>maxplayers : {{ room.maxplayers }}</div>
       <div>players in room : {{room | noUndef}} </div>
-      <button type="button" (click)="deleteRoom(room.id)">Delete room</button>
-      <a routerLinkActive="router-link-active"> <button type="button" (click)="selectRoom(room.id)" *ngIf="userName">Select
-          room</button> </a>
+      <button type="button" (click)="deleteRoom(room.id)"> Delete room </button>
+      <button type="button" (click)="selectRoom(room.id)"> Select room </button> 
     </div>
   </div>
 </div>

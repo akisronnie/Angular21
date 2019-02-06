@@ -5,12 +5,16 @@ import { MenuComponent } from './menu/menu.component';
 import { MultiplayerMenuComponent } from './multiplayer-menu/multiplayer-menu.component';
 import { ErrorComponent } from './error/error.component';
 import { InroomComponent } from './inroom/inroom.component';
+import { IntroComponent } from './intro/intro.component';
 
 const routes: Routes = [
   { path: '',
-    redirectTo: '/menu',
+    redirectTo: '/intro',
     pathMatch: 'full'
   },
+  { path: 'intro',
+  component: IntroComponent
+},
   { path: 'game',
     component: GameComponent
   },

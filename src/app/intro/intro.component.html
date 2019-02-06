@@ -1,0 +1,12 @@
+<div class="wrapper">
+  <div class="welcome">Welcome to Black Jack!!!</div>
+  <input type="text"  placeholder="Enter your name" [(ngModel)]="userName">
+  <input type="text" *ngIf="users" placeholder="Enter your password" [(ngModel)]="userPassword">
+  <button type="button" (click)="enter()">Enter</button>
+  <div *ngFor="let user of users" class="userList">
+    <h4>User name: {{user.name}}</h4>
+    <p>User wins: {{user.wins}}</p>
+    <p>User loses: {{user.loses}}</p>
+    <button type="button" (click)=selectUser(user.name)>select user</button>
+  </div>
+</div>
