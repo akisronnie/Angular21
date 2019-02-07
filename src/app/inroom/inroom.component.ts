@@ -15,12 +15,6 @@ export class InroomComponent implements OnInit, OnDestroy {
 
   public activeRoom: TRoom = null;
   public activePlayer: TPlayer;
-
-  // public userName: string;
-  // public userId: number;
-  // public playersInRoom: number;
-  // public isPlayerReady: boolean;
-  // public activeRoomPlayers: {}[] = [];
   private goToGame: boolean = false;
   private destroy$$: Subject<number> = new Subject();
 
@@ -28,13 +22,13 @@ export class InroomComponent implements OnInit, OnDestroy {
     private _route: ActivatedRoute,
     private _dataBaseService: DataBaseService,
     private router: Router) {
-      
+
   }
 
-  // public playerReady(): void {
-  //   this.activePlayer.isActive = !this.activePlayer.isActive;
-  //   this._dataBaseService.playerReady(this.activeRoom.id, this.activePlayer);
-  // }
+  public playerReady(): void {
+    this.activePlayer.isActive = !this.activePlayer.isActive;
+    this._dataBaseService.playerReady(this.activeRoom.id, this.activePlayer);
+  }
 
   public ngOnInit(): void {
     if (this._dataBaseService.activeUser === null) {
@@ -49,11 +43,6 @@ export class InroomComponent implements OnInit, OnDestroy {
     }
 
     this.activePlayer = this._dataBaseService.activeUser;
-    // this.userName = this._dataBaseService.userName;
-    // if (this.userName === undefined) { this.router.navigate(['/multiplayer']); }
-    // // if (this.userName == undefined) this.userName = 'Anonimus'
-    // this.userId = this._dataBaseService.userId;
-    // // if (this.userId == undefined) this.userId = new Date().getMilliseconds();
 
     this._route.params
       .pipe(
@@ -62,40 +51,75 @@ export class InroomComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$$)
       )
       .subscribe((room: TRoom) => {
-        if (room === null) {alert('room does not exist'); this.router.navigate(['/multiplayer']); return; }
+        if (room === null) {
+          alert('room does not exist');
+          this.router.navigate(['/multiplayer']);
+
+          return;
+         }
+
+        const userInRoom: boolean = Object.values(room.players).some((player: TPlayer) => {
+           if (player.id === this._dataBaseService.activeUser.id) {return true; }
+          });
+
+        if (!userInRoom && room.maxplayers <= Object.values(room.players).length ) {
+          alert('Sorry, room is full');
+          this.router.navigate(['/multiplayer']);
+        }
+
+        if (userInRoom !== true) {
+          this._dataBaseService.activeRoomId = room.id;
+          this._dataBaseService.addPlayerToRoom();
+          this._dataBaseService.addPlayerToRoomOrder();
+        }
+
         this._dataBaseService.activeRoomId = room.id;
-        this.activeRoom = room; });
+        this.activeRoom = room;
+        this._checkPlayerMaster(room);
 
+        Object.values(room.players).forEach((player: TPlayer) => {
+          if (player.id === this._dataBaseService.activeUser.id) {
+            this._dataBaseService.activeUser === player;
+            this.activePlayer = player;
+          }
+        });
 
-//////////////////////////////////////////
+       this.goToGame = Object.values(room.players).every((onePlayer: TPlayer) => {
+          if (onePlayer.isActive) {
+            return true;
+          } else {
+            return false;
+          }
+        });
+        if (this.goToGame) {this.router.navigate(['/game']); }
+      });
+  }
 
-
-      //   this.playersInRoom = Object.keys(this.activeRoom.players).length;
-      //   let goToGame: boolean = true;
-      //   for (const player in room.players) {
-      //     if (room.players[player].id === this.userId) {
-      //       this.activePlayer = room.players[player];
-      //     }
-
-      //     if (room.players[player].isActive === false) {
-      //       goToGame = false;
-      //     }
-      //     this.activeRoomPlayers = Object.values(room.players);
-      //   }
-      //   if (goToGame === true) {
-      //     this._dataBaseService.isMultiplayer = true;
-      //     this._dataBaseService.playerMaster = this.activePlayer.playerMaster;
-      //     this.goToGame = true;
-      //     this._dataBaseService.setEnoughDraw(false);
-      //     this.router.navigate(['/game']);
-      //   }
-      // });
+  private _checkPlayerMaster(room: TRoom): void {
+    if (Object.values(room.players).length === 1) {
+      this._dataBaseService.setPlayerMaster(this.activePlayer.id);
+      this._dataBaseService.activeUser.playerMaster = true;
+    }
   }
 
   public ngOnDestroy(): void {
      if (this.goToGame === false) {
        this._dataBaseService.removeUserFromRoom(this.activeRoom.id);
+       this._dataBaseService.removeUserFromOrder();
+       this._dataBaseService.activeRoomId = null;
+
+       if (this.activePlayer.playerMaster && this.activeRoom.players !== undefined) {
+         const players: TPlayer[] = Object.values(this.activeRoom.players);
+
+         for (let index: number = 0; index < players.length; index++) {
+          if (!players[index].playerMaster) {
+            this._dataBaseService.setPlayerMaster(players[index].id);
+            break;
+          }
+         }
+       }
      }
+
 
     this.destroy$$.next();
   }

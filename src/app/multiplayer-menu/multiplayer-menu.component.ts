@@ -19,7 +19,8 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
   private newRoom: TRoom = {
     id: 0,
     maxplayers: 2,
-    players: []
+    players: [],
+    order : {}
   };
 
   public isShowAddRoomMenu: boolean = false;
@@ -60,8 +61,8 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
 
       this._dataBaseService.activeRoomId = id; //// delete
 
-      if (selectedRoom.players !== undefined) {
-        this._dataBaseService.activeUser.playerMaster = true;
+      if (selectedRoom.players === undefined) {
+       this._dataBaseService.setPlayerMaster(this._dataBaseService.activeUser.id);
       }
 
     this._dataBaseService.addPlayerToRoom();

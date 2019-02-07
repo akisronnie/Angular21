@@ -1,17 +1,17 @@
-<section class="table">
+<section class="table" *ngIf="activeRoom">
 
 <div class="players" *ngFor="let player of activeRoom.players">
-  <h3>{{player.name}}</h3>
-  <h3>{{player.id}}</h3>
-  <h3>{{player.isActive}}</h3>
-  <h3>{{player.playerMaster}}</h3>
-  <h3 *ngIf="player.id === dataBaseService.userId"> {{player.sum}}</h3>
+  <h3>Player Name: {{ player.name }}</h3>
+  <h3>Player ID: {{ player.id }}</h3>
+  <h3>Player Master: {{ player.playerMaster }}</h3>
+  <h3 *ngIf="player.id === dataBaseService.activeUser.id">You Score: {{ player.sum }}</h3>
+
   <div  class="player-hand">
       <img *ngFor="let card of player.hand" [src]="card.src">
   </div>
 
-  <button type="button" *ngIf="player.id === dataBaseService.userId" [disabled]="!youTurn"  (click)="this.getPlayer.emit()">Get Card</button>
-  <button type="button" *ngIf="player.id === dataBaseService.userId" [disabled]="!youTurn"  (click)="this.enoughGame.emit()">Enough!</button>
+  <button type="button" *ngIf="player.id === dataBaseService.activeUser.id" [disabled]="!youTurn"  (click)="this.getPlayer.emit()">Get Card</button>
+  <button type="button" *ngIf="player.id === dataBaseService.activeUser.id" [disabled]="!youTurn"  (click)="this.enoughGame.emit()">Enough!</button>
 </div>
 
 

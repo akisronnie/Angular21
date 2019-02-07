@@ -41,37 +41,62 @@ export class DataBaseService {
     this.dataBase.object(`/rooms/room${roomId}/players/${this.activeUser.id}`).remove();
   }
 
+  public removeUserFromOrder(): void {
+    this.dataBase.object(`/rooms/room${this.activeRoomId}/order/${this.activeUser.id}`).remove();
+  }
 
+  public setPlayerMaster(id: number): void {
+    this.dataBase.object(`/rooms/room${this.activeRoomId}/players/${id}`).update({playerMaster : true });
+  }
 
+  public playerReady(roomId: number, activePlayer: TPlayer): void {
+    this.dataBase.object(`/rooms/room${roomId}/players/${activePlayer.id}`).update(activePlayer);
+  }
 
+  public savePlayerScore(score: number): void {
+    this.dataBase.object(`/rooms/room${this.activeRoomId}/players/${this.activeUser.id}`).update({ sum: score });
+  }
 
+  public pushDeck(deck: TCard[]): void {
+    this.dataBase.object(`/rooms/room${this.activeRoomId}/deck`).set(deck);
+  }
 
-
-
-
-
-
-
-
-  public setEnoughDraw(status: boolean): void {
-    this.dataBase.object(`/rooms/room${this.activeRoomId}/order/${this.userId}`).update({  enough: status });
+  public pushHandCard(hand: TCard[]): void {
+    this.dataBase.object(`/rooms/room${this.activeRoomId}/players/${this.activeUser.id}/hand`).set(hand);
   }
 
   public changeTurn(id: number, status: boolean): void {
     this.dataBase.object(`/rooms/room${this.activeRoomId}/order/${id}`).update({ id, turn: status });
   }
 
+  public setEnoughDraw(status: boolean): void {
+    this.dataBase.object(`/rooms/room${this.activeRoomId}/order/${this.activeUser.id}`).update({  enough: status });
+  }
+
+  public playerUnready(roomId: number): void {
+    this.dataBase.object(`/rooms/room${roomId}/players/${this.activeUser.id}`).update({isActive : false});
+
+  }
+
+
+
+
+
+
+
+
+
+
+  
+
+
+ 
+
   public getOrderInRoom(): Observable<{}[]> {
     return this.dataBase.list(`/rooms/room${this.activeRoomId}/order`).valueChanges();
   }
 
-  public savePlayerScore(score: number): void {
-    this.dataBase.object(`/rooms/room${this.activeRoomId}/players/${this.userId}`).update({ sum: score });
-  }
 
-  public pushHandCard(hand: TCard[]): void {
-    this.dataBase.object(`/rooms/room${this.activeRoomId}/players/${this.userId}/hand`).set(hand);
-  }
 
   public deleteHandCards(): void {
     this.dataBase.object(`/rooms/room${this.activeRoomId}/players/${this.userId}/hand`).remove();
@@ -81,20 +106,8 @@ export class DataBaseService {
     return this.dataBase.list(`/rooms/room${this.activeRoomId}/deck`).valueChanges();
   }
 
-  public pushDeck(deck: TCard[]): void {
-    this.dataBase.object(`/rooms/room${this.activeRoomId}/deck`).set(deck);
-  }
-
-  public playerReady(roomId: number, activePlayer: TPlayer): void {
-    this.dataBase.object(`/rooms/room${roomId}/players/${this.userId}`).update(activePlayer);
-  }
-  public playerUnready(roomId: number): void {
-    this.dataBase.object(`/rooms/room${roomId}/players/${this.userId}`).update({isActive : false});
-
-  }
 
 
- 
   public addNewRoom(newRoom: TRoom): void {
     this.dataBase.list('rooms').update('room' + newRoom.id, newRoom);
   }

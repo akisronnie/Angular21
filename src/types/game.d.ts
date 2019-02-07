@@ -6,7 +6,11 @@ type TUser = {
   loses: number
 }
 
-
+type TOrder = {
+  id: number,
+  turn: boolean
+  enough: boolean
+}
 type TPlayer = {
   id: number,
   name:string,
@@ -22,6 +26,7 @@ type TPlayer = {
 type TRoom = {
   deck?: TCard[],
   id:number,
+  order : {},
   maxplayers:number,
   players?:TPlayer[]
 }
