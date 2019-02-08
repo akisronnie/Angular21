@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { DataBaseService } from '../../data-base.service';
+import { DataBaseService } from '../../services/data-base.service';
 
 @Component({
   selector: 'app-field',

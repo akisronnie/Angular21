@@ -3,7 +3,7 @@
 
   <div *ngIf="isShowAddRoomMenu" class="add-room-menu">
     <label for="maxPlayer">Max players: </label>
-    <input type="number" min="2" max="6" autofocus placeholder="2" id="maxPlayer" [(ngModel)]="newRoom.maxplayers">
+    <input type="number" min="2" max="6" autofocus placeholder="2" id="maxPlayer" [(ngModel)]="maxPlayers">
     <button type="button" (click)="addNewRoom()" class="add-button">Create room</button>
   </div>
 

@@ -6,6 +6,7 @@ import { MultiplayerMenuComponent } from './multiplayer-menu/multiplayer-menu.co
 import { ErrorComponent } from './error/error.component';
 import { InroomComponent } from './inroom/inroom.component';
 import { IntroComponent } from './intro/intro.component';
+import { UserGuard } from './guards/user.guard';
 
 const routes: Routes = [
   { path: '',
@@ -15,17 +16,16 @@ const routes: Routes = [
   { path: 'intro',
   component: IntroComponent
 },
-  { path: 'game',
+  { path: 'game/:id',
     component: GameComponent
   },
   { path: 'menu',
-    component: MenuComponent
+    component: MenuComponent,
+    canActivate: [UserGuard]
   },
   { path: 'multiplayer',
-    component: MultiplayerMenuComponent
-  },
-  { path: 'inroom/:id',
-    component: InroomComponent
+    component: MultiplayerMenuComponent,
+    canActivate: [UserGuard]
   },
   { path: '**',
     component: ErrorComponent

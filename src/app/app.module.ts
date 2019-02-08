@@ -13,14 +13,15 @@ import { GameComponent } from './game/game.component';
 import { MenuComponent } from './menu/menu.component';
 import { ErrorComponent } from './error/error.component';
 
-import { GameService } from './game.service';
-import { DataBaseService } from './data-base.service';
+import { GameService } from './services/game.service';
+import { DataBaseService } from './services/data-base.service';
 import { MultiplayerMenuComponent } from './multiplayer-menu/multiplayer-menu.component';
-import { InroomComponent } from './inroom/inroom.component';
 import { NoUndefPipe } from './no-undef.pipe';
 import { IntroComponent } from './intro/intro.component';
 import { KeysPipe } from './keys.pipe';
-
+import { UserGuard } from './guards/user.guard'
+import { LocalStorageService } from './services/local-storage.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,6 @@ import { KeysPipe } from './keys.pipe';
     MenuComponent,
     ErrorComponent,
     MultiplayerMenuComponent,
-    InroomComponent,
     NoUndefPipe,
     IntroComponent,
     KeysPipe,
@@ -44,7 +44,13 @@ import { KeysPipe } from './keys.pipe';
     AngularFireDatabaseModule,
 
   ],
-  providers: [GameService, DataBaseService],
+  providers: [
+    GameService,
+    DataBaseService,
+    LocalStorageService,
+    UserGuard,
+    UserService,
+  ],
   bootstrap: [AppComponent]
 })
 

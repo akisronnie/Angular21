@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DataBaseService } from '../data-base.service';
+import { DataBaseService } from '../services/data-base.service';
 import { Router } from '@angular/router';
-import { Subject, Observable } from 'rxjs';
-import { takeUntil, map, pluck, switchMap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-intro',
@@ -18,45 +19,42 @@ export class IntroComponent implements OnInit, OnDestroy {
 
   public constructor(
      private _dataBaseService: DataBaseService,
-     private router: Router) { }
+     private _userService: UserService,
+     private router: Router) {}
 
   public ngOnInit(): void {
-
-    const localStorageBlackJack: string = localStorage.getItem('BlackJack');
-    const  userFromLocalStorage: TPlayer = localStorageBlackJack ? JSON.parse(localStorageBlackJack) : null;
-
-    if (userFromLocalStorage !== null) {
-      const enter: boolean = confirm(`Hello ${userFromLocalStorage.name}, Do you want to enter with another name?`);
-
-      if (enter !== true) {
-        this.EnterToMenu();
-      }
-    }
-
     this._dataBaseService.getUsers().pipe(
       takeUntil(this.destroy$$))
-      .subscribe((users: TPlayer[]) => {this.users = users; });
-
+      .subscribe((users: TPlayer[]) => {
+        this.users = users;
+      });
   }
 
   public enter(): void {
     if (this.userName === undefined || this.userName === '' || this.userPassword === undefined || this.userPassword === '') {
       alert('Enter name and password!!');
+
       return;
     }
 
     let saveUser: TPlayer;
-    const existUser: boolean = this.users.some((user: TPlayer) => {if (user.name === this.userName) {saveUser = user; return true; }});
+    const existUser: boolean = this.users.some((user: TPlayer) => {
+      if (user.name === this.userName) {
+        saveUser = user;
+        return true;
+      }
+    });
 
     if (existUser) {
       if (saveUser.pass === this.userPassword) {
-        this._dataBaseService.activeUser = saveUser;
-        localStorage.setItem('BlackJack', JSON.stringify(saveUser));
-        this.EnterToMenu();
+        this._userService.setUser(saveUser);
+        this.router.navigate(['/menu']);
+
         return;
 
       } else {
         alert('Password incorrect!');
+        this.userPassword = '';
 
         return;
       }
@@ -86,19 +84,14 @@ export class IntroComponent implements OnInit, OnDestroy {
       };
 
     this._dataBaseService.addUsers(newUser);
-    this._dataBaseService.activeUser = newUser;
-    localStorage.setItem('BlackJack', JSON.stringify(newUser));
-    this.EnterToMenu();
-
-  }
-
-  private EnterToMenu(): void {
+    this._userService.setUser(newUser);
     this.router.navigate(['/menu']);
   }
 
   public selectUser(userName: string): void {
     this.userName = userName;
-
+    this.userPassword = prompt(`Enter password for ${this.userName}`);
+    this.enter();
   }
 
   public ngOnDestroy(): void {

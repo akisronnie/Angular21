@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DataBaseService } from '../data-base.service';
+import { DataBaseService } from '../services/data-base.service';
 import { Router } from '@angular/router';
 import { takeUntil, map, pluck, switchMap } from 'rxjs/operators';
 import { Subject, Observable } from 'rxjs';
@@ -44,13 +44,13 @@ export class InroomComponent implements OnInit, OnDestroy {
 
     this.activePlayer = this._dataBaseService.activeUser;
 
-    this._route.params
-      .pipe(
-        pluck('id'),
-        switchMap((roomId: number) => this._dataBaseService.getRoom$(roomId)),
-        takeUntil(this.destroy$$)
-      )
-      .subscribe((room: TRoom) => {
+    // this._route.params
+    //   .pipe(
+    //     pluck('id'),
+    //     switchMap((roomId: number) => this._dataBaseService.getRoom$(roomId)),
+    //     takeUntil(this.destroy$$)
+    //   )
+    //   .subscribe((room: TRoom) => {
         if (room === null) {
           alert('room does not exist');
           this.router.navigate(['/multiplayer']);

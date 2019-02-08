@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DataBaseService } from '../data-base.service';
+import { DataBaseService } from '../services/data-base.service';
 import { Router } from '@angular/router';
 import { Subject, Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-multiplayer-menu',
@@ -14,43 +15,41 @@ import { takeUntil } from 'rxjs/operators';
 export class MultiplayerMenuComponent implements OnInit, OnDestroy {
 
   public rooms: TRoom[];
-  public maxPlayers: number = 2;
-  private destroy$$: Subject<number> = new Subject();
-  private newRoom: TRoom = {
-    id: 0,
-    maxplayers: 2,
-    players: [],
-    order : {}
-  };
-
   public isShowAddRoomMenu: boolean = false;
+  public user: TPlayer;
+  public maxPlayers: number = 2;
+  private _destroy$$: Subject<number> = new Subject();
 
   public constructor(
     private _dataBaseService: DataBaseService,
+    private _userService: UserService,
     private router: Router
   ) {}
 
-  public ngOnInit(): void {
-    if (this._dataBaseService.activeUser === null) {
-      const localStorageBlackJack: string = localStorage.getItem('BlackJack');
-      const  userFromLocalStorage: TPlayer = localStorageBlackJack ? JSON.parse(localStorageBlackJack) : null;
-        if (userFromLocalStorage === null) {
-          alert('Please register');
-          this.router.navigate(['/intro']);
-        } else {
-          this._dataBaseService.activeUser = userFromLocalStorage;
-        }
-    }
 
-    this._dataBaseService.getRooms().pipe(takeUntil(this.destroy$$)).subscribe((rooms: TRoom[]) => { this.rooms = rooms; });
+  public ngOnInit(): void {
+    this._dataBaseService.getRooms()
+      .pipe(
+        takeUntil(this._destroy$$))
+      .subscribe((rooms: TRoom[]) => {
+        this.rooms = rooms;
+      });
+
+    this._userService.getUser$()
+      .pipe(
+        takeUntil(this._destroy$$))
+      .subscribe((user: TPlayer) => {
+        this.user = user;
+      });
   }
 
-
-  public selectRoom(id: number): void {
+  public selectRoom(roomId: number): void {
     let selectedRoom: TRoom;
 
     this.rooms.forEach((room: TRoom) => {
-      if (room.id === id) { selectedRoom = room; }
+      if (room.id === roomId) {
+        selectedRoom = room;
+      }
     });
 
       if (selectedRoom.players !== undefined && selectedRoom.maxplayers <= Object.keys(selectedRoom.players).length) {
@@ -58,16 +57,7 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
 
         return;
       }
-
-      this._dataBaseService.activeRoomId = id; //// delete
-
-      if (selectedRoom.players === undefined) {
-       this._dataBaseService.setPlayerMaster(this._dataBaseService.activeUser.id);
-      }
-
-    this._dataBaseService.addPlayerToRoom();
-    this._dataBaseService.addPlayerToRoomOrder();
-    this.router.navigate(['/inroom', id]);
+    this.router.navigate(['/game', roomId]);
   }
 
   public addNewRoom(): void {
@@ -78,21 +68,27 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
         _newIdForNewRoom = room.id;
       }
     });
-    _newIdForNewRoom++;
-    this.newRoom.id = _newIdForNewRoom;
-    this._dataBaseService.addNewRoom(this.newRoom);
+
+    const newRoom: TRoom = {
+      id : ++_newIdForNewRoom,
+      maxplayers: this.maxPlayers,
+      players: [],
+      order : {}
+    };
+    this._dataBaseService.addNewRoom(newRoom);
     this.isShowAddRoomMenu = !this.isShowAddRoomMenu;
   }
 
   public deleteRoom(id: number): void {
-    let selectRoom: TRoom;
+    let selectedRoom: TRoom;
+
     this.rooms.forEach((room: TRoom) => {
       if (room.id === id) {
-        selectRoom = room;
+        selectedRoom = room;
       }
     });
 
-    if ( selectRoom.players !== undefined && Object.keys(selectRoom.players).length > 0 ) {
+    if ( selectedRoom.players !== undefined ) {
       alert('There are players in the room');
     } else {
       this._dataBaseService.deleteRoom(id);
@@ -100,7 +96,6 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.destroy$$.next();
+    this._destroy$$.next();
   }
-
 }

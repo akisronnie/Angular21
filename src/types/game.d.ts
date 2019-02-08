@@ -44,6 +44,8 @@ type TResultField = {
 }
 type TResultScore = {
   message: string,
-  player: TPlayer,
+  user: TPlayer,
+  room: TRoom,
+  youTurn: boolean
  
 }

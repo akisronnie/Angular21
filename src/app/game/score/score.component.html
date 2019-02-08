@@ -1,26 +1,29 @@
 <div class="score-container">
-  <a routerLink="/menu">
-    Return to MENU
+  <a routerLink="/multiplayer">
+    Return to multiplayer menu.
   </a>
-
-  <button *ngIf="finish" (click)="startNewGame()"> Retry? {{roomId}}</button>
-
-  <!--
   <div class="score">
-    Wins:{{ scoreResult.player.numberWins }} Loses:{{ scoreResult.computer.numberWins }}
-  </div>
-
+      {{ scoreResult.message }}
+    </div> 
+  <button *ngIf="scoreResult" (click)="startNewGame()"> Ready {{scoreResult.user.isActive}}</button>
+  <div class="score" *ngIf="scoreResult && scoreResult.user.isActive">
+      READY!!!
+    </div> 
   <div class="score">
-    {{ scoreResult.message }}
-  </div> -->
-
-  <div class="score" *ngIf="activeRoom.id">
-      ID ROOM:{{ activeRoom.id }}
+    Wins:{{ scoreResult.user.wins }} Loses:{{ scoreResult.user.loses }}
   </div>
+  <div class="score" *ngIf="scoreResult.room">
+      ID ROOM:{{ scoreResult.room.id }} Max players: {{ scoreResult.room.maxplayers}}
+  </div>
+  <div class="score" *ngIf="scoreResult.youTurn">
+      YOU TURN!!!
+  </div> 
+
+<!-- 
 
   <div class="score" *ngIf="youTurn">
     YOU TURN!!!
-</div>
+</div> -->
 
   <!-- <button type="button"
           class="input-button4"
