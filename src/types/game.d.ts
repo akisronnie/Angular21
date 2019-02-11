@@ -28,7 +28,8 @@ type TRoom = {
   id:number,
   order : {},
   maxplayers:number,
-  players?:TPlayer[]
+  players?:TPlayer[],
+  started: boolean
 }
 
  type TCard = {

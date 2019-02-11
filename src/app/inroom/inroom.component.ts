@@ -13,94 +13,94 @@ import { Subject, Observable } from 'rxjs';
 
 export class InroomComponent implements OnInit, OnDestroy {
 
-  public activeRoom: TRoom = null;
-  public activePlayer: TPlayer;
-  private goToGame: boolean = false;
-  private destroy$$: Subject<number> = new Subject();
+  // public activeRoom: TRoom = null;
+  // public activePlayer: TPlayer;
+  // private goToGame: boolean = false;
+  // private destroy$$: Subject<number> = new Subject();
 
-  public constructor(
-    private _route: ActivatedRoute,
-    private _dataBaseService: DataBaseService,
-    private router: Router) {
+  // public constructor(
+  //   private _route: ActivatedRoute,
+  //   private _dataBaseService: DataBaseService,
+  //   private router: Router) {
 
-  }
+  // }
 
-  public playerReady(): void {
-    this.activePlayer.isActive = !this.activePlayer.isActive;
-    this._dataBaseService.playerReady(this.activeRoom.id, this.activePlayer);
-  }
+  // public playerReady(): void {
+  //   this.activePlayer.isActive = !this.activePlayer.isActive;
+  //   this._dataBaseService.playerReady(this.activeRoom.id, this.activePlayer);
+  // }
 
-  public ngOnInit(): void {
-    if (this._dataBaseService.activeUser === null) {
-      const localStorageBlackJack: string = localStorage.getItem('BlackJack');
-      const  userFromLocalStorage: TPlayer = localStorageBlackJack ? JSON.parse(localStorageBlackJack) : null;
-        if (userFromLocalStorage === null) {
-          alert('Please register');
-          this.router.navigate(['/intro']);
-        } else {
-          this._dataBaseService.activeUser = userFromLocalStorage;
-        }
-    }
+  // public ngOnInit(): void {
+  //   if (this._dataBaseService.activeUser === null) {
+  //     const localStorageBlackJack: string = localStorage.getItem('BlackJack');
+  //     const  userFromLocalStorage: TPlayer = localStorageBlackJack ? JSON.parse(localStorageBlackJack) : null;
+  //       if (userFromLocalStorage === null) {
+  //         alert('Please register');
+  //         this.router.navigate(['/intro']);
+  //       } else {
+  //         this._dataBaseService.activeUser = userFromLocalStorage;
+  //       }
+  //   }
 
-    this.activePlayer = this._dataBaseService.activeUser;
+  //   this.activePlayer = this._dataBaseService.activeUser;
 
-    // this._route.params
-    //   .pipe(
-    //     pluck('id'),
-    //     switchMap((roomId: number) => this._dataBaseService.getRoom$(roomId)),
-    //     takeUntil(this.destroy$$)
-    //   )
-    //   .subscribe((room: TRoom) => {
-        if (room === null) {
-          alert('room does not exist');
-          this.router.navigate(['/multiplayer']);
+  //   // this._route.params
+  //   //   .pipe(
+  //   //     pluck('id'),
+  //   //     switchMap((roomId: number) => this._dataBaseService.getRoom$(roomId)),
+  //   //     takeUntil(this.destroy$$)
+  //   //   )
+  //   //   .subscribe((room: TRoom) => {
+  //       if (room === null) {
+  //         alert('room does not exist');
+  //         this.router.navigate(['/multiplayer']);
 
-          return;
-         }
+  //         return;
+  //        }
 
-        const userInRoom: boolean = Object.values(room.players).some((player: TPlayer) => {
-           if (player.id === this._dataBaseService.activeUser.id) {return true; }
-          });
+  //       const userInRoom: boolean = Object.values(room.players).some((player: TPlayer) => {
+  //          if (player.id === this._dataBaseService.activeUser.id) {return true; }
+  //         });
 
-        if (!userInRoom && room.maxplayers <= Object.values(room.players).length ) {
-          alert('Sorry, room is full');
-          this.router.navigate(['/multiplayer']);
-        }
+  //       if (!userInRoom && room.maxplayers <= Object.values(room.players).length ) {
+  //         alert('Sorry, room is full');
+  //         this.router.navigate(['/multiplayer']);
+  //       }
 
-        if (userInRoom !== true) {
-          this._dataBaseService.activeRoomId = room.id;
-          this._dataBaseService.addPlayerToRoom();
-          this._dataBaseService.addPlayerToRoomOrder();
-        }
+  //       if (userInRoom !== true) {
+  //         this._dataBaseService.activeRoomId = room.id;
+  //         this._dataBaseService.addPlayerToRoom();
+  //         this._dataBaseService.addPlayerToRoomOrder();
+  //       }
 
-        this._dataBaseService.activeRoomId = room.id;
-        this.activeRoom = room;
-        this._checkPlayerMaster(room);
+  //       this._dataBaseService.activeRoomId = room.id;
+  //       this.activeRoom = room;
+  //       this._checkPlayerMaster(room);
 
-        Object.values(room.players).forEach((player: TPlayer) => {
-          if (player.id === this._dataBaseService.activeUser.id) {
-            this._dataBaseService.activeUser === player;
-            this.activePlayer = player;
-          }
-        });
+  //       Object.values(room.players).forEach((player: TPlayer) => {
+  //         if (player.id === this._dataBaseService.activeUser.id) {
+  //           this._dataBaseService.activeUser === player;
+  //           this.activePlayer = player;
+  //         }
+  //       });
 
-       this.goToGame = Object.values(room.players).every((onePlayer: TPlayer) => {
-          if (onePlayer.isActive) {
-            return true;
-          } else {
-            return false;
-          }
-        });
-        if (this.goToGame) {this.router.navigate(['/game']); }
-      });
-  }
+  //      this.goToGame = Object.values(room.players).every((onePlayer: TPlayer) => {
+  //         if (onePlayer.isActive) {
+  //           return true;
+  //         } else {
+  //           return false;
+  //         }
+  //       });
+  //       if (this.goToGame) {this.router.navigate(['/game']); }
+  //     });
+  // }
 
-  private _checkPlayerMaster(room: TRoom): void {
-    if (Object.values(room.players).length === 1) {
-      this._dataBaseService.setPlayerMaster(this.activePlayer.id);
-      this._dataBaseService.activeUser.playerMaster = true;
-    }
-  }
+  // private _checkPlayerMaster(room: TRoom): void {
+  //   if (Object.values(room.players).length === 1) {
+  //     this._dataBaseService.setPlayerMaster(this.activePlayer.id);
+  //     this._dataBaseService.activeUser.playerMaster = true;
+  //   }
+  // }
 
   public ngOnDestroy(): void {
      if (this.goToGame === false) {
@@ -121,6 +121,6 @@ export class InroomComponent implements OnInit, OnDestroy {
      }
 
 
-    this.destroy$$.next();
-  }
+  //   this.destroy$$.next();
+  // }
 }

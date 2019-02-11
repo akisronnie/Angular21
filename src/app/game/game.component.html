@@ -1,17 +1,15 @@
-<app-score [scoreResult] = "scoreResult"
-          
-           (newGame)="startNewGame()"
-           [activeRoom]="activeRoom"
+<app-score [activeRoom] = "activeRoom"
+           [user] = "user"
+           [message] = "message"
+           (userReady)="userReady()"
            [youTurn]="youTurn"
-           [finish]="finish">
-</app-score>
-
-<!-- <app-field [activeRoom]="activeRoom"
-
-           [fieldResult]="fieldResult"
-           [youTurn]="youTurn"
-           
+           [finish]="finish"
            (getPlayer)="getYou()"
            (enoughGame)="enoughGame()"
            (finishGame)="finish()">
-</app-field> -->
+</app-score>
+
+<app-field [activeRoom]="activeRoom"
+           [user] = "user"
+           [youTurn]="youTurn">
+</app-field>

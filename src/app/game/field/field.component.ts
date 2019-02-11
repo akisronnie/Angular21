@@ -8,16 +8,11 @@ import { DataBaseService } from '../../services/data-base.service';
 })
 export class FieldComponent {
   @Input() public activeRoom: TRoom;
-  @Input() public fieldResult: TResultField;
-
-  // @Input() public activeRoom;
-  // @Input() public activeRoomPlayers = [];
+  @Input() public user: TRoom;
 
   @Input() public youTurn: boolean = false;
 
-  @Output() public getPlayer: EventEmitter<void> = new EventEmitter;
-  @Output() public finishGame: EventEmitter<void> = new EventEmitter;
-  @Output() public enoughGame: EventEmitter<void> = new EventEmitter;
+
 
 
  public constructor(public dataBaseService: DataBaseService) {

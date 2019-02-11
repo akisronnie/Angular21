@@ -10,20 +10,24 @@ import { DataBaseService } from '../../services/data-base.service';
 
 export class ScoreComponent  {
 
- @Input() public scoreResult: TResultScore;
+ @Input() public activeRoom: TResultScore;
+ @Input() public user: TResultScore;
+ @Input() public message: TResultScore;
 
-
-
- 
- @Input() public activeRoom: {} = {id : 0};
- @Input() public youTurn: boolean = false;
- @Input() public finish: boolean = false;
- @Input() public roomId: number;
-
- @Output() public newGame: EventEmitter<void> = new EventEmitter;
+  
+  //  @Input() public activeRoom: {} = {id : 0};
+  @Input() public youTurn: boolean = false;
+  @Input() public finish: boolean = false;
+  //  @Input() public roomId: number;
+  @Output() public getPlayer: EventEmitter<void> = new EventEmitter;
+  @Output() public finishGame: EventEmitter<void> = new EventEmitter;
+  @Output() public enoughGame: EventEmitter<void> = new EventEmitter;
+  @Output() public userReady: EventEmitter<void> = new EventEmitter;
+  
  public constructor(private _dataBaseService: DataBaseService, private router: Router) {}
  
 
- public startNewGame(): void {
+ public ready(): void {
+  this.userReady.emit();
  }
 }

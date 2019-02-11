@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable, Subject } from 'rxjs';
+import { UserService } from './user.service';
 
 
 @Injectable(
@@ -17,7 +18,9 @@ export class DataBaseService {
   // public isMultiplayer: boolean = false;
 
 
-  public constructor(private dataBase: AngularFireDatabase) {}
+  public constructor(
+    private dataBase: AngularFireDatabase,
+    private _userService: UserService) {}
 
   public addNewRoom(newRoom: TRoom): void {
     this.dataBase.list('rooms').update('room' + newRoom.id, newRoom);
@@ -51,12 +54,48 @@ export class DataBaseService {
     return this.dataBase.object(`/rooms/room${id}`).valueChanges();
   }
 
+  public setPlayerMaster(roomId: number, userId: number): void {
+    this.dataBase.object(`/rooms/room${roomId}/players/${userId}`).update({playerMaster : true });
+  }
 
+  public playerReady(roomId: number, userId: number, ready: boolean ): void {
+    this.dataBase.object(`/rooms/room${roomId}/players/${userId}`).update({isActive : ready});
+  }
 
+  public pushDeck(roomId: number, deck: TCard[]): void {
+    this.dataBase.object(`/rooms/room${roomId}/deck`).set(deck);
+  }
 
+  public pushHandCard(roomID: number, userId: number, hand: TCard[]): void {
+    this.dataBase.object(`/rooms/room${roomID}/players/${userId}/hand`).set(hand);
+  }
 
+  public savePlayerScore(roomID: number, userId: number, score: number ): void {
+    this.dataBase.object(`/rooms/room${roomID}/players/${userId}`).update({ sum: score });
+  }
 
- 
+  public gameStarted(roomID: number, status: boolean): void {
+    this.dataBase.object(`/rooms/room${roomID}/`).update({ started: status });
+  }
+
+    public setEnoughDraw(roomId: number, userId: number, status: boolean): void {
+    this.dataBase.object(`/rooms/room${roomId}/order/${userId}`).update({  enough: status });
+  }
+
+  public changeTurn(roomId: number, userId: number, status: boolean): void {
+    this.dataBase.object(`/rooms/room${roomId}/order/${userId}`).update({ userId, turn: status });
+  }
+
+  public removeUserFromRoom(roomId: number, userId: number): void {
+    this.dataBase.object(`/rooms/room${roomId}/players/${userId}`).remove();
+    this.dataBase.object(`/rooms/room${roomId}/order/${userId}`).remove();
+  }
+
+  public updateScore(roomId: number, userId: number, field: string, amount: number): void {
+    this.dataBase.object(`/rooms/room${roomId}/players/${userId}`).update({ [field] : amount });
+    this.dataBase.object(`/users/${userId}`).update({ [field] : amount });
+  }
+
 
 
 
@@ -77,30 +116,17 @@ export class DataBaseService {
   //   this.dataBase.object(`/rooms/room${roomId}/players/${activePlayer.id}`).update(activePlayer);
   // }
 
-  // public savePlayerScore(score: number): void {
-  //   this.dataBase.object(`/rooms/room${this.activeRoomId}/players/${this.activeUser.id}`).update({ sum: score });
-  // }
 
-  // public pushDeck(deck: TCard[]): void {
-  //   this.dataBase.object(`/rooms/room${this.activeRoomId}/deck`).set(deck);
-  // }
 
-  // public pushHandCard(hand: TCard[]): void {
-  //   this.dataBase.object(`/rooms/room${this.activeRoomId}/players/${this.activeUser.id}/hand`).set(hand);
-  // }
 
-  // public changeTurn(id: number, status: boolean): void {
-  //   this.dataBase.object(`/rooms/room${this.activeRoomId}/order/${id}`).update({ id, turn: status });
-  // }
 
-  // public setEnoughDraw(status: boolean): void {
-  //   this.dataBase.object(`/rooms/room${this.activeRoomId}/order/${this.activeUser.id}`).update({  enough: status });
-  // }
 
-  // public playerUnready(roomId: number): void {
-  //   this.dataBase.object(`/rooms/room${roomId}/players/${this.activeUser.id}`).update({isActive : false});
 
-  // }
+
+
+
+
+
 
 
   // public getOrderInRoom(): Observable<{}[]> {
