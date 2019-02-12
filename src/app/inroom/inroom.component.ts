@@ -102,23 +102,23 @@ export class InroomComponent implements OnInit, OnDestroy {
   //   }
   // }
 
-  public ngOnDestroy(): void {
-     if (this.goToGame === false) {
-       this._dataBaseService.removeUserFromRoom(this.activeRoom.id);
-       this._dataBaseService.removeUserFromOrder();
-       this._dataBaseService.activeRoomId = null;
+  // public ngOnDestroy(): void {
+  //    if (this.goToGame === false) {
+  //      this._dataBaseService.removeUserFromRoom(this.activeRoom.id);
+  //      this._dataBaseService.removeUserFromOrder();
+  //      this._dataBaseService.activeRoomId = null;
 
-       if (this.activePlayer.playerMaster && this.activeRoom.players !== undefined) {
-         const players: TPlayer[] = Object.values(this.activeRoom.players);
+  //      if (this.activePlayer.playerMaster && this.activeRoom.players !== undefined) {
+  //        const players: TPlayer[] = Object.values(this.activeRoom.players);
 
-         for (let index: number = 0; index < players.length; index++) {
-          if (!players[index].playerMaster) {
-            this._dataBaseService.setPlayerMaster(players[index].id);
-            break;
-          }
-         }
-       }
-     }
+  //        for (let index: number = 0; index < players.length; index++) {
+  //         if (!players[index].playerMaster) {
+  //           this._dataBaseService.setPlayerMaster(players[index].id);
+  //           break;
+  //         }
+  //        }
+  //      }
+  //    }
 
 
   //   this.destroy$$.next();

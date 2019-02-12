@@ -35,18 +35,20 @@ export class DataBaseService {
   }
 
   public addPlayerToRoom(roomId: number, player: TPlayer): void {
+    debugger
     this.dataBase.object(`/rooms/room${roomId}/players/${player.id}`).update(player);
   }
 
-  public addPlayerToRoomOrder(roomId: number, player: TPlayer): void {
-    this.dataBase.object(`/rooms/room${roomId}/order/${player.id}`).update({ id : player.id, turn: player.playerMaster });
-  }
+  // public addPlayerToRoomOrder(roomId: number, player: TPlayer): void {
+  //   this.dataBase.object(`/rooms/room${roomId}/order/${player.id}`).update({ id : player.id, turn: player.playerMaster, isBot: player.isBot });
+  // }
 
   public getUsers (): Observable<{}[]> {
     return this.dataBase.list(`/users`).valueChanges();
   }
 
   public addUsers(newUser: TPlayer ): void {
+
     this.dataBase.object(`/users/${newUser.id}`).update(newUser);
   }
 
@@ -55,6 +57,7 @@ export class DataBaseService {
   }
 
   public setPlayerMaster(roomId: number, userId: number): void {
+    
     this.dataBase.object(`/rooms/room${roomId}/players/${userId}`).update({playerMaster : true });
   }
 
@@ -79,16 +82,16 @@ export class DataBaseService {
   }
 
     public setEnoughDraw(roomId: number, userId: number, status: boolean): void {
-    this.dataBase.object(`/rooms/room${roomId}/order/${userId}`).update({  enough: status });
+    this.dataBase.object(`/rooms/room${roomId}/players/${userId}`).update({  enough: status });
   }
 
   public changeTurn(roomId: number, userId: number, status: boolean): void {
-    this.dataBase.object(`/rooms/room${roomId}/order/${userId}`).update({ userId, turn: status });
+    debugger
+    this.dataBase.object(`/rooms/room${roomId}/players/${userId}`).update({ turn: status });
   }
 
   public removeUserFromRoom(roomId: number, userId: number): void {
     this.dataBase.object(`/rooms/room${roomId}/players/${userId}`).remove();
-    this.dataBase.object(`/rooms/room${roomId}/order/${userId}`).remove();
   }
 
   public updateScore(roomId: number, userId: number, field: string, amount: number): void {

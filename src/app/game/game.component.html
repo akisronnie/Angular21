@@ -6,7 +6,10 @@
            [finish]="finish"
            (getPlayer)="getYou()"
            (enoughGame)="enoughGame()"
-           (finishGame)="finish()">
+           (finishGame)="finish()"
+           (addBots)="addBots()"
+           (deleteBots)="deleteBots()"
+           >
 </app-score>
 
 <app-field [activeRoom]="activeRoom"

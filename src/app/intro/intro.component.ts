@@ -80,7 +80,10 @@ export class IntroComponent implements OnInit, OnDestroy {
         loses: 0,
         isActive: false,
         playerMaster: false,
-        sum: 0
+        sum: 0,
+        isBot: false,
+        turn: false,
+        enough: false
       };
 
     this._dataBaseService.addUsers(newUser);

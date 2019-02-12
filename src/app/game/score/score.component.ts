@@ -23,11 +23,23 @@ export class ScoreComponent  {
   @Output() public finishGame: EventEmitter<void> = new EventEmitter;
   @Output() public enoughGame: EventEmitter<void> = new EventEmitter;
   @Output() public userReady: EventEmitter<void> = new EventEmitter;
-  
+  @Output() public addBots: EventEmitter<void> = new EventEmitter;
+  @Output() public deleteBots: EventEmitter<void> = new EventEmitter;
+
  public constructor(private _dataBaseService: DataBaseService, private router: Router) {}
  
 
  public ready(): void {
   this.userReady.emit();
  }
+
+ public addBot(): void {
+   
+  this.addBots.emit();
+ }
+
+ public deleteBot(): void {
+  this.deleteBots.emit();
+ }
+
 }

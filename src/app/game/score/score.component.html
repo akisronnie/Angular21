@@ -13,9 +13,11 @@
       {{ message }}
     </div> 
  <div> 
-   <button *ngIf="activeRoom && !activeRoom.started" (click)="ready()"> Ready {{user.isActive}}</button>
-   <button type="button" *ngIf="activeRoom && activeRoom.started" [disabled]="!youTurn"  (click)="this.getPlayer.emit()">Get Card</button>
-   <button type="button" *ngIf="activeRoom && activeRoom.started" [disabled]="!youTurn"  (click)="this.enoughGame.emit()">Enough!</button>
+   <button *ngIf="activeRoom && !activeRoom.started && activeRoom.players && activeRoom.players.length > 1" (click)="ready()"> Ready {{user.isActive}}</button>
+   <button *ngIf="activeRoom && !activeRoom.started && user.playerMaster" (click)="addBot()"> Add bot</button>
+   <button *ngIf="activeRoom && !activeRoom.started && user.playerMaster" (click)="deleteBot()"> Delete bot</button>
+   <button type="button" *ngIf="activeRoom && activeRoom.started " [disabled]="!youTurn"  (click)="this.getPlayer.emit()">Get Card</button>
+   <button type="button" *ngIf="activeRoom && activeRoom.started " [disabled]="!youTurn"  (click)="this.enoughGame.emit()">Enough!</button>
 </div>
 
   <div class="score" *ngIf="activeRoom && user.isActive && !activeRoom.started">
