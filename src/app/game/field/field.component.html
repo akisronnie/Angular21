@@ -2,7 +2,7 @@
 
   <div class="players" *ngFor="let player of activeRoom.players">
     <h3>Player Name: {{ player.name }}</h3>
-    <h3>Player ID: {{ player.id }}</h3>
+    <h3>Player wins: {{ player.wins }} loses: {{ player.loses }}</h3>
     <h3>Player Master: {{ player.playerMaster }}</h3>
     <h3 *ngIf="user.id === player.id || !activeRoom.started">You Score: {{ player.sum }}</h3>
 

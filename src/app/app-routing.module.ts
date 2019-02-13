@@ -4,7 +4,6 @@ import { GameComponent } from './game/game.component';
 import { MenuComponent } from './menu/menu.component';
 import { MultiplayerMenuComponent } from './multiplayer-menu/multiplayer-menu.component';
 import { ErrorComponent } from './error/error.component';
-import { InroomComponent } from './inroom/inroom.component';
 import { IntroComponent } from './intro/intro.component';
 import { UserGuard } from './guards/user.guard';
 

@@ -14,13 +14,12 @@ import { UserService } from '../services/user.service';
 
 export class GameComponent implements OnInit, OnDestroy {
 
-   public message: string = 'Welcome to game';
-   public activeRoom: TRoom; // = { id: 0, players: [], maxplayers: 0, deck: [] };
-   private _destroy$$: Subject<number> = new Subject();
-   public user: TPlayer;
-   public youTurn: boolean = false;
-   private readonly _CONDITIONS_COMPUTER_DRAW: number = 15;
-
+  public message: string = 'Welcome to game';
+  public activeRoom: TRoom;
+  private _destroy$$: Subject<number> = new Subject();
+  public user: TPlayer;
+  public youTurn: boolean = false;
+  private readonly _CONDITIONS_COMPUTER_DRAW: number = 15;
 
 
   public constructor(
@@ -29,8 +28,7 @@ export class GameComponent implements OnInit, OnDestroy {
     private _userService: UserService,
     private _route: ActivatedRoute,
     private _router: Router
-  ) {}
-
+  ) { }
 
   public ngOnInit(): void {
     combineLatest(
@@ -40,195 +38,171 @@ export class GameComponent implements OnInit, OnDestroy {
         map(Number)
       ),
     )
-    .pipe(
-      switchMap(([user, id]: [TPlayer, number]) => {
-        this.user = user;
-        return this._dataBaseService.getRoom$(id);
-      }),
-      filter((room: TRoom) => {
-        if (room) {
-          let userInRoom: boolean = false;
-          if (room.players) {
-            userInRoom = Object.values(room.players).some(
-              (player: TPlayer) => (this.user.id === player.id)
-            );
-          }
+      .pipe(
+        switchMap(([user, id]: [TPlayer, number]) => {
+          this.user = user;
+          return this._dataBaseService.getRoom$(id);
+        }),
+        filter((room: TRoom) => {
+          if (room) {
+            let userInRoom: boolean = false;
+            if (room.players) {
+              userInRoom = Object.values(room.players).some(
+                (player: TPlayer) => (this.user.id === player.id)
+              );
+            }
 
-          if (!userInRoom && room.players
-            && Object.values(room.players).length >= room.maxplayers) {
+            if (!userInRoom && room.players
+              && Object.values(room.players).length >= room.maxplayers) {
               alert('This room is full');
               this._router.navigate(['/multiplayer']);
 
               return false;
-          }
+            }
 
-          if (!room.players) {
-            this.user.playerMaster = true;
-            this.user.turn = true;
-          }
+            if (!room.players) {
+              this.user.playerMaster = true;
+              this.user.turn = true;
+            }
 
-          if (!userInRoom) {
-            this._dataBaseService.addPlayerToRoom(room.id, this.user);
+            if (!userInRoom) {
+              this._dataBaseService.addPlayerToRoom(room.id, this.user);
+
+              return false;
+            }
+
+            return true;
+
+          } else {
+            alert('This room is not correct');
+            this._router.navigate(['/multiplayer']);
 
             return false;
-           }
-
-          return true;
-
-        } else {
-           alert('This room is not correct');
-           this._router.navigate(['/multiplayer']);
-
-           return false;
           }
-      }),
-      takeUntil(this._destroy$$)
-    )
-    .subscribe((room: TRoom) => {
-      this.activeRoom  = room;
+        }),
+        takeUntil(this._destroy$$)
+      )
+      .subscribe((room: TRoom) => {
+        this.activeRoom = room;
 
-      if (!this.activeRoom.players) {
-        this.activeRoom.players = [];
-      }
+        if (!this.activeRoom.players) {
+          this.activeRoom.players = [];
+        }
 
-      this.activeRoom.players = Object.values(room.players);
+        this.activeRoom.players = Object.values(room.players);
 
-      this.activeRoom.players.forEach((player: TPlayer) => {
-        if (player.id === this.user.id) {
-          this.user = player;
+        this.activeRoom.players.forEach((player: TPlayer) => {
+          if (!this.activeRoom.started && player.hand) {
+            player.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
+          }
+
+          if (player.id === this.user.id) {
+            this.user = player;
+            this.youTurn = player.turn;
+          }
+
+          if (player.id === this.user.id && player.turn) {
+            this.user = player;
+
+            if (!this.user.enough) {
+              this.youTurn = this.user.turn;
+            } else {
+              this.youTurn = false;
+              this.setNextTurn(this.user.id);
+            }
+          }
+
           if (this.user.hand) {
             this.user.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
           }
 
-          if (!this.user.enough) {
-            this.youTurn = this.user.turn;
-          } else {
-            this.youTurn = false;
-            this.setNextTurn();
+          if (player.isBot && player.turn && this.user.playerMaster && !player.enough) {
+            this._botTurn(player.id);
           }
+
+          if (player.isBot && player.turn && this.user.playerMaster && player.enough) {
+            this.setNextTurn(player.id);
+          }
+        });
+
+        const allActive: boolean = this.activeRoom.players.every((player: TPlayer) => player.isActive);
+        if (allActive && !this.activeRoom.started) {
+          this.startGame();
         }
-      });
 
-
-      const allActive: boolean = this.activeRoom.players.every((player: TPlayer) => player.isActive);
-      if (allActive && !this.activeRoom.started) {
-        this.startGame();
-      }
-
-      const allFinish: boolean = this.activeRoom.players.every((player: TPlayer) =>  player.enough  );
-      if (allFinish) {
-        this.finish();
-      }
-
-      this.activeRoom.players.forEach((player: TPlayer) => {
-        if (!this.activeRoom.started && player.hand) {
-          player.hand.map((card: TCard) => {card.src = `../assets/img/${card.name}${card.suits}.png`; });
+        const allFinish: boolean = this.activeRoom.players.every((player: TPlayer) => player.enough);
+        if (allFinish && this.activeRoom.started) {
+          this.finish();
         }
+
       });
-
-
-    });
-
-
-      // if (room.order) {
-      // this._order = Object.values(room.order);
-      // Object.values(this.activeRoom.order).forEach((order: TOrder) => {
-      //    if (order.id === this.user.id) {
-      //      this.youTurn = order.turn;
-      //      this.enough = order.enough;
-      //     }
-      //   });
-      // }
-
-
-
-
- //   if (this._order) {
-
-     
-
-  //   this._order.forEach((order: TOrder) => {
-  //     if (order.id === this.user.id) {
-  //       if (order.enough === true) {
-  //         this.setNextTurn();
-  //       }
-  //     }
-
-  //     if (order.isBot && this.user.playerMaster && order.turn) {
-
-  //       if (order.enough) {this.setNextTurn(); }  else {
-  //       this._botTurn(order.id);
-  //     };
-      
-  //     }
-
-  //   });
-
-
-  //   }
-
-  // });
 
   }
 
-  // private _botTurn(botId: number): void {
-  //   this.setNextTurn();
-  //   let bot: TPlayer;
-  //   this.activeRoom.players.forEach((player: TPlayer) => {if (player.id === botId) { bot = player; }});
-  //   if (bot.sum < this._CONDITIONS_COMPUTER_DRAW) {
-  //     const oneCard: TCard = this._deck[this._deck.length - 1];
-  //     if (!bot.hand) { bot.hand = []; }
-  //     bot.hand.push(oneCard);
-  //     bot.sum += this._deck[this._deck.length - 1].value;
-  //     this._deck.pop();
-  //     this._dataBaseService.savePlayerScore(this.activeRoom.id, bot.id, bot.sum);
-  //     this._dataBaseService.pushDeck(this.activeRoom.id, this._deck);
-  //     this._dataBaseService.pushHandCard(this.activeRoom.id, bot.id, bot.hand);
-      
-  //   } else {
-  //     this.setNextTurn();
-  //     this._dataBaseService.setEnoughDraw(this.activeRoom.id, bot.id, true);
-      
+  private _botTurn(botId: number): void {
+    let bot: TPlayer;
+    this.activeRoom.players.forEach((player: TPlayer) => { if (player.id === botId) { bot = player; } });
+    if (bot.sum < this._CONDITIONS_COMPUTER_DRAW) {
+      const oneCard: TCard = this.activeRoom.deck[this.activeRoom.deck.length - 1];
+      if (!bot.hand) { bot.hand = []; }
+      bot.hand.push(oneCard);
+      bot.sum += this.activeRoom.deck[this.activeRoom.deck.length - 1].value;
+      this.activeRoom.deck.pop();
+      this._dataBaseService.savePlayerScore(this.activeRoom.id, bot.id, bot.sum);
+      this._dataBaseService.pushDeck(this.activeRoom.id, this.activeRoom.deck);
+      this._dataBaseService.pushHandCard(this.activeRoom.id, bot.id, bot.hand);
+      this.setNextTurn(bot.id);
 
-  //   }
-  // }
+    } else {
 
-  // public addBots(): void {
-  //   const date: Date = new Date();
-  //   const components: number[] = [
-  //       date.getMonth(),
-  //       date.getDate(),
-  //       date.getHours(),
-  //       date.getMinutes(),
-  //       date.getSeconds(),
-  //       date.getMilliseconds()
-  //   ];
-  //   const botId: number = Number(components.join(''));
+      this._dataBaseService.setEnoughDraw(this.activeRoom.id, bot.id, true);
+      this.setNextTurn(bot.id);
+    }
+  }
 
-  //   const newBot: TPlayer = {
-  //     name: `Bot ${botId}`,
-  //     pass: '',
-  //     id: botId,
-  //     wins: 0,
-  //     loses: 0,
-  //     isActive: true,
-  //     playerMaster: false,
-  //     sum: 0,
-  //     isBot: true
-  //     };
+  public addBots(): void {
+    const date: Date = new Date();
+    const components: number[] = [
+      date.getMonth(),
+      date.getDate(),
+      date.getHours(),
+      date.getMinutes(),
+      date.getSeconds(),
+      date.getMilliseconds()
+    ];
+    const botId: number = Number(components.join(''));
 
-  //     this._dataBaseService.addPlayerToRoom(this.activeRoom.id, newBot);
-  //     this._dataBaseService.addPlayerToRoomOrder(this.activeRoom.id, newBot);
-  // }
+    const newBot: TPlayer = {
+      name: `Bot ${botId}`,
+      pass: '',
+      id: botId,
+      wins: 0,
+      loses: 0,
+      isActive: true,
+      playerMaster: false,
+      sum: 0,
+      isBot: true,
+      turn: false,
+      enough: false
+    };
 
-  // public deleteBots(): void {
-  //   for (let i: number = 0; i < this.activeRoom.players.length; i++) {
-  //     if (this.activeRoom.players[i].isBot) {
-  //       this._dataBaseService.removeUserFromRoom(this.activeRoom.id, this.activeRoom.players[i].id);
-  //       break;
-  //     }
-  //   }
-  // }
+    this._dataBaseService.addPlayerToRoom(this.activeRoom.id, newBot);
+  }
+
+  public deleteBots(): void {
+    for (let i: number = 0; i < this.activeRoom.players.length; i++) {
+      if (this.activeRoom.players[i].isBot) {
+        this._dataBaseService.removeUserFromRoom(this.activeRoom.id, this.activeRoom.players[i].id);
+        break;
+      }
+    }
+  }
+
+  public enoughGame(): void {
+    this._dataBaseService.changeTurn(this.activeRoom.id, this.user.id, false);
+    this._dataBaseService.setEnoughDraw(this.activeRoom.id, this.user.id, true);
+    this.setNextTurn(this.user.id);
+  }
 
 
   public userReady(): void {
@@ -239,12 +213,15 @@ export class GameComponent implements OnInit, OnDestroy {
 
   public startGame(): void {
     if (this.user.playerMaster) {
-
+      this._dataBaseService.changeTurn(this.activeRoom.id, this.user.id, true);
+      this.activeRoom.players.forEach((player: TPlayer) => {
+        if (player.isBot) {
+          this._dataBaseService.setEnoughDraw(this.activeRoom.id, player.id, false);
+        }
+      });
       this._dataBaseService.gameStarted(this.activeRoom.id, true);
-
       this.activeRoom.deck = this._gameService.generateDeck();
       this.activeRoom.deck = this._gameService.deckSort(this.activeRoom.deck);
-
       this.activeRoom.players.forEach((player: TPlayer) => {
         const oneCard: TCard = this.activeRoom.deck[this.activeRoom.deck.length - 1];
         this._dataBaseService.pushHandCard(this.activeRoom.id, player.id, [oneCard]);
@@ -253,12 +230,13 @@ export class GameComponent implements OnInit, OnDestroy {
       });
 
       this._dataBaseService.pushDeck(this.activeRoom.id, this.activeRoom.deck);
+    } else {
+      this._dataBaseService.changeTurn(this.activeRoom.id, this.user.id, false);
     }
-
   }
 
-
   public getYou(): void {
+    this._dataBaseService.changeTurn(this.activeRoom.id, this.user.id, false);
     const oneCard: TCard = this.activeRoom.deck[this.activeRoom.deck.length - 1];
 
     this.user.hand.push(oneCard);
@@ -266,31 +244,25 @@ export class GameComponent implements OnInit, OnDestroy {
     this.activeRoom.deck.pop();
     this._dataBaseService.savePlayerScore(this.activeRoom.id, this.user.id, this.user.sum);
     this._dataBaseService.pushDeck(this.activeRoom.id, this.activeRoom.deck);
-    this.user.hand.map((card: TCard) => {card.src = `../assets/img/outside.png`; });
+    this.user.hand.map((card: TCard) => { card.src = `../assets/img/outside.png`; });
     this._dataBaseService.pushHandCard(this.activeRoom.id, this.user.id, this.user.hand);
-    this.user.hand.map((card: TCard) => {card.src = `../assets/img/${card.name}${card.suits}.png`; });
+    this.user.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
 
     if (this.user.sum > 21) {
       this.message = 'You have too much';
-      this.enoughGame();
-     }
+      this._dataBaseService.setEnoughDraw(this.activeRoom.id, this.user.id, true);
+      this.setNextTurn(this.user.id);
 
-    this.setNextTurn();
+      return;
+    }
+
+    this.setNextTurn(this.user.id);
   }
 
-  public enoughGame(): void {
-    this._dataBaseService.setEnoughDraw(this.activeRoom.id, this.user.id, true);
-    this.setNextTurn();
-  }
-
-
-
-
-private setNextTurn(): void {
-
+  private setNextTurn(playerId: number): void {
     let count: number;
     this.activeRoom.players.forEach((user: TPlayer, index: number) => {
-      if (user.id === this.user.id) {
+      if (user.id === playerId) {
         count = index; user.turn = false;
         this._dataBaseService.changeTurn(this.activeRoom.id, user.id, false);
       }
@@ -303,8 +275,6 @@ private setNextTurn(): void {
   }
 
 
-
-
   private finish(): void {
     this.user.isActive = false;
     this.message = 'Winner/s: ';
@@ -313,10 +283,10 @@ private setNextTurn(): void {
     this._dataBaseService.gameStarted(this.activeRoom.id, false);
     this._dataBaseService.changeTurn(this.activeRoom.id, this.user.id, false);
     this._dataBaseService.setEnoughDraw(this.activeRoom.id, this.user.id, false);
-   
+
     let maxScore: number = 0;
 
-     this.activeRoom.players.forEach((player: TPlayer) => {
+    this.activeRoom.players.forEach((player: TPlayer) => {
 
       if (player.sum > maxScore && player.sum <= 21) {
         maxScore = player.sum;
@@ -333,44 +303,29 @@ private setNextTurn(): void {
     });
   }
 
-    
-
-
-
   public ngOnDestroy(): void {
     this._destroy$$.next();
-  // let turn: boolean;
-   
 
-  
     if (this.user.playerMaster && this.activeRoom.players !== undefined) {
       const players: TPlayer[] = this.activeRoom.players;
-    
-      // for (let index: number = 0; index < players.length; index++) {
-      //  if (!players[index].playerMaster) {
-      //    this._dataBaseService.setPlayerMaster(this.activeRoom.id, players[index].id);
-      //    this._order.forEach((order: TOrder) => { if (order.id === this.user.id) { turn = order.turn; }});
-      //    if (!this.activeRoom.started || turn) {
-      //     // this._dataBaseService.changeTurn(this.activeRoom.id, players[index].id, true);
-      //    }
-      //    break;
-      //  }
-      // }
+
+      for (let index: number = 0; index < players.length; index++) {
+        if (!players[index].playerMaster && !players[index].isBot) {
+          this._dataBaseService.setPlayerMaster(this.activeRoom.id, players[index].id);
+          break;
+        }
+      }
     }
+
     this.user.turn = false;
     this.user.hand = [];
     this.user.isActive = false;
     this.user.playerMaster = false;
     this.user.sum = 0;
-    
     this._userService.setUser(this.user);
-
     this._dataBaseService.removeUserFromRoom(this.activeRoom.id, this.user.id);
   }
 }
-
-
-
 
 
   //   this._dataBaseService.setEnoughDraw(false);
@@ -430,11 +385,6 @@ private setNextTurn(): void {
   //     });
   //   }
 
-
-
-
-  
-
   // public ngOnDestroy(): void {
   //   this.destroy$$.next();
   //   this._dataBaseService.deleteHandCards();
@@ -464,10 +414,6 @@ private setNextTurn(): void {
 
   //   this._dataBaseService.playerUnready(this.activeRoom.id);
   // }
-
-
-
-
 
   //   if (!this._firstGame) {
   //     this.finish();

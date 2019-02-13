@@ -19,7 +19,7 @@ import { MultiplayerMenuComponent } from './multiplayer-menu/multiplayer-menu.co
 import { NoUndefPipe } from './no-undef.pipe';
 import { IntroComponent } from './intro/intro.component';
 import { KeysPipe } from './keys.pipe';
-import { UserGuard } from './guards/user.guard'
+import { UserGuard } from './guards/user.guard';
 import { LocalStorageService } from './services/local-storage.service';
 import { UserService } from './services/user.service';
 

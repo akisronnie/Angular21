@@ -35,13 +35,9 @@ export class DataBaseService {
   }
 
   public addPlayerToRoom(roomId: number, player: TPlayer): void {
-    debugger
+
     this.dataBase.object(`/rooms/room${roomId}/players/${player.id}`).update(player);
   }
-
-  // public addPlayerToRoomOrder(roomId: number, player: TPlayer): void {
-  //   this.dataBase.object(`/rooms/room${roomId}/order/${player.id}`).update({ id : player.id, turn: player.playerMaster, isBot: player.isBot });
-  // }
 
   public getUsers (): Observable<{}[]> {
     return this.dataBase.list(`/users`).valueChanges();
@@ -57,8 +53,7 @@ export class DataBaseService {
   }
 
   public setPlayerMaster(roomId: number, userId: number): void {
-    
-    this.dataBase.object(`/rooms/room${roomId}/players/${userId}`).update({playerMaster : true });
+    this.dataBase.object(`/rooms/room${roomId}/players/${userId}`).update({playerMaster : true, turn : true });
   }
 
   public playerReady(roomId: number, userId: number, ready: boolean ): void {
@@ -86,7 +81,6 @@ export class DataBaseService {
   }
 
   public changeTurn(roomId: number, userId: number, status: boolean): void {
-    debugger
     this.dataBase.object(`/rooms/room${roomId}/players/${userId}`).update({ turn: status });
   }
 
@@ -96,11 +90,7 @@ export class DataBaseService {
 
   public updateScore(roomId: number, userId: number, field: string, amount: number): void {
     this.dataBase.object(`/rooms/room${roomId}/players/${userId}`).update({ [field] : amount });
-    this.dataBase.object(`/users/${userId}`).update({ [field] : amount });
   }
-
-
-
 
 
   // public removeUserFromRoom(roomId: number): void {
@@ -120,18 +110,6 @@ export class DataBaseService {
   // }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
   // public getOrderInRoom(): Observable<{}[]> {
   //   return this.dataBase.list(`/rooms/room${this.activeRoomId}/order`).valueChanges();
   // }
@@ -143,8 +121,6 @@ export class DataBaseService {
   // public getDeck(): Observable<{}[]> {
   //   return this.dataBase.list(`/rooms/room${this.activeRoomId}/deck`).valueChanges();
   // }
-
-
 
 
 }
