@@ -92,19 +92,24 @@ export class GameComponent implements OnInit, OnDestroy {
         takeUntil(this._destroy$$)
       )
       .subscribe((room: TRoom) => {
-        this.activeRoom = room;
+                this.activeRoom = room;
 
         if (!this.activeRoom.players) {
           this.activeRoom.players = [];
         }
 
+
         this.activeRoom.players = Object.values(room.players);
+
+        if (this.activeRoom.players.length < 2 && this.activeRoom.single) {
+          this.addBots();
+        }
 
         this.activeRoom.players.forEach((player: TPlayer) => {
           if (!this.activeRoom.started && player.hand) {
             player.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
           }
-     
+
           if (player.id === this.user.id) {
             this.user = player;
             this.youTurn = player.turn;
@@ -138,9 +143,11 @@ export class GameComponent implements OnInit, OnDestroy {
         if (allActive && !this.activeRoom.started) {
           this.startGame();
         }
-
+        const oneHave21: boolean = this.activeRoom.players.some((player: TPlayer) => player.sum === 21);
         const allFinish: boolean = this.activeRoom.players.every((player: TPlayer) => player.enough);
-        if (allFinish && this.activeRoom.started) {
+
+        if (allFinish && this.activeRoom.started && this.user.isActive || oneHave21 && this.activeRoom.started && this.user.isActive) {
+          this._dataBaseService.playerReady(this.activeRoom.id, this.user.id, false);
           this.finish();
         }
 
@@ -226,6 +233,11 @@ export class GameComponent implements OnInit, OnDestroy {
   public startGame(): void {
     this.message = 'New game is started!!!';
     if (this.user.playerMaster) {
+      this.activeRoom.players.forEach((player: TPlayer) => {
+        if (player.sum === 21) {
+          this._dataBaseService.savePlayerScore(this.activeRoom.id, player.id, 0);
+        }
+      });
       this._dataBaseService.changeTurn(this.activeRoom.id, this.user.id, true);
       this.activeRoom.players.forEach((player: TPlayer) => {
         if (player.isBot) {
@@ -265,7 +277,6 @@ export class GameComponent implements OnInit, OnDestroy {
       this.message = 'You have too much';
       this._dataBaseService.setEnoughDraw(this.activeRoom.id, this.user.id, true);
       this.setNextTurn(this.user.id);
-
       return;
     }
 
@@ -314,6 +325,7 @@ export class GameComponent implements OnInit, OnDestroy {
         this._dataBaseService.updateScore(this.activeRoom.id, player.id, 'loses', player.loses + 1);
       }
     });
+
   }
 
   public ngOnDestroy(): void {
@@ -345,152 +357,3 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 }
 }
-
-
-  //   this._dataBaseService.setEnoughDraw(false);
-
-  //   if (this._dataBaseService.activeUser && this._dataBaseService.activeUser.playerMaster) {
-  //     this._deck = this._gameService.generateDeck();
-  //     this._deck = this._gameService.deckSort(this._deck);
-  //     this._dataBaseService.pushDeck(this._deck);
-  //   }
-
-  //   if (this._dataBaseService.activeUser.playerMaster) {
-  //     this._dataBaseService.changeTurn(this._dataBaseService.activeUser.id, true);
-  //   }
-
-  //   this._dataBaseService.getRoom$(this._dataBaseService.activeRoomId)
-  //     .pipe(
-  //       takeUntil(this.destroy$$))
-  //     .subscribe((room: TRoom) => {
-  //       this._deck = room.deck;
-  //       this._order = Object.values(room.order);
-
-  //       this._order.forEach((playerInOrder: TOrder) => {
-  //         if (playerInOrder.id === this._dataBaseService.activeUser.id) {
-  //           this.youTurn = playerInOrder.turn;
-
-  //         }
-
-  //         this.activeRoom = room;
-  //         this.activeRoom.players = Object.values(room.players);
-  //         this.activeRoom.players.map((player: TPlayer) => {
-  //           if (player.id === this._dataBaseService.activeUser.id || this.finish) {
-  //             if (player.hand !== undefined) {
-  //               player.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
-  //             }
-  //           }
-  //         });
-  //       });
-
-  //       this.finish = this._order.every((order: TOrder) => {
-  //         if (order.enough) {
-  //           return true;
-  //         } else {
-  //           return false;
-  //         }
-  //       });
-
-  //       if (this.finish) {
-  //         if (this.youTurn) {
-  //           this.finishGame();
-  //         }
-  //         return;
-  //       }
-
-  //       if (this.enough) {
-  //         this.setNextTurn();
-  //       }
-  //     });
-  //   }
-
-  // public ngOnDestroy(): void {
-  //   this.destroy$$.next();
-  //   this._dataBaseService.deleteHandCards();
-  //   this._dataBaseService.savePlayerScore(0);
-  // }
-
-
-  // public finishGame(): void {
-  //   this.destroy$$.next();
-  //   const winners: TPlayer[] = [];
-  //   let maxScore: number = 0;
-
-  //   this.activeRoom.players.forEach((player: TPlayer) => {
-  //     if (player.sum > maxScore && player.sum <= 21) {
-  //       maxScore = player.sum;
-  //     }
-  //   });
-
-  //   this.activeRoom.players.forEach((player: TPlayer) => {
-  //     if (player.sum === maxScore) {
-  //       winners.push(player);
-  //     }
-  //   });
-
-  //   winners.forEach((winner: TPlayer) => { alert('Winner ' + winner.name); });
-  //   this.youTurn = false;
-
-  //   this._dataBaseService.playerUnready(this.activeRoom.id);
-  // }
-
-  //   if (!this._firstGame) {
-  //     this.finish();
-  //   }
-
-  //   this.scoreResult.message = 'Welcome to game';
-  //   this._firstGame = false;
-  //   this.player.hand.map((card: TCard) => { card.src = `../assets/img/outside.png`; });
-  //   this.computer.hand.map((card: TCard) => { card.src = `../assets/img/outside.png`; });
-  //   this.fieldResult.isShowResult = false;
-  //   this._deck = this._deck.concat(this.player.hand);
-  //   this._deck = this._deck.concat(this.computer.hand);
-  //   this.player.hand = [];
-  //   this.player.sum = 0;
-  //   this.computer.hand = [];
-  //   this.computer.sum = 0;
-  //   this._deck = this._gameService.deckSort(this._deck);
-  //   this.getYou();
-  // }
-
-
-  // public finish(): void  {
-  //   if (this.computer.sum <= this._CONDITIONS_COMPUTER_DRAW) {
-  //     this._getComp();
-  //   }
-
-  //   this.computer.hand.map((card: TCard) => { card.src = `../assets/img/${card.name}${card.suits}.png`; });
-  //   this.fieldResult.isShowResult = true;
-
-  //    const winner: TPlayer = this._gameService.getWinner(this.computer, this.player);
-
-  //    if (winner === this.player) {
-  //     this.scoreResult.message = 'YOU WIN!!!!! WINNER!!!';
-  //     this.player.numberWins++;
-
-  //     return;
-  //    }
-
-  //    if (winner === this.computer) {
-  //     this.scoreResult.message = 'YOU LOSE!!!!! LOSER!!!';
-  //     this.computer.numberWins++;
-
-  //     return;
-  //    }
-
-  //    this.scoreResult.message = 'DRAW!';
-  // }
-
-
-  // private _getComp(): void {
-  //   if (this.computer.sum <= this._CONDITIONS_COMPUTER_DRAW) {
-  //     this.computer.hand.push(this._deck[this._deck.length - 1]);
-  //     this._deck.pop();
-  //     this.computer.sum += this.computer.hand[this.computer.hand.length - 1].value;
-  //   }
-
-  //   if (this.computer.sum > this._CONDITIONS_WIN) {
-  //     this.finish();
-  //   }
-  // }
-

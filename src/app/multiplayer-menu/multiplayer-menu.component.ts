@@ -80,7 +80,7 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
       id : ++_newIdForNewRoom,
       maxplayers: this.maxPlayers,
       players: [],
-      order : {},
+      single : false,
       started: false
     };
     this._dataBaseService.addNewRoom(newRoom);

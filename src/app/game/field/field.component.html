@@ -4,7 +4,7 @@
     
     <h3 [class.turn]="player.turn">Player Name: {{ player.name }}</h3>
     <h3>Player wins: {{ player.wins }} loses: {{ player.loses }}</h3>
-    <h3 *ngIf="player.playerMaster">Player Master</h3>
+    <h3 *ngIf="player.playerMaster && !activeRoom.single">Player Master</h3>
     <h3 *ngIf="user.id === player.id || !activeRoom.started">You Score: {{ player.sum }}</h3>
 
     <div class="player-hand">
@@ -12,46 +12,4 @@
     </div>
 
   </div>
-
-
-
-
-<!-- player.id === dataBaseService.userId -->
-    <!-- <div class="comp-side" *ngFor="let player of activeRoomPlayers">
-      {{player.name}}
-      <div *ngFor="let card of fieldResult.computer.hand">
-        <img [src]="card.src">
-      </div>
-    </div>
-
-    <div class="center-table">
-      <button *ngIf="!fieldResult.isShowResult"
-              type="button"
-              class="input-button4"
-              (click)="this.getPlayer.emit()">
-        Взять
-      </button>
-
-      <span class="total">
-        You score: {{ fieldResult.player.sum }}
-      </span>
-
-      <span *ngIf="fieldResult.isShowResult"
-            class="comp-result">
-        Comp score:{{ fieldResult.computer.sum }}
-      </span>
-
-      <button *ngIf="!fieldResult.isShowResult"
-              type="button"
-              class="input-button4"
-              (click)="this.finishGame.emit()">
-        ВСЁ
-      </button>
-    </div>
-
-    <div class="you-side">
-      <div *ngFor="let card of fieldResult.player.hand">
-        <img [src]="card.src">
-      </div>
-    </div> -->
 </section>

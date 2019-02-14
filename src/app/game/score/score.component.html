@@ -1,11 +1,15 @@
 <div class="score-container">
-  <a routerLink="/multiplayer">
+  <a routerLink="/multiplayer" *ngIf="activeRoom && !activeRoom.single">
     Return to multiplayer menu.
   </a>
-  <div class="score" *ngIf="activeRoom">
+  <a routerLink="/menu" *ngIf="activeRoom && activeRoom.single">
+    Return to menu.
+  </a>
+
+  <div class="score" *ngIf="activeRoom && !activeRoom.single">
     Players in room: <span *ngFor="let player of activeRoom.players" [class.ready]="player.isActive" >\ {{player.name}} / </span>
   </div>
-  <div class="score" *ngIf="activeRoom">
+  <div class="score" *ngIf="activeRoom && !activeRoom.single">
     ID ROOM:{{ activeRoom.id }} Max players: {{ activeRoom.maxplayers}}
 </div>
 
@@ -20,15 +24,16 @@
    <button type="button" *ngIf="activeRoom && activeRoom.started " [disabled]="!youTurn"  (click)="this.enoughGame.emit()">Enough!</button>
 </div>
 
-  <div class="score" *ngIf="activeRoom && user.isActive && !activeRoom.started">
+  <!-- <div class="score" *ngIf="activeRoom && user.isActive && !activeRoom.started">
       READY!!!
-    </div> 
+    </div>  -->
   <div class="score">
     Wins:{{ user.wins }} Loses:{{ user.loses }}
   </div>
-  <div class="score" *ngIf="youTurn">
+
+  <!-- <div class="score" *ngIf="youTurn">
       YOU TURN!!!
-  </div> 
+  </div>  -->
 
 <!-- 
 

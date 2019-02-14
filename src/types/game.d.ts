@@ -31,10 +31,10 @@ type TPlayer = {
 type TRoom = {
   deck?: TCard[],
   id:number,
-  order : {},
   maxplayers:number,
   players?:TPlayer[],
-  started: boolean
+  started: boolean,
+  single: boolean
 }
 
  type TCard = {

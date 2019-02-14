@@ -34,6 +34,10 @@ margin: 20px auto 10px auto;
 
 }
 
+.hidden {
+  display: none;
+}
+
 .room {
   display: flex;
   justify-content: center;
