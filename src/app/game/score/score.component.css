@@ -4,7 +4,9 @@
   background-color: rgba(163, 163, 163, 0.438);
   border-radius: 20px;
 }
-
+.ready {
+  color:green;
+}
 .score,
 .score-container {
   margin: auto;

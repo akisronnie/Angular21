@@ -1,4 +1,5 @@
 <div class="wrapper">
+    <p><a routerLink="/menu">Return to menu</a></p>
   <button type="button" (click)="isShowAddRoomMenu = !isShowAddRoomMenu" class="add-button">show/hide add room menu</button>
 
   <div *ngIf="isShowAddRoomMenu" class="add-room-menu">
@@ -8,7 +9,7 @@
   </div>
 
   <div class="wrapper-rooms">
-    <div *ngFor="let room of rooms" class="room">
+    <div *ngFor="let room of rooms" class="room" [class.started]="room.started">
       Number of room : {{ room.id }}
       <div>maxplayers : {{ room.maxplayers }}</div>
       <div>players in room : {{room | noUndef}} </div>

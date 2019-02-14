@@ -2,17 +2,26 @@
   margin: auto;
   flex-wrap: wrap;
   height: 800px;
-  background-image: url('http://cbgames.com.ua/image/cache/500-500/data/cbg/sukno.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+
+
+
+
+  background-image: url("https://stoopidpigeon.com/wp-content/uploads/2017/06/online-blackjack-Canada-online-casino-games.jpg"); /* The image used */
+  background-color: #cccccc; /* Used if the image is unavailable */
+
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+
   position: relative;
   display: flex;
   justify-content: space-between;
   text-align: center;
 }
 
-
+.turn{
+  color: darkred;
+}
 
 .players {
 
@@ -26,9 +35,11 @@
   display: flex;
   justify-content: space-around;
   flex-direction: row; 
-
+  
   width: 100%;
 }
+
+
 
 
 

@@ -3,7 +3,7 @@
     Return to multiplayer menu.
   </a>
   <div class="score" *ngIf="activeRoom">
-    Players in room: <span *ngFor="let player of activeRoom.players" [class.master]="player.playerMaster">{{player.name}} {{player.isActive}} / </span>
+    Players in room: <span *ngFor="let player of activeRoom.players" [class.ready]="player.isActive" >\ {{player.name}} / </span>
   </div>
   <div class="score" *ngIf="activeRoom">
     ID ROOM:{{ activeRoom.id }} Max players: {{ activeRoom.maxplayers}}

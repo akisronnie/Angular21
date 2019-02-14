@@ -4,7 +4,19 @@
   flex-direction: column;
   text-align: center;
   background-color: green;
-  min-height: 900px;
+
+  background-image: url("https://stoopidpigeon.com/wp-content/uploads/2017/06/online-blackjack-Canada-online-casino-games.jpg"); /* The image used */
+  background-color: #cccccc; /* Used if the image is unavailable */
+
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  min-height: 100vh;
+}
+
+a {
+  font-size: 20px;
+  color:rgb(2, 206, 189);
 }
 
 .add-button { 
@@ -26,8 +38,8 @@ margin: 20px auto 10px auto;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: 150px;
-  width: 300px;
+  height: 200px;
+  width: 250px;
   background-color: grey;
   margin: 20px;
   border-radius: 10px;
@@ -59,4 +71,8 @@ label{
   justify-content: center;
   flex-direction: column;
 
+}
+
+.started {
+  background-color: red;
 }

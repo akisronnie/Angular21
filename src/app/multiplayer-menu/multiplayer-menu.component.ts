@@ -57,6 +57,13 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
 
         return;
       }
+
+      if (selectedRoom.started === true) {
+        alert('Sorry, game is started');
+
+        return;
+      }
+
     this.router.navigate(['/game', roomId]);
   }
 
@@ -78,6 +85,7 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
     };
     this._dataBaseService.addNewRoom(newRoom);
     this.isShowAddRoomMenu = !this.isShowAddRoomMenu;
+    this.router.navigate(['/game', newRoom.id]);
   }
 
   public deleteRoom(id: number): void {
