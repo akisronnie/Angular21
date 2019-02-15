@@ -20,6 +20,7 @@ import { IntroComponent } from './intro/intro.component';
 import { UserGuard } from './guards/user.guard';
 import { LocalStorageService } from './services/local-storage.service';
 import { UserService } from './services/user.service';
+import { PlayersPipe } from './pipes/players.pipe';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { UserService } from './services/user.service';
     ErrorComponent,
     MultiplayerMenuComponent,
     IntroComponent,
+    PlayersPipe,
   ],
   imports: [
     BrowserModule,

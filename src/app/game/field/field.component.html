@@ -1,4 +1,5 @@
 <section class="table" *ngIf="activeRoom">
+  
   <div class="players" *ngFor="let player of activeRoom.players">
     <h3 [class.turn]="player.turn">
       Player Name: {{ player.name }}

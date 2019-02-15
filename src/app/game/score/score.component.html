@@ -1,49 +1,73 @@
 <div class="score-container">
-  <a routerLink="/multiplayer" *ngIf="activeRoom && !activeRoom.single">
+  <a routerLink="/multiplayer" 
+     *ngIf="activeRoom && !activeRoom.single"
+     class="action-button shadow animate green return-link">
     Return to multiplayer menu.
   </a>
-  <a routerLink="/menu" *ngIf="activeRoom && activeRoom.single">
+
+  <a routerLink="/menu" 
+     *ngIf="activeRoom && activeRoom.single"
+     class="action-button shadow animate green">
     Return to menu.
   </a>
 
-  <div class="score" *ngIf="activeRoom && !activeRoom.single">
-    Players in room: <span *ngFor="let player of activeRoom.players" [class.ready]="player.isActive" >\ {{player.name}} / </span>
+  <div class="score" 
+       *ngIf="activeRoom && !activeRoom.single">
+    Players in room: 
+
+    <span *ngFor="let player of activeRoom.players" 
+          [class.ready]="player.isActive">
+      \ {{player.name}} / 
+    </span>
   </div>
-  <div class="score" *ngIf="activeRoom && !activeRoom.single">
+
+  <div class="score" 
+       *ngIf="activeRoom && !activeRoom.single">
     ID ROOM:{{ activeRoom.id }} Max players: {{ activeRoom.maxplayers}}
-</div>
+  </div>
 
   <div class="score">
-      {{ message }}
-    </div> 
- <div> 
-   <button *ngIf="activeRoom && !activeRoom.started && activeRoom.players && activeRoom.players.length > 1" (click)="ready()"> Ready {{user.isActive}}</button>
-   <button *ngIf="activeRoom && !activeRoom.started && user.playerMaster" (click)="addBot()"> Add bot</button>
-   <button *ngIf="activeRoom && !activeRoom.started && user.playerMaster" (click)="deleteBot()"> Delete bot</button>
-   <button type="button" *ngIf="activeRoom && activeRoom.started " [disabled]="!youTurn"  (click)="this.getPlayer.emit()">Get Card</button>
-   <button type="button" *ngIf="activeRoom && activeRoom.started " [disabled]="!youTurn"  (click)="this.enoughGame.emit()">Enough!</button>
-</div>
+    {{ message }}
+  </div>
 
-  <!-- <div class="score" *ngIf="activeRoom && user.isActive && !activeRoom.started">
-      READY!!!
-    </div>  -->
+  <div>
+    <button class="action-button shadow animate green" 
+            *ngIf="activeRoom && !activeRoom.started && activeRoom.players && activeRoom.players.length > 1"
+            (click)="ready()"> 
+      Ready {{user.isActive}}
+    </button>
+
+    <button class="action-button shadow animate blue" 
+            *ngIf="activeRoom && !activeRoom.started && user.playerMaster"
+            (click)="addBot()"> 
+      Add bot
+    </button>
+
+    <button class="action-button shadow animate red" 
+            *ngIf="activeRoom && !activeRoom.started && user.playerMaster"
+            (click)="deleteBot()"> 
+      Delete bot
+    </button>
+
+    <button class="action-button shadow animate blue" 
+            type="button" 
+            *ngIf="activeRoom && activeRoom.started "
+            [disabled]="!youTurn" 
+            (click)="this.getPlayer.emit()">
+      Get Card
+    </button>
+
+    <button class="action-button shadow animate red" 
+            type="button" 
+            *ngIf="activeRoom && activeRoom.started " 
+            [disabled]="!youTurn"
+            (click)="this.enoughGame.emit()">
+      Enough!
+    </button>
+  </div>
+
   <div class="score">
     Wins:{{ user.wins }} Games:{{ user.loses }}
   </div>
-
-  <!-- <div class="score" *ngIf="youTurn">
-      YOU TURN!!!
-  </div>  -->
-
-<!-- 
-
-  <div class="score" *ngIf="youTurn">
-    YOU TURN!!!
-</div> -->
-
-  <!-- <button type="button"
-          class="input-button4"
-          (click)="startNewGame()">
-    New Game
-  </button> -->
+ 
 </div>

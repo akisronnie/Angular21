@@ -2,8 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataBaseService } from '../services/data-base.service';
 import { GameService } from '../services/game.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Subject, Observable, combineLatest } from 'rxjs';
-import { takeUntil, map, pluck, switchMap, tap, filter } from 'rxjs/operators';
+import { Subject, combineLatest } from 'rxjs';
+import { takeUntil, map, pluck, switchMap, filter } from 'rxjs/operators';
 import { UserService } from '../services/user.service';
 import * as faker from 'faker';
 
