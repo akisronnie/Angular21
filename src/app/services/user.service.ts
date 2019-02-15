@@ -8,11 +8,8 @@ export class UserService {
 
   private _user$$: ReplaySubject<TPlayer> = new ReplaySubject(1);
 
-
-  public constructor(
-    private _localStorageService: LocalStorageService
-  ) {
-    this._user$$.next(this._localStorageService.getItem('BlackJack'));
+  public constructor( private _localStorageService: LocalStorageService ) {
+      this._user$$.next(this._localStorageService.getItem('BlackJack'));
   }
 
   public setUser(user: TPlayer): void {

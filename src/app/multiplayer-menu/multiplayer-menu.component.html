@@ -1,24 +1,58 @@
 <div class="wrapper">
-    <p><a routerLink="/menu">Return to menu</a></p>
-  <button type="button" (click)="isShowAddRoomMenu = !isShowAddRoomMenu" class="add-button">show/hide add room menu</button>
+  <p>
+    <a routerLink="/menu">
+      Return to menu
+    </a>
+  </p>
 
-  <div *ngIf="isShowAddRoomMenu" class="add-room-menu">
-    <label for="maxPlayer">Max players: </label>
-    <input type="number" min="2" max="6" autofocus placeholder="2" id="maxPlayer" [(ngModel)]="maxPlayers">
-    <button type="button" (click)="addNewRoom()" class="add-button">Create room</button>
+  <button type="button" 
+          (click)="isShowAddRoomMenu = !isShowAddRoomMenu" 
+          class="add-button">
+    show/hide add room menu
+  </button>
+
+  <div *ngIf="isShowAddRoomMenu" 
+       class="add-room-menu">
+    <label for="maxPlayer">
+      Max players:
+    </label>
+
+    <input type="number" 
+           min="2"
+           max="6" 
+           autofocus 
+           placeholder="2" 
+           id="maxPlayer" 
+           [(ngModel)]="maxPlayers">
+
+    <button type="button" 
+            (click)="addNewRoom()" 
+            class="add-button">
+      Create room
+    </button>
   </div>
 
   <div class="wrapper-rooms">
+    <div *ngFor="let room of rooms">
+      <div class="room" 
+           [class.started]="room.started" 
+           *ngIf="!room.single">
+        Number of room : {{ room.id }}
 
-    <div  *ngFor="let room of rooms" >
-      <div class="room" [class.started]="room.started" *ngIf="!room.single">
-      Number of room : {{ room.id }}
-      <div>maxplayers : {{ room.maxplayers }}</div>
-      <div>players in room : {{room | noUndef}} </div>
-      <button type="button" (click)="deleteRoom(room.id)"> Delete room </button>
-      <button type="button" (click)="selectRoom(room.id)"> Select room </button> 
+        <div>maxplayers : {{ room.maxplayers }}</div>
+
+        <div>players in room : {{room | noUndef}} </div>
+
+        <button type="button" 
+                (click)="deleteRoom(room.id)">
+          Delete room
+        </button>
+
+        <button type="button" 
+                (click)="selectRoom(room.id)">
+          Select room
+        </button>
       </div>
     </div>
-
   </div>
 </div>

@@ -11,13 +11,13 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./multiplayer-menu.component.css']
 })
 
-
 export class MultiplayerMenuComponent implements OnInit, OnDestroy {
-
   public rooms: TRoom[];
   public isShowAddRoomMenu: boolean = false;
   public user: TPlayer;
   public maxPlayers: number = 2;
+
+
   private _destroy$$: Subject<number> = new Subject();
 
   public constructor(
@@ -25,7 +25,6 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
     private _userService: UserService,
     private router: Router
   ) {}
-
 
   public ngOnInit(): void {
     this._dataBaseService.getRooms()
@@ -45,14 +44,14 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
 
   public selectRoom(roomId: number): void {
     let selectedRoom: TRoom;
-
     this.rooms.forEach((room: TRoom) => {
       if (room.id === roomId) {
         selectedRoom = room;
       }
     });
 
-      if (selectedRoom.players !== undefined && selectedRoom.maxplayers <= Object.keys(selectedRoom.players).length) {
+      if (selectedRoom.players !== undefined
+        && selectedRoom.maxplayers <= Object.keys(selectedRoom.players).length) {
         alert('Max players limit!!');
 
         return;

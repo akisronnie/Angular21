@@ -1,18 +1,21 @@
 <div class="wrapper">
   <div class="meeting">
-      <p><a routerLink="/">Return to login</a></p>
-    Welcome to Black Jack    
+    <p>
+      <a routerLink="/">
+        Return to login
+      </a>
+    </p>
+    Welcome to Black Jack
   </div>
 
-
-
-  <button type="button" (click)="startSingleGame()">
+  <button type="button" 
+          (click)="startSingleGame()">
     To singlePlayer game
   </button>
 
-<a routerLink="/multiplayer" >
-  <button type="button">
-    To multiPlayer game
-  </button>
-</a>
+  <a routerLink="/multiplayer">
+    <button type="button">
+      To multiPlayer game
+    </button>
+  </a>
 </div>

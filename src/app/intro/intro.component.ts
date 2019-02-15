@@ -10,6 +10,7 @@ import { UserService } from '../services/user.service';
   templateUrl: './intro.component.html',
   styleUrls: ['./intro.component.css']
 })
+
 export class IntroComponent implements OnInit, OnDestroy {
   public userName: string;
   public userPassword: string;
@@ -27,20 +28,24 @@ export class IntroComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy$$))
       .subscribe((users: TPlayer[]) => {
         this.users = users;
+        this.users = Object.values(this.users).sort((user1: TPlayer, user2: TPlayer) => user2.wins - user1.wins);
       });
   }
 
   public enter(): void {
-    if (this.userName === undefined || this.userName === '' || this.userPassword === undefined || this.userPassword === '') {
+    if (this.userName === undefined || this.userName === '' || this.userPassword === undefined
+    || this.userPassword === '') {
       alert('Enter name and password!!');
 
       return;
     }
 
     let saveUser: TPlayer;
+
     const existUser: boolean = this.users.some((user: TPlayer) => {
       if (user.name === this.userName) {
         saveUser = user;
+
         return true;
       }
     });
@@ -69,23 +74,20 @@ export class IntroComponent implements OnInit, OnDestroy {
         date.getSeconds(),
         date.getMilliseconds()
     ];
-
     const userId: number = Number(components.join(''));
-
     const newUser: TPlayer = {
       name: this.userName,
       pass: this.userPassword,
-       id: userId,
-        wins: 0,
-        loses: 0,
-        isActive: false,
-        playerMaster: false,
-        sum: 0,
-        isBot: false,
-        turn: false,
-        enough: false
-      };
-
+      id: userId,
+      wins: 0,
+      loses: 0,
+      isActive: false,
+      playerMaster: false,
+      sum: 0,
+      isBot: false,
+      turn: false,
+      enough: false
+    };
     this._dataBaseService.addUsers(newUser);
     this._userService.setUser(newUser);
     this.router.navigate(['/menu']);

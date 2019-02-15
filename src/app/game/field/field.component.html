@@ -1,15 +1,23 @@
 <section class="table" *ngIf="activeRoom">
-
   <div class="players" *ngFor="let player of activeRoom.players">
-    
-    <h3 [class.turn]="player.turn">Player Name: {{ player.name }}</h3>
-    <h3>Player wins: {{ player.wins }} loses: {{ player.loses }}</h3>
-    <h3 *ngIf="player.playerMaster && !activeRoom.single">Player Master</h3>
-    <h3 *ngIf="user.id === player.id || !activeRoom.started">You Score: {{ player.sum }}</h3>
+    <h3 [class.turn]="player.turn">
+      Player Name: {{ player.name }}
+    </h3>
+
+    <h3>
+      Player wins: {{ player.wins }} games: {{ player.loses }}
+    </h3>
+
+    <h3 *ngIf="player.playerMaster && !activeRoom.single">
+      Player Master
+    </h3>
+
+    <h3 *ngIf="user.id === player.id || !activeRoom.started">
+      Score: {{ player.sum }}
+    </h3>
 
     <div class="player-hand">
       <img *ngFor="let card of player.hand" [src]="card.src">
     </div>
-
   </div>
 </section>

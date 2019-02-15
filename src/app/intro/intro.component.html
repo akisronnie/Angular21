@@ -1,26 +1,44 @@
 <div class="wrapper">
-  <div class="welcome">Welcome to Black Jack!!!</div>
-  <input type="text"  placeholder="Enter your name" [(ngModel)]="userName">
-  <input type="text" *ngIf="users" placeholder="Enter your password" [(ngModel)]="userPassword">
-  <button type="button" (click)="enter()">Enter</button>
+  <div class="welcome">
+    Welcome to Black Jack!!!
+  </div>
 
+  <input type="text" placeholder="Enter your name" [(ngModel)]="userName">
+
+  <input type="text" *ngIf="users" placeholder="Enter your password" [(ngModel)]="userPassword">
+
+  <button type="button" (click)="enter()">
+    Enter
+  </button>
 
   <table>
     <thead>
       <tr>
         <th>User name</th>
+
         <th>Wins</th>
-        <th>Loses</th>
+
+        <th>Games</th>
+
         <th>Select user</th>
       </tr>
     </thead>
+
     <tbody>
       <tr *ngFor="let user of users">
-      <td>{{user.name}}</td>
-      <td>{{user.wins}}</td>
-      <td>{{user.loses}}</td>
-      <td><button type="button" (click)=selectUser(user.name)>select user</button></td>
-    </tr>
+        <td>{{user.name}}</td>
+
+        <td>{{user.wins}}</td>
+
+        <td>{{user.loses}}</td>
+        
+        <td>
+          <button type="button" 
+                  (click)=selectUser(user.name)>
+            select user
+          </button>
+        </td>
+      </tr>
     </tbody>
   </table>
 

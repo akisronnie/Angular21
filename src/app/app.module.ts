@@ -16,9 +16,7 @@ import { ErrorComponent } from './error/error.component';
 import { GameService } from './services/game.service';
 import { DataBaseService } from './services/data-base.service';
 import { MultiplayerMenuComponent } from './multiplayer-menu/multiplayer-menu.component';
-import { NoUndefPipe } from './no-undef.pipe';
 import { IntroComponent } from './intro/intro.component';
-import { KeysPipe } from './keys.pipe';
 import { UserGuard } from './guards/user.guard';
 import { LocalStorageService } from './services/local-storage.service';
 import { UserService } from './services/user.service';
@@ -32,9 +30,7 @@ import { UserService } from './services/user.service';
     MenuComponent,
     ErrorComponent,
     MultiplayerMenuComponent,
-    NoUndefPipe,
     IntroComponent,
-    KeysPipe,
   ],
   imports: [
     BrowserModule,

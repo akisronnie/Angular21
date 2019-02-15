@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   { path: 'intro',
   component: IntroComponent
-},
+  },
   { path: 'game/:id',
     component: GameComponent
   },

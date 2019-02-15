@@ -44,20 +44,4 @@ export class GameService {
 
     return deck;
   }
-
-  public getWinner(computer: TPlayer, player: TPlayer): TPlayer {
-    if (computer.sum > this._CONDITIONS_WIN) {
-       return player;
-    }
-
-    if (computer.sum === player.sum) {
-      return;
-    }
-
-    if (computer.sum > player.sum || player.sum > this._CONDITIONS_WIN) {
-      return computer;
-    }
-
-      return player;
-  }
 }
