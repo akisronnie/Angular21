@@ -12,7 +12,9 @@ padding: 20px;
 .score-container {
    text-align: center;
 }
-
+.score {
+  background-color: rgba(0, 0, 0, 0.5)
+}
 .score-container {
  background-color: black;
  background-image: url('https://ak9.picdn.net/shutterstock/videos/9648839/thumb/1.jpg');
@@ -68,4 +70,8 @@ a {
 	transform: translate(0px,5px);
   -webkit-transform: translate(0px,5px);
 	border-bottom: 1px solid;
+}
+
+.ready {
+  color:greenyellow
 }

@@ -16,7 +16,8 @@ const routes: Routes = [
   component: IntroComponent
   },
   { path: 'game/:id',
-    component: GameComponent
+    component: GameComponent,
+    canActivate: [UserGuard]
   },
   { path: 'menu',
     component: MenuComponent,

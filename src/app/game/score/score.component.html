@@ -31,8 +31,10 @@
   </div>
 
   <div>
-    <button class="action-button shadow animate green" 
+    <button class="action-button shadow animate" 
             *ngIf="activeRoom && !activeRoom.started && activeRoom.players && activeRoom.players.length > 1"
+            [class.green]="user.isActive"
+            [class.yellow]="!user.isActive"
             (click)="ready()"> 
       Ready {{user.isActive}}
     </button>

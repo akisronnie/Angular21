@@ -9,10 +9,6 @@
       Player wins: {{ player.wins }} games: {{ player.loses }}
     </h3>
 
-    <h3 *ngIf="player.playerMaster && !activeRoom.single">
-      Player Master
-    </h3>
-
     <h3 *ngIf="user.id === player.id || !activeRoom.started">
       Score: {{ player.sum }}
     </h3>
