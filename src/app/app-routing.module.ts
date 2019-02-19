@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { GameComponent } from './game/game.component';
 import { MenuComponent } from './menu/menu.component';
 import { MultiplayerMenuComponent } from './multiplayer-menu/multiplayer-menu.component';
@@ -8,26 +9,32 @@ import { IntroComponent } from './intro/intro.component';
 import { UserGuard } from './guards/user.guard';
 
 const routes: Routes = [
-  { path: '',
+  {
+    path: '',
     redirectTo: '/intro',
     pathMatch: 'full'
   },
-  { path: 'intro',
-  component: IntroComponent
+  {
+    path: 'intro',
+    component: IntroComponent
   },
-  { path: 'game/:id',
+  {
+    path: 'game/:id',
     component: GameComponent,
     canActivate: [UserGuard]
   },
-  { path: 'menu',
+  {
+    path: 'menu',
     component: MenuComponent,
     canActivate: [UserGuard]
   },
-  { path: 'multiplayer',
+  {
+    path: 'multiplayer',
     component: MultiplayerMenuComponent,
     canActivate: [UserGuard]
   },
-  { path: '**',
+  {
+    path: '**',
     component: ErrorComponent
   }
 ];

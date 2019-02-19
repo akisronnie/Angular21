@@ -18,7 +18,7 @@ export class DataBaseService {
     this.dataBase.list('rooms').remove('room' + id);
   }
 
-  public getRooms(): Observable<TRoom[]> {
+  public getRooms$(): Observable<TRoom[]> {
     return this.dataBase.list<TRoom>('rooms').valueChanges();
   }
 
@@ -26,7 +26,7 @@ export class DataBaseService {
     this.dataBase.object(`/rooms/room${roomId}/players/${player.id}`).update(player);
   }
 
-  public getUsers (): Observable<TPlayer[]> {
+  public getUsers$ (): Observable<TPlayer[]> {
     return this.dataBase.list<TPlayer>(`/users`).valueChanges();
   }
 

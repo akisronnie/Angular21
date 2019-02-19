@@ -1,9 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DataBaseService } from '../services/data-base.service';
 import { Router } from '@angular/router';
+
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+
 import { UserService } from '../services/user.service';
+import { DataBaseService } from '../services/data-base.service';
 
 @Component({
   selector: 'app-multiplayer-menu',
@@ -18,7 +20,7 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
   public maxPlayers: number = 2;
 
 
-  private _destroy$$: Subject<number> = new Subject();
+  private _destroy$$: Subject<void> = new Subject();
 
   public constructor(
     private _dataBaseService: DataBaseService,
@@ -27,9 +29,10 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
-    this._dataBaseService.getRooms()
+    this._dataBaseService.getRooms$()
       .pipe(
-        takeUntil(this._destroy$$))
+        takeUntil(this._destroy$$)
+      )
       .subscribe((rooms: TRoom[]) => {
         this.rooms = rooms;
       });
@@ -43,21 +46,16 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
   }
 
   public selectRoom(roomId: number): void {
-    let selectedRoom: TRoom;
-    this.rooms.forEach((room: TRoom) => {
-      if (room.id === roomId) {
-        selectedRoom = room;
-      }
-    });
+    const selectedRoom: TRoom = this.rooms.find((room: TRoom) => room.id === roomId);
 
-      if (selectedRoom.players !== undefined
+      if (selectedRoom.players
         && selectedRoom.maxplayers <= Object.keys(selectedRoom.players).length) {
         alert('Max players limit!!');
 
         return;
       }
 
-      if (selectedRoom.started === true) {
+      if (selectedRoom.started) {
         alert('Sorry, game is started');
 
         return;
@@ -67,13 +65,8 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
   }
 
   public addNewRoom(): void {
-    let _newIdForNewRoom: number = 0;
 
-    this.rooms.forEach((room: TRoom) => {
-      if (room.id > _newIdForNewRoom) {
-        _newIdForNewRoom = room.id;
-      }
-    });
+    let _newIdForNewRoom: number = Math.max(...this.rooms.map((room: TRoom) => room.id));
 
     const newRoom: TRoom = {
       id : ++_newIdForNewRoom,
@@ -82,21 +75,15 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
       single : false,
       started: false
     };
+
     this._dataBaseService.addNewRoom(newRoom);
-    this.isShowAddRoomMenu = !this.isShowAddRoomMenu;
     this._router.navigate(['/game', newRoom.id]);
   }
 
   public deleteRoom(id: number): void {
-    let selectedRoom: TRoom;
+    const selectedRoom: TRoom = this.rooms.find((room: TRoom) => room.id === id);
 
-    this.rooms.forEach((room: TRoom) => {
-      if (room.id === id) {
-        selectedRoom = room;
-      }
-    });
-
-    if ( selectedRoom.players !== undefined ) {
+    if ( selectedRoom.players ) {
       alert('There are players in the room');
     } else {
       this._dataBaseService.deleteRoom(id);
@@ -105,5 +92,6 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this._destroy$$.next();
+    this._destroy$$.complete();
   }
 }

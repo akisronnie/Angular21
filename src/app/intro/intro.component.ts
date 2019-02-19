@@ -1,9 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DataBaseService } from '../services/data-base.service';
 import { Router } from '@angular/router';
+
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+
 import { UserService } from '../services/user.service';
+import { DataBaseService } from '../services/data-base.service';
+import { GameService } from '../services/game.service';
 
 @Component({
   selector: 'app-intro',
@@ -16,19 +19,21 @@ export class IntroComponent implements OnInit, OnDestroy {
   public userPassword: string;
   public users: TPlayer[];
 
-  private destroy$$: Subject<number> = new Subject();
+  private destroy$$: Subject<void> = new Subject();
 
   public constructor(
      private _dataBaseService: DataBaseService,
      private _userService: UserService,
-     private _router: Router) {}
+     private _router: Router,
+     private _gameService: GameService
+  ) {}
 
   public ngOnInit(): void {
-    this._dataBaseService.getUsers().pipe(
-      takeUntil(this.destroy$$))
+    this._dataBaseService.getUsers$().pipe(
+      takeUntil(this.destroy$$)
+      )
       .subscribe((users: TPlayer[]) => {
-        this.users = users;
-        this.users = Object.values(this.users).sort((user1: TPlayer, user2: TPlayer) => user2.wins - user1.wins);
+        this.users = Object.values(users).sort((user1: TPlayer, user2: TPlayer) => user2.wins - user1.wins);
       });
   }
 
@@ -65,20 +70,10 @@ export class IntroComponent implements OnInit, OnDestroy {
       }
     }
 
-    const date: Date = new Date();
-    const components: number[] = [
-        date.getMonth(),
-        date.getDate(),
-        date.getHours(),
-        date.getMinutes(),
-        date.getSeconds(),
-        date.getMilliseconds()
-    ];
-    const userId: number = Number(components.join(''));
     const newUser: TPlayer = {
       name: this.userName,
       pass: this.userPassword,
-      id: userId,
+      id: this._gameService.generateId() ,
       wins: 0,
       loses: 0,
       isActive: false,
@@ -88,6 +83,7 @@ export class IntroComponent implements OnInit, OnDestroy {
       turn: false,
       enough: false
     };
+
     this._dataBaseService.addUsers(newUser);
     this._userService.setUser(newUser);
     this._router.navigate(['/menu']);
@@ -101,5 +97,6 @@ export class IntroComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this.destroy$$.next();
+    this.destroy$$.complete();
   }
 }

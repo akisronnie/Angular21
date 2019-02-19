@@ -44,4 +44,18 @@ export class GameService {
 
     return deck;
   }
+
+  public generateId(): number {
+    const date: Date = new Date();
+    const idParts: number[] = [
+      date.getMonth(),
+      date.getDate(),
+      date.getHours(),
+      date.getMinutes(),
+      date.getSeconds(),
+      date.getMilliseconds()
+    ];
+
+    return Number(idParts.join(''));
+  }
 }

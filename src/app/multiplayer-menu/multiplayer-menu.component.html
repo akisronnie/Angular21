@@ -5,13 +5,13 @@
       Return to menu
     </a>
 
-
-  <button type="button" 
-          (click)="isShowAddRoomMenu = !isShowAddRoomMenu" 
-          class="add-button"
-          class="action-button shadow animate green">
-    show/hide add room menu
-  </button>
+    <button type="button" 
+            (click)="isShowAddRoomMenu = !isShowAddRoomMenu" 
+            class="add-button"
+            class="action-button shadow animate green">
+      show/hide add room menu
+     </button>
+  </div>
 
   <div *ngIf="isShowAddRoomMenu" 
        class="add-room-menu">
@@ -34,26 +34,30 @@
       Create room
     </button>
   </div>
-</div>
+
   <div class="wrapper-rooms">
     <div *ngFor="let room of rooms">
       <div class="room" 
            [class.started]="room.started" 
            *ngIf="!room.single">
         Number of room : {{ room.id }}
-
-        <div>maxplayers : {{ room.maxplayers }}</div>
-
-        <div>players in room : {{room.players | players}} </div>
-
+  
+        <div>
+          maxplayers : {{ room.maxplayers }}
+        </div>
+  
+        <div>
+          players in room : {{room.players | players}} 
+        </div>
+  
         <button type="button" 
-                class="action-button shadow animate red add-button"
+                class="action-button shadow animate red add-button" 
                 (click)="deleteRoom(room.id)">
           Delete room
         </button>
-
+  
         <button type="button" 
-                class="action-button shadow animate green add-button"
+                class="action-button shadow animate green add-button" 
                 (click)="selectRoom(room.id)">
           Select room
         </button>

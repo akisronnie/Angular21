@@ -12,15 +12,15 @@ import { FieldComponent } from './game/field/field.component';
 import { GameComponent } from './game/game.component';
 import { MenuComponent } from './menu/menu.component';
 import { ErrorComponent } from './error/error.component';
+import { IntroComponent } from './intro/intro.component';
+import { MultiplayerMenuComponent } from './multiplayer-menu/multiplayer-menu.component';
 
 import { GameService } from './services/game.service';
 import { DataBaseService } from './services/data-base.service';
-import { MultiplayerMenuComponent } from './multiplayer-menu/multiplayer-menu.component';
-import { IntroComponent } from './intro/intro.component';
-import { UserGuard } from './guards/user.guard';
 import { LocalStorageService } from './services/local-storage.service';
 import { UserService } from './services/user.service';
 import { PlayersPipe } from './pipes/players.pipe';
+import { UserGuard } from './guards/user.guard';
 
 @NgModule({
   declarations: [
