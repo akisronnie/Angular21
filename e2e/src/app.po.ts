@@ -1,12 +1,20 @@
 
-import { browser, by, element } from 'protractor';
+import { browser, by, element, $, ElementFinder } from 'protractor';
 
 export class AppPage {
 public navigateTo(): {} {
     return browser.get('/');
   }
 
-  public getTitleText(): {} {
-    return element(by.css('app-root h1')).getText();
-  }
+public getUserNameInput(): ElementFinder {
+  return $('input[name="username"]');
+}
+public getUserPasswordInput(): ElementFinder {
+  return $('input[name="userpassword"]');
+}
+
+public getButtonSubmit(): ElementFinder {
+  return $('.enter-button');
+}
+
 }

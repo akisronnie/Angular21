@@ -1,6 +1,7 @@
 <div class="wrapper">
   <div class="button-wrapper">
-    <a routerLink="/menu" class="action-button shadow animate blue">
+    <a routerLink="/menu" 
+       class="action-button shadow animate blue">
       Return to menu
     </a>
 
@@ -45,12 +46,14 @@
 
         <div>players in room : {{room.players | players}} </div>
 
-        <button type="button" class="action-button shadow animate red add-button"
+        <button type="button" 
+                class="action-button shadow animate red add-button"
                 (click)="deleteRoom(room.id)">
           Delete room
         </button>
 
-        <button type="button" class="action-button shadow animate green add-button"
+        <button type="button" 
+                class="action-button shadow animate green add-button"
                 (click)="selectRoom(room.id)">
           Select room
         </button>

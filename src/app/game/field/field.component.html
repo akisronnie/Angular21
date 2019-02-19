@@ -1,6 +1,7 @@
-<section class="table" *ngIf="activeRoom">
-  
-  <div class="players" *ngFor="let player of activeRoom.players">
+<section class="table" 
+         *ngIf="activeRoom">
+    <div class="players" 
+       *ngFor="let player of activeRoom.players">
     <h3 [class.turn]="player.turn">
       Player Name: {{ player.name }}
     </h3>
@@ -14,7 +15,8 @@
     </h3>
 
     <div class="player-hand">
-      <img *ngFor="let card of player.hand" [src]="card.src">
+      <img *ngFor="let card of player.hand" 
+           [src]="card.src">
     </div>
   </div>
 </section>

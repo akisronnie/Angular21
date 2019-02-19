@@ -3,11 +3,20 @@
     Welcome to Black Jack!!!
   </div>
 
-  <input type="text" placeholder="Enter your name" [(ngModel)]="userName">
+  <input type="text" 
+         name="username" 
+         placeholder="Enter your name" 
+         [(ngModel)]="userName">
 
-  <input type="text" *ngIf="users" placeholder="Enter your password" [(ngModel)]="userPassword">
+  <input type="text" 
+         name="userpassword" 
+         *ngIf="users" 
+         placeholder="Enter your password" 
+         [(ngModel)]="userPassword">
 
-  <button type="button" class="enter-button" (click)="enter()">
+  <button type="button" 
+          class="enter-button" 
+          (click)="enter()">
     Enter
   </button>
 
@@ -33,7 +42,8 @@
         <td>{{user.loses}}</td>
         
         <td>
-          <button type="button" class="button"
+          <button type="button" 
+                  class="button"
                   (click)=selectUser(user.name)>
             select user
           </button>

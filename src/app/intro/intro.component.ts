@@ -21,7 +21,7 @@ export class IntroComponent implements OnInit, OnDestroy {
   public constructor(
      private _dataBaseService: DataBaseService,
      private _userService: UserService,
-     private router: Router) {}
+     private _router: Router) {}
 
   public ngOnInit(): void {
     this._dataBaseService.getUsers().pipe(
@@ -53,7 +53,7 @@ export class IntroComponent implements OnInit, OnDestroy {
     if (existUser) {
       if (saveUser.pass === this.userPassword) {
         this._userService.setUser(saveUser);
-        this.router.navigate(['/menu']);
+        this._router.navigate(['/menu']);
 
         return;
 
@@ -90,7 +90,7 @@ export class IntroComponent implements OnInit, OnDestroy {
     };
     this._dataBaseService.addUsers(newUser);
     this._userService.setUser(newUser);
-    this.router.navigate(['/menu']);
+    this._router.navigate(['/menu']);
   }
 
   public selectUser(userName: string): void {

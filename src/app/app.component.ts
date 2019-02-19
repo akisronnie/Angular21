@@ -8,10 +8,4 @@ import { Component, HostListener } from '@angular/core';
 })
 
 export class AppComponent {
-
-  // @HostListener('window:beforeunload')
-  // public canDeactivate(): boolean {
-  //   return false;
-  // }
-
 }

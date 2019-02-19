@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-
-import { LocalStorageService } from '../services/local-storage.service';
 import { Observable } from 'rxjs';
 import { UserService } from '../services/user.service';
 import { map, tap } from 'rxjs/operators';
@@ -12,8 +10,7 @@ export class UserGuard implements CanActivate {
 
   public constructor(
     private _userService: UserService,
-    private _router: Router
-  ) {}
+    private _router: Router) {}
 
   public canActivate(): Observable<boolean> {
     return this._userService.getUser$()

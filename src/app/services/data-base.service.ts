@@ -18,24 +18,24 @@ export class DataBaseService {
     this.dataBase.list('rooms').remove('room' + id);
   }
 
-  public getRooms(): Observable<{}[]> {
-    return this.dataBase.list('rooms').valueChanges();
+  public getRooms(): Observable<TRoom[]> {
+    return this.dataBase.list<TRoom>('rooms').valueChanges();
   }
 
   public addPlayerToRoom(roomId: number, player: TPlayer): void {
     this.dataBase.object(`/rooms/room${roomId}/players/${player.id}`).update(player);
   }
 
-  public getUsers (): Observable<{}[]> {
-    return this.dataBase.list(`/users`).valueChanges();
+  public getUsers (): Observable<TPlayer[]> {
+    return this.dataBase.list<TPlayer>(`/users`).valueChanges();
   }
 
   public addUsers(newUser: TPlayer ): void {
     this.dataBase.object(`/users/${newUser.id}`).update(newUser);
   }
 
-  public getRoom$(id: number): Observable<{}> {
-    return this.dataBase.object(`/rooms/room${id}`).valueChanges();
+  public getRoom$(id: number): Observable<TRoom> {
+    return this.dataBase.object<TRoom>(`/rooms/room${id}`).valueChanges();
   }
 
   public setPlayerMaster(roomId: number, userId: number): void {

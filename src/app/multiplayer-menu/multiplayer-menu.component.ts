@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataBaseService } from '../services/data-base.service';
 import { Router } from '@angular/router';
-import { Subject, Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { UserService } from '../services/user.service';
 
@@ -23,7 +23,7 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
   public constructor(
     private _dataBaseService: DataBaseService,
     private _userService: UserService,
-    private router: Router
+    private _router: Router
   ) {}
 
   public ngOnInit(): void {
@@ -63,7 +63,7 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
         return;
       }
 
-    this.router.navigate(['/game', roomId]);
+    this._router.navigate(['/game', roomId]);
   }
 
   public addNewRoom(): void {
@@ -84,7 +84,7 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
     };
     this._dataBaseService.addNewRoom(newRoom);
     this.isShowAddRoomMenu = !this.isShowAddRoomMenu;
-    this.router.navigate(['/game', newRoom.id]);
+    this._router.navigate(['/game', newRoom.id]);
   }
 
   public deleteRoom(id: number): void {
