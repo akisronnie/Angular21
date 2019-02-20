@@ -33,14 +33,16 @@
   cursor: pointer;
   display: block;
 	position: relative;
-	padding: 10px 40px;
+	padding: 10px;
   margin: 0px 10px 10px 0px;
   float: left;
 	border-radius: 10px;
 	font-family: 'Pacifico', cursive;
 	font-size: 25px;
 	color: black;
-	text-decoration: none;	
+  text-decoration: none;	
+  width: 300px;
+  text-align: center;
 }
 
 .blue {

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+
 import { DataBaseService } from '../../services/data-base.service';
 
 @Component({

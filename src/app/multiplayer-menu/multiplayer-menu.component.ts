@@ -66,7 +66,7 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
 
   public addNewRoom(): void {
 
-    let _newIdForNewRoom: number = Math.max(...this.rooms.map((room: TRoom) => room.id));
+    let _newIdForNewRoom: number = this.rooms.length !== 0 ?  Math.max(...this.rooms.map((room: TRoom) => room.id)) : 1;
 
     const newRoom: TRoom = {
       id : ++_newIdForNewRoom,

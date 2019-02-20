@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { DataBaseService } from '../services/data-base.service';
 import { Router } from '@angular/router';
+
+import { DataBaseService } from '../services/data-base.service';
 import { GameService } from '../services/game.service';
 
 @Component({

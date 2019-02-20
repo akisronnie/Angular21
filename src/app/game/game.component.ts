@@ -56,11 +56,10 @@ export class GameComponent implements OnInit, OnDestroy {
 
             return false;
           }
-
             let userInRoom: boolean = false;
-            room.players = Object.values(room.players);
 
             if (room.players) {
+              room.players = Object.values(room.players);
               userInRoom = room.players.some(
                 (player: TPlayer) => (this.user.id === player.id)
               );
