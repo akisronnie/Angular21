@@ -56,26 +56,32 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 var routes = [
-    { path: '',
+    {
+        path: '',
         redirectTo: '/intro',
         pathMatch: 'full'
     },
-    { path: 'intro',
+    {
+        path: 'intro',
         component: _intro_intro_component__WEBPACK_IMPORTED_MODULE_6__["IntroComponent"]
     },
-    { path: 'game/:id',
+    {
+        path: 'game/:id',
         component: _game_game_component__WEBPACK_IMPORTED_MODULE_2__["GameComponent"],
         canActivate: [_guards_user_guard__WEBPACK_IMPORTED_MODULE_7__["UserGuard"]]
     },
-    { path: 'menu',
+    {
+        path: 'menu',
         component: _menu_menu_component__WEBPACK_IMPORTED_MODULE_3__["MenuComponent"],
         canActivate: [_guards_user_guard__WEBPACK_IMPORTED_MODULE_7__["UserGuard"]]
     },
-    { path: 'multiplayer',
+    {
+        path: 'multiplayer',
         component: _multiplayer_menu_multiplayer_menu_component__WEBPACK_IMPORTED_MODULE_4__["MultiplayerMenuComponent"],
         canActivate: [_guards_user_guard__WEBPACK_IMPORTED_MODULE_7__["UserGuard"]]
     },
-    { path: '**',
+    {
+        path: '**',
         component: _error_error_component__WEBPACK_IMPORTED_MODULE_5__["ErrorComponent"]
     }
 ];
@@ -177,14 +183,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _game_game_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./game/game.component */ "./src/app/game/game.component.ts");
 /* harmony import */ var _menu_menu_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./menu/menu.component */ "./src/app/menu/menu.component.ts");
 /* harmony import */ var _error_error_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./error/error.component */ "./src/app/error/error.component.ts");
-/* harmony import */ var _services_game_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./services/game.service */ "./src/app/services/game.service.ts");
-/* harmony import */ var _services_data_base_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./services/data-base.service */ "./src/app/services/data-base.service.ts");
-/* harmony import */ var _multiplayer_menu_multiplayer_menu_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./multiplayer-menu/multiplayer-menu.component */ "./src/app/multiplayer-menu/multiplayer-menu.component.ts");
-/* harmony import */ var _intro_intro_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./intro/intro.component */ "./src/app/intro/intro.component.ts");
-/* harmony import */ var _guards_user_guard__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./guards/user.guard */ "./src/app/guards/user.guard.ts");
-/* harmony import */ var _services_local_storage_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./services/local-storage.service */ "./src/app/services/local-storage.service.ts");
-/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./services/user.service */ "./src/app/services/user.service.ts");
-/* harmony import */ var _pipes_players_pipe__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./pipes/players.pipe */ "./src/app/pipes/players.pipe.ts");
+/* harmony import */ var _intro_intro_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./intro/intro.component */ "./src/app/intro/intro.component.ts");
+/* harmony import */ var _multiplayer_menu_multiplayer_menu_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./multiplayer-menu/multiplayer-menu.component */ "./src/app/multiplayer-menu/multiplayer-menu.component.ts");
+/* harmony import */ var _services_game_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./services/game.service */ "./src/app/services/game.service.ts");
+/* harmony import */ var _services_data_base_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./services/data-base.service */ "./src/app/services/data-base.service.ts");
+/* harmony import */ var _services_local_storage_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./services/local-storage.service */ "./src/app/services/local-storage.service.ts");
+/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./services/user.service */ "./src/app/services/user.service.ts");
+/* harmony import */ var _pipes_players_pipe__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./pipes/players.pipe */ "./src/app/pipes/players.pipe.ts");
+/* harmony import */ var _guards_user_guard__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./guards/user.guard */ "./src/app/guards/user.guard.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -224,9 +230,9 @@ var AppModule = /** @class */ (function () {
                 _game_game_component__WEBPACK_IMPORTED_MODULE_10__["GameComponent"],
                 _menu_menu_component__WEBPACK_IMPORTED_MODULE_11__["MenuComponent"],
                 _error_error_component__WEBPACK_IMPORTED_MODULE_12__["ErrorComponent"],
-                _multiplayer_menu_multiplayer_menu_component__WEBPACK_IMPORTED_MODULE_15__["MultiplayerMenuComponent"],
-                _intro_intro_component__WEBPACK_IMPORTED_MODULE_16__["IntroComponent"],
-                _pipes_players_pipe__WEBPACK_IMPORTED_MODULE_20__["PlayersPipe"],
+                _multiplayer_menu_multiplayer_menu_component__WEBPACK_IMPORTED_MODULE_14__["MultiplayerMenuComponent"],
+                _intro_intro_component__WEBPACK_IMPORTED_MODULE_13__["IntroComponent"],
+                _pipes_players_pipe__WEBPACK_IMPORTED_MODULE_19__["PlayersPipe"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -236,11 +242,11 @@ var AppModule = /** @class */ (function () {
                 angularfire2_database__WEBPACK_IMPORTED_MODULE_5__["AngularFireDatabaseModule"],
             ],
             providers: [
-                _services_game_service__WEBPACK_IMPORTED_MODULE_13__["GameService"],
-                _services_data_base_service__WEBPACK_IMPORTED_MODULE_14__["DataBaseService"],
-                _services_local_storage_service__WEBPACK_IMPORTED_MODULE_18__["LocalStorageService"],
-                _guards_user_guard__WEBPACK_IMPORTED_MODULE_17__["UserGuard"],
-                _services_user_service__WEBPACK_IMPORTED_MODULE_19__["UserService"],
+                _services_game_service__WEBPACK_IMPORTED_MODULE_15__["GameService"],
+                _services_data_base_service__WEBPACK_IMPORTED_MODULE_16__["DataBaseService"],
+                _services_local_storage_service__WEBPACK_IMPORTED_MODULE_17__["LocalStorageService"],
+                _guards_user_guard__WEBPACK_IMPORTED_MODULE_20__["UserGuard"],
+                _services_user_service__WEBPACK_IMPORTED_MODULE_18__["UserService"],
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
         })
@@ -316,7 +322,7 @@ var ErrorComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".table {\n  margin: auto;\n  flex-wrap: wrap;\n  height: 800px;\n  background-image: url(\"https://stoopidpigeon.com/wp-content/uploads/2017/06/online-blackjack-Canada-online-casino-games.jpg\"); /* The image used */\n  background-color: #cccccc; /* Used if the image is unavailable */\n  background-position: center; /* Center the image */\n  background-repeat: no-repeat; /* Do not repeat the image */\n  background-size: cover; /* Resize the background image to cover the entire container */\n  position: relative;\n  display: flex;\n  justify-content: center;\n  text-align: center;\n  padding: 30px;\n}\n\n.turn{\n  color: darkred;\n}\n\n.players {\n  width: 300px;\n  height: 300px;\n   background-color: rgb(124, 218, 129, 0.4);\n  border-radius: 20px;\n  margin: 0 30px;\n}\n\n.player-hand {\n  display: flex;\n  justify-content: space-around;\n  flex-direction: row; \n  width: 100%;\n}\n\n.center-table {\n  position: absolute;\n  display: flex;\n  justify-content: center;\n  align-items: flex-start;\n  width: 100%;\n  top: 50%;\n}\n\nbutton {\n  height: 70px;\n  width: 130px;\n  font-size: 25px;\n  margin-left: 30px;\n  margin-right: 30px;\n}\n\nimg {\n  width: 50px;\n  height: 100px;\n  border-radius: 10px;\n}\n\n.total,\n.comp-result,\n.score {\n  font-size: 52px;\n  color: black;\n  background-color: rgba(163, 163, 163, 0.438);\n  border-radius: 20px;\n}\n\n.comp-result {\n  margin-left: 20px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2FtZS9maWVsZC9maWVsZC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBYTtFQUNiLGdCQUFnQjtFQUNoQixjQUFjO0VBQ2QsOEhBQThILENBQUMsb0JBQW9CO0VBQ25KLDBCQUEwQixDQUFDLHNDQUFzQztFQUNqRSw0QkFBNEIsQ0FBQyxzQkFBc0I7RUFDbkQsNkJBQTZCLENBQUMsNkJBQTZCO0VBQzNELHVCQUF1QixDQUFDLCtEQUErRDtFQUN2RixtQkFBbUI7RUFDbkIsY0FBYztFQUNkLHdCQUF3QjtFQUN4QixtQkFBbUI7RUFDbkIsY0FBYztDQUNmOztBQUVEO0VBQ0UsZUFBZTtDQUNoQjs7QUFFRDtFQUNFLGFBQWE7RUFDYixjQUFjO0dBQ2IsMENBQTBDO0VBQzNDLG9CQUFvQjtFQUNwQixlQUFlO0NBQ2hCOztBQUVEO0VBQ0UsY0FBYztFQUNkLDhCQUE4QjtFQUM5QixvQkFBb0I7RUFDcEIsWUFBWTtDQUNiOztBQUVEO0VBQ0UsbUJBQW1CO0VBQ25CLGNBQWM7RUFDZCx3QkFBd0I7RUFDeEIsd0JBQXdCO0VBQ3hCLFlBQVk7RUFDWixTQUFTO0NBQ1Y7O0FBRUQ7RUFDRSxhQUFhO0VBQ2IsYUFBYTtFQUNiLGdCQUFnQjtFQUNoQixrQkFBa0I7RUFDbEIsbUJBQW1CO0NBQ3BCOztBQUVEO0VBQ0UsWUFBWTtFQUNaLGNBQWM7RUFDZCxvQkFBb0I7Q0FDckI7O0FBRUQ7OztFQUdFLGdCQUFnQjtFQUNoQixhQUFhO0VBQ2IsNkNBQTZDO0VBQzdDLG9CQUFvQjtDQUNyQjs7QUFFRDtFQUNFLGtCQUFrQjtDQUNuQiIsImZpbGUiOiJzcmMvYXBwL2dhbWUvZmllbGQvZmllbGQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi50YWJsZSB7XG4gIG1hcmdpbjogYXV0bztcbiAgZmxleC13cmFwOiB3cmFwO1xuICBoZWlnaHQ6IDgwMHB4O1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCJodHRwczovL3N0b29waWRwaWdlb24uY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE3LzA2L29ubGluZS1ibGFja2phY2stQ2FuYWRhLW9ubGluZS1jYXNpbm8tZ2FtZXMuanBnXCIpOyAvKiBUaGUgaW1hZ2UgdXNlZCAqL1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjY2NjY2NjOyAvKiBVc2VkIGlmIHRoZSBpbWFnZSBpcyB1bmF2YWlsYWJsZSAqL1xuICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7IC8qIENlbnRlciB0aGUgaW1hZ2UgKi9cbiAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDsgLyogRG8gbm90IHJlcGVhdCB0aGUgaW1hZ2UgKi9cbiAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjsgLyogUmVzaXplIHRoZSBiYWNrZ3JvdW5kIGltYWdlIHRvIGNvdmVyIHRoZSBlbnRpcmUgY29udGFpbmVyICovXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgcGFkZGluZzogMzBweDtcbn1cblxuLnR1cm57XG4gIGNvbG9yOiBkYXJrcmVkO1xufVxuXG4ucGxheWVycyB7XG4gIHdpZHRoOiAzMDBweDtcbiAgaGVpZ2h0OiAzMDBweDtcbiAgIGJhY2tncm91bmQtY29sb3I6IHJnYigxMjQsIDIxOCwgMTI5LCAwLjQpO1xuICBib3JkZXItcmFkaXVzOiAyMHB4O1xuICBtYXJnaW46IDAgMzBweDtcbn1cblxuLnBsYXllci1oYW5kIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1hcm91bmQ7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7IFxuICB3aWR0aDogMTAwJTtcbn1cblxuLmNlbnRlci10YWJsZSB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBmbGV4LXN0YXJ0O1xuICB3aWR0aDogMTAwJTtcbiAgdG9wOiA1MCU7XG59XG5cbmJ1dHRvbiB7XG4gIGhlaWdodDogNzBweDtcbiAgd2lkdGg6IDEzMHB4O1xuICBmb250LXNpemU6IDI1cHg7XG4gIG1hcmdpbi1sZWZ0OiAzMHB4O1xuICBtYXJnaW4tcmlnaHQ6IDMwcHg7XG59XG5cbmltZyB7XG4gIHdpZHRoOiA1MHB4O1xuICBoZWlnaHQ6IDEwMHB4O1xuICBib3JkZXItcmFkaXVzOiAxMHB4O1xufVxuXG4udG90YWwsXG4uY29tcC1yZXN1bHQsXG4uc2NvcmUge1xuICBmb250LXNpemU6IDUycHg7XG4gIGNvbG9yOiBibGFjaztcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgxNjMsIDE2MywgMTYzLCAwLjQzOCk7XG4gIGJvcmRlci1yYWRpdXM6IDIwcHg7XG59XG5cbi5jb21wLXJlc3VsdCB7XG4gIG1hcmdpbi1sZWZ0OiAyMHB4O1xufSJdfQ== */"
+module.exports = ".table {\n  margin: auto;\n  flex-wrap: wrap;\n  height: 800px;\n  background-image: url(\"https://stoopidpigeon.com/wp-content/uploads/2017/06/online-blackjack-Canada-online-casino-games.jpg\"); /* The image used */\n  background-color: #cccccc; /* Used if the image is unavailable */\n  background-position: center; /* Center the image */\n  background-repeat: no-repeat; /* Do not repeat the image */\n  background-size: cover; /* Resize the background image to cover the entire container */\n  position: relative;\n  display: flex;\n  justify-content: center;\n  text-align: center;\n  padding: 30px;\n}\n\n\n.turn{\n  background-color: rgba(1, 143, 5, 0.4);\n}\n\n\n.no-turn {\n  background-color: rgba(0, 0, 0, 0.6);\n}\n\n\n.players {\n  width: 300px;\n  height: 300px;\n  color: rgb(0, 253, 253);\n  border-radius: 20px;\n  margin: 0 30px;\n  border: 1px solid rgb(0, 253, 253);\n\n}\n\n\n.player-hand {\n  display: flex;\n  justify-content: space-around;\n  flex-direction: row; \n  width: 100%;\n\n}\n\n\n.center-table {\n  position: absolute;\n  display: flex;\n  justify-content: center;\n  align-items: flex-start;\n  width: 100%;\n  top: 50%;\n}\n\n\nbutton {\n  height: 70px;\n  width: 130px;\n  font-size: 25px;\n  margin-left: 30px;\n  margin-right: 30px;\n}\n\n\nimg {\n  width: 65px;\n  height: 100px;\n  border-radius: 10px;\n}\n\n\n.total,\n.comp-result,\n.score {\n  font-size: 52px;\n  color: black;\n  background-color: rgba(163, 163, 163, 0.438);\n  border-radius: 20px;\n}\n\n\n.comp-result {\n  margin-left: 20px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2FtZS9maWVsZC9maWVsZC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBYTtFQUNiLGdCQUFnQjtFQUNoQixjQUFjO0VBQ2QsOEhBQThILENBQUMsb0JBQW9CO0VBQ25KLDBCQUEwQixDQUFDLHNDQUFzQztFQUNqRSw0QkFBNEIsQ0FBQyxzQkFBc0I7RUFDbkQsNkJBQTZCLENBQUMsNkJBQTZCO0VBQzNELHVCQUF1QixDQUFDLCtEQUErRDtFQUN2RixtQkFBbUI7RUFDbkIsY0FBYztFQUNkLHdCQUF3QjtFQUN4QixtQkFBbUI7RUFDbkIsY0FBYztDQUNmOzs7QUFHRDtFQUNFLHVDQUF1QztDQUN4Qzs7O0FBRUQ7RUFDRSxxQ0FBcUM7Q0FDdEM7OztBQUVEO0VBQ0UsYUFBYTtFQUNiLGNBQWM7RUFDZCx3QkFBd0I7RUFDeEIsb0JBQW9CO0VBQ3BCLGVBQWU7RUFDZixtQ0FBbUM7O0NBRXBDOzs7QUFFRDtFQUNFLGNBQWM7RUFDZCw4QkFBOEI7RUFDOUIsb0JBQW9CO0VBQ3BCLFlBQVk7O0NBRWI7OztBQUVEO0VBQ0UsbUJBQW1CO0VBQ25CLGNBQWM7RUFDZCx3QkFBd0I7RUFDeEIsd0JBQXdCO0VBQ3hCLFlBQVk7RUFDWixTQUFTO0NBQ1Y7OztBQUVEO0VBQ0UsYUFBYTtFQUNiLGFBQWE7RUFDYixnQkFBZ0I7RUFDaEIsa0JBQWtCO0VBQ2xCLG1CQUFtQjtDQUNwQjs7O0FBRUQ7RUFDRSxZQUFZO0VBQ1osY0FBYztFQUNkLG9CQUFvQjtDQUNyQjs7O0FBRUQ7OztFQUdFLGdCQUFnQjtFQUNoQixhQUFhO0VBQ2IsNkNBQTZDO0VBQzdDLG9CQUFvQjtDQUNyQjs7O0FBRUQ7RUFDRSxrQkFBa0I7Q0FDbkIiLCJmaWxlIjoic3JjL2FwcC9nYW1lL2ZpZWxkL2ZpZWxkLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudGFibGUge1xuICBtYXJnaW46IGF1dG87XG4gIGZsZXgtd3JhcDogd3JhcDtcbiAgaGVpZ2h0OiA4MDBweDtcbiAgYmFja2dyb3VuZC1pbWFnZTogdXJsKFwiaHR0cHM6Ly9zdG9vcGlkcGlnZW9uLmNvbS93cC1jb250ZW50L3VwbG9hZHMvMjAxNy8wNi9vbmxpbmUtYmxhY2tqYWNrLUNhbmFkYS1vbmxpbmUtY2FzaW5vLWdhbWVzLmpwZ1wiKTsgLyogVGhlIGltYWdlIHVzZWQgKi9cbiAgYmFja2dyb3VuZC1jb2xvcjogI2NjY2NjYzsgLyogVXNlZCBpZiB0aGUgaW1hZ2UgaXMgdW5hdmFpbGFibGUgKi9cbiAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyOyAvKiBDZW50ZXIgdGhlIGltYWdlICovXG4gIGJhY2tncm91bmQtcmVwZWF0OiBuby1yZXBlYXQ7IC8qIERvIG5vdCByZXBlYXQgdGhlIGltYWdlICovXG4gIGJhY2tncm91bmQtc2l6ZTogY292ZXI7IC8qIFJlc2l6ZSB0aGUgYmFja2dyb3VuZCBpbWFnZSB0byBjb3ZlciB0aGUgZW50aXJlIGNvbnRhaW5lciAqL1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHBhZGRpbmc6IDMwcHg7XG59XG5cblxuLnR1cm57XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMSwgMTQzLCA1LCAwLjQpO1xufVxuXG4ubm8tdHVybiB7XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMCwgMCwgMCwgMC42KTtcbn1cblxuLnBsYXllcnMge1xuICB3aWR0aDogMzAwcHg7XG4gIGhlaWdodDogMzAwcHg7XG4gIGNvbG9yOiByZ2IoMCwgMjUzLCAyNTMpO1xuICBib3JkZXItcmFkaXVzOiAyMHB4O1xuICBtYXJnaW46IDAgMzBweDtcbiAgYm9yZGVyOiAxcHggc29saWQgcmdiKDAsIDI1MywgMjUzKTtcblxufVxuXG4ucGxheWVyLWhhbmQge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcbiAgZmxleC1kaXJlY3Rpb246IHJvdzsgXG4gIHdpZHRoOiAxMDAlO1xuXG59XG5cbi5jZW50ZXItdGFibGUge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBhbGlnbi1pdGVtczogZmxleC1zdGFydDtcbiAgd2lkdGg6IDEwMCU7XG4gIHRvcDogNTAlO1xufVxuXG5idXR0b24ge1xuICBoZWlnaHQ6IDcwcHg7XG4gIHdpZHRoOiAxMzBweDtcbiAgZm9udC1zaXplOiAyNXB4O1xuICBtYXJnaW4tbGVmdDogMzBweDtcbiAgbWFyZ2luLXJpZ2h0OiAzMHB4O1xufVxuXG5pbWcge1xuICB3aWR0aDogNjVweDtcbiAgaGVpZ2h0OiAxMDBweDtcbiAgYm9yZGVyLXJhZGl1czogMTBweDtcbn1cblxuLnRvdGFsLFxuLmNvbXAtcmVzdWx0LFxuLnNjb3JlIHtcbiAgZm9udC1zaXplOiA1MnB4O1xuICBjb2xvcjogYmxhY2s7XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMTYzLCAxNjMsIDE2MywgMC40MzgpO1xuICBib3JkZXItcmFkaXVzOiAyMHB4O1xufVxuXG4uY29tcC1yZXN1bHQge1xuICBtYXJnaW4tbGVmdDogMjBweDtcbn0iXX0= */"
 
 /***/ }),
 
@@ -327,7 +333,7 @@ module.exports = ".table {\n  margin: auto;\n  flex-wrap: wrap;\n  height: 800px
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"table\" *ngIf=\"activeRoom\">\n  \n  <div class=\"players\" *ngFor=\"let player of activeRoom.players\">\n    <h3 [class.turn]=\"player.turn\">\n      Player Name: {{ player.name }}\n    </h3>\n\n    <h3>\n      Player wins: {{ player.wins }} games: {{ player.loses }}\n    </h3>\n\n    <h3 *ngIf=\"user.id === player.id || !activeRoom.started\">\n      Score: {{ player.sum }}\n    </h3>\n\n    <div class=\"player-hand\">\n      <img *ngFor=\"let card of player.hand\" [src]=\"card.src\">\n    </div>\n  </div>\n</section>\n"
+module.exports = "<section class=\"table\" \n         *ngIf=\"activeRoom\">\n  <div class=\"players\" \n       [class.turn]=\"player.turn\"\n       [class.no-turn]=\"!player.turn\"\n       *ngFor=\"let player of activeRoom.players\">\n    <h3>\n      Player Name: {{ player.name }}\n    </h3>\n\n    <h3>\n      Wins: {{ player.wins }} Games: {{ player.loses }}\n    </h3>\n\n    <h3 *ngIf=\"!activeRoom.started\">\n      Score: {{ player.sum }}\n    </h3>\n\n    <div class=\"player-hand\">\n      <img *ngFor=\"let card of player.hand\" \n           [src]=\"card.src\">\n    </div>\n  </div>\n</section>"
 
 /***/ }),
 
@@ -404,7 +410,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-score [activeRoom] = \"activeRoom\"\n           [user] = \"user\"\n           [message] = \"message\"\n           (userReady)=\"userReady()\"\n           [youTurn]=\"youTurn\"\n           [finish]=\"finish\"\n           (getPlayer)=\"getYou()\"\n           (enoughGame)=\"enoughGame()\"\n           (finishGame)=\"finish()\"\n           (addBots)=\"addBots()\"\n           (deleteBots)=\"deleteBots()\">\n</app-score>\n\n<app-field [activeRoom]=\"activeRoom\"\n           [user] = \"user\"\n           [youTurn]=\"youTurn\">\n</app-field>\n"
+module.exports = "<app-score [activeRoom] = \"activeRoom\"\n           [user] = \"user\"\n           [message] = \"message\"\n           (userReady)=\"userReady()\"\n           [youTurn]=\"youTurn\"\n           [finish]=\"finish\"\n           (getPlayer)=\"getYou()\"\n           (enoughGame)=\"enoughGame()\"\n           (finishGame)=\"finish()\"\n           (addBots)=\"addBots()\"\n           (deleteBots)=\"deleteBots()\">\n</app-score>\n\n<app-field [activeRoom]=\"activeRoom\"\n           [user] = \"user\"\n           [youTurn]=\"youTurn\">\n</app-field>"
 
 /***/ }),
 
@@ -419,14 +425,14 @@ module.exports = "<app-score [activeRoom] = \"activeRoom\"\n           [user] = 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GameComponent", function() { return GameComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services_data_base_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/data-base.service */ "./src/app/services/data-base.service.ts");
-/* harmony import */ var _services_game_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/game.service */ "./src/app/services/game.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/user.service */ "./src/app/services/user.service.ts");
-/* harmony import */ var faker__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! faker */ "./node_modules/faker/index.js");
-/* harmony import */ var faker__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(faker__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var faker__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! faker */ "./node_modules/faker/index.js");
+/* harmony import */ var faker__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(faker__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _services_data_base_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/data-base.service */ "./src/app/services/data-base.service.ts");
+/* harmony import */ var _services_game_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/game.service */ "./src/app/services/game.service.ts");
+/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../services/user.service */ "./src/app/services/user.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -453,61 +459,57 @@ var GameComponent = /** @class */ (function () {
         this._router = _router;
         this.message = 'Welcome to game';
         this.youTurn = false;
-        this._destroy$$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
+        this._destroy$$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
         this._CONDITIONS_COMPUTER_DRAW = 15;
     }
     GameComponent.prototype.ngOnInit = function () {
         var _this = this;
-        Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["combineLatest"])(this._userService.getUser$(), this._route.params.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["pluck"])('id'), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(Number)))
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (_a) {
+        Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["combineLatest"])(this._userService.getUser$(), this._route.params.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["pluck"])('id'), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(Number)))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])(function (_a) {
             var user = _a[0], id = _a[1];
             _this.user = user;
             return _this._dataBaseService.getRoom$(id);
-        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["filter"])(function (room) {
-            if (room) {
-                var userInRoom = false;
-                if (room.players) {
-                    userInRoom = Object.values(room.players).some(function (player) { return (_this.user.id === player.id); });
-                }
-                if (!userInRoom && room.players
-                    && Object.values(room.players).length >= room.maxplayers) {
-                    alert('This room is full');
-                    _this._router.navigate(['/multiplayer']);
-                    return false;
-                }
-                if (!userInRoom && room.started) {
-                    alert('Sorry, game is started');
-                    _this._router.navigate(['/multiplayer']);
-                    return false;
-                }
-                if (!room.players) {
-                    _this.user.playerMaster = true;
-                    _this.user.turn = true;
-                }
-                if (!userInRoom) {
-                    _this._dataBaseService.addPlayerToRoom(room.id, _this.user);
-                    return false;
-                }
-                return true;
-            }
-            else {
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["filter"])(function (room) {
+            if (!room) {
                 alert('This room is not correct');
                 _this._router.navigate(['/multiplayer']);
                 return false;
             }
-        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this._destroy$$))
+            var userInRoom = false;
+            if (room.players) {
+                room.players = Object.values(room.players);
+                userInRoom = room.players.some(function (player) { return (_this.user.id === player.id); });
+            }
+            if (!userInRoom && room.players
+                && room.players.length >= room.maxplayers) {
+                alert('This room is full');
+                _this._router.navigate(['/multiplayer']);
+                return false;
+            }
+            if (!userInRoom && room.started) {
+                alert('Sorry, game is started');
+                _this._router.navigate(['/multiplayer']);
+                return false;
+            }
+            if (!room.players) {
+                _this.user.playerMaster = true;
+                _this.user.turn = true;
+            }
+            if (!userInRoom) {
+                _this._dataBaseService.addPlayerToRoom(room.id, _this.user);
+                return false;
+            }
+            return true;
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this._destroy$$))
             .subscribe(function (room) {
             _this.activeRoom = room;
-            if (!_this.activeRoom.players) {
-                _this.activeRoom.players = [];
-            }
-            _this.activeRoom.players = Object.values(room.players);
+            _this.activeRoom.players = _this.activeRoom.players ? Object.values(room.players) : [];
             if (_this.activeRoom.players.length < 2 && _this.activeRoom.single) {
                 _this.addBots();
             }
             _this.activeRoom.players.forEach(function (player) {
                 if (!_this.activeRoom.started && player.hand) {
-                    player.hand.map(function (card) {
+                    player.hand.forEach(function (card) {
                         card.src = "./assets/img/" + card.name + card.suits + ".png";
                     });
                 }
@@ -526,7 +528,7 @@ var GameComponent = /** @class */ (function () {
                     }
                 }
                 if (_this.user.hand) {
-                    _this.user.hand.map(function (card) {
+                    _this.user.hand.forEach(function (card) {
                         card.src = "./assets/img/" + card.name + card.suits + ".png";
                     });
                 }
@@ -580,20 +582,10 @@ var GameComponent = /** @class */ (function () {
             alert('room is full');
             return;
         }
-        var date = new Date();
-        var components = [
-            date.getMonth(),
-            date.getDate(),
-            date.getHours(),
-            date.getMinutes(),
-            date.getSeconds(),
-            date.getMilliseconds()
-        ];
-        var botId = Number(components.join(''));
         var newBot = {
-            name: faker__WEBPACK_IMPORTED_MODULE_7__["name"].findName(),
+            name: faker__WEBPACK_IMPORTED_MODULE_4__["name"].findName(),
             pass: '',
-            id: botId,
+            id: this._gameService.generateId(),
             wins: 0,
             loses: 0,
             isActive: true,
@@ -739,6 +731,7 @@ var GameComponent = /** @class */ (function () {
             this._dataBaseService.addUsers(this.user);
             this._dataBaseService.removeUserFromRoom(this.activeRoom.id, this.user.id);
         }
+        this._destroy$$.complete();
     };
     GameComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -746,11 +739,11 @@ var GameComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./game.component.html */ "./src/app/game/game.component.html"),
             styles: [__webpack_require__(/*! ./game.component.css */ "./src/app/game/game.component.css")]
         }),
-        __metadata("design:paramtypes", [_services_game_service__WEBPACK_IMPORTED_MODULE_2__["GameService"],
-            _services_data_base_service__WEBPACK_IMPORTED_MODULE_1__["DataBaseService"],
-            _services_user_service__WEBPACK_IMPORTED_MODULE_6__["UserService"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+        __metadata("design:paramtypes", [_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"],
+            _services_data_base_service__WEBPACK_IMPORTED_MODULE_5__["DataBaseService"],
+            _services_user_service__WEBPACK_IMPORTED_MODULE_7__["UserService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
     ], GameComponent);
     return GameComponent;
 }());
@@ -766,7 +759,7 @@ var GameComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".score {\n  padding: 10px;\n  font-size: 30px;\n  color: rgb(0, 255, 255);\n}\n\n.return-link{\npadding: 20px;\n}\n\n.score,\n.score-container {\n   text-align: center;\n}\n\n.score {\n  background-color: rgba(0, 0, 0, 0.5)\n}\n\n.score-container {\n background-color: black;\n background-image: url('https://ak9.picdn.net/shutterstock/videos/9648839/thumb/1.jpg');\n background-size: 580px;\n background-color: black;\n}\n\na {\n  font-size: 33px;\n}\n\n.master {\n  color:red;\n}\n\n.action-button {\n  cursor: pointer;\n\tposition: relative;\n\tpadding: 10px 40px;\n  margin: 0px 10px 10px 0px;\n\tborder-radius: 10px;\n\tfont-family: 'Pacifico', cursive;\n\tfont-size: 25px;\n\tcolor: black;\n\ttext-decoration: none;\t\n}\n\n.blue {\n\tbackground-color: #3498DB;\n\tborder-bottom: 5px solid #2980B9;\n\ttext-shadow: 0px -2px #2980B9;\n}\n\n.red {\n\tbackground-color: #E74C3C;\n\tborder-bottom: 5px solid #BD3E31;\n\ttext-shadow: 0px -2px #BD3E31;\n}\n\n.green {\n\tbackground-color: #82BF56;\n\tborder-bottom: 5px solid #669644;\n\ttext-shadow: 0px -2px #669644;\n}\n\n.yellow {\n\tbackground-color: #F2CF66;\n\tborder-bottom: 5px solid #D1B358;\n\ttext-shadow: 0px -2px #D1B358;\n}\n\n.action-button:active {\n\ttransform: translate(0px,5px);\n  -webkit-transform: translate(0px,5px);\n\tborder-bottom: 1px solid;\n}\n\n.ready {\n  color:greenyellow\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2FtZS9zY29yZS9zY29yZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsY0FBYztFQUNkLGdCQUFnQjtFQUNoQix3QkFBd0I7Q0FDekI7O0FBRUQ7QUFDQSxjQUFjO0NBQ2I7O0FBRUQ7O0dBRUcsbUJBQW1CO0NBQ3JCOztBQUNEO0VBQ0Usb0NBQW9DO0NBQ3JDOztBQUNEO0NBQ0Msd0JBQXdCO0NBQ3hCLHVGQUF1RjtDQUN2Rix1QkFBdUI7Q0FDdkIsd0JBQXdCO0NBQ3hCOztBQUVEO0VBQ0UsZ0JBQWdCO0NBQ2pCOztBQUVEO0VBQ0UsVUFBVTtDQUNYOztBQUVEO0VBQ0UsZ0JBQWdCO0NBQ2pCLG1CQUFtQjtDQUNuQixtQkFBbUI7RUFDbEIsMEJBQTBCO0NBQzNCLG9CQUFvQjtDQUNwQixpQ0FBaUM7Q0FDakMsZ0JBQWdCO0NBQ2hCLGFBQWE7Q0FDYixzQkFBc0I7Q0FDdEI7O0FBRUQ7Q0FDQywwQkFBMEI7Q0FDMUIsaUNBQWlDO0NBQ2pDLDhCQUE4QjtDQUM5Qjs7QUFFRDtDQUNDLDBCQUEwQjtDQUMxQixpQ0FBaUM7Q0FDakMsOEJBQThCO0NBQzlCOztBQUVEO0NBQ0MsMEJBQTBCO0NBQzFCLGlDQUFpQztDQUNqQyw4QkFBOEI7Q0FDOUI7O0FBRUQ7Q0FDQywwQkFBMEI7Q0FDMUIsaUNBQWlDO0NBQ2pDLDhCQUE4QjtDQUM5Qjs7QUFFRDtDQUNDLDhCQUE4QjtFQUM3QixzQ0FBc0M7Q0FDdkMseUJBQXlCO0NBQ3pCOztBQUVEO0VBQ0UsaUJBQWlCO0NBQ2xCIiwiZmlsZSI6InNyYy9hcHAvZ2FtZS9zY29yZS9zY29yZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnNjb3JlIHtcbiAgcGFkZGluZzogMTBweDtcbiAgZm9udC1zaXplOiAzMHB4O1xuICBjb2xvcjogcmdiKDAsIDI1NSwgMjU1KTtcbn1cblxuLnJldHVybi1saW5re1xucGFkZGluZzogMjBweDtcbn1cblxuLnNjb3JlLFxuLnNjb3JlLWNvbnRhaW5lciB7XG4gICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG4uc2NvcmUge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsIDAsIDAsIDAuNSlcbn1cbi5zY29yZS1jb250YWluZXIge1xuIGJhY2tncm91bmQtY29sb3I6IGJsYWNrO1xuIGJhY2tncm91bmQtaW1hZ2U6IHVybCgnaHR0cHM6Ly9hazkucGljZG4ubmV0L3NodXR0ZXJzdG9jay92aWRlb3MvOTY0ODgzOS90aHVtYi8xLmpwZycpO1xuIGJhY2tncm91bmQtc2l6ZTogNTgwcHg7XG4gYmFja2dyb3VuZC1jb2xvcjogYmxhY2s7XG59XG5cbmEge1xuICBmb250LXNpemU6IDMzcHg7XG59XG5cbi5tYXN0ZXIge1xuICBjb2xvcjpyZWQ7XG59XG5cbi5hY3Rpb24tYnV0dG9uIHtcbiAgY3Vyc29yOiBwb2ludGVyO1xuXHRwb3NpdGlvbjogcmVsYXRpdmU7XG5cdHBhZGRpbmc6IDEwcHggNDBweDtcbiAgbWFyZ2luOiAwcHggMTBweCAxMHB4IDBweDtcblx0Ym9yZGVyLXJhZGl1czogMTBweDtcblx0Zm9udC1mYW1pbHk6ICdQYWNpZmljbycsIGN1cnNpdmU7XG5cdGZvbnQtc2l6ZTogMjVweDtcblx0Y29sb3I6IGJsYWNrO1xuXHR0ZXh0LWRlY29yYXRpb246IG5vbmU7XHRcbn1cblxuLmJsdWUge1xuXHRiYWNrZ3JvdW5kLWNvbG9yOiAjMzQ5OERCO1xuXHRib3JkZXItYm90dG9tOiA1cHggc29saWQgIzI5ODBCOTtcblx0dGV4dC1zaGFkb3c6IDBweCAtMnB4ICMyOTgwQjk7XG59XG5cbi5yZWQge1xuXHRiYWNrZ3JvdW5kLWNvbG9yOiAjRTc0QzNDO1xuXHRib3JkZXItYm90dG9tOiA1cHggc29saWQgI0JEM0UzMTtcblx0dGV4dC1zaGFkb3c6IDBweCAtMnB4ICNCRDNFMzE7XG59XG5cbi5ncmVlbiB7XG5cdGJhY2tncm91bmQtY29sb3I6ICM4MkJGNTY7XG5cdGJvcmRlci1ib3R0b206IDVweCBzb2xpZCAjNjY5NjQ0O1xuXHR0ZXh0LXNoYWRvdzogMHB4IC0ycHggIzY2OTY0NDtcbn1cblxuLnllbGxvdyB7XG5cdGJhY2tncm91bmQtY29sb3I6ICNGMkNGNjY7XG5cdGJvcmRlci1ib3R0b206IDVweCBzb2xpZCAjRDFCMzU4O1xuXHR0ZXh0LXNoYWRvdzogMHB4IC0ycHggI0QxQjM1ODtcbn1cblxuLmFjdGlvbi1idXR0b246YWN0aXZlIHtcblx0dHJhbnNmb3JtOiB0cmFuc2xhdGUoMHB4LDVweCk7XG4gIC13ZWJraXQtdHJhbnNmb3JtOiB0cmFuc2xhdGUoMHB4LDVweCk7XG5cdGJvcmRlci1ib3R0b206IDFweCBzb2xpZDtcbn1cblxuLnJlYWR5IHtcbiAgY29sb3I6Z3JlZW55ZWxsb3dcbn0iXX0= */"
+module.exports = ".score {\n  padding: 10px;\n  font-size: 30px;\n  color: rgb(0, 255, 255);\n}\n\n.return-link{\n  padding: 20px;\n}\n\n.score,\n.score-container {\n   text-align: center;\n}\n\n.score {\n  background-color: rgba(0, 0, 0, 0.5)\n}\n\n.score-container {\n  background-color: black;\n  background-image: url('https://ak9.picdn.net/shutterstock/videos/9648839/thumb/1.jpg');\n  background-size: 580px;\n  background-color: black;\n}\n\na {\n  font-size: 33px;\n}\n\n.master {\n  color:red;\n}\n\n.action-button {\n  cursor: pointer;\n\tposition: relative;\n\tpadding: 10px 40px;\n  margin: 0px 10px 10px 0px;\n\tborder-radius: 10px;\n\tfont-family: 'Pacifico', cursive;\n\tfont-size: 25px;\n\tcolor: black;\n\ttext-decoration: none;\t\n}\n\n.blue {\n\tbackground-color: #3498DB;\n\tborder-bottom: 5px solid #2980B9;\n\ttext-shadow: 0px -2px #2980B9;\n}\n\n.red {\n\tbackground-color: #E74C3C;\n\tborder-bottom: 5px solid #BD3E31;\n\ttext-shadow: 0px -2px #BD3E31;\n}\n\n.green {\n\tbackground-color: #82BF56;\n\tborder-bottom: 5px solid #669644;\n\ttext-shadow: 0px -2px #669644;\n}\n\n.yellow {\n\tbackground-color: #F2CF66;\n\tborder-bottom: 5px solid #D1B358;\n\ttext-shadow: 0px -2px #D1B358;\n}\n\n.action-button:active {\n\ttransform: translate(0px,5px);\n  -webkit-transform: translate(0px,5px);\n\tborder-bottom: 1px solid;\n}\n\n.ready {\n  color:greenyellow\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2FtZS9zY29yZS9zY29yZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsY0FBYztFQUNkLGdCQUFnQjtFQUNoQix3QkFBd0I7Q0FDekI7O0FBRUQ7RUFDRSxjQUFjO0NBQ2Y7O0FBRUQ7O0dBRUcsbUJBQW1CO0NBQ3JCOztBQUNEO0VBQ0Usb0NBQW9DO0NBQ3JDOztBQUNEO0VBQ0Usd0JBQXdCO0VBQ3hCLHVGQUF1RjtFQUN2Rix1QkFBdUI7RUFDdkIsd0JBQXdCO0NBQ3pCOztBQUVEO0VBQ0UsZ0JBQWdCO0NBQ2pCOztBQUVEO0VBQ0UsVUFBVTtDQUNYOztBQUVEO0VBQ0UsZ0JBQWdCO0NBQ2pCLG1CQUFtQjtDQUNuQixtQkFBbUI7RUFDbEIsMEJBQTBCO0NBQzNCLG9CQUFvQjtDQUNwQixpQ0FBaUM7Q0FDakMsZ0JBQWdCO0NBQ2hCLGFBQWE7Q0FDYixzQkFBc0I7Q0FDdEI7O0FBRUQ7Q0FDQywwQkFBMEI7Q0FDMUIsaUNBQWlDO0NBQ2pDLDhCQUE4QjtDQUM5Qjs7QUFFRDtDQUNDLDBCQUEwQjtDQUMxQixpQ0FBaUM7Q0FDakMsOEJBQThCO0NBQzlCOztBQUVEO0NBQ0MsMEJBQTBCO0NBQzFCLGlDQUFpQztDQUNqQyw4QkFBOEI7Q0FDOUI7O0FBRUQ7Q0FDQywwQkFBMEI7Q0FDMUIsaUNBQWlDO0NBQ2pDLDhCQUE4QjtDQUM5Qjs7QUFFRDtDQUNDLDhCQUE4QjtFQUM3QixzQ0FBc0M7Q0FDdkMseUJBQXlCO0NBQ3pCOztBQUVEO0VBQ0UsaUJBQWlCO0NBQ2xCIiwiZmlsZSI6InNyYy9hcHAvZ2FtZS9zY29yZS9zY29yZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnNjb3JlIHtcbiAgcGFkZGluZzogMTBweDtcbiAgZm9udC1zaXplOiAzMHB4O1xuICBjb2xvcjogcmdiKDAsIDI1NSwgMjU1KTtcbn1cblxuLnJldHVybi1saW5re1xuICBwYWRkaW5nOiAyMHB4O1xufVxuXG4uc2NvcmUsXG4uc2NvcmUtY29udGFpbmVyIHtcbiAgIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cbi5zY29yZSB7XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMCwgMCwgMCwgMC41KVxufVxuLnNjb3JlLWNvbnRhaW5lciB7XG4gIGJhY2tncm91bmQtY29sb3I6IGJsYWNrO1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoJ2h0dHBzOi8vYWs5LnBpY2RuLm5ldC9zaHV0dGVyc3RvY2svdmlkZW9zLzk2NDg4MzkvdGh1bWIvMS5qcGcnKTtcbiAgYmFja2dyb3VuZC1zaXplOiA1ODBweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogYmxhY2s7XG59XG5cbmEge1xuICBmb250LXNpemU6IDMzcHg7XG59XG5cbi5tYXN0ZXIge1xuICBjb2xvcjpyZWQ7XG59XG5cbi5hY3Rpb24tYnV0dG9uIHtcbiAgY3Vyc29yOiBwb2ludGVyO1xuXHRwb3NpdGlvbjogcmVsYXRpdmU7XG5cdHBhZGRpbmc6IDEwcHggNDBweDtcbiAgbWFyZ2luOiAwcHggMTBweCAxMHB4IDBweDtcblx0Ym9yZGVyLXJhZGl1czogMTBweDtcblx0Zm9udC1mYW1pbHk6ICdQYWNpZmljbycsIGN1cnNpdmU7XG5cdGZvbnQtc2l6ZTogMjVweDtcblx0Y29sb3I6IGJsYWNrO1xuXHR0ZXh0LWRlY29yYXRpb246IG5vbmU7XHRcbn1cblxuLmJsdWUge1xuXHRiYWNrZ3JvdW5kLWNvbG9yOiAjMzQ5OERCO1xuXHRib3JkZXItYm90dG9tOiA1cHggc29saWQgIzI5ODBCOTtcblx0dGV4dC1zaGFkb3c6IDBweCAtMnB4ICMyOTgwQjk7XG59XG5cbi5yZWQge1xuXHRiYWNrZ3JvdW5kLWNvbG9yOiAjRTc0QzNDO1xuXHRib3JkZXItYm90dG9tOiA1cHggc29saWQgI0JEM0UzMTtcblx0dGV4dC1zaGFkb3c6IDBweCAtMnB4ICNCRDNFMzE7XG59XG5cbi5ncmVlbiB7XG5cdGJhY2tncm91bmQtY29sb3I6ICM4MkJGNTY7XG5cdGJvcmRlci1ib3R0b206IDVweCBzb2xpZCAjNjY5NjQ0O1xuXHR0ZXh0LXNoYWRvdzogMHB4IC0ycHggIzY2OTY0NDtcbn1cblxuLnllbGxvdyB7XG5cdGJhY2tncm91bmQtY29sb3I6ICNGMkNGNjY7XG5cdGJvcmRlci1ib3R0b206IDVweCBzb2xpZCAjRDFCMzU4O1xuXHR0ZXh0LXNoYWRvdzogMHB4IC0ycHggI0QxQjM1ODtcbn1cblxuLmFjdGlvbi1idXR0b246YWN0aXZlIHtcblx0dHJhbnNmb3JtOiB0cmFuc2xhdGUoMHB4LDVweCk7XG4gIC13ZWJraXQtdHJhbnNmb3JtOiB0cmFuc2xhdGUoMHB4LDVweCk7XG5cdGJvcmRlci1ib3R0b206IDFweCBzb2xpZDtcbn1cblxuLnJlYWR5IHtcbiAgY29sb3I6Z3JlZW55ZWxsb3dcbn0iXX0= */"
 
 /***/ }),
 
@@ -777,7 +770,7 @@ module.exports = ".score {\n  padding: 10px;\n  font-size: 30px;\n  color: rgb(0
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"score-container\">\n  <a routerLink=\"/multiplayer\" \n     *ngIf=\"activeRoom && !activeRoom.single\"\n     class=\"action-button shadow animate green return-link\">\n    Return to multiplayer menu.\n  </a>\n\n  <a routerLink=\"/menu\" \n     *ngIf=\"activeRoom && activeRoom.single\"\n     class=\"action-button shadow animate green\">\n    Return to menu.\n  </a>\n\n  <div class=\"score\" \n       *ngIf=\"activeRoom && !activeRoom.single\">\n    Players in room: \n\n    <span *ngFor=\"let player of activeRoom.players\" \n          [class.ready]=\"player.isActive\">\n      \\ {{player.name}} / \n    </span>\n  </div>\n\n  <div class=\"score\" \n       *ngIf=\"activeRoom && !activeRoom.single\">\n    ID ROOM:{{ activeRoom.id }} Max players: {{ activeRoom.maxplayers}}\n  </div>\n\n  <div class=\"score\">\n    {{ message }}\n  </div>\n\n  <div>\n    <button class=\"action-button shadow animate\" \n            *ngIf=\"activeRoom && !activeRoom.started && activeRoom.players && activeRoom.players.length > 1\"\n            [class.green]=\"user.isActive\"\n            [class.yellow]=\"!user.isActive\"\n            (click)=\"ready()\"> \n      Ready {{user.isActive}}\n    </button>\n\n    <button class=\"action-button shadow animate blue\" \n            *ngIf=\"activeRoom && !activeRoom.started && user.playerMaster\"\n            (click)=\"addBot()\"> \n      Add bot\n    </button>\n\n    <button class=\"action-button shadow animate red\" \n            *ngIf=\"activeRoom && !activeRoom.started && user.playerMaster\"\n            (click)=\"deleteBot()\"> \n      Delete bot\n    </button>\n\n    <button class=\"action-button shadow animate blue\" \n            type=\"button\" \n            *ngIf=\"activeRoom && activeRoom.started \"\n            [disabled]=\"!youTurn\" \n            (click)=\"this.getPlayer.emit()\">\n      Get Card\n    </button>\n\n    <button class=\"action-button shadow animate red\" \n            type=\"button\" \n            *ngIf=\"activeRoom && activeRoom.started \" \n            [disabled]=\"!youTurn\"\n            (click)=\"this.enoughGame.emit()\">\n      Enough!\n    </button>\n  </div>\n\n  <div class=\"score\">\n    Wins:{{ user.wins }} Games:{{ user.loses }}\n  </div>\n \n</div>"
+module.exports = "<div class=\"score-container\">\n  <a routerLink=\"/multiplayer\" \n     *ngIf=\"activeRoom && !activeRoom.single\"\n     class=\"action-button shadow animate green return-link\">\n    Return to multiplayer menu.\n  </a>\n\n  <a routerLink=\"/menu\" \n     *ngIf=\"activeRoom && activeRoom.single\"\n     class=\"action-button shadow animate green\">\n    Return to menu.\n  </a>\n\n  <div class=\"score\" \n       *ngIf=\"activeRoom && !activeRoom.single\">\n    Players in room: \n\n    <span *ngFor=\"let player of activeRoom.players\" \n          [class.ready]=\"player.isActive\">\n      \\ {{player.name}} / \n    </span>\n  </div>\n\n  <div class=\"score\" \n       *ngIf=\"activeRoom && !activeRoom.single\">\n    Max players: {{ activeRoom.maxplayers}}\n  </div>\n\n  <div class=\"score\">\n    {{ message }}\n  </div>\n\n  <div class=\"score\">\n     You Score: {{ user.sum }}\n  </div>\n\n  <div>\n    <button class=\"action-button shadow animate\" \n            *ngIf=\"activeRoom && !activeRoom.started && activeRoom.players && activeRoom.players.length > 1\"\n            [class.green]=\"user.isActive\"\n            [class.yellow]=\"!user.isActive\"\n            (click)=\"ready()\"> \n      Ready \n    </button>\n\n    <button class=\"action-button shadow animate blue\" \n            *ngIf=\"activeRoom && !activeRoom.started && user.playerMaster\"\n            (click)=\"addBot()\"> \n      Add bot\n    </button>\n\n    <button class=\"action-button shadow animate yellow\" \n            *ngIf=\"activeRoom && !activeRoom.started && user.playerMaster\"\n            (click)=\"deleteBot()\"> \n      Delete bot\n    </button>\n\n    <button class=\"action-button shadow animate blue\" \n            type=\"button\" \n            *ngIf=\"activeRoom && activeRoom.started \"\n            [disabled]=\"!youTurn\"\n            [class.red]=\"!user.turn\" \n            [disabled]=\"!user.turn\"\n            (click)=\"this.getPlayer.emit()\">\n      Get Card\n    </button>\n\n    <button class=\"action-button shadow animate \" \n            type=\"button\" \n            *ngIf=\"activeRoom && activeRoom.started \" \n            [disabled]=\"!youTurn\"\n            [class.red]=\"user.enough || !user.turn\"\n            [class.yellow]=\"!user.enough && user.turn \" \n            (click)=\"this.enoughGame.emit()\">\n      Enough! \n    </button>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -792,8 +785,6 @@ module.exports = "<div class=\"score-container\">\n  <a routerLink=\"/multiplaye
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ScoreComponent", function() { return ScoreComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _services_data_base_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/data-base.service */ "./src/app/services/data-base.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -804,16 +795,10 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-
-
 var ScoreComponent = /** @class */ (function () {
-    function ScoreComponent(_dataBaseService, router) {
-        this._dataBaseService = _dataBaseService;
-        this.router = router;
-        //  @Input() public activeRoom: {} = {id : 0};
+    function ScoreComponent() {
         this.youTurn = false;
         this.finish = false;
-        //  @Input() public roomId: number;
         this.getPlayer = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"];
         this.finishGame = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"];
         this.enoughGame = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"];
@@ -879,8 +864,7 @@ var ScoreComponent = /** @class */ (function () {
             selector: 'app-score',
             template: __webpack_require__(/*! ./score.component.html */ "./src/app/game/score/score.component.html"),
             styles: [__webpack_require__(/*! ./score.component.css */ "./src/app/game/score/score.component.css")]
-        }),
-        __metadata("design:paramtypes", [_services_data_base_service__WEBPACK_IMPORTED_MODULE_2__["DataBaseService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+        })
     ], ScoreComponent);
     return ScoreComponent;
 }());
@@ -901,8 +885,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserGuard", function() { return UserGuard; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/user.service */ "./src/app/services/user.service.ts");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/user.service */ "./src/app/services/user.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -924,15 +908,15 @@ var UserGuard = /** @class */ (function () {
     UserGuard.prototype.canActivate = function () {
         var _this = this;
         return this._userService.getUser$()
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (user) {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])(function (user) {
             if (!user) {
                 _this._router.navigate(['/intro']);
             }
-        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(Boolean));
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(Boolean));
     };
     UserGuard = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
-        __metadata("design:paramtypes", [_services_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"],
+        __metadata("design:paramtypes", [_services_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
     ], UserGuard);
     return UserGuard;
@@ -949,7 +933,7 @@ var UserGuard = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".wrapper {\n  display: flex;\n  justify-content: center;\n  font-size: 30px;\n  flex-direction: column;\n  align-items: center;\n  background-image: url(\"https://stoopidpigeon.com/wp-content/uploads/2017/06/online-blackjack-Canada-online-casino-games.jpg\"); /* The image used */\n  background-color: #cccccc; /* Used if the image is unavailable */\n  background-position: center; /* Center the image */\n  background-repeat: no-repeat; /* Do not repeat the image */\n  background-size: cover; /* Resize the background image to cover the entire container */\n  min-height: 100vh;\n}\n\ntable {\n  border-collapse: collapse;\n  color:black;\n  padding: 10px;\n  background-color: rgba(255, 255, 255, 0.6);\n  font-size: 20px;\n}\n\ntable, th, td {\n  text-align: center;\n  border: 1px solid black;\n}\n\ntable button {\n  width: 150px;\n  height: 30px;\n  font-size: 16px;\n  margin-bottom: 0px;\n}\n\n.enter-button {\n  background: transparent;\n  border: 0;\n  padding: 0;\n  cursor: pointer;\n  outline: 0;\n  -webkit-appearance: none;\n}\n\n/* Custom */\n\n.enter-button {\n  display: inline-block;\n  position: relative;\n  padding: 20px 38px;\n  top: 0;\n  font-size: 30px;\n  font-family: \"Open Sans\", Helvetica;\n  border-radius: 4px;\n  border-bottom: 1px solid rgba( 28, 227, 125, 0.5 );\n  background: rgba( 22, 230, 137, 1 );\n  color: black;\n  box-shadow: 0px 0px 0px rgba( 15, 165, 60, 0.1 );\n  \n  -webkit-transform: translateZ(0);\n          transform: translateZ(0);\n  transition: all 0.2s ease;\n}\n\n.enter-button:hover {\n  top: -10px;\n  box-shadow: 0px 10px 10px rgba( 15, 165, 60, 0.2 );\n  \n  -webkit-transform: rotateX(20deg);\n          transform: rotateX(20deg);\n}\n\n.enter-button:active {\n  top: 0px;\n  box-shadow: 0px 0px 0px rgba( 15, 165, 60, 0.0 );\n  background: rgba( 20, 224, 133, 1 );\n}\n\n.welcome {\nmargin-bottom: 20px;\ncolor: rgb(122, 236, 198);\nfont-size: 50px;\nbackground-color: rgba(0, 0, 0, 0.4);\npadding: 10px;\nborder-radius: 15px;\n}\n\ninput {\n  font-size: 30px;\n  margin-bottom: 30px;\n}\n\nbutton {\n  cursor: pointer;\n  width: 300px;\n  height: 70px;\n  font-size: 30px;\n  margin-bottom: 20px;\n}\n\n.userList {\n  border: 1px solid black;\n  margin: 10px;\n}\n\n.button {\n  position: relative;\n  \n  display: block;\n  width: 55%;\n  padding: 5px 5px;\n  border-radius: 50px;\n  text-align: center;\n  color: black;\n  text-decoration: none;\n  font-weight: bold;\n  font-size: 24px;\n  \n  -webkit-tap-highlight-color: rgba(black, 0);\n  \n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaW50cm8vaW50cm8uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGNBQWM7RUFDZCx3QkFBd0I7RUFDeEIsZ0JBQWdCO0VBQ2hCLHVCQUF1QjtFQUN2QixvQkFBb0I7RUFDcEIsOEhBQThILENBQUMsb0JBQW9CO0VBQ25KLDBCQUEwQixDQUFDLHNDQUFzQztFQUNqRSw0QkFBNEIsQ0FBQyxzQkFBc0I7RUFDbkQsNkJBQTZCLENBQUMsNkJBQTZCO0VBQzNELHVCQUF1QixDQUFDLCtEQUErRDtFQUN2RixrQkFBa0I7Q0FDbkI7O0FBRUQ7RUFDRSwwQkFBMEI7RUFDMUIsWUFBWTtFQUNaLGNBQWM7RUFDZCwyQ0FBMkM7RUFDM0MsZ0JBQWdCO0NBQ2pCOztBQUVEO0VBQ0UsbUJBQW1CO0VBQ25CLHdCQUF3QjtDQUN6Qjs7QUFFRDtFQUNFLGFBQWE7RUFDYixhQUFhO0VBQ2IsZ0JBQWdCO0VBQ2hCLG1CQUFtQjtDQUNwQjs7QUFFRDtFQUNFLHdCQUF3QjtFQUN4QixVQUFVO0VBQ1YsV0FBVztFQUNYLGdCQUFnQjtFQUNoQixXQUFXO0VBQ1gseUJBQXlCO0NBQzFCOztBQUVELFlBQVk7O0FBQ1o7RUFDRSxzQkFBc0I7RUFDdEIsbUJBQW1CO0VBQ25CLG1CQUFtQjtFQUNuQixPQUFPO0VBQ1AsZ0JBQWdCO0VBQ2hCLG9DQUFvQztFQUNwQyxtQkFBbUI7RUFDbkIsbURBQW1EO0VBQ25ELG9DQUFvQztFQUNwQyxhQUFhO0VBQ2IsaURBQWlEOztFQUVqRCxpQ0FBaUM7VUFHekIseUJBQXlCO0VBS3pCLDBCQUEwQjtDQUNuQzs7QUFFRDtFQUNFLFdBQVc7RUFDWCxtREFBbUQ7O0VBRW5ELGtDQUFrQztVQUcxQiwwQkFBMEI7Q0FDbkM7O0FBRUQ7RUFDRSxTQUFTO0VBQ1QsaURBQWlEO0VBQ2pELG9DQUFvQztDQUNyQzs7QUFFRDtBQUNBLG9CQUFvQjtBQUNwQiwwQkFBMEI7QUFDMUIsZ0JBQWdCO0FBQ2hCLHFDQUFxQztBQUNyQyxjQUFjO0FBQ2Qsb0JBQW9CO0NBQ25COztBQUVEO0VBQ0UsZ0JBQWdCO0VBQ2hCLG9CQUFvQjtDQUNyQjs7QUFFRDtFQUNFLGdCQUFnQjtFQUNoQixhQUFhO0VBQ2IsYUFBYTtFQUNiLGdCQUFnQjtFQUNoQixvQkFBb0I7Q0FDckI7O0FBRUQ7RUFDRSx3QkFBd0I7RUFDeEIsYUFBYTtDQUNkOztBQUdEO0VBQ0UsbUJBQW1COztFQUVuQixlQUFlO0VBQ2YsV0FBVztFQUNYLGlCQUFpQjtFQUNqQixvQkFBb0I7RUFDcEIsbUJBQW1CO0VBQ25CLGFBQWE7RUFDYixzQkFBc0I7RUFDdEIsa0JBQWtCO0VBQ2xCLGdCQUFnQjs7RUFFaEIsNENBQTRDOztDQUU3QyIsImZpbGUiOiJzcmMvYXBwL2ludHJvL2ludHJvLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIud3JhcHBlciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBmb250LXNpemU6IDMwcHg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGJhY2tncm91bmQtaW1hZ2U6IHVybChcImh0dHBzOi8vc3Rvb3BpZHBpZ2Vvbi5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMTcvMDYvb25saW5lLWJsYWNramFjay1DYW5hZGEtb25saW5lLWNhc2luby1nYW1lcy5qcGdcIik7IC8qIFRoZSBpbWFnZSB1c2VkICovXG4gIGJhY2tncm91bmQtY29sb3I6ICNjY2NjY2M7IC8qIFVzZWQgaWYgdGhlIGltYWdlIGlzIHVuYXZhaWxhYmxlICovXG4gIGJhY2tncm91bmQtcG9zaXRpb246IGNlbnRlcjsgLyogQ2VudGVyIHRoZSBpbWFnZSAqL1xuICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0OyAvKiBEbyBub3QgcmVwZWF0IHRoZSBpbWFnZSAqL1xuICBiYWNrZ3JvdW5kLXNpemU6IGNvdmVyOyAvKiBSZXNpemUgdGhlIGJhY2tncm91bmQgaW1hZ2UgdG8gY292ZXIgdGhlIGVudGlyZSBjb250YWluZXIgKi9cbiAgbWluLWhlaWdodDogMTAwdmg7XG59XG5cbnRhYmxlIHtcbiAgYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTtcbiAgY29sb3I6YmxhY2s7XG4gIHBhZGRpbmc6IDEwcHg7XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC42KTtcbiAgZm9udC1zaXplOiAyMHB4O1xufVxuXG50YWJsZSwgdGgsIHRkIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBib3JkZXI6IDFweCBzb2xpZCBibGFjaztcbn1cblxudGFibGUgYnV0dG9uIHtcbiAgd2lkdGg6IDE1MHB4O1xuICBoZWlnaHQ6IDMwcHg7XG4gIGZvbnQtc2l6ZTogMTZweDtcbiAgbWFyZ2luLWJvdHRvbTogMHB4O1xufVxuXG4uZW50ZXItYnV0dG9uIHtcbiAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7XG4gIGJvcmRlcjogMDtcbiAgcGFkZGluZzogMDtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICBvdXRsaW5lOiAwO1xuICAtd2Via2l0LWFwcGVhcmFuY2U6IG5vbmU7XG59XG5cbi8qIEN1c3RvbSAqL1xuLmVudGVyLWJ1dHRvbiB7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBwYWRkaW5nOiAyMHB4IDM4cHg7XG4gIHRvcDogMDtcbiAgZm9udC1zaXplOiAzMHB4O1xuICBmb250LWZhbWlseTogXCJPcGVuIFNhbnNcIiwgSGVsdmV0aWNhO1xuICBib3JkZXItcmFkaXVzOiA0cHg7XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCByZ2JhKCAyOCwgMjI3LCAxMjUsIDAuNSApO1xuICBiYWNrZ3JvdW5kOiByZ2JhKCAyMiwgMjMwLCAxMzcsIDEgKTtcbiAgY29sb3I6IGJsYWNrO1xuICBib3gtc2hhZG93OiAwcHggMHB4IDBweCByZ2JhKCAxNSwgMTY1LCA2MCwgMC4xICk7XG4gIFxuICAtd2Via2l0LXRyYW5zZm9ybTogdHJhbnNsYXRlWigwKTtcbiAgICAgLW1vei10cmFuc2Zvcm06IHRyYW5zbGF0ZVooMCk7XG4gICAgICAtbXMtdHJhbnNmb3JtOiB0cmFuc2xhdGVaKDApO1xuICAgICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWigwKTtcbiAgXG4gIC13ZWJraXQtdHJhbnNpdGlvbjogYWxsIDAuMnMgZWFzZTtcbiAgICAgLW1vei10cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuICAgICAgLW1zLXRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG4gICAgICAgICAgdHJhbnNpdGlvbjogYWxsIDAuMnMgZWFzZTtcbn1cblxuLmVudGVyLWJ1dHRvbjpob3ZlciB7XG4gIHRvcDogLTEwcHg7XG4gIGJveC1zaGFkb3c6IDBweCAxMHB4IDEwcHggcmdiYSggMTUsIDE2NSwgNjAsIDAuMiApO1xuICBcbiAgLXdlYmtpdC10cmFuc2Zvcm06IHJvdGF0ZVgoMjBkZWcpO1xuICAgICAtbW96LXRyYW5zZm9ybTogcm90YXRlWCgyMGRlZyk7XG4gICAgICAtbXMtdHJhbnNmb3JtOiByb3RhdGVYKDIwZGVnKTtcbiAgICAgICAgICB0cmFuc2Zvcm06IHJvdGF0ZVgoMjBkZWcpO1xufVxuXG4uZW50ZXItYnV0dG9uOmFjdGl2ZSB7XG4gIHRvcDogMHB4O1xuICBib3gtc2hhZG93OiAwcHggMHB4IDBweCByZ2JhKCAxNSwgMTY1LCA2MCwgMC4wICk7XG4gIGJhY2tncm91bmQ6IHJnYmEoIDIwLCAyMjQsIDEzMywgMSApO1xufVxuXG4ud2VsY29tZSB7XG5tYXJnaW4tYm90dG9tOiAyMHB4O1xuY29sb3I6IHJnYigxMjIsIDIzNiwgMTk4KTtcbmZvbnQtc2l6ZTogNTBweDtcbmJhY2tncm91bmQtY29sb3I6IHJnYmEoMCwgMCwgMCwgMC40KTtcbnBhZGRpbmc6IDEwcHg7XG5ib3JkZXItcmFkaXVzOiAxNXB4O1xufVxuXG5pbnB1dCB7XG4gIGZvbnQtc2l6ZTogMzBweDtcbiAgbWFyZ2luLWJvdHRvbTogMzBweDtcbn1cblxuYnV0dG9uIHtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICB3aWR0aDogMzAwcHg7XG4gIGhlaWdodDogNzBweDtcbiAgZm9udC1zaXplOiAzMHB4O1xuICBtYXJnaW4tYm90dG9tOiAyMHB4O1xufVxuXG4udXNlckxpc3Qge1xuICBib3JkZXI6IDFweCBzb2xpZCBibGFjaztcbiAgbWFyZ2luOiAxMHB4O1xufVxuXG5cbi5idXR0b24ge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIFxuICBkaXNwbGF5OiBibG9jaztcbiAgd2lkdGg6IDU1JTtcbiAgcGFkZGluZzogNXB4IDVweDtcbiAgYm9yZGVyLXJhZGl1czogNTBweDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBjb2xvcjogYmxhY2s7XG4gIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIGZvbnQtc2l6ZTogMjRweDtcbiAgXG4gIC13ZWJraXQtdGFwLWhpZ2hsaWdodC1jb2xvcjogcmdiYShibGFjaywgMCk7XG4gIFxufSJdfQ== */"
+module.exports = ".wrapper {\n  display: flex;\n  justify-content: center;\n  font-size: 30px;\n  flex-direction: column;\n  align-items: center;\n  background-image: url(\"https://stoopidpigeon.com/wp-content/uploads/2017/06/online-blackjack-Canada-online-casino-games.jpg\"); /* The image used */\n  background-color: #cccccc; /* Used if the image is unavailable */\n  background-position: center; /* Center the image */\n  background-repeat: no-repeat; /* Do not repeat the image */\n  background-size: cover; /* Resize the background image to cover the entire container */\n  min-height: 100vh;\n}\n\ntable {\n  border-collapse: collapse;\n  color:black;\n  padding: 10px;\n  background-color: rgba(255, 255, 255, 0.6);\n  font-size: 20px;\n}\n\ntable, th, td {\n  text-align: center;\n  border: 1px solid black;\n}\n\ntable button {\n  width: 150px;\n  height: 30px;\n  font-size: 16px;\n  margin-bottom: 0px;\n}\n\n.enter-button {\n  background: transparent;\n  border: 0;\n  padding: 0;\n  cursor: pointer;\n  outline: 0;\n  -webkit-appearance: none;\n}\n\n.enter-button {\n  display: inline-block;\n  position: relative;\n  padding: 20px 38px;\n  top: 0;\n  font-size: 30px;\n  font-family: \"Open Sans\", Helvetica;\n  border-radius: 4px;\n  border-bottom: 1px solid rgba( 28, 227, 125, 0.5 );\n  background: rgba( 22, 230, 137, 1 );\n  color: black;\n  box-shadow: 0px 0px 0px rgba( 15, 165, 60, 0.1 );\n  -webkit-transform: translateZ(0);\n          transform: translateZ(0);\n  transition: all 0.2s ease;\n}\n\n.enter-button:hover {\n  top: -10px;\n  box-shadow: 0px 10px 10px rgba( 15, 165, 60, 0.2 );\n  -webkit-transform: rotateX(20deg);\n          transform: rotateX(20deg);\n}\n\n.enter-button:active {\n  top: 0px;\n  box-shadow: 0px 0px 0px rgba( 15, 165, 60, 0.0 );\n  background: rgba( 20, 224, 133, 1 );\n}\n\n.welcome {\n  margin-bottom: 20px;\n  color: rgb(122, 236, 198);\n  font-size: 50px;\n  background-color: rgba(0, 0, 0, 0.4);\n  padding: 10px;\n  border-radius: 15px;\n}\n\ninput {\n  font-size: 30px;\n  margin-bottom: 30px;\n}\n\nbutton {\n  cursor: pointer;\n  width: 300px;\n  height: 70px;\n  font-size: 30px;\n  margin-bottom: 20px;\n}\n\n.userList {\n  border: 1px solid black;\n  margin: 10px;\n}\n\n.button {\n  position: relative;\n  display: block;\n  width: 55%;\n  padding: 5px 5px;\n  border-radius: 50px;\n  text-align: center;\n  color: black;\n  text-decoration: none;\n  font-weight: bold;\n  font-size: 24px;\n  -webkit-tap-highlight-color: rgba(black, 0);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvaW50cm8vaW50cm8uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGNBQWM7RUFDZCx3QkFBd0I7RUFDeEIsZ0JBQWdCO0VBQ2hCLHVCQUF1QjtFQUN2QixvQkFBb0I7RUFDcEIsOEhBQThILENBQUMsb0JBQW9CO0VBQ25KLDBCQUEwQixDQUFDLHNDQUFzQztFQUNqRSw0QkFBNEIsQ0FBQyxzQkFBc0I7RUFDbkQsNkJBQTZCLENBQUMsNkJBQTZCO0VBQzNELHVCQUF1QixDQUFDLCtEQUErRDtFQUN2RixrQkFBa0I7Q0FDbkI7O0FBRUQ7RUFDRSwwQkFBMEI7RUFDMUIsWUFBWTtFQUNaLGNBQWM7RUFDZCwyQ0FBMkM7RUFDM0MsZ0JBQWdCO0NBQ2pCOztBQUVEO0VBQ0UsbUJBQW1CO0VBQ25CLHdCQUF3QjtDQUN6Qjs7QUFFRDtFQUNFLGFBQWE7RUFDYixhQUFhO0VBQ2IsZ0JBQWdCO0VBQ2hCLG1CQUFtQjtDQUNwQjs7QUFFRDtFQUNFLHdCQUF3QjtFQUN4QixVQUFVO0VBQ1YsV0FBVztFQUNYLGdCQUFnQjtFQUNoQixXQUFXO0VBQ1gseUJBQXlCO0NBQzFCOztBQUVEO0VBQ0Usc0JBQXNCO0VBQ3RCLG1CQUFtQjtFQUNuQixtQkFBbUI7RUFDbkIsT0FBTztFQUNQLGdCQUFnQjtFQUNoQixvQ0FBb0M7RUFDcEMsbUJBQW1CO0VBQ25CLG1EQUFtRDtFQUNuRCxvQ0FBb0M7RUFDcEMsYUFBYTtFQUNiLGlEQUFpRDtFQUNqRCxpQ0FBaUM7VUFHekIseUJBQXlCO0VBSXpCLDBCQUEwQjtDQUNuQzs7QUFFRDtFQUNFLFdBQVc7RUFDWCxtREFBbUQ7RUFDbkQsa0NBQWtDO1VBRzFCLDBCQUEwQjtDQUNuQzs7QUFFRDtFQUNFLFNBQVM7RUFDVCxpREFBaUQ7RUFDakQsb0NBQW9DO0NBQ3JDOztBQUVEO0VBQ0Usb0JBQW9CO0VBQ3BCLDBCQUEwQjtFQUMxQixnQkFBZ0I7RUFDaEIscUNBQXFDO0VBQ3JDLGNBQWM7RUFDZCxvQkFBb0I7Q0FDckI7O0FBRUQ7RUFDRSxnQkFBZ0I7RUFDaEIsb0JBQW9CO0NBQ3JCOztBQUVEO0VBQ0UsZ0JBQWdCO0VBQ2hCLGFBQWE7RUFDYixhQUFhO0VBQ2IsZ0JBQWdCO0VBQ2hCLG9CQUFvQjtDQUNyQjs7QUFFRDtFQUNFLHdCQUF3QjtFQUN4QixhQUFhO0NBQ2Q7O0FBRUQ7RUFDRSxtQkFBbUI7RUFDbkIsZUFBZTtFQUNmLFdBQVc7RUFDWCxpQkFBaUI7RUFDakIsb0JBQW9CO0VBQ3BCLG1CQUFtQjtFQUNuQixhQUFhO0VBQ2Isc0JBQXNCO0VBQ3RCLGtCQUFrQjtFQUNsQixnQkFBZ0I7RUFDaEIsNENBQTRDO0NBQzdDIiwiZmlsZSI6InNyYy9hcHAvaW50cm8vaW50cm8uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi53cmFwcGVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGZvbnQtc2l6ZTogMzBweDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgYmFja2dyb3VuZC1pbWFnZTogdXJsKFwiaHR0cHM6Ly9zdG9vcGlkcGlnZW9uLmNvbS93cC1jb250ZW50L3VwbG9hZHMvMjAxNy8wNi9vbmxpbmUtYmxhY2tqYWNrLUNhbmFkYS1vbmxpbmUtY2FzaW5vLWdhbWVzLmpwZ1wiKTsgLyogVGhlIGltYWdlIHVzZWQgKi9cbiAgYmFja2dyb3VuZC1jb2xvcjogI2NjY2NjYzsgLyogVXNlZCBpZiB0aGUgaW1hZ2UgaXMgdW5hdmFpbGFibGUgKi9cbiAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyOyAvKiBDZW50ZXIgdGhlIGltYWdlICovXG4gIGJhY2tncm91bmQtcmVwZWF0OiBuby1yZXBlYXQ7IC8qIERvIG5vdCByZXBlYXQgdGhlIGltYWdlICovXG4gIGJhY2tncm91bmQtc2l6ZTogY292ZXI7IC8qIFJlc2l6ZSB0aGUgYmFja2dyb3VuZCBpbWFnZSB0byBjb3ZlciB0aGUgZW50aXJlIGNvbnRhaW5lciAqL1xuICBtaW4taGVpZ2h0OiAxMDB2aDtcbn1cblxudGFibGUge1xuICBib3JkZXItY29sbGFwc2U6IGNvbGxhcHNlO1xuICBjb2xvcjpibGFjaztcbiAgcGFkZGluZzogMTBweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjYpO1xuICBmb250LXNpemU6IDIwcHg7XG59XG5cbnRhYmxlLCB0aCwgdGQge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGJvcmRlcjogMXB4IHNvbGlkIGJsYWNrO1xufVxuXG50YWJsZSBidXR0b24ge1xuICB3aWR0aDogMTUwcHg7XG4gIGhlaWdodDogMzBweDtcbiAgZm9udC1zaXplOiAxNnB4O1xuICBtYXJnaW4tYm90dG9tOiAwcHg7XG59XG5cbi5lbnRlci1idXR0b24ge1xuICBiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcbiAgYm9yZGVyOiAwO1xuICBwYWRkaW5nOiAwO1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIG91dGxpbmU6IDA7XG4gIC13ZWJraXQtYXBwZWFyYW5jZTogbm9uZTtcbn1cblxuLmVudGVyLWJ1dHRvbiB7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBwYWRkaW5nOiAyMHB4IDM4cHg7XG4gIHRvcDogMDtcbiAgZm9udC1zaXplOiAzMHB4O1xuICBmb250LWZhbWlseTogXCJPcGVuIFNhbnNcIiwgSGVsdmV0aWNhO1xuICBib3JkZXItcmFkaXVzOiA0cHg7XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCByZ2JhKCAyOCwgMjI3LCAxMjUsIDAuNSApO1xuICBiYWNrZ3JvdW5kOiByZ2JhKCAyMiwgMjMwLCAxMzcsIDEgKTtcbiAgY29sb3I6IGJsYWNrO1xuICBib3gtc2hhZG93OiAwcHggMHB4IDBweCByZ2JhKCAxNSwgMTY1LCA2MCwgMC4xICk7XG4gIC13ZWJraXQtdHJhbnNmb3JtOiB0cmFuc2xhdGVaKDApO1xuICAgICAtbW96LXRyYW5zZm9ybTogdHJhbnNsYXRlWigwKTtcbiAgICAgIC1tcy10cmFuc2Zvcm06IHRyYW5zbGF0ZVooMCk7XG4gICAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVaKDApO1xuICAtd2Via2l0LXRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG4gICAgIC1tb3otdHJhbnNpdGlvbjogYWxsIDAuMnMgZWFzZTtcbiAgICAgIC1tcy10cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlO1xuICAgICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG59XG5cbi5lbnRlci1idXR0b246aG92ZXIge1xuICB0b3A6IC0xMHB4O1xuICBib3gtc2hhZG93OiAwcHggMTBweCAxMHB4IHJnYmEoIDE1LCAxNjUsIDYwLCAwLjIgKTtcbiAgLXdlYmtpdC10cmFuc2Zvcm06IHJvdGF0ZVgoMjBkZWcpO1xuICAgICAtbW96LXRyYW5zZm9ybTogcm90YXRlWCgyMGRlZyk7XG4gICAgICAtbXMtdHJhbnNmb3JtOiByb3RhdGVYKDIwZGVnKTtcbiAgICAgICAgICB0cmFuc2Zvcm06IHJvdGF0ZVgoMjBkZWcpO1xufVxuXG4uZW50ZXItYnV0dG9uOmFjdGl2ZSB7XG4gIHRvcDogMHB4O1xuICBib3gtc2hhZG93OiAwcHggMHB4IDBweCByZ2JhKCAxNSwgMTY1LCA2MCwgMC4wICk7XG4gIGJhY2tncm91bmQ6IHJnYmEoIDIwLCAyMjQsIDEzMywgMSApO1xufVxuXG4ud2VsY29tZSB7XG4gIG1hcmdpbi1ib3R0b206IDIwcHg7XG4gIGNvbG9yOiByZ2IoMTIyLCAyMzYsIDE5OCk7XG4gIGZvbnQtc2l6ZTogNTBweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgwLCAwLCAwLCAwLjQpO1xuICBwYWRkaW5nOiAxMHB4O1xuICBib3JkZXItcmFkaXVzOiAxNXB4O1xufVxuXG5pbnB1dCB7XG4gIGZvbnQtc2l6ZTogMzBweDtcbiAgbWFyZ2luLWJvdHRvbTogMzBweDtcbn1cblxuYnV0dG9uIHtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICB3aWR0aDogMzAwcHg7XG4gIGhlaWdodDogNzBweDtcbiAgZm9udC1zaXplOiAzMHB4O1xuICBtYXJnaW4tYm90dG9tOiAyMHB4O1xufVxuXG4udXNlckxpc3Qge1xuICBib3JkZXI6IDFweCBzb2xpZCBibGFjaztcbiAgbWFyZ2luOiAxMHB4O1xufVxuXG4uYnV0dG9uIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBkaXNwbGF5OiBibG9jaztcbiAgd2lkdGg6IDU1JTtcbiAgcGFkZGluZzogNXB4IDVweDtcbiAgYm9yZGVyLXJhZGl1czogNTBweDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBjb2xvcjogYmxhY2s7XG4gIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIGZvbnQtc2l6ZTogMjRweDtcbiAgLXdlYmtpdC10YXAtaGlnaGxpZ2h0LWNvbG9yOiByZ2JhKGJsYWNrLCAwKTtcbn0iXX0= */"
 
 /***/ }),
 
@@ -960,7 +944,7 @@ module.exports = ".wrapper {\n  display: flex;\n  justify-content: center;\n  fo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"wrapper\">\n  <div class=\"welcome\">\n    Welcome to Black Jack!!!\n  </div>\n\n  <input type=\"text\" placeholder=\"Enter your name\" [(ngModel)]=\"userName\">\n\n  <input type=\"text\" *ngIf=\"users\" placeholder=\"Enter your password\" [(ngModel)]=\"userPassword\">\n\n  <button type=\"button\" class=\"enter-button\" (click)=\"enter()\">\n    Enter\n  </button>\n\n  <table>\n    <thead>\n      <tr>\n        <th>User name</th>\n\n        <th>Wins</th>\n\n        <th>Games</th>\n\n        <th>Select user</th>\n      </tr>\n    </thead>\n\n    <tbody>\n      <tr *ngFor=\"let user of users\">\n        <td>{{user.name}}</td>\n\n        <td>{{user.wins}}</td>\n\n        <td>{{user.loses}}</td>\n        \n        <td>\n          <button type=\"button\" class=\"button\"\n                  (click)=selectUser(user.name)>\n            select user\n          </button>\n        </td>\n      </tr>\n    </tbody>\n  </table>\n</div>"
+module.exports = "<div class=\"wrapper\">\n  <div class=\"welcome\">\n    Welcome to Black Jack!!!\n  </div>\n\n  <input type=\"text\" \n         name=\"username\" \n         placeholder=\"Enter your name\" \n         [(ngModel)]=\"userName\">\n\n  <input type=\"text\" \n         name=\"userpassword\" \n         *ngIf=\"users\" \n         placeholder=\"Enter your password\" \n         [(ngModel)]=\"userPassword\">\n\n  <button type=\"button\" \n          class=\"enter-button\" \n          (click)=\"enter()\">\n    Enter\n  </button>\n\n  <table>\n    <thead>\n      <tr>\n        <th>User name</th>\n\n        <th>Wins</th>\n\n        <th>Games</th>\n\n        <th>Select user</th>\n      </tr>\n    </thead>\n\n    <tbody>\n      <tr *ngFor=\"let user of users\">\n        <td>{{user.name}}</td>\n\n        <td>{{user.wins}}</td>\n\n        <td>{{user.loses}}</td>\n        \n        <td>\n          <button type=\"button\" \n                  class=\"button\"\n                  (click)=selectUser(user.name)>\n            select user\n          </button>\n        </td>\n      </tr>\n    </tbody>\n  </table>\n</div>"
 
 /***/ }),
 
@@ -975,11 +959,12 @@ module.exports = "<div class=\"wrapper\">\n  <div class=\"welcome\">\n    Welcom
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IntroComponent", function() { return IntroComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services_data_base_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/data-base.service */ "./src/app/services/data-base.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/user.service */ "./src/app/services/user.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/user.service */ "./src/app/services/user.service.ts");
+/* harmony import */ var _services_data_base_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/data-base.service */ "./src/app/services/data-base.service.ts");
+/* harmony import */ var _services_game_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/game.service */ "./src/app/services/game.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -995,19 +980,20 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var IntroComponent = /** @class */ (function () {
-    function IntroComponent(_dataBaseService, _userService, router) {
+    function IntroComponent(_dataBaseService, _userService, _router, _gameService) {
         this._dataBaseService = _dataBaseService;
         this._userService = _userService;
-        this.router = router;
-        this.destroy$$ = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this._router = _router;
+        this._gameService = _gameService;
+        this.destroy$$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
     }
     IntroComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this._dataBaseService.getUsers().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeUntil"])(this.destroy$$))
+        this._dataBaseService.getUsers$().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this.destroy$$))
             .subscribe(function (users) {
-            _this.users = users;
-            _this.users = Object.values(_this.users).sort(function (user1, user2) { return user2.wins - user1.wins; });
+            _this.users = Object.values(users).sort(function (user1, user2) { return user2.wins - user1.wins; });
         });
     };
     IntroComponent.prototype.enter = function () {
@@ -1027,7 +1013,7 @@ var IntroComponent = /** @class */ (function () {
         if (existUser) {
             if (saveUser.pass === this.userPassword) {
                 this._userService.setUser(saveUser);
-                this.router.navigate(['/menu']);
+                this._router.navigate(['/menu']);
                 return;
             }
             else {
@@ -1036,20 +1022,10 @@ var IntroComponent = /** @class */ (function () {
                 return;
             }
         }
-        var date = new Date();
-        var components = [
-            date.getMonth(),
-            date.getDate(),
-            date.getHours(),
-            date.getMinutes(),
-            date.getSeconds(),
-            date.getMilliseconds()
-        ];
-        var userId = Number(components.join(''));
         var newUser = {
             name: this.userName,
             pass: this.userPassword,
-            id: userId,
+            id: this._gameService.generateId(),
             wins: 0,
             loses: 0,
             isActive: false,
@@ -1061,7 +1037,7 @@ var IntroComponent = /** @class */ (function () {
         };
         this._dataBaseService.addUsers(newUser);
         this._userService.setUser(newUser);
-        this.router.navigate(['/menu']);
+        this._router.navigate(['/menu']);
     };
     IntroComponent.prototype.selectUser = function (userName) {
         this.userName = userName;
@@ -1070,6 +1046,7 @@ var IntroComponent = /** @class */ (function () {
     };
     IntroComponent.prototype.ngOnDestroy = function () {
         this.destroy$$.next();
+        this.destroy$$.complete();
     };
     IntroComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1077,9 +1054,10 @@ var IntroComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./intro.component.html */ "./src/app/intro/intro.component.html"),
             styles: [__webpack_require__(/*! ./intro.component.css */ "./src/app/intro/intro.component.css")]
         }),
-        __metadata("design:paramtypes", [_services_data_base_service__WEBPACK_IMPORTED_MODULE_1__["DataBaseService"],
-            _services_user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+        __metadata("design:paramtypes", [_services_data_base_service__WEBPACK_IMPORTED_MODULE_5__["DataBaseService"],
+            _services_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
+            _services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]])
     ], IntroComponent);
     return IntroComponent;
 }());
@@ -1095,7 +1073,7 @@ var IntroComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".wrapper {\n  width: 100%;\n  height: 100vh;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background-color: cadetblue;\n  flex-direction: column;\n  background-image: url(\"https://stoopidpigeon.com/wp-content/uploads/2017/06/online-blackjack-Canada-online-casino-games.jpg\"); /* The image used */\n  background-color: #cccccc; /* Used if the image is unavailable */\n  background-position: center; /* Center the image */\n  background-repeat: no-repeat; /* Do not repeat the image */\n  background-size: cover; /* Resize the background image to cover the entire container */\n  min-height: 100vh;\n}\n\n.meeting {\n  margin-bottom: 20px;\n  color: rgb(122, 236, 198);\n  font-size: 50px;\n  background-color: rgba(0, 0, 0, 0.4);\n  padding: 10px;\n  border-radius: 15px;\n  text-align: center;\n}\n\n.animate {\n\ttransition: all 0.1s;\n\t-webkit-transition: all 0.1s;\n}\n\n.action-button {\n  cursor: pointer;\n  display: block;\n\tposition: relative;\n\tpadding: 10px 40px;\n  margin: 0px 10px 10px 0px;\n  float: left;\n\tborder-radius: 10px;\n\tfont-family: 'Pacifico', cursive;\n\tfont-size: 25px;\n\tcolor: black;\n\ttext-decoration: none;\t\n}\n\n.blue {\n\tbackground-color: #3498DB;\n\tborder-bottom: 5px solid #2980B9;\n\ttext-shadow: 0px -2px #2980B9;\n}\n\n.red {\n\tbackground-color: #E74C3C;\n\tborder-bottom: 5px solid #BD3E31;\n\ttext-shadow: 0px -2px #BD3E31;\n}\n\n.green {\n\tbackground-color: #82BF56;\n\tborder-bottom: 5px solid #669644;\n\ttext-shadow: 0px -2px #669644;\n}\n\n.yellow {\n\tbackground-color: #F2CF66;\n\tborder-bottom: 5px solid #D1B358;\n\ttext-shadow: 0px -2px #D1B358;\n}\n\n.action-button:active {\n\ttransform: translate(0px,5px);\n  -webkit-transform: translate(0px,5px);\n\tborder-bottom: 1px solid;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWVudS9tZW51LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxZQUFZO0VBQ1osY0FBYztFQUNkLGNBQWM7RUFDZCx3QkFBd0I7RUFDeEIsb0JBQW9CO0VBQ3BCLDRCQUE0QjtFQUM1Qix1QkFBdUI7RUFDdkIsOEhBQThILENBQUMsb0JBQW9CO0VBQ25KLDBCQUEwQixDQUFDLHNDQUFzQztFQUNqRSw0QkFBNEIsQ0FBQyxzQkFBc0I7RUFDbkQsNkJBQTZCLENBQUMsNkJBQTZCO0VBQzNELHVCQUF1QixDQUFDLCtEQUErRDtFQUN2RixrQkFBa0I7Q0FDbkI7O0FBRUQ7RUFDRSxvQkFBb0I7RUFDcEIsMEJBQTBCO0VBQzFCLGdCQUFnQjtFQUNoQixxQ0FBcUM7RUFDckMsY0FBYztFQUNkLG9CQUFvQjtFQUNwQixtQkFBbUI7Q0FDcEI7O0FBR0Q7Q0FDQyxxQkFBcUI7Q0FDckIsNkJBQTZCO0NBQzdCOztBQUVEO0VBQ0UsZ0JBQWdCO0VBQ2hCLGVBQWU7Q0FDaEIsbUJBQW1CO0NBQ25CLG1CQUFtQjtFQUNsQiwwQkFBMEI7RUFDMUIsWUFBWTtDQUNiLG9CQUFvQjtDQUNwQixpQ0FBaUM7Q0FDakMsZ0JBQWdCO0NBQ2hCLGFBQWE7Q0FDYixzQkFBc0I7Q0FDdEI7O0FBRUQ7Q0FDQywwQkFBMEI7Q0FDMUIsaUNBQWlDO0NBQ2pDLDhCQUE4QjtDQUM5Qjs7QUFFRDtDQUNDLDBCQUEwQjtDQUMxQixpQ0FBaUM7Q0FDakMsOEJBQThCO0NBQzlCOztBQUVEO0NBQ0MsMEJBQTBCO0NBQzFCLGlDQUFpQztDQUNqQyw4QkFBOEI7Q0FDOUI7O0FBRUQ7Q0FDQywwQkFBMEI7Q0FDMUIsaUNBQWlDO0NBQ2pDLDhCQUE4QjtDQUM5Qjs7QUFFRDtDQUNDLDhCQUE4QjtFQUM3QixzQ0FBc0M7Q0FDdkMseUJBQXlCO0NBQ3pCIiwiZmlsZSI6InNyYy9hcHAvbWVudS9tZW51LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIud3JhcHBlciB7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEwMHZoO1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgYmFja2dyb3VuZC1jb2xvcjogY2FkZXRibHVlO1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCJodHRwczovL3N0b29waWRwaWdlb24uY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE3LzA2L29ubGluZS1ibGFja2phY2stQ2FuYWRhLW9ubGluZS1jYXNpbm8tZ2FtZXMuanBnXCIpOyAvKiBUaGUgaW1hZ2UgdXNlZCAqL1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjY2NjY2NjOyAvKiBVc2VkIGlmIHRoZSBpbWFnZSBpcyB1bmF2YWlsYWJsZSAqL1xuICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7IC8qIENlbnRlciB0aGUgaW1hZ2UgKi9cbiAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDsgLyogRG8gbm90IHJlcGVhdCB0aGUgaW1hZ2UgKi9cbiAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjsgLyogUmVzaXplIHRoZSBiYWNrZ3JvdW5kIGltYWdlIHRvIGNvdmVyIHRoZSBlbnRpcmUgY29udGFpbmVyICovXG4gIG1pbi1oZWlnaHQ6IDEwMHZoO1xufVxuXG4ubWVldGluZyB7XG4gIG1hcmdpbi1ib3R0b206IDIwcHg7XG4gIGNvbG9yOiByZ2IoMTIyLCAyMzYsIDE5OCk7XG4gIGZvbnQtc2l6ZTogNTBweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgwLCAwLCAwLCAwLjQpO1xuICBwYWRkaW5nOiAxMHB4O1xuICBib3JkZXItcmFkaXVzOiAxNXB4O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cblxuLmFuaW1hdGUge1xuXHR0cmFuc2l0aW9uOiBhbGwgMC4xcztcblx0LXdlYmtpdC10cmFuc2l0aW9uOiBhbGwgMC4xcztcbn1cblxuLmFjdGlvbi1idXR0b24ge1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIGRpc3BsYXk6IGJsb2NrO1xuXHRwb3NpdGlvbjogcmVsYXRpdmU7XG5cdHBhZGRpbmc6IDEwcHggNDBweDtcbiAgbWFyZ2luOiAwcHggMTBweCAxMHB4IDBweDtcbiAgZmxvYXQ6IGxlZnQ7XG5cdGJvcmRlci1yYWRpdXM6IDEwcHg7XG5cdGZvbnQtZmFtaWx5OiAnUGFjaWZpY28nLCBjdXJzaXZlO1xuXHRmb250LXNpemU6IDI1cHg7XG5cdGNvbG9yOiBibGFjaztcblx0dGV4dC1kZWNvcmF0aW9uOiBub25lO1x0XG59XG5cbi5ibHVlIHtcblx0YmFja2dyb3VuZC1jb2xvcjogIzM0OThEQjtcblx0Ym9yZGVyLWJvdHRvbTogNXB4IHNvbGlkICMyOTgwQjk7XG5cdHRleHQtc2hhZG93OiAwcHggLTJweCAjMjk4MEI5O1xufVxuXG4ucmVkIHtcblx0YmFja2dyb3VuZC1jb2xvcjogI0U3NEMzQztcblx0Ym9yZGVyLWJvdHRvbTogNXB4IHNvbGlkICNCRDNFMzE7XG5cdHRleHQtc2hhZG93OiAwcHggLTJweCAjQkQzRTMxO1xufVxuXG4uZ3JlZW4ge1xuXHRiYWNrZ3JvdW5kLWNvbG9yOiAjODJCRjU2O1xuXHRib3JkZXItYm90dG9tOiA1cHggc29saWQgIzY2OTY0NDtcblx0dGV4dC1zaGFkb3c6IDBweCAtMnB4ICM2Njk2NDQ7XG59XG5cbi55ZWxsb3cge1xuXHRiYWNrZ3JvdW5kLWNvbG9yOiAjRjJDRjY2O1xuXHRib3JkZXItYm90dG9tOiA1cHggc29saWQgI0QxQjM1ODtcblx0dGV4dC1zaGFkb3c6IDBweCAtMnB4ICNEMUIzNTg7XG59XG5cbi5hY3Rpb24tYnV0dG9uOmFjdGl2ZSB7XG5cdHRyYW5zZm9ybTogdHJhbnNsYXRlKDBweCw1cHgpO1xuICAtd2Via2l0LXRyYW5zZm9ybTogdHJhbnNsYXRlKDBweCw1cHgpO1xuXHRib3JkZXItYm90dG9tOiAxcHggc29saWQ7XG59XG4iXX0= */"
+module.exports = ".wrapper {\n  width: 100%;\n  height: 100vh;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  background-color: cadetblue;\n  flex-direction: column;\n  background-image: url(\"https://stoopidpigeon.com/wp-content/uploads/2017/06/online-blackjack-Canada-online-casino-games.jpg\"); /* The image used */\n  background-color: #cccccc; /* Used if the image is unavailable */\n  background-position: center; /* Center the image */\n  background-repeat: no-repeat; /* Do not repeat the image */\n  background-size: cover; /* Resize the background image to cover the entire container */\n  min-height: 100vh;\n}\n\n.meeting {\n  margin-bottom: 20px;\n  color: rgb(122, 236, 198);\n  font-size: 50px;\n  background-color: rgba(0, 0, 0, 0.4);\n  padding: 10px;\n  border-radius: 15px;\n  text-align: center;\n}\n\n.animate {\n\ttransition: all 0.1s;\n\t-webkit-transition: all 0.1s;\n}\n\n.action-button {\n  cursor: pointer;\n  display: block;\n\tposition: relative;\n\tpadding: 10px;\n  margin: 0px 10px 10px 0px;\n  float: left;\n\tborder-radius: 10px;\n\tfont-family: 'Pacifico', cursive;\n\tfont-size: 25px;\n\tcolor: black;\n  text-decoration: none;\t\n  width: 300px;\n  text-align: center;\n}\n\n.blue {\n\tbackground-color: #3498DB;\n\tborder-bottom: 5px solid #2980B9;\n\ttext-shadow: 0px -2px #2980B9;\n}\n\n.red {\n\tbackground-color: #E74C3C;\n\tborder-bottom: 5px solid #BD3E31;\n\ttext-shadow: 0px -2px #BD3E31;\n}\n\n.green {\n\tbackground-color: #82BF56;\n\tborder-bottom: 5px solid #669644;\n\ttext-shadow: 0px -2px #669644;\n}\n\n.yellow {\n\tbackground-color: #F2CF66;\n\tborder-bottom: 5px solid #D1B358;\n\ttext-shadow: 0px -2px #D1B358;\n}\n\n.action-button:active {\n\ttransform: translate(0px,5px);\n  -webkit-transform: translate(0px,5px);\n\tborder-bottom: 1px solid;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWVudS9tZW51LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxZQUFZO0VBQ1osY0FBYztFQUNkLGNBQWM7RUFDZCx3QkFBd0I7RUFDeEIsb0JBQW9CO0VBQ3BCLDRCQUE0QjtFQUM1Qix1QkFBdUI7RUFDdkIsOEhBQThILENBQUMsb0JBQW9CO0VBQ25KLDBCQUEwQixDQUFDLHNDQUFzQztFQUNqRSw0QkFBNEIsQ0FBQyxzQkFBc0I7RUFDbkQsNkJBQTZCLENBQUMsNkJBQTZCO0VBQzNELHVCQUF1QixDQUFDLCtEQUErRDtFQUN2RixrQkFBa0I7Q0FDbkI7O0FBRUQ7RUFDRSxvQkFBb0I7RUFDcEIsMEJBQTBCO0VBQzFCLGdCQUFnQjtFQUNoQixxQ0FBcUM7RUFDckMsY0FBYztFQUNkLG9CQUFvQjtFQUNwQixtQkFBbUI7Q0FDcEI7O0FBRUQ7Q0FDQyxxQkFBcUI7Q0FDckIsNkJBQTZCO0NBQzdCOztBQUVEO0VBQ0UsZ0JBQWdCO0VBQ2hCLGVBQWU7Q0FDaEIsbUJBQW1CO0NBQ25CLGNBQWM7RUFDYiwwQkFBMEI7RUFDMUIsWUFBWTtDQUNiLG9CQUFvQjtDQUNwQixpQ0FBaUM7Q0FDakMsZ0JBQWdCO0NBQ2hCLGFBQWE7RUFDWixzQkFBc0I7RUFDdEIsYUFBYTtFQUNiLG1CQUFtQjtDQUNwQjs7QUFFRDtDQUNDLDBCQUEwQjtDQUMxQixpQ0FBaUM7Q0FDakMsOEJBQThCO0NBQzlCOztBQUVEO0NBQ0MsMEJBQTBCO0NBQzFCLGlDQUFpQztDQUNqQyw4QkFBOEI7Q0FDOUI7O0FBRUQ7Q0FDQywwQkFBMEI7Q0FDMUIsaUNBQWlDO0NBQ2pDLDhCQUE4QjtDQUM5Qjs7QUFFRDtDQUNDLDBCQUEwQjtDQUMxQixpQ0FBaUM7Q0FDakMsOEJBQThCO0NBQzlCOztBQUVEO0NBQ0MsOEJBQThCO0VBQzdCLHNDQUFzQztDQUN2Qyx5QkFBeUI7Q0FDekIiLCJmaWxlIjoic3JjL2FwcC9tZW51L21lbnUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi53cmFwcGVyIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwdmg7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiBjYWRldGJsdWU7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGJhY2tncm91bmQtaW1hZ2U6IHVybChcImh0dHBzOi8vc3Rvb3BpZHBpZ2Vvbi5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMTcvMDYvb25saW5lLWJsYWNramFjay1DYW5hZGEtb25saW5lLWNhc2luby1nYW1lcy5qcGdcIik7IC8qIFRoZSBpbWFnZSB1c2VkICovXG4gIGJhY2tncm91bmQtY29sb3I6ICNjY2NjY2M7IC8qIFVzZWQgaWYgdGhlIGltYWdlIGlzIHVuYXZhaWxhYmxlICovXG4gIGJhY2tncm91bmQtcG9zaXRpb246IGNlbnRlcjsgLyogQ2VudGVyIHRoZSBpbWFnZSAqL1xuICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0OyAvKiBEbyBub3QgcmVwZWF0IHRoZSBpbWFnZSAqL1xuICBiYWNrZ3JvdW5kLXNpemU6IGNvdmVyOyAvKiBSZXNpemUgdGhlIGJhY2tncm91bmQgaW1hZ2UgdG8gY292ZXIgdGhlIGVudGlyZSBjb250YWluZXIgKi9cbiAgbWluLWhlaWdodDogMTAwdmg7XG59XG5cbi5tZWV0aW5nIHtcbiAgbWFyZ2luLWJvdHRvbTogMjBweDtcbiAgY29sb3I6IHJnYigxMjIsIDIzNiwgMTk4KTtcbiAgZm9udC1zaXplOiA1MHB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsIDAsIDAsIDAuNCk7XG4gIHBhZGRpbmc6IDEwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDE1cHg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLmFuaW1hdGUge1xuXHR0cmFuc2l0aW9uOiBhbGwgMC4xcztcblx0LXdlYmtpdC10cmFuc2l0aW9uOiBhbGwgMC4xcztcbn1cblxuLmFjdGlvbi1idXR0b24ge1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIGRpc3BsYXk6IGJsb2NrO1xuXHRwb3NpdGlvbjogcmVsYXRpdmU7XG5cdHBhZGRpbmc6IDEwcHg7XG4gIG1hcmdpbjogMHB4IDEwcHggMTBweCAwcHg7XG4gIGZsb2F0OiBsZWZ0O1xuXHRib3JkZXItcmFkaXVzOiAxMHB4O1xuXHRmb250LWZhbWlseTogJ1BhY2lmaWNvJywgY3Vyc2l2ZTtcblx0Zm9udC1zaXplOiAyNXB4O1xuXHRjb2xvcjogYmxhY2s7XG4gIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcdFxuICB3aWR0aDogMzAwcHg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLmJsdWUge1xuXHRiYWNrZ3JvdW5kLWNvbG9yOiAjMzQ5OERCO1xuXHRib3JkZXItYm90dG9tOiA1cHggc29saWQgIzI5ODBCOTtcblx0dGV4dC1zaGFkb3c6IDBweCAtMnB4ICMyOTgwQjk7XG59XG5cbi5yZWQge1xuXHRiYWNrZ3JvdW5kLWNvbG9yOiAjRTc0QzNDO1xuXHRib3JkZXItYm90dG9tOiA1cHggc29saWQgI0JEM0UzMTtcblx0dGV4dC1zaGFkb3c6IDBweCAtMnB4ICNCRDNFMzE7XG59XG5cbi5ncmVlbiB7XG5cdGJhY2tncm91bmQtY29sb3I6ICM4MkJGNTY7XG5cdGJvcmRlci1ib3R0b206IDVweCBzb2xpZCAjNjY5NjQ0O1xuXHR0ZXh0LXNoYWRvdzogMHB4IC0ycHggIzY2OTY0NDtcbn1cblxuLnllbGxvdyB7XG5cdGJhY2tncm91bmQtY29sb3I6ICNGMkNGNjY7XG5cdGJvcmRlci1ib3R0b206IDVweCBzb2xpZCAjRDFCMzU4O1xuXHR0ZXh0LXNoYWRvdzogMHB4IC0ycHggI0QxQjM1ODtcbn1cblxuLmFjdGlvbi1idXR0b246YWN0aXZlIHtcblx0dHJhbnNmb3JtOiB0cmFuc2xhdGUoMHB4LDVweCk7XG4gIC13ZWJraXQtdHJhbnNmb3JtOiB0cmFuc2xhdGUoMHB4LDVweCk7XG5cdGJvcmRlci1ib3R0b206IDFweCBzb2xpZDtcbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -1106,7 +1084,7 @@ module.exports = ".wrapper {\n  width: 100%;\n  height: 100vh;\n  display: flex;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"wrapper\">\n  <div class=\"meeting\">\n      Welcome to Black Jack\n  </div>\n\n      <a routerLink=\"/\" class=\"action-button shadow animate green\">\n        Return to login\n      </a>\n  \n  <button type=\"button\" class=\"action-button shadow animate green\"\n          (click)=\"startSingleGame()\">\n    To singlePlayer game\n  </button>\n\n  <a routerLink=\"/multiplayer\" class=\"action-button shadow animate green\">\n      To multiPlayer game\n  </a>\n</div>"
+module.exports = "<div class=\"wrapper\">\n  <div class=\"meeting\">\n      Welcome to Black Jack\n  </div>\n\n      <a routerLink=\"/\" \n         class=\"action-button shadow animate green\">\n        Return to login\n      </a>\n  \n      <a  class=\"action-button shadow animate green\"\n          (click)=\"startSingleGame()\">\n        To singlePlayer game\n      </a>\n\n  <a routerLink=\"/multiplayer\" \n     class=\"action-button shadow animate green\">\n      To multiPlayer game\n  </a>\n</div>"
 
 /***/ }),
 
@@ -1121,8 +1099,9 @@ module.exports = "<div class=\"wrapper\">\n  <div class=\"meeting\">\n      Welc
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MenuComponent", function() { return MenuComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services_data_base_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/data-base.service */ "./src/app/services/data-base.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_data_base_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/data-base.service */ "./src/app/services/data-base.service.ts");
+/* harmony import */ var _services_game_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/game.service */ "./src/app/services/game.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1135,24 +1114,16 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var MenuComponent = /** @class */ (function () {
-    function MenuComponent(_dataBaseService, _router) {
+    function MenuComponent(_dataBaseService, _router, _gameService) {
         this._dataBaseService = _dataBaseService;
         this._router = _router;
+        this._gameService = _gameService;
     }
     MenuComponent.prototype.startSingleGame = function () {
-        var date = new Date();
-        var components = [
-            date.getMonth(),
-            date.getDate(),
-            date.getHours(),
-            date.getMinutes(),
-            date.getSeconds(),
-            date.getMilliseconds()
-        ];
-        var roomId = Number(components.join(''));
         var newRoom = {
-            id: roomId,
+            id: this._gameService.generateId(),
             maxplayers: 6,
             players: [],
             started: false,
@@ -1167,8 +1138,9 @@ var MenuComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./menu.component.html */ "./src/app/menu/menu.component.html"),
             styles: [__webpack_require__(/*! ./menu.component.css */ "./src/app/menu/menu.component.css")]
         }),
-        __metadata("design:paramtypes", [_services_data_base_service__WEBPACK_IMPORTED_MODULE_1__["DataBaseService"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+        __metadata("design:paramtypes", [_services_data_base_service__WEBPACK_IMPORTED_MODULE_2__["DataBaseService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
+            _services_game_service__WEBPACK_IMPORTED_MODULE_3__["GameService"]])
     ], MenuComponent);
     return MenuComponent;
 }());
@@ -1184,7 +1156,7 @@ var MenuComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".wrapper {\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n  text-align: center;\n  background-color: green;\n  background-image: url(\"https://stoopidpigeon.com/wp-content/uploads/2017/06/online-blackjack-Canada-online-casino-games.jpg\"); /* The image used */\n  background-color: #cccccc; /* Used if the image is unavailable */\n  background-position: center; /* Center the image */\n  background-repeat: no-repeat; /* Do not repeat the image */\n  background-size: cover; /* Resize the background image to cover the entire container */\n  min-height: 100vh;\n}\n\na {\n  font-size: 20px;\n  color:rgb(2, 206, 189);\n}\n\n.wrapper-rooms{\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-wrap: wrap;\n}\n\n.hidden {\n  display: none;\n}\n\n.room {\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n  height: 300px;\n  width: 450px;\n  background-color: grey;\n  margin: 20px;\n  border-radius: 10px;\n  font-size: 26px;\n  background-image: url(\"http://4.bp.blogspot.com/-vwtSvf8O3NA/VCFofN0LmfI/AAAAAAAAADs/Z6pZGDfQ8dE/s1600/open-door.jpg\"); /* The image used */\n  background-color: #cccccc; /* Used if the image is unavailable */\n  background-position: center; /* Center the image */\n  background-repeat: no-repeat; /* Do not repeat the image */\n  background-size: cover; \n  \n\n}\n\n#inputNewName { \n  font-size: 30px;\n  width: 300px;\n  margin: 0 auto 10px auto;\n}\n\nlabel{\n  font-size: 30px;\n}\n\n.wrapper-rooms button {\n  margin: 10px auto;\n\n}\n\n#maxPlayer {\n  font-size: 30px;\n  width: 40px;\n  margin: 0 auto 10px auto;\n}\n\n.add-room-menu {\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n}\n\n.started {\n  background-color: red;\n}\n\n.action-button {\n  cursor: pointer;\n  display: block;\n\tposition: relative;\n\tpadding: 10px 40px;\n  margin: 0px 10px 10px 0px;\n\n\tborder-radius: 10px;\n\tfont-family: 'Pacifico', cursive;\n\tfont-size: 25px;\n\tcolor: black;\n\ttext-decoration: none;\t\n}\n\n.blue {\n\tbackground-color: #3498DB;\n\tborder-bottom: 5px solid #2980B9;\n\ttext-shadow: 0px -2px #2980B9;\n}\n\n.red {\n\tbackground-color: #E74C3C;\n\tborder-bottom: 5px solid #BD3E31;\n\ttext-shadow: 0px -2px #BD3E31;\n}\n\n.green {\n\tbackground-color: #82BF56;\n\tborder-bottom: 5px solid #669644;\n\ttext-shadow: 0px -2px #669644;\n}\n\n.yellow {\n\tbackground-color: #F2CF66;\n\tborder-bottom: 5px solid #D1B358;\n\ttext-shadow: 0px -2px #D1B358;\n}\n\n.action-button:active {\n\ttransform: translate(0px,5px);\n  -webkit-transform: translate(0px,5px);\n\tborder-bottom: 1px solid;\n}\n\nlabel {\n  background-color: rgba(13, 222, 11, 0.5);\n  padding:10px;\n  border-radius: 15px;\n}\n\n.button-wrapper {\n  max-width: 300px;\n  margin: auto;\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbXVsdGlwbGF5ZXItbWVudS9tdWx0aXBsYXllci1tZW51LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxjQUFjO0VBQ2Qsd0JBQXdCO0VBQ3hCLHVCQUF1QjtFQUN2QixtQkFBbUI7RUFDbkIsd0JBQXdCO0VBQ3hCLDhIQUE4SCxDQUFDLG9CQUFvQjtFQUNuSiwwQkFBMEIsQ0FBQyxzQ0FBc0M7RUFDakUsNEJBQTRCLENBQUMsc0JBQXNCO0VBQ25ELDZCQUE2QixDQUFDLDZCQUE2QjtFQUMzRCx1QkFBdUIsQ0FBQywrREFBK0Q7RUFDdkYsa0JBQWtCO0NBQ25COztBQUVEO0VBQ0UsZ0JBQWdCO0VBQ2hCLHVCQUF1QjtDQUN4Qjs7QUFJRDtFQUNFLGNBQWM7RUFDZCx3QkFBd0I7RUFDeEIsb0JBQW9CO0VBQ3BCLGdCQUFnQjtDQUNqQjs7QUFFRDtFQUNFLGNBQWM7Q0FDZjs7QUFFRDtFQUNFLGNBQWM7RUFDZCx3QkFBd0I7RUFDeEIsdUJBQXVCO0VBQ3ZCLGNBQWM7RUFDZCxhQUFhO0VBQ2IsdUJBQXVCO0VBQ3ZCLGFBQWE7RUFDYixvQkFBb0I7RUFDcEIsZ0JBQWdCO0VBQ2hCLHVIQUF1SCxDQUFDLG9CQUFvQjtFQUM1SSwwQkFBMEIsQ0FBQyxzQ0FBc0M7RUFDakUsNEJBQTRCLENBQUMsc0JBQXNCO0VBQ25ELDZCQUE2QixDQUFDLDZCQUE2QjtFQUMzRCx1QkFBdUI7OztDQUd4Qjs7QUFFRDtFQUNFLGdCQUFnQjtFQUNoQixhQUFhO0VBQ2IseUJBQXlCO0NBQzFCOztBQUVEO0VBQ0UsZ0JBQWdCO0NBQ2pCOztBQUVEO0VBQ0Usa0JBQWtCOztDQUVuQjs7QUFFRDtFQUNFLGdCQUFnQjtFQUNoQixZQUFZO0VBQ1oseUJBQXlCO0NBQzFCOztBQUVEO0VBQ0UsY0FBYztFQUNkLHdCQUF3QjtFQUN4Qix1QkFBdUI7Q0FDeEI7O0FBRUQ7RUFDRSxzQkFBc0I7Q0FDdkI7O0FBR0Q7RUFDRSxnQkFBZ0I7RUFDaEIsZUFBZTtDQUNoQixtQkFBbUI7Q0FDbkIsbUJBQW1CO0VBQ2xCLDBCQUEwQjs7Q0FFM0Isb0JBQW9CO0NBQ3BCLGlDQUFpQztDQUNqQyxnQkFBZ0I7Q0FDaEIsYUFBYTtDQUNiLHNCQUFzQjtDQUN0Qjs7QUFFRDtDQUNDLDBCQUEwQjtDQUMxQixpQ0FBaUM7Q0FDakMsOEJBQThCO0NBQzlCOztBQUVEO0NBQ0MsMEJBQTBCO0NBQzFCLGlDQUFpQztDQUNqQyw4QkFBOEI7Q0FDOUI7O0FBRUQ7Q0FDQywwQkFBMEI7Q0FDMUIsaUNBQWlDO0NBQ2pDLDhCQUE4QjtDQUM5Qjs7QUFFRDtDQUNDLDBCQUEwQjtDQUMxQixpQ0FBaUM7Q0FDakMsOEJBQThCO0NBQzlCOztBQUVEO0NBQ0MsOEJBQThCO0VBQzdCLHNDQUFzQztDQUN2Qyx5QkFBeUI7Q0FDekI7O0FBRUQ7RUFDRSx5Q0FBeUM7RUFDekMsYUFBYTtFQUNiLG9CQUFvQjtDQUNyQjs7QUFFRDtFQUNFLGlCQUFpQjtFQUNqQixhQUFhO0VBQ2IsY0FBYztFQUNkLHdCQUF3QjtFQUN4Qix1QkFBdUI7Q0FDeEIiLCJmaWxlIjoic3JjL2FwcC9tdWx0aXBsYXllci1tZW51L211bHRpcGxheWVyLW1lbnUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi53cmFwcGVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgYmFja2dyb3VuZC1jb2xvcjogZ3JlZW47XG4gIGJhY2tncm91bmQtaW1hZ2U6IHVybChcImh0dHBzOi8vc3Rvb3BpZHBpZ2Vvbi5jb20vd3AtY29udGVudC91cGxvYWRzLzIwMTcvMDYvb25saW5lLWJsYWNramFjay1DYW5hZGEtb25saW5lLWNhc2luby1nYW1lcy5qcGdcIik7IC8qIFRoZSBpbWFnZSB1c2VkICovXG4gIGJhY2tncm91bmQtY29sb3I6ICNjY2NjY2M7IC8qIFVzZWQgaWYgdGhlIGltYWdlIGlzIHVuYXZhaWxhYmxlICovXG4gIGJhY2tncm91bmQtcG9zaXRpb246IGNlbnRlcjsgLyogQ2VudGVyIHRoZSBpbWFnZSAqL1xuICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0OyAvKiBEbyBub3QgcmVwZWF0IHRoZSBpbWFnZSAqL1xuICBiYWNrZ3JvdW5kLXNpemU6IGNvdmVyOyAvKiBSZXNpemUgdGhlIGJhY2tncm91bmQgaW1hZ2UgdG8gY292ZXIgdGhlIGVudGlyZSBjb250YWluZXIgKi9cbiAgbWluLWhlaWdodDogMTAwdmg7XG59XG5cbmEge1xuICBmb250LXNpemU6IDIwcHg7XG4gIGNvbG9yOnJnYigyLCAyMDYsIDE4OSk7XG59XG5cblxuXG4ud3JhcHBlci1yb29tc3tcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGZsZXgtd3JhcDogd3JhcDtcbn1cblxuLmhpZGRlbiB7XG4gIGRpc3BsYXk6IG5vbmU7XG59XG5cbi5yb29tIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGhlaWdodDogMzAwcHg7XG4gIHdpZHRoOiA0NTBweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogZ3JleTtcbiAgbWFyZ2luOiAyMHB4O1xuICBib3JkZXItcmFkaXVzOiAxMHB4O1xuICBmb250LXNpemU6IDI2cHg7XG4gIGJhY2tncm91bmQtaW1hZ2U6IHVybChcImh0dHA6Ly80LmJwLmJsb2dzcG90LmNvbS8tdnd0U3ZmOE8zTkEvVkNGb2ZOMExtZkkvQUFBQUFBQUFBRHMvWjZwWkdEZlE4ZEUvczE2MDAvb3Blbi1kb29yLmpwZ1wiKTsgLyogVGhlIGltYWdlIHVzZWQgKi9cbiAgYmFja2dyb3VuZC1jb2xvcjogI2NjY2NjYzsgLyogVXNlZCBpZiB0aGUgaW1hZ2UgaXMgdW5hdmFpbGFibGUgKi9cbiAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyOyAvKiBDZW50ZXIgdGhlIGltYWdlICovXG4gIGJhY2tncm91bmQtcmVwZWF0OiBuby1yZXBlYXQ7IC8qIERvIG5vdCByZXBlYXQgdGhlIGltYWdlICovXG4gIGJhY2tncm91bmQtc2l6ZTogY292ZXI7IFxuICBcblxufVxuXG4jaW5wdXROZXdOYW1lIHsgXG4gIGZvbnQtc2l6ZTogMzBweDtcbiAgd2lkdGg6IDMwMHB4O1xuICBtYXJnaW46IDAgYXV0byAxMHB4IGF1dG87XG59XG5cbmxhYmVse1xuICBmb250LXNpemU6IDMwcHg7XG59XG5cbi53cmFwcGVyLXJvb21zIGJ1dHRvbiB7XG4gIG1hcmdpbjogMTBweCBhdXRvO1xuXG59XG5cbiNtYXhQbGF5ZXIge1xuICBmb250LXNpemU6IDMwcHg7XG4gIHdpZHRoOiA0MHB4O1xuICBtYXJnaW46IDAgYXV0byAxMHB4IGF1dG87XG59XG5cbi5hZGQtcm9vbS1tZW51IHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG59XG5cbi5zdGFydGVkIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogcmVkO1xufVxuXG5cbi5hY3Rpb24tYnV0dG9uIHtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICBkaXNwbGF5OiBibG9jaztcblx0cG9zaXRpb246IHJlbGF0aXZlO1xuXHRwYWRkaW5nOiAxMHB4IDQwcHg7XG4gIG1hcmdpbjogMHB4IDEwcHggMTBweCAwcHg7XG5cblx0Ym9yZGVyLXJhZGl1czogMTBweDtcblx0Zm9udC1mYW1pbHk6ICdQYWNpZmljbycsIGN1cnNpdmU7XG5cdGZvbnQtc2l6ZTogMjVweDtcblx0Y29sb3I6IGJsYWNrO1xuXHR0ZXh0LWRlY29yYXRpb246IG5vbmU7XHRcbn1cblxuLmJsdWUge1xuXHRiYWNrZ3JvdW5kLWNvbG9yOiAjMzQ5OERCO1xuXHRib3JkZXItYm90dG9tOiA1cHggc29saWQgIzI5ODBCOTtcblx0dGV4dC1zaGFkb3c6IDBweCAtMnB4ICMyOTgwQjk7XG59XG5cbi5yZWQge1xuXHRiYWNrZ3JvdW5kLWNvbG9yOiAjRTc0QzNDO1xuXHRib3JkZXItYm90dG9tOiA1cHggc29saWQgI0JEM0UzMTtcblx0dGV4dC1zaGFkb3c6IDBweCAtMnB4ICNCRDNFMzE7XG59XG5cbi5ncmVlbiB7XG5cdGJhY2tncm91bmQtY29sb3I6ICM4MkJGNTY7XG5cdGJvcmRlci1ib3R0b206IDVweCBzb2xpZCAjNjY5NjQ0O1xuXHR0ZXh0LXNoYWRvdzogMHB4IC0ycHggIzY2OTY0NDtcbn1cblxuLnllbGxvdyB7XG5cdGJhY2tncm91bmQtY29sb3I6ICNGMkNGNjY7XG5cdGJvcmRlci1ib3R0b206IDVweCBzb2xpZCAjRDFCMzU4O1xuXHR0ZXh0LXNoYWRvdzogMHB4IC0ycHggI0QxQjM1ODtcbn1cblxuLmFjdGlvbi1idXR0b246YWN0aXZlIHtcblx0dHJhbnNmb3JtOiB0cmFuc2xhdGUoMHB4LDVweCk7XG4gIC13ZWJraXQtdHJhbnNmb3JtOiB0cmFuc2xhdGUoMHB4LDVweCk7XG5cdGJvcmRlci1ib3R0b206IDFweCBzb2xpZDtcbn1cblxubGFiZWwge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDEzLCAyMjIsIDExLCAwLjUpO1xuICBwYWRkaW5nOjEwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDE1cHg7XG59XG5cbi5idXR0b24td3JhcHBlciB7XG4gIG1heC13aWR0aDogMzAwcHg7XG4gIG1hcmdpbjogYXV0bztcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG59XG5cbiJdfQ== */"
+module.exports = ".wrapper {\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n  text-align: center;\n  background-color: green;\n  background-image: url(\"https://stoopidpigeon.com/wp-content/uploads/2017/06/online-blackjack-Canada-online-casino-games.jpg\"); /* The image used */\n  background-color: #cccccc; /* Used if the image is unavailable */\n  background-position: center; /* Center the image */\n  background-repeat: no-repeat; /* Do not repeat the image */\n  background-size: cover; /* Resize the background image to cover the entire container */\n  min-height: 100vh;\n}\n\na {\n  font-size: 20px;\n  color:rgb(2, 206, 189);\n}\n\n.wrapper-rooms{\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-wrap: wrap;\n}\n\n.hidden {\n  display: none;\n}\n\n.room {\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n  height: 300px;\n  width: 450px;\n  background-color: rgba(255, 255, 255, 0.4);\n  border: 1px solid rgb(0, 0, 0);\n  margin: 20px;\n  border-radius: 15px;\n  font-size: 26px;\n\n}\n\n#inputNewName { \n  font-size: 30px;\n  width: 300px;\n  margin: 0 auto 10px auto;\n}\n\nlabel{\n  font-size: 30px;\n}\n\n.wrapper-rooms button {\n  margin: 10px auto;\n}\n\n#maxPlayer {\n  font-size: 30px;\n  width: 40px;\n  margin: 0 auto 10px auto;\n}\n\n.add-room-menu {\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n  max-width: 300px;\n  margin: auto;\n}\n\n.started {\n  background-color: rgba(255, 90, 90, 0.4);\n}\n\n.action-button {\n  cursor: pointer;\n  display: block;\n\tposition: relative;\n\tpadding: 10px 40px;\n  margin: 0px 10px 10px 0px;\n\tborder-radius: 10px;\n\tfont-family: 'Pacifico', cursive;\n\tfont-size: 25px;\n\tcolor: black;\n\ttext-decoration: none;\t\n}\n\n.blue {\n\tbackground-color: #3498DB;\n\tborder-bottom: 5px solid #2980B9;\n\ttext-shadow: 0px -2px #2980B9;\n}\n\n.red {\n\tbackground-color: #E74C3C;\n\tborder-bottom: 5px solid #BD3E31;\n\ttext-shadow: 0px -2px #BD3E31;\n}\n\n.green {\n\tbackground-color: #82BF56;\n\tborder-bottom: 5px solid #669644;\n\ttext-shadow: 0px -2px #669644;\n}\n\n.yellow {\n\tbackground-color: #F2CF66;\n\tborder-bottom: 5px solid #D1B358;\n\ttext-shadow: 0px -2px #D1B358;\n}\n\n.action-button:active {\n\ttransform: translate(0px,5px);\n  -webkit-transform: translate(0px,5px);\n\tborder-bottom: 1px solid;\n}\n\nlabel {\n  background-color: rgba(13, 222, 11, 0.5);\n  padding:10px;\n  border-radius: 15px;\n}\n\n.button-wrapper {\n  max-width: 300px;\n  margin: auto;\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbXVsdGlwbGF5ZXItbWVudS9tdWx0aXBsYXllci1tZW51LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxjQUFjO0VBQ2Qsd0JBQXdCO0VBQ3hCLHVCQUF1QjtFQUN2QixtQkFBbUI7RUFDbkIsd0JBQXdCO0VBQ3hCLDhIQUE4SCxDQUFDLG9CQUFvQjtFQUNuSiwwQkFBMEIsQ0FBQyxzQ0FBc0M7RUFDakUsNEJBQTRCLENBQUMsc0JBQXNCO0VBQ25ELDZCQUE2QixDQUFDLDZCQUE2QjtFQUMzRCx1QkFBdUIsQ0FBQywrREFBK0Q7RUFDdkYsa0JBQWtCO0NBQ25COztBQUVEO0VBQ0UsZ0JBQWdCO0VBQ2hCLHVCQUF1QjtDQUN4Qjs7QUFFRDtFQUNFLGNBQWM7RUFDZCx3QkFBd0I7RUFDeEIsb0JBQW9CO0VBQ3BCLGdCQUFnQjtDQUNqQjs7QUFFRDtFQUNFLGNBQWM7Q0FDZjs7QUFFRDtFQUNFLGNBQWM7RUFDZCx3QkFBd0I7RUFDeEIsdUJBQXVCO0VBQ3ZCLGNBQWM7RUFDZCxhQUFhO0VBQ2IsMkNBQTJDO0VBQzNDLCtCQUErQjtFQUMvQixhQUFhO0VBQ2Isb0JBQW9CO0VBQ3BCLGdCQUFnQjs7Q0FFakI7O0FBRUQ7RUFDRSxnQkFBZ0I7RUFDaEIsYUFBYTtFQUNiLHlCQUF5QjtDQUMxQjs7QUFFRDtFQUNFLGdCQUFnQjtDQUNqQjs7QUFFRDtFQUNFLGtCQUFrQjtDQUNuQjs7QUFFRDtFQUNFLGdCQUFnQjtFQUNoQixZQUFZO0VBQ1oseUJBQXlCO0NBQzFCOztBQUVEO0VBQ0UsY0FBYztFQUNkLHdCQUF3QjtFQUN4Qix1QkFBdUI7RUFDdkIsaUJBQWlCO0VBQ2pCLGFBQWE7Q0FDZDs7QUFFRDtFQUNFLHlDQUF5QztDQUMxQzs7QUFFRDtFQUNFLGdCQUFnQjtFQUNoQixlQUFlO0NBQ2hCLG1CQUFtQjtDQUNuQixtQkFBbUI7RUFDbEIsMEJBQTBCO0NBQzNCLG9CQUFvQjtDQUNwQixpQ0FBaUM7Q0FDakMsZ0JBQWdCO0NBQ2hCLGFBQWE7Q0FDYixzQkFBc0I7Q0FDdEI7O0FBRUQ7Q0FDQywwQkFBMEI7Q0FDMUIsaUNBQWlDO0NBQ2pDLDhCQUE4QjtDQUM5Qjs7QUFFRDtDQUNDLDBCQUEwQjtDQUMxQixpQ0FBaUM7Q0FDakMsOEJBQThCO0NBQzlCOztBQUVEO0NBQ0MsMEJBQTBCO0NBQzFCLGlDQUFpQztDQUNqQyw4QkFBOEI7Q0FDOUI7O0FBRUQ7Q0FDQywwQkFBMEI7Q0FDMUIsaUNBQWlDO0NBQ2pDLDhCQUE4QjtDQUM5Qjs7QUFFRDtDQUNDLDhCQUE4QjtFQUM3QixzQ0FBc0M7Q0FDdkMseUJBQXlCO0NBQ3pCOztBQUVEO0VBQ0UseUNBQXlDO0VBQ3pDLGFBQWE7RUFDYixvQkFBb0I7Q0FDckI7O0FBRUQ7RUFDRSxpQkFBaUI7RUFDakIsYUFBYTtFQUNiLGNBQWM7RUFDZCx3QkFBd0I7RUFDeEIsdUJBQXVCO0NBQ3hCIiwiZmlsZSI6InNyYy9hcHAvbXVsdGlwbGF5ZXItbWVudS9tdWx0aXBsYXllci1tZW51LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIud3JhcHBlciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGJhY2tncm91bmQtY29sb3I6IGdyZWVuO1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCJodHRwczovL3N0b29waWRwaWdlb24uY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE3LzA2L29ubGluZS1ibGFja2phY2stQ2FuYWRhLW9ubGluZS1jYXNpbm8tZ2FtZXMuanBnXCIpOyAvKiBUaGUgaW1hZ2UgdXNlZCAqL1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjY2NjY2NjOyAvKiBVc2VkIGlmIHRoZSBpbWFnZSBpcyB1bmF2YWlsYWJsZSAqL1xuICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7IC8qIENlbnRlciB0aGUgaW1hZ2UgKi9cbiAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDsgLyogRG8gbm90IHJlcGVhdCB0aGUgaW1hZ2UgKi9cbiAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjsgLyogUmVzaXplIHRoZSBiYWNrZ3JvdW5kIGltYWdlIHRvIGNvdmVyIHRoZSBlbnRpcmUgY29udGFpbmVyICovXG4gIG1pbi1oZWlnaHQ6IDEwMHZoO1xufVxuXG5hIHtcbiAgZm9udC1zaXplOiAyMHB4O1xuICBjb2xvcjpyZ2IoMiwgMjA2LCAxODkpO1xufVxuXG4ud3JhcHBlci1yb29tc3tcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGZsZXgtd3JhcDogd3JhcDtcbn1cblxuLmhpZGRlbiB7XG4gIGRpc3BsYXk6IG5vbmU7XG59XG5cbi5yb29tIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGhlaWdodDogMzAwcHg7XG4gIHdpZHRoOiA0NTBweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjQpO1xuICBib3JkZXI6IDFweCBzb2xpZCByZ2IoMCwgMCwgMCk7XG4gIG1hcmdpbjogMjBweDtcbiAgYm9yZGVyLXJhZGl1czogMTVweDtcbiAgZm9udC1zaXplOiAyNnB4O1xuXG59XG5cbiNpbnB1dE5ld05hbWUgeyBcbiAgZm9udC1zaXplOiAzMHB4O1xuICB3aWR0aDogMzAwcHg7XG4gIG1hcmdpbjogMCBhdXRvIDEwcHggYXV0bztcbn1cblxubGFiZWx7XG4gIGZvbnQtc2l6ZTogMzBweDtcbn1cblxuLndyYXBwZXItcm9vbXMgYnV0dG9uIHtcbiAgbWFyZ2luOiAxMHB4IGF1dG87XG59XG5cbiNtYXhQbGF5ZXIge1xuICBmb250LXNpemU6IDMwcHg7XG4gIHdpZHRoOiA0MHB4O1xuICBtYXJnaW46IDAgYXV0byAxMHB4IGF1dG87XG59XG5cbi5hZGQtcm9vbS1tZW51IHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIG1heC13aWR0aDogMzAwcHg7XG4gIG1hcmdpbjogYXV0bztcbn1cblxuLnN0YXJ0ZWQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDI1NSwgOTAsIDkwLCAwLjQpO1xufVxuXG4uYWN0aW9uLWJ1dHRvbiB7XG4gIGN1cnNvcjogcG9pbnRlcjtcbiAgZGlzcGxheTogYmxvY2s7XG5cdHBvc2l0aW9uOiByZWxhdGl2ZTtcblx0cGFkZGluZzogMTBweCA0MHB4O1xuICBtYXJnaW46IDBweCAxMHB4IDEwcHggMHB4O1xuXHRib3JkZXItcmFkaXVzOiAxMHB4O1xuXHRmb250LWZhbWlseTogJ1BhY2lmaWNvJywgY3Vyc2l2ZTtcblx0Zm9udC1zaXplOiAyNXB4O1xuXHRjb2xvcjogYmxhY2s7XG5cdHRleHQtZGVjb3JhdGlvbjogbm9uZTtcdFxufVxuXG4uYmx1ZSB7XG5cdGJhY2tncm91bmQtY29sb3I6ICMzNDk4REI7XG5cdGJvcmRlci1ib3R0b206IDVweCBzb2xpZCAjMjk4MEI5O1xuXHR0ZXh0LXNoYWRvdzogMHB4IC0ycHggIzI5ODBCOTtcbn1cblxuLnJlZCB7XG5cdGJhY2tncm91bmQtY29sb3I6ICNFNzRDM0M7XG5cdGJvcmRlci1ib3R0b206IDVweCBzb2xpZCAjQkQzRTMxO1xuXHR0ZXh0LXNoYWRvdzogMHB4IC0ycHggI0JEM0UzMTtcbn1cblxuLmdyZWVuIHtcblx0YmFja2dyb3VuZC1jb2xvcjogIzgyQkY1Njtcblx0Ym9yZGVyLWJvdHRvbTogNXB4IHNvbGlkICM2Njk2NDQ7XG5cdHRleHQtc2hhZG93OiAwcHggLTJweCAjNjY5NjQ0O1xufVxuXG4ueWVsbG93IHtcblx0YmFja2dyb3VuZC1jb2xvcjogI0YyQ0Y2Njtcblx0Ym9yZGVyLWJvdHRvbTogNXB4IHNvbGlkICNEMUIzNTg7XG5cdHRleHQtc2hhZG93OiAwcHggLTJweCAjRDFCMzU4O1xufVxuXG4uYWN0aW9uLWJ1dHRvbjphY3RpdmUge1xuXHR0cmFuc2Zvcm06IHRyYW5zbGF0ZSgwcHgsNXB4KTtcbiAgLXdlYmtpdC10cmFuc2Zvcm06IHRyYW5zbGF0ZSgwcHgsNXB4KTtcblx0Ym9yZGVyLWJvdHRvbTogMXB4IHNvbGlkO1xufVxuXG5sYWJlbCB7XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMTMsIDIyMiwgMTEsIDAuNSk7XG4gIHBhZGRpbmc6MTBweDtcbiAgYm9yZGVyLXJhZGl1czogMTVweDtcbn1cblxuLmJ1dHRvbi13cmFwcGVyIHtcbiAgbWF4LXdpZHRoOiAzMDBweDtcbiAgbWFyZ2luOiBhdXRvO1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbn1cblxuIl19 */"
 
 /***/ }),
 
@@ -1195,7 +1167,7 @@ module.exports = ".wrapper {\n  display: flex;\n  justify-content: center;\n  fl
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"wrapper\">\n  <div class=\"button-wrapper\">\n    <a routerLink=\"/menu\" class=\"action-button shadow animate blue\">\n      Return to menu\n    </a>\n\n\n  <button type=\"button\" \n          (click)=\"isShowAddRoomMenu = !isShowAddRoomMenu\" \n          class=\"add-button\"\n          class=\"action-button shadow animate green\">\n    show/hide add room menu\n  </button>\n\n  <div *ngIf=\"isShowAddRoomMenu\" \n       class=\"add-room-menu\">\n    <label for=\"maxPlayer\">\n      Max players:\n    </label>\n\n    <input type=\"number\" \n           min=\"2\"\n           max=\"6\" \n           autofocus \n           placeholder=\"2\" \n           id=\"maxPlayer\" \n           [(ngModel)]=\"maxPlayers\">\n\n    <button type=\"button\" \n            (click)=\"addNewRoom()\" \n            class=\"add-button\"\n            class=\"action-button shadow animate red\">\n      Create room\n    </button>\n  </div>\n</div>\n  <div class=\"wrapper-rooms\">\n    <div *ngFor=\"let room of rooms\">\n      <div class=\"room\" \n           [class.started]=\"room.started\" \n           *ngIf=\"!room.single\">\n        Number of room : {{ room.id }}\n\n        <div>maxplayers : {{ room.maxplayers }}</div>\n\n        <div>players in room : {{room.players | players}} </div>\n\n        <button type=\"button\" class=\"action-button shadow animate red add-button\"\n                (click)=\"deleteRoom(room.id)\">\n          Delete room\n        </button>\n\n        <button type=\"button\" class=\"action-button shadow animate green add-button\"\n                (click)=\"selectRoom(room.id)\">\n          Select room\n        </button>\n      </div>\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"wrapper\">\n  <div class=\"button-wrapper\">\n    <a routerLink=\"/menu\" \n       class=\"action-button shadow animate blue\">\n      Return to menu\n    </a>\n  </div>\n\n  <div class=\"add-room-menu\">\n    <label for=\"maxPlayer\">\n      Max players:\n    </label>\n\n    <input type=\"number\" \n           min=\"2\"\n           max=\"6\" \n           autofocus \n           placeholder=\"2\" \n           id=\"maxPlayer\" \n           [(ngModel)]=\"maxPlayers\">\n\n    <button type=\"button\" \n            (click)=\"addNewRoom()\" \n            class=\"add-button\"\n            class=\"action-button shadow animate yellow\">\n      Create room\n    </button>\n  </div>\n\n  <div class=\"wrapper-rooms\">\n    <div *ngFor=\"let room of rooms\">\n      <div class=\"room\" \n           [class.started]=\"room.started\" \n           *ngIf=\"!room.single\">\n        Number of room : {{ room.id }}\n  \n        <div>\n          maxplayers : {{ room.maxplayers }}\n        </div>\n  \n        <div>\n          players in room : {{room.players | players}} \n        </div>\n  \n        <button type=\"button\" \n                class=\"action-button shadow animate red add-button\" \n                (click)=\"deleteRoom(room.id)\">\n          Delete room\n        </button>\n  \n        <button type=\"button\" \n                class=\"action-button shadow animate green add-button\" \n                (click)=\"selectRoom(room.id)\">\n          Select room\n        </button>\n      </div>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -1210,11 +1182,11 @@ module.exports = "<div class=\"wrapper\">\n  <div class=\"button-wrapper\">\n   
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MultiplayerMenuComponent", function() { return MultiplayerMenuComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services_data_base_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/data-base.service */ "./src/app/services/data-base.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/user.service */ "./src/app/services/user.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/user.service */ "./src/app/services/user.service.ts");
+/* harmony import */ var _services_data_base_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/data-base.service */ "./src/app/services/data-base.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1231,52 +1203,42 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var MultiplayerMenuComponent = /** @class */ (function () {
-    function MultiplayerMenuComponent(_dataBaseService, _userService, router) {
+    function MultiplayerMenuComponent(_dataBaseService, _userService, _router) {
         this._dataBaseService = _dataBaseService;
         this._userService = _userService;
-        this.router = router;
+        this._router = _router;
         this.isShowAddRoomMenu = false;
         this.maxPlayers = 2;
-        this._destroy$$ = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this._destroy$$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
     }
     MultiplayerMenuComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this._dataBaseService.getRooms()
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeUntil"])(this._destroy$$))
+        this._dataBaseService.getRooms$()
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this._destroy$$))
             .subscribe(function (rooms) {
             _this.rooms = rooms;
         });
         this._userService.getUser$()
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeUntil"])(this._destroy$$))
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this._destroy$$))
             .subscribe(function (user) {
             _this.user = user;
         });
     };
     MultiplayerMenuComponent.prototype.selectRoom = function (roomId) {
-        var selectedRoom;
-        this.rooms.forEach(function (room) {
-            if (room.id === roomId) {
-                selectedRoom = room;
-            }
-        });
-        if (selectedRoom.players !== undefined
+        var selectedRoom = this.rooms.find(function (room) { return room.id === roomId; });
+        if (selectedRoom.players
             && selectedRoom.maxplayers <= Object.keys(selectedRoom.players).length) {
             alert('Max players limit!!');
             return;
         }
-        if (selectedRoom.started === true) {
+        if (selectedRoom.started) {
             alert('Sorry, game is started');
             return;
         }
-        this.router.navigate(['/game', roomId]);
+        this._router.navigate(['/game', roomId]);
     };
     MultiplayerMenuComponent.prototype.addNewRoom = function () {
-        var _newIdForNewRoom = 0;
-        this.rooms.forEach(function (room) {
-            if (room.id > _newIdForNewRoom) {
-                _newIdForNewRoom = room.id;
-            }
-        });
+        var _newIdForNewRoom = this.rooms.length !== 0 ? Math.max.apply(Math, this.rooms.map(function (room) { return room.id; })) : 1;
         var newRoom = {
             id: ++_newIdForNewRoom,
             maxplayers: this.maxPlayers,
@@ -1285,17 +1247,11 @@ var MultiplayerMenuComponent = /** @class */ (function () {
             started: false
         };
         this._dataBaseService.addNewRoom(newRoom);
-        this.isShowAddRoomMenu = !this.isShowAddRoomMenu;
-        this.router.navigate(['/game', newRoom.id]);
+        this._router.navigate(['/game', newRoom.id]);
     };
     MultiplayerMenuComponent.prototype.deleteRoom = function (id) {
-        var selectedRoom;
-        this.rooms.forEach(function (room) {
-            if (room.id === id) {
-                selectedRoom = room;
-            }
-        });
-        if (selectedRoom.players !== undefined) {
+        var selectedRoom = this.rooms.find(function (room) { return room.id === id; });
+        if (selectedRoom.players) {
             alert('There are players in the room');
         }
         else {
@@ -1304,6 +1260,7 @@ var MultiplayerMenuComponent = /** @class */ (function () {
     };
     MultiplayerMenuComponent.prototype.ngOnDestroy = function () {
         this._destroy$$.next();
+        this._destroy$$.complete();
     };
     MultiplayerMenuComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1311,9 +1268,9 @@ var MultiplayerMenuComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./multiplayer-menu.component.html */ "./src/app/multiplayer-menu/multiplayer-menu.component.html"),
             styles: [__webpack_require__(/*! ./multiplayer-menu.component.css */ "./src/app/multiplayer-menu/multiplayer-menu.component.css")]
         }),
-        __metadata("design:paramtypes", [_services_data_base_service__WEBPACK_IMPORTED_MODULE_1__["DataBaseService"],
-            _services_user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+        __metadata("design:paramtypes", [_services_data_base_service__WEBPACK_IMPORTED_MODULE_5__["DataBaseService"],
+            _services_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
     ], MultiplayerMenuComponent);
     return MultiplayerMenuComponent;
 }());
@@ -1344,7 +1301,12 @@ var PlayersPipe = /** @class */ (function () {
     function PlayersPipe() {
     }
     PlayersPipe.prototype.transform = function (value) {
-        return Object.values(value).length;
+        if (value) {
+            return Object.values(value).length;
+        }
+        else {
+            return 0;
+        }
     };
     PlayersPipe = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"])({
@@ -1392,13 +1354,13 @@ var DataBaseService = /** @class */ (function () {
     DataBaseService.prototype.deleteRoom = function (id) {
         this.dataBase.list('rooms').remove('room' + id);
     };
-    DataBaseService.prototype.getRooms = function () {
+    DataBaseService.prototype.getRooms$ = function () {
         return this.dataBase.list('rooms').valueChanges();
     };
     DataBaseService.prototype.addPlayerToRoom = function (roomId, player) {
         this.dataBase.object("/rooms/room" + roomId + "/players/" + player.id).update(player);
     };
-    DataBaseService.prototype.getUsers = function () {
+    DataBaseService.prototype.getUsers$ = function () {
         return this.dataBase.list("/users").valueChanges();
     };
     DataBaseService.prototype.addUsers = function (newUser) {
@@ -1501,6 +1463,18 @@ var GameService = /** @class */ (function () {
             deck[secondElem] = change;
         }
         return deck;
+    };
+    GameService.prototype.generateId = function () {
+        var date = new Date();
+        var idParts = [
+            date.getMonth(),
+            date.getDate(),
+            date.getHours(),
+            date.getMinutes(),
+            date.getSeconds(),
+            date.getMilliseconds()
+        ];
+        return Number(idParts.join(''));
     };
     GameService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])()
