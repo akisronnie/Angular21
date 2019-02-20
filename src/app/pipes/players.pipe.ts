@@ -6,7 +6,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class PlayersPipe implements PipeTransform {
 
 public transform(value: [], ): number {
+  if (value) {
     return Object.values(value).length;
-  }
+  } else { return 0; }
 
+ }
 }

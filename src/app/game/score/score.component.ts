@@ -1,7 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
-
-import { DataBaseService } from '../../services/data-base.service';
 
 @Component({
   selector: 'app-score',
@@ -24,10 +21,6 @@ export class ScoreComponent  {
   @Output() public addBots: EventEmitter<void> = new EventEmitter;
   @Output() public deleteBots: EventEmitter<void> = new EventEmitter;
 
- public constructor(
-   private _dataBaseService: DataBaseService,
-   private router: Router
- ) {}
 
  public ready(): void {
   this.userReady.emit();

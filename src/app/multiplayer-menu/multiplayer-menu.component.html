@@ -4,17 +4,9 @@
        class="action-button shadow animate blue">
       Return to menu
     </a>
-
-    <button type="button" 
-            (click)="isShowAddRoomMenu = !isShowAddRoomMenu" 
-            class="add-button"
-            class="action-button shadow animate green">
-      show/hide add room menu
-     </button>
   </div>
 
-  <div *ngIf="isShowAddRoomMenu" 
-       class="add-room-menu">
+  <div class="add-room-menu">
     <label for="maxPlayer">
       Max players:
     </label>
