@@ -34,15 +34,12 @@ a {
   flex-direction: column;
   height: 300px;
   width: 450px;
-  background-color: grey;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgb(0, 0, 0);
   margin: 20px;
-  border-radius: 10px;
+  border-radius: 15px;
   font-size: 26px;
-  background-image: url("http://4.bp.blogspot.com/-vwtSvf8O3NA/VCFofN0LmfI/AAAAAAAAADs/Z6pZGDfQ8dE/s1600/open-door.jpg"); /* The image used */
-  background-color: #cccccc; /* Used if the image is unavailable */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; 
+
 }
 
 #inputNewName { 
@@ -74,7 +71,7 @@ label{
 }
 
 .started {
-  background-color: red;
+  background-color: rgba(255, 90, 90, 0.4);
 }
 
 .action-button {
