@@ -1,11 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DataBaseService } from '../services/data-base.service';
-import { GameService } from '../services/game.service';
 import { Router, ActivatedRoute } from '@angular/router';
+
 import { Subject, combineLatest } from 'rxjs';
 import { takeUntil, map, pluck, switchMap, filter } from 'rxjs/operators';
-import { UserService } from '../services/user.service';
 import * as faker from 'faker';
+
+import { DataBaseService } from '../services/data-base.service';
+import { GameService } from '../services/game.service';
+import { UserService } from '../services/user.service';
+
 
 @Component({
   selector: 'app-game',
@@ -21,7 +24,7 @@ export class GameComponent implements OnInit, OnDestroy {
   public youTurn: boolean = false;
 
 
-  private _destroy$$: Subject<number> = new Subject();
+  private _destroy$$: Subject<void> = new Subject();
   private readonly _CONDITIONS_COMPUTER_DRAW: number = 15;
 
 
@@ -47,17 +50,24 @@ export class GameComponent implements OnInit, OnDestroy {
           return this._dataBaseService.getRoom$(id);
         }),
         filter((room: TRoom) => {
-          if (room) {
+          if (!room) {
+            alert('This room is not correct');
+            this._router.navigate(['/multiplayer']);
+
+            return false;
+          }
+
             let userInRoom: boolean = false;
+            room.players = Object.values(room.players);
 
             if (room.players) {
-              userInRoom = Object.values(room.players).some(
+              userInRoom = room.players.some(
                 (player: TPlayer) => (this.user.id === player.id)
               );
             }
 
             if (!userInRoom && room.players
-              && Object.values(room.players).length >= room.maxplayers) {
+              && room.players.length >= room.maxplayers) {
               alert('This room is full');
               this._router.navigate(['/multiplayer']);
 
@@ -83,24 +93,12 @@ export class GameComponent implements OnInit, OnDestroy {
             }
 
             return true;
-
-          } else {
-            alert('This room is not correct');
-            this._router.navigate(['/multiplayer']);
-
-            return false;
-          }
         }),
         takeUntil(this._destroy$$)
       )
       .subscribe((room: TRoom) => {
         this.activeRoom = room;
-
-        if (!this.activeRoom.players) {
-          this.activeRoom.players = [];
-        }
-
-        this.activeRoom.players = Object.values(room.players);
+        this.activeRoom.players = this.activeRoom.players ?  Object.values(room.players) : [];
 
         if (this.activeRoom.players.length < 2 && this.activeRoom.single) {
           this.addBots();
@@ -108,7 +106,7 @@ export class GameComponent implements OnInit, OnDestroy {
 
         this.activeRoom.players.forEach((player: TPlayer) => {
           if (!this.activeRoom.started && player.hand) {
-            player.hand.map((card: TCard) => {
+            player.hand.forEach((card: TCard) => {
               card.src = `../assets/img/${card.name}${card.suits}.png`;
             });
           }
@@ -120,7 +118,6 @@ export class GameComponent implements OnInit, OnDestroy {
 
           if (player.id === this.user.id && player.turn) {
             this.user = player;
-
             if (!this.user.enough) {
               this.youTurn = this.user.turn;
             } else {
@@ -130,7 +127,7 @@ export class GameComponent implements OnInit, OnDestroy {
           }
 
           if (this.user.hand) {
-            this.user.hand.map((card: TCard) => {
+            this.user.hand.forEach((card: TCard) => {
               card.src = `../assets/img/${card.name}${card.suits}.png`;
             });
           }
@@ -196,20 +193,10 @@ export class GameComponent implements OnInit, OnDestroy {
       return;
     }
 
-    const date: Date = new Date();
-    const components: number[] = [
-      date.getMonth(),
-      date.getDate(),
-      date.getHours(),
-      date.getMinutes(),
-      date.getSeconds(),
-      date.getMilliseconds()
-    ];
-    const botId: number = Number(components.join(''));
     const newBot: TPlayer = {
       name: faker.name.findName(),
       pass: '',
-      id: botId,
+      id: this._gameService.generateId(),
       wins: 0,
       loses: 0,
       isActive: true,
@@ -379,5 +366,7 @@ export class GameComponent implements OnInit, OnDestroy {
       this._dataBaseService.addUsers(this.user);
       this._dataBaseService.removeUserFromRoom(this.activeRoom.id, this.user.id);
     }
+
+    this._destroy$$.complete();
   }
 }

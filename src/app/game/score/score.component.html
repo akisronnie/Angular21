@@ -23,11 +23,15 @@
 
   <div class="score" 
        *ngIf="activeRoom && !activeRoom.single">
-    ID ROOM:{{ activeRoom.id }} Max players: {{ activeRoom.maxplayers}}
+    Max players: {{ activeRoom.maxplayers}}
   </div>
 
   <div class="score">
     {{ message }}
+  </div>
+
+  <div class="score">
+     You Score: {{ user.sum }}
   </div>
 
   <div>
@@ -36,7 +40,7 @@
             [class.green]="user.isActive"
             [class.yellow]="!user.isActive"
             (click)="ready()"> 
-      Ready {{user.isActive}}
+      Ready 
     </button>
 
     <button class="action-button shadow animate blue" 
@@ -45,7 +49,7 @@
       Add bot
     </button>
 
-    <button class="action-button shadow animate red" 
+    <button class="action-button shadow animate yellow" 
             *ngIf="activeRoom && !activeRoom.started && user.playerMaster"
             (click)="deleteBot()"> 
       Delete bot
@@ -54,22 +58,21 @@
     <button class="action-button shadow animate blue" 
             type="button" 
             *ngIf="activeRoom && activeRoom.started "
-            [disabled]="!youTurn" 
+            [disabled]="!youTurn"
+            [class.red]="!user.turn" 
+            [disabled]="!user.turn"
             (click)="this.getPlayer.emit()">
       Get Card
     </button>
 
-    <button class="action-button shadow animate red" 
+    <button class="action-button shadow animate " 
             type="button" 
             *ngIf="activeRoom && activeRoom.started " 
             [disabled]="!youTurn"
+            [class.red]="user.enough || !user.turn"
+            [class.yellow]="!user.enough && user.turn " 
             (click)="this.enoughGame.emit()">
-      Enough!
+      Enough! 
     </button>
   </div>
-
-  <div class="score">
-    Wins:{{ user.wins }} Games:{{ user.loses }}
-  </div>
- 
 </div>
