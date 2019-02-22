@@ -12,6 +12,12 @@ export class DataBaseService {
   public constructor(
     private dataBase: AngularFireDatabase) {}
 
+  public pushOneCard(roomId: number, userId: number, userSum: number, userHand: TCard[], roomDeck: TCard[]): void {
+    this.savePlayerScore(roomId, userId, userSum);
+    this.pushDeck(roomId, roomDeck);
+    this.pushHandCard(roomId, userId, userHand);
+  }
+
   public addNewRoom(newRoom: TRoom): void {
     this.dataBase.list('rooms').update('room' + newRoom.id, newRoom);
   }

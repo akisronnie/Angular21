@@ -5,8 +5,6 @@ import { Injectable } from '@angular/core';
 export class GameService {
 
   private readonly _NUMBER_OF_SORT: number = 36;
-  private readonly _CONDITIONS_WIN: number = 21;
-
 
   public generateDeck (): TCard[] {
     const suits: string[] = ['♠', '♥', '♣', '♦'];

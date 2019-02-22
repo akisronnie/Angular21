@@ -10,10 +10,11 @@ import { DataBaseService } from '../../services/data-base.service';
 
 export class FieldComponent {
 
-  @Input() public activeRoom: TRoom;
+  @Input() public room: TRoom;
   @Input() public user: TRoom;
-  @Input() public youTurn: boolean = false;
+  @Input() public isYouTurn: boolean = false;
 
-  public constructor(
-    public dataBaseService: DataBaseService) {}
+  public readonly cardBackView: string = '../../assets/img/outside.png';
+
+  public constructor( public dataBaseService: DataBaseService) {}
 }

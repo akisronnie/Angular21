@@ -1,17 +1,16 @@
-<app-score [activeRoom] = "activeRoom"
+<app-score [room] = "room"
            [user] = "user"
            [message] = "message"
-           (userReady)="userReady()"
-           [youTurn]="youTurn"
-           [finish]="finish"
-           (getPlayer)="getYou()"
-           (enoughGame)="enoughGame()"
+           (toggleReady)="toggleReady()"
+           [isYouTurn]="isYouTurn"
+           (getPlayer)="getPlayer()"
+           (stopTakingCards)="stopTakingCards()"
            (finishGame)="finish()"
-           (addBots)="addBots()"
-           (deleteBots)="deleteBots()">
+           (addBot)="addBot()"
+           (deleteBot)="deleteBot()">
 </app-score>
 
-<app-field [activeRoom]="activeRoom"
+<app-field [room]="room"
            [user] = "user"
-           [youTurn]="youTurn">
+           [isYouTurn]="isYouTurn">
 </app-field>

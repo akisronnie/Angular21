@@ -1,9 +1,9 @@
 <section class="table" 
-         *ngIf="activeRoom">
+         *ngIf="room">
   <div class="players" 
        [class.turn]="player.turn"
        [class.no-turn]="!player.turn"
-       *ngFor="let player of activeRoom.players">
+       *ngFor="let player of room.players">
     <h3>
       Player Name: {{ player.name }}
     </h3>
@@ -12,13 +12,17 @@
       Wins: {{ player.wins }} Games: {{ player.loses }}
     </h3>
 
-    <h3 *ngIf="!activeRoom.started">
+    <h3 *ngIf="!room.started">
       Score: {{ player.sum }}
     </h3>
 
     <div class="player-hand">
       <img *ngFor="let card of player.hand" 
-           [src]="card.src">
+      [src]="player.id === user.id || !room.started
+        ? '../../assets/img/' + card.name + card.suits + '.png'
+        : cardBackView">
     </div>
+
+    
   </div>
 </section>

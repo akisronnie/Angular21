@@ -7,6 +7,7 @@ import { takeUntil } from 'rxjs/operators';
 import { UserService } from '../services/user.service';
 import { DataBaseService } from '../services/data-base.service';
 import { GameService } from '../services/game.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-intro',
@@ -25,7 +26,8 @@ export class IntroComponent implements OnInit, OnDestroy {
      private _dataBaseService: DataBaseService,
      private _userService: UserService,
      private _router: Router,
-     private _gameService: GameService
+     private _gameService: GameService,
+     private toastr: ToastrService
   ) {}
 
   public ngOnInit(): void {
@@ -40,7 +42,8 @@ export class IntroComponent implements OnInit, OnDestroy {
   public enter(): void {
     if (this.userName === undefined || this.userName === '' || this.userPassword === undefined
     || this.userPassword === '') {
-      alert('Enter name and password!!');
+      // alert('Enter name and password!!');
+      this.toastr.error('Enter name and password!!');
 
       return;
     }

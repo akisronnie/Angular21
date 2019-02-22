@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { ScoreComponent } from './game/score/score.component';
@@ -40,6 +42,8 @@ import { UserGuard } from './guards/user.guard';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
 
   ],
   providers: [
