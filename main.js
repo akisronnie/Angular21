@@ -177,20 +177,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var angularfire2_database__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! angularfire2/database */ "./node_modules/angularfire2/database/index.js");
 /* harmony import */ var angularfire2_database__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(angularfire2_database__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _game_score_score_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./game/score/score.component */ "./src/app/game/score/score.component.ts");
-/* harmony import */ var _game_field_field_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./game/field/field.component */ "./src/app/game/field/field.component.ts");
-/* harmony import */ var _game_game_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./game/game.component */ "./src/app/game/game.component.ts");
-/* harmony import */ var _menu_menu_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./menu/menu.component */ "./src/app/menu/menu.component.ts");
-/* harmony import */ var _error_error_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./error/error.component */ "./src/app/error/error.component.ts");
-/* harmony import */ var _intro_intro_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./intro/intro.component */ "./src/app/intro/intro.component.ts");
-/* harmony import */ var _multiplayer_menu_multiplayer_menu_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./multiplayer-menu/multiplayer-menu.component */ "./src/app/multiplayer-menu/multiplayer-menu.component.ts");
-/* harmony import */ var _services_game_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./services/game.service */ "./src/app/services/game.service.ts");
-/* harmony import */ var _services_data_base_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./services/data-base.service */ "./src/app/services/data-base.service.ts");
-/* harmony import */ var _services_local_storage_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./services/local-storage.service */ "./src/app/services/local-storage.service.ts");
-/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./services/user.service */ "./src/app/services/user.service.ts");
-/* harmony import */ var _pipes_players_pipe__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./pipes/players.pipe */ "./src/app/pipes/players.pipe.ts");
-/* harmony import */ var _guards_user_guard__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./guards/user.guard */ "./src/app/guards/user.guard.ts");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _game_score_score_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./game/score/score.component */ "./src/app/game/score/score.component.ts");
+/* harmony import */ var _game_field_field_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./game/field/field.component */ "./src/app/game/field/field.component.ts");
+/* harmony import */ var _game_game_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./game/game.component */ "./src/app/game/game.component.ts");
+/* harmony import */ var _menu_menu_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./menu/menu.component */ "./src/app/menu/menu.component.ts");
+/* harmony import */ var _error_error_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./error/error.component */ "./src/app/error/error.component.ts");
+/* harmony import */ var _intro_intro_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./intro/intro.component */ "./src/app/intro/intro.component.ts");
+/* harmony import */ var _multiplayer_menu_multiplayer_menu_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./multiplayer-menu/multiplayer-menu.component */ "./src/app/multiplayer-menu/multiplayer-menu.component.ts");
+/* harmony import */ var _services_game_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./services/game.service */ "./src/app/services/game.service.ts");
+/* harmony import */ var _services_data_base_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./services/data-base.service */ "./src/app/services/data-base.service.ts");
+/* harmony import */ var _services_local_storage_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./services/local-storage.service */ "./src/app/services/local-storage.service.ts");
+/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./services/user.service */ "./src/app/services/user.service.ts");
+/* harmony import */ var _pipes_players_pipe__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./pipes/players.pipe */ "./src/app/pipes/players.pipe.ts");
+/* harmony import */ var _guards_user_guard__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./guards/user.guard */ "./src/app/guards/user.guard.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -218,21 +220,23 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
-                _game_score_score_component__WEBPACK_IMPORTED_MODULE_8__["ScoreComponent"],
-                _game_field_field_component__WEBPACK_IMPORTED_MODULE_9__["FieldComponent"],
-                _game_game_component__WEBPACK_IMPORTED_MODULE_10__["GameComponent"],
-                _menu_menu_component__WEBPACK_IMPORTED_MODULE_11__["MenuComponent"],
-                _error_error_component__WEBPACK_IMPORTED_MODULE_12__["ErrorComponent"],
-                _multiplayer_menu_multiplayer_menu_component__WEBPACK_IMPORTED_MODULE_14__["MultiplayerMenuComponent"],
-                _intro_intro_component__WEBPACK_IMPORTED_MODULE_13__["IntroComponent"],
-                _pipes_players_pipe__WEBPACK_IMPORTED_MODULE_19__["PlayersPipe"],
+                _app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"],
+                _game_score_score_component__WEBPACK_IMPORTED_MODULE_10__["ScoreComponent"],
+                _game_field_field_component__WEBPACK_IMPORTED_MODULE_11__["FieldComponent"],
+                _game_game_component__WEBPACK_IMPORTED_MODULE_12__["GameComponent"],
+                _menu_menu_component__WEBPACK_IMPORTED_MODULE_13__["MenuComponent"],
+                _error_error_component__WEBPACK_IMPORTED_MODULE_14__["ErrorComponent"],
+                _multiplayer_menu_multiplayer_menu_component__WEBPACK_IMPORTED_MODULE_16__["MultiplayerMenuComponent"],
+                _intro_intro_component__WEBPACK_IMPORTED_MODULE_15__["IntroComponent"],
+                _pipes_players_pipe__WEBPACK_IMPORTED_MODULE_21__["PlayersPipe"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -240,15 +244,17 @@ var AppModule = /** @class */ (function () {
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
                 angularfire2__WEBPACK_IMPORTED_MODULE_4__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].firebase),
                 angularfire2_database__WEBPACK_IMPORTED_MODULE_5__["AngularFireDatabaseModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"],
+                ngx_toastr__WEBPACK_IMPORTED_MODULE_8__["ToastrModule"].forRoot()
             ],
             providers: [
-                _services_game_service__WEBPACK_IMPORTED_MODULE_15__["GameService"],
-                _services_data_base_service__WEBPACK_IMPORTED_MODULE_16__["DataBaseService"],
-                _services_local_storage_service__WEBPACK_IMPORTED_MODULE_17__["LocalStorageService"],
-                _guards_user_guard__WEBPACK_IMPORTED_MODULE_20__["UserGuard"],
-                _services_user_service__WEBPACK_IMPORTED_MODULE_18__["UserService"],
+                _services_game_service__WEBPACK_IMPORTED_MODULE_17__["GameService"],
+                _services_data_base_service__WEBPACK_IMPORTED_MODULE_18__["DataBaseService"],
+                _services_local_storage_service__WEBPACK_IMPORTED_MODULE_19__["LocalStorageService"],
+                _guards_user_guard__WEBPACK_IMPORTED_MODULE_22__["UserGuard"],
+                _services_user_service__WEBPACK_IMPORTED_MODULE_20__["UserService"],
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -322,7 +328,7 @@ var ErrorComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".table {\n  margin: auto;\n  flex-wrap: wrap;\n  height: 800px;\n  background-image: url(\"https://stoopidpigeon.com/wp-content/uploads/2017/06/online-blackjack-Canada-online-casino-games.jpg\"); /* The image used */\n  background-color: #cccccc; /* Used if the image is unavailable */\n  background-position: center; /* Center the image */\n  background-repeat: no-repeat; /* Do not repeat the image */\n  background-size: cover; /* Resize the background image to cover the entire container */\n  position: relative;\n  display: flex;\n  justify-content: center;\n  text-align: center;\n  padding: 30px;\n}\n\n\n.turn{\n  background-color: rgba(1, 143, 5, 0.4);\n}\n\n\n.no-turn {\n  background-color: rgba(0, 0, 0, 0.6);\n}\n\n\n.players {\n  width: 300px;\n  height: 300px;\n  color: rgb(0, 253, 253);\n  border-radius: 20px;\n  margin: 0 30px;\n  border: 1px solid rgb(0, 253, 253);\n\n}\n\n\n.player-hand {\n  display: flex;\n  justify-content: space-around;\n  flex-direction: row; \n  width: 100%;\n\n}\n\n\n.center-table {\n  position: absolute;\n  display: flex;\n  justify-content: center;\n  align-items: flex-start;\n  width: 100%;\n  top: 50%;\n}\n\n\nbutton {\n  height: 70px;\n  width: 130px;\n  font-size: 25px;\n  margin-left: 30px;\n  margin-right: 30px;\n}\n\n\nimg {\n  width: 65px;\n  height: 100px;\n  border-radius: 10px;\n}\n\n\n.total,\n.comp-result,\n.score {\n  font-size: 52px;\n  color: black;\n  background-color: rgba(163, 163, 163, 0.438);\n  border-radius: 20px;\n}\n\n\n.comp-result {\n  margin-left: 20px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2FtZS9maWVsZC9maWVsZC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBYTtFQUNiLGdCQUFnQjtFQUNoQixjQUFjO0VBQ2QsOEhBQThILENBQUMsb0JBQW9CO0VBQ25KLDBCQUEwQixDQUFDLHNDQUFzQztFQUNqRSw0QkFBNEIsQ0FBQyxzQkFBc0I7RUFDbkQsNkJBQTZCLENBQUMsNkJBQTZCO0VBQzNELHVCQUF1QixDQUFDLCtEQUErRDtFQUN2RixtQkFBbUI7RUFDbkIsY0FBYztFQUNkLHdCQUF3QjtFQUN4QixtQkFBbUI7RUFDbkIsY0FBYztDQUNmOzs7QUFHRDtFQUNFLHVDQUF1QztDQUN4Qzs7O0FBRUQ7RUFDRSxxQ0FBcUM7Q0FDdEM7OztBQUVEO0VBQ0UsYUFBYTtFQUNiLGNBQWM7RUFDZCx3QkFBd0I7RUFDeEIsb0JBQW9CO0VBQ3BCLGVBQWU7RUFDZixtQ0FBbUM7O0NBRXBDOzs7QUFFRDtFQUNFLGNBQWM7RUFDZCw4QkFBOEI7RUFDOUIsb0JBQW9CO0VBQ3BCLFlBQVk7O0NBRWI7OztBQUVEO0VBQ0UsbUJBQW1CO0VBQ25CLGNBQWM7RUFDZCx3QkFBd0I7RUFDeEIsd0JBQXdCO0VBQ3hCLFlBQVk7RUFDWixTQUFTO0NBQ1Y7OztBQUVEO0VBQ0UsYUFBYTtFQUNiLGFBQWE7RUFDYixnQkFBZ0I7RUFDaEIsa0JBQWtCO0VBQ2xCLG1CQUFtQjtDQUNwQjs7O0FBRUQ7RUFDRSxZQUFZO0VBQ1osY0FBYztFQUNkLG9CQUFvQjtDQUNyQjs7O0FBRUQ7OztFQUdFLGdCQUFnQjtFQUNoQixhQUFhO0VBQ2IsNkNBQTZDO0VBQzdDLG9CQUFvQjtDQUNyQjs7O0FBRUQ7RUFDRSxrQkFBa0I7Q0FDbkIiLCJmaWxlIjoic3JjL2FwcC9nYW1lL2ZpZWxkL2ZpZWxkLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudGFibGUge1xuICBtYXJnaW46IGF1dG87XG4gIGZsZXgtd3JhcDogd3JhcDtcbiAgaGVpZ2h0OiA4MDBweDtcbiAgYmFja2dyb3VuZC1pbWFnZTogdXJsKFwiaHR0cHM6Ly9zdG9vcGlkcGlnZW9uLmNvbS93cC1jb250ZW50L3VwbG9hZHMvMjAxNy8wNi9vbmxpbmUtYmxhY2tqYWNrLUNhbmFkYS1vbmxpbmUtY2FzaW5vLWdhbWVzLmpwZ1wiKTsgLyogVGhlIGltYWdlIHVzZWQgKi9cbiAgYmFja2dyb3VuZC1jb2xvcjogI2NjY2NjYzsgLyogVXNlZCBpZiB0aGUgaW1hZ2UgaXMgdW5hdmFpbGFibGUgKi9cbiAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyOyAvKiBDZW50ZXIgdGhlIGltYWdlICovXG4gIGJhY2tncm91bmQtcmVwZWF0OiBuby1yZXBlYXQ7IC8qIERvIG5vdCByZXBlYXQgdGhlIGltYWdlICovXG4gIGJhY2tncm91bmQtc2l6ZTogY292ZXI7IC8qIFJlc2l6ZSB0aGUgYmFja2dyb3VuZCBpbWFnZSB0byBjb3ZlciB0aGUgZW50aXJlIGNvbnRhaW5lciAqL1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHBhZGRpbmc6IDMwcHg7XG59XG5cblxuLnR1cm57XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMSwgMTQzLCA1LCAwLjQpO1xufVxuXG4ubm8tdHVybiB7XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMCwgMCwgMCwgMC42KTtcbn1cblxuLnBsYXllcnMge1xuICB3aWR0aDogMzAwcHg7XG4gIGhlaWdodDogMzAwcHg7XG4gIGNvbG9yOiByZ2IoMCwgMjUzLCAyNTMpO1xuICBib3JkZXItcmFkaXVzOiAyMHB4O1xuICBtYXJnaW46IDAgMzBweDtcbiAgYm9yZGVyOiAxcHggc29saWQgcmdiKDAsIDI1MywgMjUzKTtcblxufVxuXG4ucGxheWVyLWhhbmQge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcbiAgZmxleC1kaXJlY3Rpb246IHJvdzsgXG4gIHdpZHRoOiAxMDAlO1xuXG59XG5cbi5jZW50ZXItdGFibGUge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBhbGlnbi1pdGVtczogZmxleC1zdGFydDtcbiAgd2lkdGg6IDEwMCU7XG4gIHRvcDogNTAlO1xufVxuXG5idXR0b24ge1xuICBoZWlnaHQ6IDcwcHg7XG4gIHdpZHRoOiAxMzBweDtcbiAgZm9udC1zaXplOiAyNXB4O1xuICBtYXJnaW4tbGVmdDogMzBweDtcbiAgbWFyZ2luLXJpZ2h0OiAzMHB4O1xufVxuXG5pbWcge1xuICB3aWR0aDogNjVweDtcbiAgaGVpZ2h0OiAxMDBweDtcbiAgYm9yZGVyLXJhZGl1czogMTBweDtcbn1cblxuLnRvdGFsLFxuLmNvbXAtcmVzdWx0LFxuLnNjb3JlIHtcbiAgZm9udC1zaXplOiA1MnB4O1xuICBjb2xvcjogYmxhY2s7XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMTYzLCAxNjMsIDE2MywgMC40MzgpO1xuICBib3JkZXItcmFkaXVzOiAyMHB4O1xufVxuXG4uY29tcC1yZXN1bHQge1xuICBtYXJnaW4tbGVmdDogMjBweDtcbn0iXX0= */"
+module.exports = ".table {\n  margin: auto;\n  flex-wrap: wrap;\n  height: 800px;\n  background-image: url(\"https://stoopidpigeon.com/wp-content/uploads/2017/06/online-blackjack-Canada-online-casino-games.jpg\"); /* The image used */\n  background-color: #cccccc; /* Used if the image is unavailable */\n  background-position: center; /* Center the image */\n  background-repeat: no-repeat; /* Do not repeat the image */\n  background-size: cover; /* Resize the background image to cover the entire container */\n  position: relative;\n  display: flex;\n  justify-content: center;\n  text-align: center;\n  padding: 30px;\n}\n\n.turn{\n  background-color: rgba(1, 143, 5, 0.4);\n}\n\n.no-turn {\n  background-color: rgba(0, 0, 0, 0.6);\n}\n\n.players {\n  width: 300px;\n  height: 300px;\n  color: rgb(0, 253, 253);\n  border-radius: 20px;\n  margin: 0 30px;\n  border: 1px solid rgb(0, 253, 253);\n\n}\n\n.player-hand {\n  display: flex;\n  justify-content: space-around;\n  flex-direction: row; \n  width: 100%;\n}\n\n.center-table {\n  position: absolute;\n  display: flex;\n  justify-content: center;\n  align-items: flex-start;\n  width: 100%;\n  top: 50%;\n}\n\nbutton {\n  height: 70px;\n  width: 130px;\n  font-size: 25px;\n  margin-left: 30px;\n  margin-right: 30px;\n}\n\nimg {\n  width: 65px;\n  height: 100px;\n  border-radius: 10px;\n}\n\n.total,\n.comp-result,\n.score {\n  font-size: 52px;\n  color: black;\n  background-color: rgba(163, 163, 163, 0.438);\n  border-radius: 20px;\n}\n\n.comp-result {\n  margin-left: 20px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZ2FtZS9maWVsZC9maWVsZC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBYTtFQUNiLGdCQUFnQjtFQUNoQixjQUFjO0VBQ2QsOEhBQThILENBQUMsb0JBQW9CO0VBQ25KLDBCQUEwQixDQUFDLHNDQUFzQztFQUNqRSw0QkFBNEIsQ0FBQyxzQkFBc0I7RUFDbkQsNkJBQTZCLENBQUMsNkJBQTZCO0VBQzNELHVCQUF1QixDQUFDLCtEQUErRDtFQUN2RixtQkFBbUI7RUFDbkIsY0FBYztFQUNkLHdCQUF3QjtFQUN4QixtQkFBbUI7RUFDbkIsY0FBYztDQUNmOztBQUVEO0VBQ0UsdUNBQXVDO0NBQ3hDOztBQUVEO0VBQ0UscUNBQXFDO0NBQ3RDOztBQUVEO0VBQ0UsYUFBYTtFQUNiLGNBQWM7RUFDZCx3QkFBd0I7RUFDeEIsb0JBQW9CO0VBQ3BCLGVBQWU7RUFDZixtQ0FBbUM7O0NBRXBDOztBQUVEO0VBQ0UsY0FBYztFQUNkLDhCQUE4QjtFQUM5QixvQkFBb0I7RUFDcEIsWUFBWTtDQUNiOztBQUVEO0VBQ0UsbUJBQW1CO0VBQ25CLGNBQWM7RUFDZCx3QkFBd0I7RUFDeEIsd0JBQXdCO0VBQ3hCLFlBQVk7RUFDWixTQUFTO0NBQ1Y7O0FBRUQ7RUFDRSxhQUFhO0VBQ2IsYUFBYTtFQUNiLGdCQUFnQjtFQUNoQixrQkFBa0I7RUFDbEIsbUJBQW1CO0NBQ3BCOztBQUVEO0VBQ0UsWUFBWTtFQUNaLGNBQWM7RUFDZCxvQkFBb0I7Q0FDckI7O0FBRUQ7OztFQUdFLGdCQUFnQjtFQUNoQixhQUFhO0VBQ2IsNkNBQTZDO0VBQzdDLG9CQUFvQjtDQUNyQjs7QUFFRDtFQUNFLGtCQUFrQjtDQUNuQiIsImZpbGUiOiJzcmMvYXBwL2dhbWUvZmllbGQvZmllbGQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi50YWJsZSB7XG4gIG1hcmdpbjogYXV0bztcbiAgZmxleC13cmFwOiB3cmFwO1xuICBoZWlnaHQ6IDgwMHB4O1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCJodHRwczovL3N0b29waWRwaWdlb24uY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE3LzA2L29ubGluZS1ibGFja2phY2stQ2FuYWRhLW9ubGluZS1jYXNpbm8tZ2FtZXMuanBnXCIpOyAvKiBUaGUgaW1hZ2UgdXNlZCAqL1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjY2NjY2NjOyAvKiBVc2VkIGlmIHRoZSBpbWFnZSBpcyB1bmF2YWlsYWJsZSAqL1xuICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7IC8qIENlbnRlciB0aGUgaW1hZ2UgKi9cbiAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDsgLyogRG8gbm90IHJlcGVhdCB0aGUgaW1hZ2UgKi9cbiAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjsgLyogUmVzaXplIHRoZSBiYWNrZ3JvdW5kIGltYWdlIHRvIGNvdmVyIHRoZSBlbnRpcmUgY29udGFpbmVyICovXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgcGFkZGluZzogMzBweDtcbn1cblxuLnR1cm57XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMSwgMTQzLCA1LCAwLjQpO1xufVxuXG4ubm8tdHVybiB7XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMCwgMCwgMCwgMC42KTtcbn1cblxuLnBsYXllcnMge1xuICB3aWR0aDogMzAwcHg7XG4gIGhlaWdodDogMzAwcHg7XG4gIGNvbG9yOiByZ2IoMCwgMjUzLCAyNTMpO1xuICBib3JkZXItcmFkaXVzOiAyMHB4O1xuICBtYXJnaW46IDAgMzBweDtcbiAgYm9yZGVyOiAxcHggc29saWQgcmdiKDAsIDI1MywgMjUzKTtcblxufVxuXG4ucGxheWVyLWhhbmQge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcbiAgZmxleC1kaXJlY3Rpb246IHJvdzsgXG4gIHdpZHRoOiAxMDAlO1xufVxuXG4uY2VudGVyLXRhYmxlIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgYWxpZ24taXRlbXM6IGZsZXgtc3RhcnQ7XG4gIHdpZHRoOiAxMDAlO1xuICB0b3A6IDUwJTtcbn1cblxuYnV0dG9uIHtcbiAgaGVpZ2h0OiA3MHB4O1xuICB3aWR0aDogMTMwcHg7XG4gIGZvbnQtc2l6ZTogMjVweDtcbiAgbWFyZ2luLWxlZnQ6IDMwcHg7XG4gIG1hcmdpbi1yaWdodDogMzBweDtcbn1cblxuaW1nIHtcbiAgd2lkdGg6IDY1cHg7XG4gIGhlaWdodDogMTAwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDEwcHg7XG59XG5cbi50b3RhbCxcbi5jb21wLXJlc3VsdCxcbi5zY29yZSB7XG4gIGZvbnQtc2l6ZTogNTJweDtcbiAgY29sb3I6IGJsYWNrO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDE2MywgMTYzLCAxNjMsIDAuNDM4KTtcbiAgYm9yZGVyLXJhZGl1czogMjBweDtcbn1cblxuLmNvbXAtcmVzdWx0IHtcbiAgbWFyZ2luLWxlZnQ6IDIwcHg7XG59Il19 */"
 
 /***/ }),
 
@@ -333,7 +339,7 @@ module.exports = ".table {\n  margin: auto;\n  flex-wrap: wrap;\n  height: 800px
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"table\" \n         *ngIf=\"activeRoom\">\n  <div class=\"players\" \n       [class.turn]=\"player.turn\"\n       [class.no-turn]=\"!player.turn\"\n       *ngFor=\"let player of activeRoom.players\">\n    <h3>\n      Player Name: {{ player.name }}\n    </h3>\n\n    <h3>\n      Wins: {{ player.wins }} Games: {{ player.loses }}\n    </h3>\n\n    <h3 *ngIf=\"!activeRoom.started\">\n      Score: {{ player.sum }}\n    </h3>\n\n    <div class=\"player-hand\">\n      <img *ngFor=\"let card of player.hand\" \n           [src]=\"card.src\">\n    </div>\n  </div>\n</section>"
+module.exports = "<section class=\"table\" \n         *ngIf=\"room\">\n  <div class=\"players\" \n       [class.turn]=\"player.turn\"\n       [class.no-turn]=\"!player.turn\"\n       *ngFor=\"let player of room.players\">\n    <h3>\n      Player Name: {{ player.name }}\n    </h3>\n\n    <h3>\n      Wins: {{ player.wins }} Games: {{ player.games }}\n    </h3>\n\n    <h3 *ngIf=\"!room.started\">\n      Score: {{ player.sum }}\n    </h3>\n\n    <div class=\"player-hand\">\n      <img *ngFor=\"let card of player.hand\" \n      [src]=\"player.id === user.id || !room.started\n        ? './assets/img/' + card.name + card.suits + '.png'\n        : cardBackView\">\n    </div>\n\n    \n  </div>\n</section>"
 
 /***/ }),
 
@@ -363,12 +369,13 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var FieldComponent = /** @class */ (function () {
     function FieldComponent(dataBaseService) {
         this.dataBaseService = dataBaseService;
-        this.youTurn = false;
+        this.isYouTurn = false;
+        this.cardBackView = './assets/img/outside.png';
     }
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
-    ], FieldComponent.prototype, "activeRoom", void 0);
+    ], FieldComponent.prototype, "room", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
@@ -376,7 +383,7 @@ var FieldComponent = /** @class */ (function () {
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Boolean)
-    ], FieldComponent.prototype, "youTurn", void 0);
+    ], FieldComponent.prototype, "isYouTurn", void 0);
     FieldComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-field',
@@ -392,17 +399,6 @@ var FieldComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/game/game.component.css":
-/*!*****************************************!*\
-  !*** ./src/app/game/game.component.css ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2dhbWUvZ2FtZS5jb21wb25lbnQuY3NzIn0= */"
-
-/***/ }),
-
 /***/ "./src/app/game/game.component.html":
 /*!******************************************!*\
   !*** ./src/app/game/game.component.html ***!
@@ -410,7 +406,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-score [activeRoom] = \"activeRoom\"\n           [user] = \"user\"\n           [message] = \"message\"\n           (userReady)=\"userReady()\"\n           [youTurn]=\"youTurn\"\n           [finish]=\"finish\"\n           (getPlayer)=\"getYou()\"\n           (enoughGame)=\"enoughGame()\"\n           (finishGame)=\"finish()\"\n           (addBots)=\"addBots()\"\n           (deleteBots)=\"deleteBots()\">\n</app-score>\n\n<app-field [activeRoom]=\"activeRoom\"\n           [user] = \"user\"\n           [youTurn]=\"youTurn\">\n</app-field>"
+module.exports = "<app-score [room] = \"room\"\n           [user] = \"user\"\n           [message] = \"message\"\n           (toggleReady)=\"toggleReady()\"\n           [isYouTurn]=\"isYouTurn\"\n           (getPlayer)=\"getPlayer()\"\n           (stopTakingCards)=\"stopTakingCards()\"\n           (finishGame)=\"finish()\"\n           (addBot)=\"addBot()\"\n           (deleteBot)=\"deleteBot()\">\n</app-score>\n\n<app-field [room]=\"room\"\n           [user] = \"user\"\n           [isYouTurn]=\"isYouTurn\">\n</app-field>"
 
 /***/ }),
 
@@ -430,9 +426,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var faker__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! faker */ "./node_modules/faker/index.js");
 /* harmony import */ var faker__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(faker__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _services_data_base_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/data-base.service */ "./src/app/services/data-base.service.ts");
-/* harmony import */ var _services_game_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/game.service */ "./src/app/services/game.service.ts");
-/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../services/user.service */ "./src/app/services/user.service.ts");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+/* harmony import */ var _services_data_base_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/data-base.service */ "./src/app/services/data-base.service.ts");
+/* harmony import */ var _services_game_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../services/game.service */ "./src/app/services/game.service.ts");
+/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../services/user.service */ "./src/app/services/user.service.ts");
+var __assign = (undefined && undefined.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -450,17 +458,19 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var GameComponent = /** @class */ (function () {
-    function GameComponent(_gameService, _dataBaseService, _userService, _route, _router) {
+    function GameComponent(_gameService, _dataBaseService, _userService, _route, _router, _toastr) {
         this._gameService = _gameService;
         this._dataBaseService = _dataBaseService;
         this._userService = _userService;
         this._route = _route;
         this._router = _router;
+        this._toastr = _toastr;
         this.message = 'Welcome to game';
-        this.youTurn = false;
+        this.isYouTurn = false;
         this._destroy$$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
-        this._CONDITIONS_COMPUTER_DRAW = 15;
+        this._TOTAL_LIMIT_FOR_BOT = 15;
     }
     GameComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -471,23 +481,23 @@ var GameComponent = /** @class */ (function () {
             return _this._dataBaseService.getRoom$(id);
         }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["filter"])(function (room) {
             if (!room) {
-                alert('This room is not correct');
+                _this._toastr.error('This room is not correct');
                 _this._router.navigate(['/multiplayer']);
                 return false;
             }
             var userInRoom = false;
             if (room.players) {
                 room.players = Object.values(room.players);
-                userInRoom = room.players.some(function (player) { return (_this.user.id === player.id); });
+                userInRoom = room.players.some(function (player) { return _this.user.id === player.id; });
             }
             if (!userInRoom && room.players
                 && room.players.length >= room.maxplayers) {
-                alert('This room is full');
+                _this._toastr.error('This room is full');
                 _this._router.navigate(['/multiplayer']);
                 return false;
             }
             if (!userInRoom && room.started) {
-                alert('Sorry, game is started');
+                _this._toastr.error('Sorry, game is started');
                 _this._router.navigate(['/multiplayer']);
                 return false;
             }
@@ -502,35 +512,19 @@ var GameComponent = /** @class */ (function () {
             return true;
         }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this._destroy$$))
             .subscribe(function (room) {
-            _this.activeRoom = room;
-            _this.activeRoom.players = _this.activeRoom.players ? Object.values(room.players) : [];
-            if (_this.activeRoom.players.length < 2 && _this.activeRoom.single) {
-                _this.addBots();
+            _this.room = room;
+            _this.room.players = Object.values(room.players) || [];
+            if (_this.room.players.length < 2 && _this.room.single) {
+                _this.addBot();
             }
-            _this.activeRoom.players.forEach(function (player) {
-                if (!_this.activeRoom.started && player.hand) {
-                    player.hand.forEach(function (card) {
-                        card.src = "./assets/img/" + card.name + card.suits + ".png";
-                    });
-                }
+            _this.room.players.forEach(function (player) {
                 if (player.id === _this.user.id) {
                     _this.user = player;
-                    _this.youTurn = player.turn;
-                }
-                if (player.id === _this.user.id && player.turn) {
-                    _this.user = player;
-                    if (!_this.user.enough) {
-                        _this.youTurn = _this.user.turn;
-                    }
-                    else {
-                        _this.youTurn = false;
+                    _this.isYouTurn = _this.user.turn;
+                    if (_this.user.enough) {
+                        _this.isYouTurn = false;
                         _this.setNextTurn(_this.user.id);
                     }
-                }
-                if (_this.user.hand) {
-                    _this.user.hand.forEach(function (card) {
-                        card.src = "./assets/img/" + card.name + card.suits + ".png";
-                    });
                 }
                 if (player.isBot && player.turn && _this.user.playerMaster && !player.enough) {
                     _this._botTurn(player.id);
@@ -539,47 +533,35 @@ var GameComponent = /** @class */ (function () {
                     _this.setNextTurn(player.id);
                 }
             });
-            var allActive = _this.activeRoom.players.every(function (player) { return player.isActive; });
-            if (allActive && !_this.activeRoom.started) {
+            var isGameStart = _this.room.players.every(function (player) { return player.isActive; });
+            if (isGameStart && !_this.room.started) {
                 _this.startGame();
             }
-            var oneHave21 = _this.activeRoom.players.some(function (player) { return player.sum === 21; });
-            var allFinish = _this.activeRoom.players.every(function (player) { return player.enough; });
-            if (allFinish && _this.activeRoom.started && _this.user.isActive || oneHave21 && _this.activeRoom.started && _this.user.isActive) {
-                _this._dataBaseService.playerReady(_this.activeRoom.id, _this.user.id, false);
+            var haveWinner = _this.room.players.some(function (player) { return player.sum === 21; });
+            var isFinishGame = _this.room.players.every(function (player) { return player.enough; });
+            if (_this.room.started && _this.user.isActive && (isFinishGame || haveWinner)) {
+                _this._dataBaseService.playerReady(_this.room.id, _this.user.id, false);
                 _this.finish();
             }
         });
     };
     GameComponent.prototype._botTurn = function (botId) {
-        this._dataBaseService.changeTurn(this.activeRoom.id, botId, false);
+        this._dataBaseService.changeTurn(this.room.id, botId, false);
         var bot;
-        this.activeRoom.players.forEach(function (player) {
-            if (player.id === botId) {
-                bot = player;
-            }
-        });
-        if (bot.sum < this._CONDITIONS_COMPUTER_DRAW) {
-            var oneCard = this.activeRoom.deck[this.activeRoom.deck.length - 1];
-            if (!bot.hand) {
-                bot.hand = [];
-            }
-            bot.hand.push(oneCard);
-            bot.sum += this.activeRoom.deck[this.activeRoom.deck.length - 1].value;
-            this.activeRoom.deck.pop();
-            this._dataBaseService.savePlayerScore(this.activeRoom.id, bot.id, bot.sum);
-            this._dataBaseService.pushDeck(this.activeRoom.id, this.activeRoom.deck);
-            this._dataBaseService.pushHandCard(this.activeRoom.id, bot.id, bot.hand);
-            this.setNextTurn(bot.id);
+        bot = this.room.players.find(function (player) { return player.id === botId; });
+        if (bot.sum < this._TOTAL_LIMIT_FOR_BOT) {
+            bot.hand.push(this.room.deck.pop());
+            bot.sum += bot.hand[bot.hand.length - 1].value;
+            this._dataBaseService.pushOneCard(this.room.id, bot.id, bot.sum, bot.hand, this.room.deck);
         }
         else {
-            this._dataBaseService.setEnoughDraw(this.activeRoom.id, bot.id, true);
-            this.setNextTurn(bot.id);
+            this._dataBaseService.setEnoughDraw(this.room.id, bot.id, true);
         }
+        this.setNextTurn(bot.id);
     };
-    GameComponent.prototype.addBots = function () {
-        if (this.activeRoom.players.length >= this.activeRoom.maxplayers) {
-            alert('room is full');
+    GameComponent.prototype.addBot = function () {
+        if (this.room.players.length >= this.room.maxplayers) {
+            this._toastr.error('room is full');
             return;
         }
         var newBot = {
@@ -587,7 +569,7 @@ var GameComponent = /** @class */ (function () {
             pass: '',
             id: this._gameService.generateId(),
             wins: 0,
-            loses: 0,
+            games: 0,
             isActive: true,
             playerMaster: false,
             sum: 0,
@@ -595,155 +577,129 @@ var GameComponent = /** @class */ (function () {
             turn: false,
             enough: false
         };
-        this._dataBaseService.addPlayerToRoom(this.activeRoom.id, newBot);
+        this._dataBaseService.addPlayerToRoom(this.room.id, newBot);
     };
-    GameComponent.prototype.deleteBots = function () {
-        for (var i = 0; i < this.activeRoom.players.length; i++) {
-            if (this.activeRoom.players[i].isBot) {
-                this._dataBaseService.removeUserFromRoom(this.activeRoom.id, this.activeRoom.players[i].id);
-                break;
-            }
+    GameComponent.prototype.deleteBot = function () {
+        var bot = this.room.players.find(function (player) { return player.isBot; });
+        if (bot) {
+            this._dataBaseService.removeUserFromRoom(this.room.id, bot.id);
         }
     };
-    GameComponent.prototype.enoughGame = function () {
-        this._dataBaseService.changeTurn(this.activeRoom.id, this.user.id, false);
-        this._dataBaseService.setEnoughDraw(this.activeRoom.id, this.user.id, true);
+    GameComponent.prototype.stopTakingCards = function () {
+        this._dataBaseService.changeTurn(this.room.id, this.user.id, false);
+        this._dataBaseService.setEnoughDraw(this.room.id, this.user.id, true);
         this.setNextTurn(this.user.id);
     };
-    GameComponent.prototype.userReady = function () {
+    GameComponent.prototype.toggleReady = function () {
         this.user.isActive = !this.user.isActive;
-        this._dataBaseService.playerReady(this.activeRoom.id, this.user.id, this.user.isActive);
+        this._dataBaseService.playerReady(this.room.id, this.user.id, this.user.isActive);
     };
     GameComponent.prototype.startGame = function () {
         var _this = this;
         this.message = 'New game is started!!!';
         if (this.user.playerMaster) {
-            this.activeRoom.players.forEach(function (player) {
+            this.room.players.forEach(function (player) {
                 if (player.sum === 21) {
-                    _this._dataBaseService.savePlayerScore(_this.activeRoom.id, player.id, 0);
+                    _this._dataBaseService.savePlayerScore(_this.room.id, player.id, 0);
                 }
             });
-            this._dataBaseService.changeTurn(this.activeRoom.id, this.user.id, true);
-            this.activeRoom.players.forEach(function (player) {
+            this._dataBaseService.changeTurn(this.room.id, this.user.id, true);
+            this.room.players.forEach(function (player) {
                 if (player.isBot) {
-                    _this._dataBaseService.setEnoughDraw(_this.activeRoom.id, player.id, false);
+                    _this._dataBaseService.setEnoughDraw(_this.room.id, player.id, false);
                 }
             });
-            this._dataBaseService.gameStarted(this.activeRoom.id, true);
-            this.activeRoom.deck = this._gameService.generateDeck();
-            this.activeRoom.deck = this._gameService.deckSort(this.activeRoom.deck);
-            this.activeRoom.players.forEach(function (player) {
-                var oneCard = _this.activeRoom.deck[_this.activeRoom.deck.length - 1];
-                _this._dataBaseService.pushHandCard(_this.activeRoom.id, player.id, [oneCard]);
-                _this._dataBaseService.savePlayerScore(_this.activeRoom.id, player.id, oneCard.value);
-                _this.activeRoom.deck.pop();
+            this._dataBaseService.gameStarted(this.room.id, true);
+            this.room.deck = this._gameService.generateDeck();
+            this.room.deck = this._gameService.deckSort(this.room.deck);
+            this.room.players.forEach(function (player) {
+                var oneCard = _this.room.deck.pop();
+                _this._dataBaseService.pushHandCard(_this.room.id, player.id, [oneCard]);
+                _this._dataBaseService.savePlayerScore(_this.room.id, player.id, oneCard.value);
             });
-            this._dataBaseService.pushDeck(this.activeRoom.id, this.activeRoom.deck);
+            this._dataBaseService.pushDeck(this.room.id, this.room.deck);
         }
         else {
-            this._dataBaseService.changeTurn(this.activeRoom.id, this.user.id, false);
+            this._dataBaseService.changeTurn(this.room.id, this.user.id, false);
         }
     };
-    GameComponent.prototype.getYou = function () {
-        this._dataBaseService.changeTurn(this.activeRoom.id, this.user.id, false);
-        var oneCard = this.activeRoom.deck[this.activeRoom.deck.length - 1];
-        this.user.hand.push(oneCard);
-        this.user.sum += this.activeRoom.deck[this.activeRoom.deck.length - 1].value;
-        this.activeRoom.deck.pop();
-        this._dataBaseService.savePlayerScore(this.activeRoom.id, this.user.id, this.user.sum);
-        this._dataBaseService.pushDeck(this.activeRoom.id, this.activeRoom.deck);
-        this.user.hand.map(function (card) { card.src = "./assets/img/outside.png"; });
-        this._dataBaseService.pushHandCard(this.activeRoom.id, this.user.id, this.user.hand);
-        this.user.hand.map(function (card) { card.src = "./assets/img/" + card.name + card.suits + ".png"; });
+    GameComponent.prototype.getPlayer = function () {
+        this._dataBaseService.changeTurn(this.room.id, this.user.id, false);
+        this.user.hand.push(this.room.deck.pop());
+        this.user.sum += this.user.hand[this.user.hand.length - 1].value;
+        this._dataBaseService.pushOneCard(this.room.id, this.user.id, this.user.sum, this.user.hand, this.room.deck);
         if (this.user.sum > 21) {
             this.message = 'You have too much';
-            this._dataBaseService.setEnoughDraw(this.activeRoom.id, this.user.id, true);
-            this.setNextTurn(this.user.id);
-            return;
+            this._dataBaseService.setEnoughDraw(this.room.id, this.user.id, true);
         }
         this.setNextTurn(this.user.id);
     };
     GameComponent.prototype.setNextTurn = function (playerId) {
         var _this = this;
-        var count;
-        this.activeRoom.players.forEach(function (user, index) {
-            if (user.id === playerId) {
-                count = index;
-                user.turn = false;
-                _this._dataBaseService.changeTurn(_this.activeRoom.id, user.id, false);
-            }
+        var indexCount;
+        this.room.players.find(function (player, index) {
+            indexCount = index + 1 < _this.room.players.length ? index + 1 : 0;
+            return player.id === playerId;
         });
-        count++;
-        if (this.activeRoom.players.length <= count) {
-            count = 0;
-        }
-        this._dataBaseService.changeTurn(this.activeRoom.id, this.activeRoom.players[count].id, true);
+        this._dataBaseService.changeTurn(this.room.id, playerId, false);
+        this._dataBaseService.changeTurn(this.room.id, this.room.players[indexCount].id, true);
     };
     GameComponent.prototype.finish = function () {
         var _this = this;
         this.user.isActive = false;
         this.message = 'Winner/s: ';
-        this.youTurn = false;
-        this._dataBaseService.playerReady(this.activeRoom.id, this.user.id, this.user.isActive);
-        this._dataBaseService.gameStarted(this.activeRoom.id, false);
-        this._dataBaseService.changeTurn(this.activeRoom.id, this.user.id, false);
-        this._dataBaseService.setEnoughDraw(this.activeRoom.id, this.user.id, false);
+        this.isYouTurn = false;
+        this._dataBaseService.playerReady(this.room.id, this.user.id, this.user.isActive);
+        this._dataBaseService.gameStarted(this.room.id, false);
+        this._dataBaseService.changeTurn(this.room.id, this.user.id, false);
+        this._dataBaseService.setEnoughDraw(this.room.id, this.user.id, false);
         var maxScore = 0;
-        this.activeRoom.players.forEach(function (player) {
+        this.room.players.forEach(function (player) {
             if (player.sum > maxScore && player.sum <= 21) {
                 maxScore = player.sum;
             }
         });
-        this.activeRoom.players.forEach(function (player) {
+        this.room.players.forEach(function (player) {
             if (player.sum === maxScore) {
                 _this.message += " " + player.name + " ";
-                _this._dataBaseService.updateScore(_this.activeRoom.id, player.id, 'wins', player.wins + 1);
-                _this._dataBaseService.updateScore(_this.activeRoom.id, player.id, 'loses', player.loses + 1);
+                _this._dataBaseService.updateScore(_this.room.id, player.id, 'wins', player.wins + 1);
+                _this._dataBaseService.updateScore(_this.room.id, player.id, 'games', player.games + 1);
             }
             else {
-                _this._dataBaseService.updateScore(_this.activeRoom.id, player.id, 'loses', player.loses + 1);
+                _this._dataBaseService.updateScore(_this.room.id, player.id, 'games', player.games + 1);
             }
         });
     };
     GameComponent.prototype.ngOnDestroy = function () {
-        this._destroy$$.next();
-        var nobody = true;
-        if (this.user.playerMaster && this.activeRoom.players !== undefined) {
-            var players = this.activeRoom.players;
-            for (var index = 0; index < players.length; index++) {
-                if (!players[index].playerMaster && !players[index].isBot) {
-                    nobody = false;
-                    this._dataBaseService.setPlayerMaster(this.activeRoom.id, players[index].id);
-                    break;
-                }
+        if (this.user.playerMaster && this.room.players) {
+            var aliveUser = this.room.players.find(function (player) { return !player.playerMaster && !player.isBot; });
+            if (aliveUser) {
+                this._dataBaseService.setPlayerMaster(this.room.id, aliveUser.id);
             }
-            if (nobody) {
-                this._dataBaseService.deleteRoom(this.activeRoom.id);
+            else {
+                this._dataBaseService.deleteRoom(this.room.id);
             }
         }
-        if (this.activeRoom) {
-            this.user.turn = false;
-            this.user.hand = [];
-            this.user.isActive = false;
-            this.user.playerMaster = false;
-            this.user.sum = 0;
+        if (this.room) {
+            this.user = (__assign({}, this.user, { turn: false, hand: [], isActive: false, playerMaster: false, sum: 0 }));
             this._userService.setUser(this.user);
             this._dataBaseService.addUsers(this.user);
-            this._dataBaseService.removeUserFromRoom(this.activeRoom.id, this.user.id);
+            this._dataBaseService.removeUserFromRoom(this.room.id, this.user.id);
         }
+        this._destroy$$.next();
         this._destroy$$.complete();
     };
     GameComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-game',
             template: __webpack_require__(/*! ./game.component.html */ "./src/app/game/game.component.html"),
-            styles: [__webpack_require__(/*! ./game.component.css */ "./src/app/game/game.component.css")]
         }),
-        __metadata("design:paramtypes", [_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"],
-            _services_data_base_service__WEBPACK_IMPORTED_MODULE_5__["DataBaseService"],
-            _services_user_service__WEBPACK_IMPORTED_MODULE_7__["UserService"],
+        __metadata("design:paramtypes", [_services_game_service__WEBPACK_IMPORTED_MODULE_7__["GameService"],
+            _services_data_base_service__WEBPACK_IMPORTED_MODULE_6__["DataBaseService"],
+            _services_user_service__WEBPACK_IMPORTED_MODULE_8__["UserService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+            _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_5__["ToastrService"]])
     ], GameComponent);
     return GameComponent;
 }());
@@ -770,7 +726,7 @@ module.exports = ".score {\n  padding: 10px;\n  font-size: 30px;\n  color: rgb(0
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"score-container\">\n  <a routerLink=\"/multiplayer\" \n     *ngIf=\"activeRoom && !activeRoom.single\"\n     class=\"action-button shadow animate green return-link\">\n    Return to multiplayer menu.\n  </a>\n\n  <a routerLink=\"/menu\" \n     *ngIf=\"activeRoom && activeRoom.single\"\n     class=\"action-button shadow animate green\">\n    Return to menu.\n  </a>\n\n  <div class=\"score\" \n       *ngIf=\"activeRoom && !activeRoom.single\">\n    Players in room: \n\n    <span *ngFor=\"let player of activeRoom.players\" \n          [class.ready]=\"player.isActive\">\n      \\ {{player.name}} / \n    </span>\n  </div>\n\n  <div class=\"score\" \n       *ngIf=\"activeRoom && !activeRoom.single\">\n    Max players: {{ activeRoom.maxplayers}}\n  </div>\n\n  <div class=\"score\">\n    {{ message }}\n  </div>\n\n  <div class=\"score\">\n     You Score: {{ user.sum }}\n  </div>\n\n  <div>\n    <button class=\"action-button shadow animate\" \n            *ngIf=\"activeRoom && !activeRoom.started && activeRoom.players && activeRoom.players.length > 1\"\n            [class.green]=\"user.isActive\"\n            [class.yellow]=\"!user.isActive\"\n            (click)=\"ready()\"> \n      Ready \n    </button>\n\n    <button class=\"action-button shadow animate blue\" \n            *ngIf=\"activeRoom && !activeRoom.started && user.playerMaster\"\n            (click)=\"addBot()\"> \n      Add bot\n    </button>\n\n    <button class=\"action-button shadow animate yellow\" \n            *ngIf=\"activeRoom && !activeRoom.started && user.playerMaster\"\n            (click)=\"deleteBot()\"> \n      Delete bot\n    </button>\n\n    <button class=\"action-button shadow animate blue\" \n            type=\"button\" \n            *ngIf=\"activeRoom && activeRoom.started \"\n            [disabled]=\"!youTurn\"\n            [class.red]=\"!user.turn\" \n            [disabled]=\"!user.turn\"\n            (click)=\"this.getPlayer.emit()\">\n      Get Card\n    </button>\n\n    <button class=\"action-button shadow animate \" \n            type=\"button\" \n            *ngIf=\"activeRoom && activeRoom.started \" \n            [disabled]=\"!youTurn\"\n            [class.red]=\"user.enough || !user.turn\"\n            [class.yellow]=\"!user.enough && user.turn \" \n            (click)=\"this.enoughGame.emit()\">\n      Enough! \n    </button>\n  </div>\n</div>"
+module.exports = "<div class=\"score-container\">\n  <a routerLink=\"/multiplayer\" \n     *ngIf=\"room && !room.single\"\n     class=\"action-button shadow animate green return-link\">\n    Return to multiplayer menu.\n  </a>\n\n  <a routerLink=\"/menu\" \n     *ngIf=\"room && room.single\"\n     class=\"action-button shadow animate green\">\n    Return to menu.\n  </a>\n\n  <div class=\"score\" \n       *ngIf=\"room && !room.single\">\n    Players in room: \n\n    <span *ngFor=\"let player of room.players\" \n          [class.ready]=\"player.isActive\">\n      \\ {{player.name}} / \n    </span>\n  </div>\n\n  <div class=\"score\" \n       *ngIf=\"room && !room.single\">\n    Max players: {{ room.maxplayers}}\n  </div>\n\n  <div class=\"score\">\n    {{ message }}\n  </div>\n\n  <div class=\"score\">\n     You Score: {{ user.sum }}\n  </div>\n\n  <div>\n    <button class=\"action-button shadow animate\" \n            *ngIf=\"room && !room.started && room.players && room.players.length > 1\"\n            [class.green]=\"user.isActive\"\n            [class.yellow]=\"!user.isActive\"\n            (click)=\"ready()\"> \n      Ready \n    </button>\n\n    <button class=\"action-button shadow animate blue\" \n            *ngIf=\"room && !room.started && user.playerMaster\"\n            (click)=\"addAnyBot()\"> \n      Add bot\n    </button>\n\n    <button class=\"action-button shadow animate yellow\" \n            *ngIf=\"room && !room.started && user.playerMaster\"\n            (click)=\"deleteAnyBot()\"> \n      Delete bot\n    </button>\n\n    <button class=\"action-button shadow animate\" \n            type=\"button\" \n            *ngIf=\"room && room.started \"\n            [disabled]=\"!isYouTurn\"\n            [class.red]=\"!user.turn\" \n            [class.blue]=\"user.turn\" \n            [disabled]=\"!user.turn\"\n            (click)=\"this.getPlayer.emit()\">\n      Get Card\n    </button>\n\n    <button class=\"action-button shadow animate \" \n            type=\"button\" \n            *ngIf=\"room && room.started \" \n            [disabled]=\"!isYouTurn\"\n            [class.red]=\"user.enough || !user.turn\"\n            [class.yellow]=\"!user.enough && user.turn \" \n            (click)=\"this.stopTakingCards.emit()\">\n      Enough! \n    </button>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -797,28 +753,27 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var ScoreComponent = /** @class */ (function () {
     function ScoreComponent() {
-        this.youTurn = false;
-        this.finish = false;
+        this.isYouTurn = false;
         this.getPlayer = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"];
         this.finishGame = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"];
-        this.enoughGame = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"];
-        this.userReady = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"];
-        this.addBots = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"];
-        this.deleteBots = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"];
+        this.stopTakingCards = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"];
+        this.toggleReady = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"];
+        this.addBot = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"];
+        this.deleteBot = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"];
     }
     ScoreComponent.prototype.ready = function () {
-        this.userReady.emit();
+        this.toggleReady.emit();
     };
-    ScoreComponent.prototype.addBot = function () {
-        this.addBots.emit();
+    ScoreComponent.prototype.addAnyBot = function () {
+        this.addBot.emit();
     };
-    ScoreComponent.prototype.deleteBot = function () {
-        this.deleteBots.emit();
+    ScoreComponent.prototype.deleteAnyBot = function () {
+        this.deleteBot.emit();
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
-    ], ScoreComponent.prototype, "activeRoom", void 0);
+    ], ScoreComponent.prototype, "room", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
@@ -830,11 +785,7 @@ var ScoreComponent = /** @class */ (function () {
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Boolean)
-    ], ScoreComponent.prototype, "youTurn", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Boolean)
-    ], ScoreComponent.prototype, "finish", void 0);
+    ], ScoreComponent.prototype, "isYouTurn", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
         __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
@@ -846,19 +797,19 @@ var ScoreComponent = /** @class */ (function () {
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
         __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
-    ], ScoreComponent.prototype, "enoughGame", void 0);
+    ], ScoreComponent.prototype, "stopTakingCards", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
         __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
-    ], ScoreComponent.prototype, "userReady", void 0);
+    ], ScoreComponent.prototype, "toggleReady", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
         __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
-    ], ScoreComponent.prototype, "addBots", void 0);
+    ], ScoreComponent.prototype, "addBot", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
         __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
-    ], ScoreComponent.prototype, "deleteBots", void 0);
+    ], ScoreComponent.prototype, "deleteBot", void 0);
     ScoreComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-score',
@@ -944,7 +895,7 @@ module.exports = ".wrapper {\n  display: flex;\n  justify-content: center;\n  fo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"wrapper\">\n  <div class=\"welcome\">\n    Welcome to Black Jack!!!\n  </div>\n\n  <input type=\"text\" \n         name=\"username\" \n         placeholder=\"Enter your name\" \n         [(ngModel)]=\"userName\">\n\n  <input type=\"text\" \n         name=\"userpassword\" \n         *ngIf=\"users\" \n         placeholder=\"Enter your password\" \n         [(ngModel)]=\"userPassword\">\n\n  <button type=\"button\" \n          class=\"enter-button\" \n          (click)=\"enter()\">\n    Enter\n  </button>\n\n  <table>\n    <thead>\n      <tr>\n        <th>User name</th>\n\n        <th>Wins</th>\n\n        <th>Games</th>\n\n        <th>Select user</th>\n      </tr>\n    </thead>\n\n    <tbody>\n      <tr *ngFor=\"let user of users\">\n        <td>{{user.name}}</td>\n\n        <td>{{user.wins}}</td>\n\n        <td>{{user.loses}}</td>\n        \n        <td>\n          <button type=\"button\" \n                  class=\"button\"\n                  (click)=selectUser(user.name)>\n            select user\n          </button>\n        </td>\n      </tr>\n    </tbody>\n  </table>\n</div>"
+module.exports = "<div class=\"wrapper\">\n  <div class=\"welcome\">\n    Welcome to Black Jack!!!\n  </div>\n\n  <input type=\"text\" \n         name=\"username\" \n         placeholder=\"Enter your name\" \n         [(ngModel)]=\"userName\">\n\n  <input type=\"text\" \n         name=\"userpassword\" \n         *ngIf=\"users\"\n         type=\"password\"\n         placeholder=\"Enter your password\" \n         [(ngModel)]=\"userPassword\">\n\n  <button type=\"button\" \n          class=\"enter-button\" \n          (click)=\"enter()\">\n    Enter\n  </button>\n\n  <table>\n    <thead>\n      <tr>\n        <th>User name</th>\n\n        <th>Wins</th>\n\n        <th>Games</th>\n\n        <th>Select user</th>\n      </tr>\n    </thead>\n\n    <tbody>\n      <tr *ngFor=\"let user of users\">\n        <td>{{user.name}}</td>\n\n        <td>{{user.wins}}</td>\n\n        <td>{{user.games}}</td>\n        \n        <td>\n          <button type=\"button\" \n                  class=\"button\"\n                  (click)=selectUser(user.name)>\n            select user\n          </button>\n        </td>\n      </tr>\n    </tbody>\n  </table>\n</div>"
 
 /***/ }),
 
@@ -965,6 +916,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/user.service */ "./src/app/services/user.service.ts");
 /* harmony import */ var _services_data_base_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/data-base.service */ "./src/app/services/data-base.service.ts");
 /* harmony import */ var _services_game_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/game.service */ "./src/app/services/game.service.ts");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -981,12 +933,14 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var IntroComponent = /** @class */ (function () {
-    function IntroComponent(_dataBaseService, _userService, _router, _gameService) {
+    function IntroComponent(_dataBaseService, _userService, _router, _gameService, _toastr) {
         this._dataBaseService = _dataBaseService;
         this._userService = _userService;
         this._router = _router;
         this._gameService = _gameService;
+        this._toastr = _toastr;
         this.destroy$$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
     }
     IntroComponent.prototype.ngOnInit = function () {
@@ -1000,7 +954,7 @@ var IntroComponent = /** @class */ (function () {
         var _this = this;
         if (this.userName === undefined || this.userName === '' || this.userPassword === undefined
             || this.userPassword === '') {
-            alert('Enter name and password!!');
+            this._toastr.error('Enter name and password!!');
             return;
         }
         var saveUser;
@@ -1017,7 +971,7 @@ var IntroComponent = /** @class */ (function () {
                 return;
             }
             else {
-                alert('Password incorrect!');
+                this._toastr.error('Password incorrect!');
                 this.userPassword = '';
                 return;
             }
@@ -1027,7 +981,7 @@ var IntroComponent = /** @class */ (function () {
             pass: this.userPassword,
             id: this._gameService.generateId(),
             wins: 0,
-            loses: 0,
+            games: 0,
             isActive: false,
             playerMaster: false,
             sum: 0,
@@ -1057,7 +1011,8 @@ var IntroComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_services_data_base_service__WEBPACK_IMPORTED_MODULE_5__["DataBaseService"],
             _services_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
-            _services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]])
+            _services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_7__["ToastrService"]])
     ], IntroComponent);
     return IntroComponent;
 }());
@@ -1156,7 +1111,7 @@ var MenuComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".wrapper {\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n  text-align: center;\n  background-color: green;\n  background-image: url(\"https://stoopidpigeon.com/wp-content/uploads/2017/06/online-blackjack-Canada-online-casino-games.jpg\"); /* The image used */\n  background-color: #cccccc; /* Used if the image is unavailable */\n  background-position: center; /* Center the image */\n  background-repeat: no-repeat; /* Do not repeat the image */\n  background-size: cover; /* Resize the background image to cover the entire container */\n  min-height: 100vh;\n}\n\na {\n  font-size: 20px;\n  color:rgb(2, 206, 189);\n}\n\n.wrapper-rooms{\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-wrap: wrap;\n}\n\n.hidden {\n  display: none;\n}\n\n.room {\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n  height: 300px;\n  width: 450px;\n  background-color: rgba(255, 255, 255, 0.4);\n  border: 1px solid rgb(0, 0, 0);\n  margin: 20px;\n  border-radius: 15px;\n  font-size: 26px;\n\n}\n\n#inputNewName { \n  font-size: 30px;\n  width: 300px;\n  margin: 0 auto 10px auto;\n}\n\nlabel{\n  font-size: 30px;\n}\n\n.wrapper-rooms button {\n  margin: 10px auto;\n}\n\n#maxPlayer {\n  font-size: 30px;\n  width: 40px;\n  margin: 0 auto 10px auto;\n}\n\n.add-room-menu {\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n  max-width: 300px;\n  margin: auto;\n}\n\n.started {\n  background-color: rgba(255, 90, 90, 0.4);\n}\n\n.action-button {\n  cursor: pointer;\n  display: block;\n\tposition: relative;\n\tpadding: 10px 40px;\n  margin: 0px 10px 10px 0px;\n\tborder-radius: 10px;\n\tfont-family: 'Pacifico', cursive;\n\tfont-size: 25px;\n\tcolor: black;\n\ttext-decoration: none;\t\n}\n\n.blue {\n\tbackground-color: #3498DB;\n\tborder-bottom: 5px solid #2980B9;\n\ttext-shadow: 0px -2px #2980B9;\n}\n\n.red {\n\tbackground-color: #E74C3C;\n\tborder-bottom: 5px solid #BD3E31;\n\ttext-shadow: 0px -2px #BD3E31;\n}\n\n.green {\n\tbackground-color: #82BF56;\n\tborder-bottom: 5px solid #669644;\n\ttext-shadow: 0px -2px #669644;\n}\n\n.yellow {\n\tbackground-color: #F2CF66;\n\tborder-bottom: 5px solid #D1B358;\n\ttext-shadow: 0px -2px #D1B358;\n}\n\n.action-button:active {\n\ttransform: translate(0px,5px);\n  -webkit-transform: translate(0px,5px);\n\tborder-bottom: 1px solid;\n}\n\nlabel {\n  background-color: rgba(13, 222, 11, 0.5);\n  padding:10px;\n  border-radius: 15px;\n}\n\n.button-wrapper {\n  max-width: 300px;\n  margin: auto;\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbXVsdGlwbGF5ZXItbWVudS9tdWx0aXBsYXllci1tZW51LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxjQUFjO0VBQ2Qsd0JBQXdCO0VBQ3hCLHVCQUF1QjtFQUN2QixtQkFBbUI7RUFDbkIsd0JBQXdCO0VBQ3hCLDhIQUE4SCxDQUFDLG9CQUFvQjtFQUNuSiwwQkFBMEIsQ0FBQyxzQ0FBc0M7RUFDakUsNEJBQTRCLENBQUMsc0JBQXNCO0VBQ25ELDZCQUE2QixDQUFDLDZCQUE2QjtFQUMzRCx1QkFBdUIsQ0FBQywrREFBK0Q7RUFDdkYsa0JBQWtCO0NBQ25COztBQUVEO0VBQ0UsZ0JBQWdCO0VBQ2hCLHVCQUF1QjtDQUN4Qjs7QUFFRDtFQUNFLGNBQWM7RUFDZCx3QkFBd0I7RUFDeEIsb0JBQW9CO0VBQ3BCLGdCQUFnQjtDQUNqQjs7QUFFRDtFQUNFLGNBQWM7Q0FDZjs7QUFFRDtFQUNFLGNBQWM7RUFDZCx3QkFBd0I7RUFDeEIsdUJBQXVCO0VBQ3ZCLGNBQWM7RUFDZCxhQUFhO0VBQ2IsMkNBQTJDO0VBQzNDLCtCQUErQjtFQUMvQixhQUFhO0VBQ2Isb0JBQW9CO0VBQ3BCLGdCQUFnQjs7Q0FFakI7O0FBRUQ7RUFDRSxnQkFBZ0I7RUFDaEIsYUFBYTtFQUNiLHlCQUF5QjtDQUMxQjs7QUFFRDtFQUNFLGdCQUFnQjtDQUNqQjs7QUFFRDtFQUNFLGtCQUFrQjtDQUNuQjs7QUFFRDtFQUNFLGdCQUFnQjtFQUNoQixZQUFZO0VBQ1oseUJBQXlCO0NBQzFCOztBQUVEO0VBQ0UsY0FBYztFQUNkLHdCQUF3QjtFQUN4Qix1QkFBdUI7RUFDdkIsaUJBQWlCO0VBQ2pCLGFBQWE7Q0FDZDs7QUFFRDtFQUNFLHlDQUF5QztDQUMxQzs7QUFFRDtFQUNFLGdCQUFnQjtFQUNoQixlQUFlO0NBQ2hCLG1CQUFtQjtDQUNuQixtQkFBbUI7RUFDbEIsMEJBQTBCO0NBQzNCLG9CQUFvQjtDQUNwQixpQ0FBaUM7Q0FDakMsZ0JBQWdCO0NBQ2hCLGFBQWE7Q0FDYixzQkFBc0I7Q0FDdEI7O0FBRUQ7Q0FDQywwQkFBMEI7Q0FDMUIsaUNBQWlDO0NBQ2pDLDhCQUE4QjtDQUM5Qjs7QUFFRDtDQUNDLDBCQUEwQjtDQUMxQixpQ0FBaUM7Q0FDakMsOEJBQThCO0NBQzlCOztBQUVEO0NBQ0MsMEJBQTBCO0NBQzFCLGlDQUFpQztDQUNqQyw4QkFBOEI7Q0FDOUI7O0FBRUQ7Q0FDQywwQkFBMEI7Q0FDMUIsaUNBQWlDO0NBQ2pDLDhCQUE4QjtDQUM5Qjs7QUFFRDtDQUNDLDhCQUE4QjtFQUM3QixzQ0FBc0M7Q0FDdkMseUJBQXlCO0NBQ3pCOztBQUVEO0VBQ0UseUNBQXlDO0VBQ3pDLGFBQWE7RUFDYixvQkFBb0I7Q0FDckI7O0FBRUQ7RUFDRSxpQkFBaUI7RUFDakIsYUFBYTtFQUNiLGNBQWM7RUFDZCx3QkFBd0I7RUFDeEIsdUJBQXVCO0NBQ3hCIiwiZmlsZSI6InNyYy9hcHAvbXVsdGlwbGF5ZXItbWVudS9tdWx0aXBsYXllci1tZW51LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIud3JhcHBlciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGJhY2tncm91bmQtY29sb3I6IGdyZWVuO1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCJodHRwczovL3N0b29waWRwaWdlb24uY29tL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE3LzA2L29ubGluZS1ibGFja2phY2stQ2FuYWRhLW9ubGluZS1jYXNpbm8tZ2FtZXMuanBnXCIpOyAvKiBUaGUgaW1hZ2UgdXNlZCAqL1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjY2NjY2NjOyAvKiBVc2VkIGlmIHRoZSBpbWFnZSBpcyB1bmF2YWlsYWJsZSAqL1xuICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7IC8qIENlbnRlciB0aGUgaW1hZ2UgKi9cbiAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDsgLyogRG8gbm90IHJlcGVhdCB0aGUgaW1hZ2UgKi9cbiAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjsgLyogUmVzaXplIHRoZSBiYWNrZ3JvdW5kIGltYWdlIHRvIGNvdmVyIHRoZSBlbnRpcmUgY29udGFpbmVyICovXG4gIG1pbi1oZWlnaHQ6IDEwMHZoO1xufVxuXG5hIHtcbiAgZm9udC1zaXplOiAyMHB4O1xuICBjb2xvcjpyZ2IoMiwgMjA2LCAxODkpO1xufVxuXG4ud3JhcHBlci1yb29tc3tcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGZsZXgtd3JhcDogd3JhcDtcbn1cblxuLmhpZGRlbiB7XG4gIGRpc3BsYXk6IG5vbmU7XG59XG5cbi5yb29tIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGhlaWdodDogMzAwcHg7XG4gIHdpZHRoOiA0NTBweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjQpO1xuICBib3JkZXI6IDFweCBzb2xpZCByZ2IoMCwgMCwgMCk7XG4gIG1hcmdpbjogMjBweDtcbiAgYm9yZGVyLXJhZGl1czogMTVweDtcbiAgZm9udC1zaXplOiAyNnB4O1xuXG59XG5cbiNpbnB1dE5ld05hbWUgeyBcbiAgZm9udC1zaXplOiAzMHB4O1xuICB3aWR0aDogMzAwcHg7XG4gIG1hcmdpbjogMCBhdXRvIDEwcHggYXV0bztcbn1cblxubGFiZWx7XG4gIGZvbnQtc2l6ZTogMzBweDtcbn1cblxuLndyYXBwZXItcm9vbXMgYnV0dG9uIHtcbiAgbWFyZ2luOiAxMHB4IGF1dG87XG59XG5cbiNtYXhQbGF5ZXIge1xuICBmb250LXNpemU6IDMwcHg7XG4gIHdpZHRoOiA0MHB4O1xuICBtYXJnaW46IDAgYXV0byAxMHB4IGF1dG87XG59XG5cbi5hZGQtcm9vbS1tZW51IHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIG1heC13aWR0aDogMzAwcHg7XG4gIG1hcmdpbjogYXV0bztcbn1cblxuLnN0YXJ0ZWQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDI1NSwgOTAsIDkwLCAwLjQpO1xufVxuXG4uYWN0aW9uLWJ1dHRvbiB7XG4gIGN1cnNvcjogcG9pbnRlcjtcbiAgZGlzcGxheTogYmxvY2s7XG5cdHBvc2l0aW9uOiByZWxhdGl2ZTtcblx0cGFkZGluZzogMTBweCA0MHB4O1xuICBtYXJnaW46IDBweCAxMHB4IDEwcHggMHB4O1xuXHRib3JkZXItcmFkaXVzOiAxMHB4O1xuXHRmb250LWZhbWlseTogJ1BhY2lmaWNvJywgY3Vyc2l2ZTtcblx0Zm9udC1zaXplOiAyNXB4O1xuXHRjb2xvcjogYmxhY2s7XG5cdHRleHQtZGVjb3JhdGlvbjogbm9uZTtcdFxufVxuXG4uYmx1ZSB7XG5cdGJhY2tncm91bmQtY29sb3I6ICMzNDk4REI7XG5cdGJvcmRlci1ib3R0b206IDVweCBzb2xpZCAjMjk4MEI5O1xuXHR0ZXh0LXNoYWRvdzogMHB4IC0ycHggIzI5ODBCOTtcbn1cblxuLnJlZCB7XG5cdGJhY2tncm91bmQtY29sb3I6ICNFNzRDM0M7XG5cdGJvcmRlci1ib3R0b206IDVweCBzb2xpZCAjQkQzRTMxO1xuXHR0ZXh0LXNoYWRvdzogMHB4IC0ycHggI0JEM0UzMTtcbn1cblxuLmdyZWVuIHtcblx0YmFja2dyb3VuZC1jb2xvcjogIzgyQkY1Njtcblx0Ym9yZGVyLWJvdHRvbTogNXB4IHNvbGlkICM2Njk2NDQ7XG5cdHRleHQtc2hhZG93OiAwcHggLTJweCAjNjY5NjQ0O1xufVxuXG4ueWVsbG93IHtcblx0YmFja2dyb3VuZC1jb2xvcjogI0YyQ0Y2Njtcblx0Ym9yZGVyLWJvdHRvbTogNXB4IHNvbGlkICNEMUIzNTg7XG5cdHRleHQtc2hhZG93OiAwcHggLTJweCAjRDFCMzU4O1xufVxuXG4uYWN0aW9uLWJ1dHRvbjphY3RpdmUge1xuXHR0cmFuc2Zvcm06IHRyYW5zbGF0ZSgwcHgsNXB4KTtcbiAgLXdlYmtpdC10cmFuc2Zvcm06IHRyYW5zbGF0ZSgwcHgsNXB4KTtcblx0Ym9yZGVyLWJvdHRvbTogMXB4IHNvbGlkO1xufVxuXG5sYWJlbCB7XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMTMsIDIyMiwgMTEsIDAuNSk7XG4gIHBhZGRpbmc6MTBweDtcbiAgYm9yZGVyLXJhZGl1czogMTVweDtcbn1cblxuLmJ1dHRvbi13cmFwcGVyIHtcbiAgbWF4LXdpZHRoOiAzMDBweDtcbiAgbWFyZ2luOiBhdXRvO1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbn1cblxuIl19 */"
+module.exports = ".wrapper {\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n  text-align: center;\n  background-color: green;\n  background-image: url(\"https://stoopidpigeon.com/wp-content/uploads/2017/06/online-blackjack-Canada-online-casino-games.jpg\"); /* The image used */\n  background-color: #cccccc; /* Used if the image is unavailable */\n  background-position: center; /* Center the image */\n  background-repeat: no-repeat; /* Do not repeat the image */\n  background-size: cover; /* Resize the background image to cover the entire container */\n  min-height: 100vh;\n}\n\na {\n  font-size: 20px;\n  color:rgb(2, 206, 189);\n}\n\n.wrapper-rooms{\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-wrap: wrap;\n}\n\n.hidden {\n  display: none;\n}\n\n.room {\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n  height: 300px;\n  width: 450px;\n  background-color: rgba(255, 255, 255, 0.4);\n  border: 1px solid rgb(0, 0, 0);\n  margin: 20px;\n  border-radius: 15px;\n  font-size: 26px;\n\n}\n\n#inputNewName { \n  font-size: 30px;\n  width: 300px;\n  margin: 0 auto 10px auto;\n}\n\nlabel{\n  font-size: 30px;\n}\n\n.wrapper-rooms button {\n  margin: 10px auto;\n}\n\n#maxPlayer {\n  font-size: 30px;\n  width: 40px;\n  margin: 0 auto 10px auto;\n  \n}\n\n.add-room-menu {\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n  max-width: 300px;\n  margin: auto;\n}\n\n.started {\n  background-color: rgba(255, 90, 90, 0.4);\n}\n\n.action-button {\n  cursor: pointer;\n  display: block;\n\tposition: relative;\n\tpadding: 10px 40px;\n  margin: 0px 10px 10px 0px;\n\tborder-radius: 10px;\n\tfont-family: 'Pacifico', cursive;\n\tfont-size: 25px;\n\tcolor: black;\n\ttext-decoration: none;\t\n}\n\n.blue {\n\tbackground-color: #3498DB;\n\tborder-bottom: 5px solid #2980B9;\n\ttext-shadow: 0px -2px #2980B9;\n}\n\n.red {\n\tbackground-color: #E74C3C;\n\tborder-bottom: 5px solid #BD3E31;\n\ttext-shadow: 0px -2px #BD3E31;\n}\n\n.green {\n\tbackground-color: #82BF56;\n\tborder-bottom: 5px solid #669644;\n\ttext-shadow: 0px -2px #669644;\n}\n\n.yellow {\n\tbackground-color: #F2CF66;\n\tborder-bottom: 5px solid #D1B358;\n\ttext-shadow: 0px -2px #D1B358;\n}\n\n.action-button:active {\n\ttransform: translate(0px,5px);\n  -webkit-transform: translate(0px,5px);\n\tborder-bottom: 1px solid;\n}\n\nlabel {\n  background-color: rgba(13, 222, 11, 0.5);\n  padding:10px;\n  border-radius: 15px;\n}\n\n.button-wrapper {\n  max-width: 300px;\n  margin: auto;\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n}\n\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbXVsdGlwbGF5ZXItbWVudS9tdWx0aXBsYXllci1tZW51LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxjQUFjO0VBQ2Qsd0JBQXdCO0VBQ3hCLHVCQUF1QjtFQUN2QixtQkFBbUI7RUFDbkIsd0JBQXdCO0VBQ3hCLDhIQUE4SCxDQUFDLG9CQUFvQjtFQUNuSiwwQkFBMEIsQ0FBQyxzQ0FBc0M7RUFDakUsNEJBQTRCLENBQUMsc0JBQXNCO0VBQ25ELDZCQUE2QixDQUFDLDZCQUE2QjtFQUMzRCx1QkFBdUIsQ0FBQywrREFBK0Q7RUFDdkYsa0JBQWtCO0NBQ25COztBQUVEO0VBQ0UsZ0JBQWdCO0VBQ2hCLHVCQUF1QjtDQUN4Qjs7QUFFRDtFQUNFLGNBQWM7RUFDZCx3QkFBd0I7RUFDeEIsb0JBQW9CO0VBQ3BCLGdCQUFnQjtDQUNqQjs7QUFFRDtFQUNFLGNBQWM7Q0FDZjs7QUFFRDtFQUNFLGNBQWM7RUFDZCx3QkFBd0I7RUFDeEIsdUJBQXVCO0VBQ3ZCLGNBQWM7RUFDZCxhQUFhO0VBQ2IsMkNBQTJDO0VBQzNDLCtCQUErQjtFQUMvQixhQUFhO0VBQ2Isb0JBQW9CO0VBQ3BCLGdCQUFnQjs7Q0FFakI7O0FBRUQ7RUFDRSxnQkFBZ0I7RUFDaEIsYUFBYTtFQUNiLHlCQUF5QjtDQUMxQjs7QUFFRDtFQUNFLGdCQUFnQjtDQUNqQjs7QUFFRDtFQUNFLGtCQUFrQjtDQUNuQjs7QUFFRDtFQUNFLGdCQUFnQjtFQUNoQixZQUFZO0VBQ1oseUJBQXlCOztDQUUxQjs7QUFFRDtFQUNFLGNBQWM7RUFDZCx3QkFBd0I7RUFDeEIsdUJBQXVCO0VBQ3ZCLGlCQUFpQjtFQUNqQixhQUFhO0NBQ2Q7O0FBRUQ7RUFDRSx5Q0FBeUM7Q0FDMUM7O0FBRUQ7RUFDRSxnQkFBZ0I7RUFDaEIsZUFBZTtDQUNoQixtQkFBbUI7Q0FDbkIsbUJBQW1CO0VBQ2xCLDBCQUEwQjtDQUMzQixvQkFBb0I7Q0FDcEIsaUNBQWlDO0NBQ2pDLGdCQUFnQjtDQUNoQixhQUFhO0NBQ2Isc0JBQXNCO0NBQ3RCOztBQUVEO0NBQ0MsMEJBQTBCO0NBQzFCLGlDQUFpQztDQUNqQyw4QkFBOEI7Q0FDOUI7O0FBRUQ7Q0FDQywwQkFBMEI7Q0FDMUIsaUNBQWlDO0NBQ2pDLDhCQUE4QjtDQUM5Qjs7QUFFRDtDQUNDLDBCQUEwQjtDQUMxQixpQ0FBaUM7Q0FDakMsOEJBQThCO0NBQzlCOztBQUVEO0NBQ0MsMEJBQTBCO0NBQzFCLGlDQUFpQztDQUNqQyw4QkFBOEI7Q0FDOUI7O0FBRUQ7Q0FDQyw4QkFBOEI7RUFDN0Isc0NBQXNDO0NBQ3ZDLHlCQUF5QjtDQUN6Qjs7QUFFRDtFQUNFLHlDQUF5QztFQUN6QyxhQUFhO0VBQ2Isb0JBQW9CO0NBQ3JCOztBQUVEO0VBQ0UsaUJBQWlCO0VBQ2pCLGFBQWE7RUFDYixjQUFjO0VBQ2Qsd0JBQXdCO0VBQ3hCLHVCQUF1QjtDQUN4QiIsImZpbGUiOiJzcmMvYXBwL211bHRpcGxheWVyLW1lbnUvbXVsdGlwbGF5ZXItbWVudS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLndyYXBwZXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiBncmVlbjtcbiAgYmFja2dyb3VuZC1pbWFnZTogdXJsKFwiaHR0cHM6Ly9zdG9vcGlkcGlnZW9uLmNvbS93cC1jb250ZW50L3VwbG9hZHMvMjAxNy8wNi9vbmxpbmUtYmxhY2tqYWNrLUNhbmFkYS1vbmxpbmUtY2FzaW5vLWdhbWVzLmpwZ1wiKTsgLyogVGhlIGltYWdlIHVzZWQgKi9cbiAgYmFja2dyb3VuZC1jb2xvcjogI2NjY2NjYzsgLyogVXNlZCBpZiB0aGUgaW1hZ2UgaXMgdW5hdmFpbGFibGUgKi9cbiAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyOyAvKiBDZW50ZXIgdGhlIGltYWdlICovXG4gIGJhY2tncm91bmQtcmVwZWF0OiBuby1yZXBlYXQ7IC8qIERvIG5vdCByZXBlYXQgdGhlIGltYWdlICovXG4gIGJhY2tncm91bmQtc2l6ZTogY292ZXI7IC8qIFJlc2l6ZSB0aGUgYmFja2dyb3VuZCBpbWFnZSB0byBjb3ZlciB0aGUgZW50aXJlIGNvbnRhaW5lciAqL1xuICBtaW4taGVpZ2h0OiAxMDB2aDtcbn1cblxuYSB7XG4gIGZvbnQtc2l6ZTogMjBweDtcbiAgY29sb3I6cmdiKDIsIDIwNiwgMTg5KTtcbn1cblxuLndyYXBwZXItcm9vbXN7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBmbGV4LXdyYXA6IHdyYXA7XG59XG5cbi5oaWRkZW4ge1xuICBkaXNwbGF5OiBub25lO1xufVxuXG4ucm9vbSB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBoZWlnaHQ6IDMwMHB4O1xuICB3aWR0aDogNDUwcHg7XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC40KTtcbiAgYm9yZGVyOiAxcHggc29saWQgcmdiKDAsIDAsIDApO1xuICBtYXJnaW46IDIwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDE1cHg7XG4gIGZvbnQtc2l6ZTogMjZweDtcblxufVxuXG4jaW5wdXROZXdOYW1lIHsgXG4gIGZvbnQtc2l6ZTogMzBweDtcbiAgd2lkdGg6IDMwMHB4O1xuICBtYXJnaW46IDAgYXV0byAxMHB4IGF1dG87XG59XG5cbmxhYmVse1xuICBmb250LXNpemU6IDMwcHg7XG59XG5cbi53cmFwcGVyLXJvb21zIGJ1dHRvbiB7XG4gIG1hcmdpbjogMTBweCBhdXRvO1xufVxuXG4jbWF4UGxheWVyIHtcbiAgZm9udC1zaXplOiAzMHB4O1xuICB3aWR0aDogNDBweDtcbiAgbWFyZ2luOiAwIGF1dG8gMTBweCBhdXRvO1xuICBcbn1cblxuLmFkZC1yb29tLW1lbnUge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgbWF4LXdpZHRoOiAzMDBweDtcbiAgbWFyZ2luOiBhdXRvO1xufVxuXG4uc3RhcnRlZCB7XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCA5MCwgOTAsIDAuNCk7XG59XG5cbi5hY3Rpb24tYnV0dG9uIHtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICBkaXNwbGF5OiBibG9jaztcblx0cG9zaXRpb246IHJlbGF0aXZlO1xuXHRwYWRkaW5nOiAxMHB4IDQwcHg7XG4gIG1hcmdpbjogMHB4IDEwcHggMTBweCAwcHg7XG5cdGJvcmRlci1yYWRpdXM6IDEwcHg7XG5cdGZvbnQtZmFtaWx5OiAnUGFjaWZpY28nLCBjdXJzaXZlO1xuXHRmb250LXNpemU6IDI1cHg7XG5cdGNvbG9yOiBibGFjaztcblx0dGV4dC1kZWNvcmF0aW9uOiBub25lO1x0XG59XG5cbi5ibHVlIHtcblx0YmFja2dyb3VuZC1jb2xvcjogIzM0OThEQjtcblx0Ym9yZGVyLWJvdHRvbTogNXB4IHNvbGlkICMyOTgwQjk7XG5cdHRleHQtc2hhZG93OiAwcHggLTJweCAjMjk4MEI5O1xufVxuXG4ucmVkIHtcblx0YmFja2dyb3VuZC1jb2xvcjogI0U3NEMzQztcblx0Ym9yZGVyLWJvdHRvbTogNXB4IHNvbGlkICNCRDNFMzE7XG5cdHRleHQtc2hhZG93OiAwcHggLTJweCAjQkQzRTMxO1xufVxuXG4uZ3JlZW4ge1xuXHRiYWNrZ3JvdW5kLWNvbG9yOiAjODJCRjU2O1xuXHRib3JkZXItYm90dG9tOiA1cHggc29saWQgIzY2OTY0NDtcblx0dGV4dC1zaGFkb3c6IDBweCAtMnB4ICM2Njk2NDQ7XG59XG5cbi55ZWxsb3cge1xuXHRiYWNrZ3JvdW5kLWNvbG9yOiAjRjJDRjY2O1xuXHRib3JkZXItYm90dG9tOiA1cHggc29saWQgI0QxQjM1ODtcblx0dGV4dC1zaGFkb3c6IDBweCAtMnB4ICNEMUIzNTg7XG59XG5cbi5hY3Rpb24tYnV0dG9uOmFjdGl2ZSB7XG5cdHRyYW5zZm9ybTogdHJhbnNsYXRlKDBweCw1cHgpO1xuICAtd2Via2l0LXRyYW5zZm9ybTogdHJhbnNsYXRlKDBweCw1cHgpO1xuXHRib3JkZXItYm90dG9tOiAxcHggc29saWQ7XG59XG5cbmxhYmVsIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgxMywgMjIyLCAxMSwgMC41KTtcbiAgcGFkZGluZzoxMHB4O1xuICBib3JkZXItcmFkaXVzOiAxNXB4O1xufVxuXG4uYnV0dG9uLXdyYXBwZXIge1xuICBtYXgtd2lkdGg6IDMwMHB4O1xuICBtYXJnaW46IGF1dG87XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xufVxuXG4iXX0= */"
 
 /***/ }),
 
@@ -1167,7 +1122,7 @@ module.exports = ".wrapper {\n  display: flex;\n  justify-content: center;\n  fl
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"wrapper\">\n  <div class=\"button-wrapper\">\n    <a routerLink=\"/menu\" \n       class=\"action-button shadow animate blue\">\n      Return to menu\n    </a>\n  </div>\n\n  <div class=\"add-room-menu\">\n    <label for=\"maxPlayer\">\n      Max players:\n    </label>\n\n    <input type=\"number\" \n           min=\"2\"\n           max=\"6\" \n           autofocus \n           placeholder=\"2\" \n           id=\"maxPlayer\" \n           [(ngModel)]=\"maxPlayers\">\n\n    <button type=\"button\" \n            (click)=\"addNewRoom()\" \n            class=\"add-button\"\n            class=\"action-button shadow animate yellow\">\n      Create room\n    </button>\n  </div>\n\n  <div class=\"wrapper-rooms\">\n    <div *ngFor=\"let room of rooms\">\n      <div class=\"room\" \n           [class.started]=\"room.started\" \n           *ngIf=\"!room.single\">\n        Number of room : {{ room.id }}\n  \n        <div>\n          maxplayers : {{ room.maxplayers }}\n        </div>\n  \n        <div>\n          players in room : {{room.players | players}} \n        </div>\n  \n        <button type=\"button\" \n                class=\"action-button shadow animate red add-button\" \n                (click)=\"deleteRoom(room.id)\">\n          Delete room\n        </button>\n  \n        <button type=\"button\" \n                class=\"action-button shadow animate green add-button\" \n                (click)=\"selectRoom(room.id)\">\n          Select room\n        </button>\n      </div>\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"wrapper\">\n  <div class=\"button-wrapper\">\n    <a routerLink=\"/menu\" \n       class=\"action-button shadow animate blue\">\n      Return to menu\n    </a>\n  </div>\n\n  <div class=\"add-room-menu\">\n    <label for=\"maxPlayer\">\n      Max players:\n    </label>\n\n    <input type=\"number\" \n           min=\"2\"\n           max=\"6\"\n           onkeydown=\"return false\" \n           autofocus \n           placeholder=\"2\" \n           id=\"maxPlayer\" \n           [(ngModel)]=\"maxPlayers\">\n\n    <button type=\"button\" \n            (click)=\"addNewRoom()\" \n            class=\"add-button\"\n            class=\"action-button shadow animate yellow\">\n      Create room\n    </button>\n  </div>\n\n  <div class=\"wrapper-rooms\">\n    <div *ngFor=\"let room of rooms\">\n      <div class=\"room\" \n           [class.started]=\"room.started\" \n           *ngIf=\"!room.single\">\n        Number of room : {{ room.id }}\n  \n        <div>\n          maxplayers : {{ room.maxplayers }}\n        </div>\n  \n        <div>\n          players in room : {{room.players | players}} \n        </div>\n  \n        <button type=\"button\" \n                class=\"action-button shadow animate red add-button\" \n                (click)=\"deleteRoom(room.id)\">\n          Delete room\n        </button>\n  \n        <button type=\"button\" \n                class=\"action-button shadow animate green add-button\" \n                (click)=\"selectRoom(room.id)\">\n          Select room\n        </button>\n      </div>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -1185,8 +1140,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/user.service */ "./src/app/services/user.service.ts");
-/* harmony import */ var _services_data_base_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/data-base.service */ "./src/app/services/data-base.service.ts");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/user.service */ "./src/app/services/user.service.ts");
+/* harmony import */ var _services_data_base_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/data-base.service */ "./src/app/services/data-base.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1202,11 +1158,13 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var MultiplayerMenuComponent = /** @class */ (function () {
-    function MultiplayerMenuComponent(_dataBaseService, _userService, _router) {
+    function MultiplayerMenuComponent(_dataBaseService, _userService, _router, _toastr) {
         this._dataBaseService = _dataBaseService;
         this._userService = _userService;
         this._router = _router;
+        this._toastr = _toastr;
         this.isShowAddRoomMenu = false;
         this.maxPlayers = 2;
         this._destroy$$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
@@ -1228,11 +1186,11 @@ var MultiplayerMenuComponent = /** @class */ (function () {
         var selectedRoom = this.rooms.find(function (room) { return room.id === roomId; });
         if (selectedRoom.players
             && selectedRoom.maxplayers <= Object.keys(selectedRoom.players).length) {
-            alert('Max players limit!!');
+            this._toastr.error('Max players limit!!');
             return;
         }
         if (selectedRoom.started) {
-            alert('Sorry, game is started');
+            this._toastr.error('Sorry, game is started');
             return;
         }
         this._router.navigate(['/game', roomId]);
@@ -1252,7 +1210,7 @@ var MultiplayerMenuComponent = /** @class */ (function () {
     MultiplayerMenuComponent.prototype.deleteRoom = function (id) {
         var selectedRoom = this.rooms.find(function (room) { return room.id === id; });
         if (selectedRoom.players) {
-            alert('There are players in the room');
+            this._toastr.error('There are players in the room');
         }
         else {
             this._dataBaseService.deleteRoom(id);
@@ -1268,9 +1226,10 @@ var MultiplayerMenuComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./multiplayer-menu.component.html */ "./src/app/multiplayer-menu/multiplayer-menu.component.html"),
             styles: [__webpack_require__(/*! ./multiplayer-menu.component.css */ "./src/app/multiplayer-menu/multiplayer-menu.component.css")]
         }),
-        __metadata("design:paramtypes", [_services_data_base_service__WEBPACK_IMPORTED_MODULE_5__["DataBaseService"],
-            _services_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+        __metadata("design:paramtypes", [_services_data_base_service__WEBPACK_IMPORTED_MODULE_6__["DataBaseService"],
+            _services_user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"]])
     ], MultiplayerMenuComponent);
     return MultiplayerMenuComponent;
 }());
@@ -1348,6 +1307,11 @@ var DataBaseService = /** @class */ (function () {
     function DataBaseService(dataBase) {
         this.dataBase = dataBase;
     }
+    DataBaseService.prototype.pushOneCard = function (roomId, userId, userSum, userHand, roomDeck) {
+        this.savePlayerScore(roomId, userId, userSum);
+        this.pushDeck(roomId, roomDeck);
+        this.pushHandCard(roomId, userId, userHand);
+    };
     DataBaseService.prototype.addNewRoom = function (newRoom) {
         this.dataBase.list('rooms').update('room' + newRoom.id, newRoom);
     };
@@ -1432,7 +1396,6 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var GameService = /** @class */ (function () {
     function GameService() {
         this._NUMBER_OF_SORT = 36;
-        this._CONDITIONS_WIN = 21;
     }
     GameService.prototype.generateDeck = function () {
         var suits = ['♠', '♥', '♣', '♦'];
