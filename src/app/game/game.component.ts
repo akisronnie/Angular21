@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Subject, combineLatest } from 'rxjs';
-import { takeUntil, map, pluck, switchMap, filter, tap } from 'rxjs/operators';
+import { takeUntil, map, pluck, switchMap, filter } from 'rxjs/operators';
 import * as faker from 'faker';
 import { ToastrService } from 'ngx-toastr';
 
