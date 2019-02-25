@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 import { UserService } from '../services/user.service';
 import { DataBaseService } from '../services/data-base.service';
@@ -25,7 +26,8 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
   public constructor(
     private _dataBaseService: DataBaseService,
     private _userService: UserService,
-    private _router: Router
+    private _router: Router,
+    private _toastr: ToastrService
   ) {}
 
   public ngOnInit(): void {
@@ -50,13 +52,13 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
 
       if (selectedRoom.players
         && selectedRoom.maxplayers <= Object.keys(selectedRoom.players).length) {
-        alert('Max players limit!!');
+        this._toastr.error('Max players limit!!');
 
         return;
       }
 
       if (selectedRoom.started) {
-        alert('Sorry, game is started');
+        this._toastr.error('Sorry, game is started');
 
         return;
       }
@@ -84,7 +86,7 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
     const selectedRoom: TRoom = this.rooms.find((room: TRoom) => room.id === id);
 
     if ( selectedRoom.players ) {
-      alert('There are players in the room');
+      this._toastr.error('There are players in the room');
     } else {
       this._dataBaseService.deleteRoom(id);
     }

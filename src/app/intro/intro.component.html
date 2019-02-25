@@ -10,7 +10,8 @@
 
   <input type="text" 
          name="userpassword" 
-         *ngIf="users" 
+         *ngIf="users"
+         type="password"
          placeholder="Enter your password" 
          [(ngModel)]="userPassword">
 
@@ -39,7 +40,7 @@
 
         <td>{{user.wins}}</td>
 
-        <td>{{user.loses}}</td>
+        <td>{{user.games}}</td>
         
         <td>
           <button type="button" 

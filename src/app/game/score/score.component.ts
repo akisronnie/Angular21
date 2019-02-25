@@ -32,5 +32,4 @@ export class ScoreComponent  {
  public deleteAnyBot(): void {
   this.deleteBot.emit();
  }
-
 }

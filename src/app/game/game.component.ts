@@ -2,8 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Subject, combineLatest } from 'rxjs';
-import { takeUntil, map, pluck, switchMap, filter } from 'rxjs/operators';
+import { takeUntil, map, pluck, switchMap, filter, tap } from 'rxjs/operators';
 import * as faker from 'faker';
+import { ToastrService } from 'ngx-toastr';
 
 import { DataBaseService } from '../services/data-base.service';
 import { GameService } from '../services/game.service';
@@ -32,7 +33,8 @@ export class GameComponent implements OnInit, OnDestroy {
     private _dataBaseService: DataBaseService,
     private _userService: UserService,
     private _route: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private _toastr: ToastrService
   ) {}
 
   public ngOnInit(): void {
@@ -51,7 +53,7 @@ export class GameComponent implements OnInit, OnDestroy {
         }),
         filter((room: TRoom) => {
           if (!room) {
-            alert('This room is not correct');
+            this._toastr.error('This room is not correct');
             this._router.navigate(['/multiplayer']);
 
             return false;
@@ -66,14 +68,14 @@ export class GameComponent implements OnInit, OnDestroy {
 
           if (!userInRoom && room.players
             && room.players.length >= room.maxplayers) {
-            alert('This room is full');
+            this._toastr.error('This room is full');
             this._router.navigate(['/multiplayer']);
 
             return false;
           }
 
           if (!userInRoom && room.started) {
-            alert('Sorry, game is started');
+            this._toastr.error('Sorry, game is started');
             this._router.navigate(['/multiplayer']);
 
             return false;
@@ -157,7 +159,7 @@ export class GameComponent implements OnInit, OnDestroy {
 
   public addBot(): void {
     if (this.room.players.length >= this.room.maxplayers) {
-      alert('room is full');
+      this._toastr.error('room is full');
 
       return;
     }
@@ -167,7 +169,7 @@ export class GameComponent implements OnInit, OnDestroy {
       pass: '',
       id: this._gameService.generateId(),
       wins: 0,
-      loses: 0,
+      games: 0,
       isActive: true,
       playerMaster: false,
       sum: 0,
@@ -280,9 +282,9 @@ export class GameComponent implements OnInit, OnDestroy {
       if (player.sum === maxScore) {
         this.message += ` ${player.name} `;
         this._dataBaseService.updateScore(this.room.id, player.id, 'wins', player.wins + 1);
-        this._dataBaseService.updateScore(this.room.id, player.id, 'loses', player.loses + 1);
+        this._dataBaseService.updateScore(this.room.id, player.id, 'games', player.games + 1);
       } else {
-        this._dataBaseService.updateScore(this.room.id, player.id, 'loses', player.loses + 1);
+        this._dataBaseService.updateScore(this.room.id, player.id, 'games', player.games + 1);
       }
     });
 
@@ -299,10 +301,13 @@ export class GameComponent implements OnInit, OnDestroy {
       }
     }
 
-    this.user = ({...this.user, turn: false, hand: [], isActive: false, playerMaster: false, sum: 0});
-    this._userService.setUser(this.user);
-    this._dataBaseService.addUsers(this.user);
-    this._dataBaseService.removeUserFromRoom(this.room.id, this.user.id);
+    if (this.room) {
+      this.user = ({...this.user, turn: false, hand: [], isActive: false, playerMaster: false, sum: 0});
+      this._userService.setUser(this.user);
+      this._dataBaseService.addUsers(this.user);
+      this._dataBaseService.removeUserFromRoom(this.room.id, this.user.id);
+    }
+
     this._destroy$$.next();
     this._destroy$$.complete();
   }

@@ -3,7 +3,7 @@ type TUser = {
   name: string,
   pass: string,
   wins: number,
-  loses: number
+  games: number
 }
 
 type TOrder = {
@@ -18,7 +18,7 @@ type TPlayer = {
   name:string,
   pass: string,
   wins: number,
-  loses: number,
+  games: number,
   isActive:boolean,
   playerMaster:boolean,
   sum: number,

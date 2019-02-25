@@ -27,7 +27,7 @@ export class IntroComponent implements OnInit, OnDestroy {
      private _userService: UserService,
      private _router: Router,
      private _gameService: GameService,
-     private toastr: ToastrService
+     private _toastr: ToastrService
   ) {}
 
   public ngOnInit(): void {
@@ -42,8 +42,7 @@ export class IntroComponent implements OnInit, OnDestroy {
   public enter(): void {
     if (this.userName === undefined || this.userName === '' || this.userPassword === undefined
     || this.userPassword === '') {
-      // alert('Enter name and password!!');
-      this.toastr.error('Enter name and password!!');
+      this._toastr.error('Enter name and password!!');
 
       return;
     }
@@ -66,7 +65,7 @@ export class IntroComponent implements OnInit, OnDestroy {
         return;
 
       } else {
-        alert('Password incorrect!');
+        this._toastr.error('Password incorrect!');
         this.userPassword = '';
 
         return;
@@ -78,7 +77,7 @@ export class IntroComponent implements OnInit, OnDestroy {
       pass: this.userPassword,
       id: this._gameService.generateId() ,
       wins: 0,
-      loses: 0,
+      games: 0,
       isActive: false,
       playerMaster: false,
       sum: 0,
