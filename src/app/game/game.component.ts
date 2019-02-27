@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Subject, combineLatest } from 'rxjs';
@@ -17,7 +17,6 @@ import { UserService } from '../services/user.service';
 })
 
 export class GameComponent implements OnInit, OnDestroy {
-
   public message: string = 'Welcome to game';
   public room: TRoom;
   public user: TPlayer;
@@ -36,6 +35,37 @@ export class GameComponent implements OnInit, OnDestroy {
     private _router: Router,
     private _toastr: ToastrService
   ) {}
+
+  @HostListener('window:beforeunload', ['$event'])
+  public onBeforeClose(e: Event): boolean {
+    e.returnValue = false;
+
+    return false;
+  }
+
+  @HostListener('window:unload', ['$event'])
+  public onClose(e: Event): void {
+    this.leaveGame();
+  }
+
+  public leaveGame(): void {
+    if (this.user.playerMaster && this.room.players) {
+      const aliveUser: TPlayer = this.room.players.find((player: TPlayer) => !player.playerMaster && !player.isBot);
+
+      if (aliveUser) {
+        this._dataBaseService.setPlayerMaster(this.room.id, aliveUser.id);
+      } else {
+        this._dataBaseService.deleteRoom(this.room.id);
+      }
+    }
+
+    if (this.room) {
+      this.user = ({ ...this.user, turn: false, hand: [], isActive: false, playerMaster: false, sum: 0, enough: false });
+      this._userService.setUser(this.user);
+      this._dataBaseService.addUsers(this.user);
+      this._dataBaseService.removeUserFromRoom(this.room.id, this.user.id);
+    }
+  }
 
   public ngOnInit(): void {
     combineLatest(
@@ -259,7 +289,6 @@ export class GameComponent implements OnInit, OnDestroy {
     this._dataBaseService.changeTurn(this.room.id, this.room.players[indexCount].id, true);
   }
 
-
   private finish(): void {
     this.user.isActive = false;
     this.message = 'Winner/s: ';
@@ -288,23 +317,7 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    if (this.user.playerMaster && this.room.players) {
-      const aliveUser: TPlayer = this.room.players.find((player: TPlayer) => !player.playerMaster && !player.isBot );
-
-      if (aliveUser) {
-        this._dataBaseService.setPlayerMaster(this.room.id, aliveUser.id);
-      } else {
-        this._dataBaseService.deleteRoom(this.room.id);
-      }
-    }
-
-    if (this.room) {
-      this.user = ({...this.user, turn: false, hand: [], isActive: false, playerMaster: false, sum: 0, enough: false});
-      this._userService.setUser(this.user);
-      this._dataBaseService.addUsers(this.user);
-      this._dataBaseService.removeUserFromRoom(this.room.id, this.user.id);
-    }
-
+    this.leaveGame();
     this._destroy$$.next();
     this._destroy$$.complete();
   }
