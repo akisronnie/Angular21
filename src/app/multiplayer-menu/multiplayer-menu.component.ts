@@ -32,9 +32,7 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this._dataBaseService.getRooms$()
-      .pipe(
-        takeUntil(this._destroy$$)
-      )
+      .pipe(takeUntil(this._destroy$$))
       .subscribe((rooms: TRoom[]) => {
         this.rooms = rooms;
       });
@@ -68,10 +66,12 @@ export class MultiplayerMenuComponent implements OnInit, OnDestroy {
 
   public addNewRoom(): void {
 
-    let _newIdForNewRoom: number = this.rooms.length !== 0 ?  Math.max(...this.rooms.map((room: TRoom) => room.id)) : 1;
+    const _newIdForNewRoom: number = this.rooms.length !== 0
+    ?  Math.max(...this.rooms.map((room: TRoom) => room.id))
+    : 1;
 
     const newRoom: TRoom = {
-      id : ++_newIdForNewRoom,
+      id : _newIdForNewRoom + 1,
       maxplayers: this.maxPlayers,
       players: [],
       single : false,

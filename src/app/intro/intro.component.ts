@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 import { UserService } from '../services/user.service';
 import { DataBaseService } from '../services/data-base.service';
 import { GameService } from '../services/game.service';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-intro',
@@ -40,24 +40,15 @@ export class IntroComponent implements OnInit, OnDestroy {
   }
 
   public enter(): void {
-    if (this.userName === undefined || this.userName === '' || this.userPassword === undefined
-    || this.userPassword === '') {
+    if (!this.userName || !this.userPassword ) {
       this._toastr.error('Enter name and password!!');
 
       return;
     }
 
-    let saveUser: TPlayer;
+    const saveUser: TPlayer = this.users.find((user: TPlayer) => user.name === this.userName);
 
-    const existUser: boolean = this.users.some((user: TPlayer) => {
-      if (user.name === this.userName) {
-        saveUser = user;
-
-        return true;
-      }
-    });
-
-    if (existUser) {
+    if (saveUser) {
       if (saveUser.pass === this.userPassword) {
         this._userService.setUser(saveUser);
         this._router.navigate(['/menu']);

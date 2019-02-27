@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-
 export class GameService {
-
   private readonly _NUMBER_OF_SORT: number = 36;
 
   public generateDeck (): TCard[] {
@@ -28,17 +26,10 @@ export class GameService {
   }
 
   public deckSort(deck: TCard[]): TCard[] {
-    let firstElem: number = 0;
-    let secondElem: number = 0;
-    let change: TCard;
-
-    for (let i: number = 0; i < this._NUMBER_OF_SORT; i++) {
-      firstElem = Math.floor(Math.random() * deck.length);
-      secondElem = Math.floor(Math.random() * deck.length);
-      change = deck[firstElem];
-      deck[firstElem] = deck[secondElem];
-      deck[secondElem] = change;
-    }
+    deck.forEach((card: TCard, index: number, deckInFor: TCard[]) => {
+      const changeIndex: number = Math.floor(Math.random() * deck.length);
+      [deckInFor[index], deckInFor[changeIndex]] = [deckInFor[changeIndex], deckInFor[index]];
+    });
 
     return deck;
   }

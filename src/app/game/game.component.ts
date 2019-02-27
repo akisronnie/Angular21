@@ -66,8 +66,7 @@ export class GameComponent implements OnInit, OnDestroy {
             userInRoom = room.players.some((player: TPlayer) => this.user.id === player.id);
           }
 
-          if (!userInRoom && room.players
-            && room.players.length >= room.maxplayers) {
+          if (!userInRoom && room.players && room.players.length >= room.maxplayers) {
             this._toastr.error('This room is full');
             this._router.navigate(['/multiplayer']);
 
@@ -186,6 +185,8 @@ export class GameComponent implements OnInit, OnDestroy {
 
    if (bot) {
       this._dataBaseService.removeUserFromRoom(this.room.id, bot.id);
+    } else {
+      this._toastr.error('There are no bots!');
     }
   }
 
@@ -235,7 +236,7 @@ export class GameComponent implements OnInit, OnDestroy {
     }
   }
 
-  public getPlayer(): void {
+  public getCard(): void {
     this._dataBaseService.changeTurn(this.room.id, this.user.id, false);
     this.user.hand.push(this.room.deck.pop());
     this.user.sum += this.user.hand[this.user.hand.length - 1].value;
@@ -302,7 +303,7 @@ export class GameComponent implements OnInit, OnDestroy {
     }
 
     if (this.room) {
-      this.user = ({...this.user, turn: false, hand: [], isActive: false, playerMaster: false, sum: 0});
+      this.user = ({...this.user, turn: false, hand: [], isActive: false, playerMaster: false, sum: 0, enough: false});
       this._userService.setUser(this.user);
       this._dataBaseService.addUsers(this.user);
       this._dataBaseService.removeUserFromRoom(this.room.id, this.user.id);

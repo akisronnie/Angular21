@@ -13,7 +13,7 @@ export class ScoreComponent  {
   @Input() public message: TResultScore;
   @Input() public isYouTurn: boolean = false;
 
-  @Output() public getPlayer: EventEmitter<void> = new EventEmitter;
+  @Output() public getCard: EventEmitter<void> = new EventEmitter;
   @Output() public finishGame: EventEmitter<void> = new EventEmitter;
   @Output() public stopTakingCards: EventEmitter<void> = new EventEmitter;
   @Output() public toggleReady: EventEmitter<void> = new EventEmitter;
@@ -25,11 +25,11 @@ export class ScoreComponent  {
   this.toggleReady.emit();
  }
 
- public addAnyBot(): void {
+ public createdBot(): void {
   this.addBot.emit();
  }
 
- public deleteAnyBot(): void {
+ public deletedBot(): void {
   this.deleteBot.emit();
  }
 }

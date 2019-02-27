@@ -45,13 +45,13 @@
 
     <button class="action-button shadow animate blue" 
             *ngIf="room && !room.started && user.playerMaster"
-            (click)="addAnyBot()"> 
+            (click)="createdBot()"> 
       Add bot
     </button>
 
     <button class="action-button shadow animate yellow" 
             *ngIf="room && !room.started && user.playerMaster"
-            (click)="deleteAnyBot()"> 
+            (click)="deletedBot()"> 
       Delete bot
     </button>
 
@@ -62,7 +62,7 @@
             [class.red]="!user.turn" 
             [class.blue]="user.turn" 
             [disabled]="!user.turn"
-            (click)="this.getPlayer.emit()">
+            (click)="this.getCard.emit()">
       Get Card
     </button>
 

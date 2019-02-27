@@ -4,13 +4,10 @@ import { Observable } from 'rxjs';
 
 import { AngularFireDatabase } from 'angularfire2/database';
 
-@Injectable(
-)
-
+@Injectable()
 export class DataBaseService {
 
-  public constructor(
-    private dataBase: AngularFireDatabase) {}
+  public constructor(private dataBase: AngularFireDatabase) {}
 
   public pushOneCard(roomId: number, userId: number, userSum: number, userHand: TCard[], roomDeck: TCard[]): void {
     this.savePlayerScore(roomId, userId, userSum);

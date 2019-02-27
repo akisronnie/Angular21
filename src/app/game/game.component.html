@@ -1,9 +1,9 @@
-<app-score [room] = "room"
-           [user] = "user"
-           [message] = "message"
+<app-score [room]="room"
+           [user]="user"
+           [message]="message"
            (toggleReady)="toggleReady()"
            [isYouTurn]="isYouTurn"
-           (getPlayer)="getPlayer()"
+           (getCard)="getCard()"
            (stopTakingCards)="stopTakingCards()"
            (finishGame)="finish()"
            (addBot)="addBot()"
@@ -11,6 +11,6 @@
 </app-score>
 
 <app-field [room]="room"
-           [user] = "user"
+           [user]="user"
            [isYouTurn]="isYouTurn">
 </app-field>
